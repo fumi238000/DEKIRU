@@ -1,7 +1,7 @@
 ---
 name: バグ報告＆修正
 about: バグ報告＆修正タスク
-title: ''
+title: "【修正】"
 labels: バグ
 assignees: fumi238000
 

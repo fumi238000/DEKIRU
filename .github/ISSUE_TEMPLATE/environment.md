@@ -1,9 +1,9 @@
 ---
 name: 環境構築設定
 about: 環境構築設定タスク
-title: "【本番環境】"
+title: "【開発環境設定】"
 labels: 環境設定
-assignees: ''
+assignees: fumi238000
 
 ---
 
