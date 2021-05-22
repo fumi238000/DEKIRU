@@ -9,12 +9,18 @@ gem "jbuilder", "~> 2.7"
 gem "mysql2", ">= 0.4.4"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.7"
+gem "rails-i18n", "~> 6.0.0"
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "pry-byebug"
+  gem "pry-doc"
+  gem "rspec-rails"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
 end
