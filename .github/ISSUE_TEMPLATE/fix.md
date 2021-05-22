@@ -1,6 +1,6 @@
 ---
 name: バグ報告＆修正
-about: バグ報告＆修正たすく
+about: バグ報告＆修正タスク
 title: ''
 labels: ''
 assignees: ''
