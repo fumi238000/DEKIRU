@@ -2,8 +2,8 @@
 name: バグ報告＆修正
 about: バグ報告＆修正タスク
 title: ''
-labels: ''
-assignees: ''
+labels: バグ
+assignees: fumi238000
 
 ---
 
