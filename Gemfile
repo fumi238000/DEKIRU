@@ -20,6 +20,7 @@ group :development, :test do
   gem "faker"
   gem "pry-byebug"
   gem "pry-doc"
+  gem "pry-rails"
   gem "rspec-rails"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
