@@ -24,7 +24,6 @@ puts "ユーザーのテストデータを作成しました"
 #-----------------------------------------
 # content sample date
 #-----------------------------------------
-# コンテンツのサンプルデータ
 CONTENT_NUM.times do |i|
   id = i + 1
   Content.find_or_create_by!(title: "コンテンツ#{id}") do |c|
@@ -40,11 +39,10 @@ puts "コンテンツのテストデータを作成しました"
 #-----------------------------------------
 # material sample date
 #-----------------------------------------
-# 材料のサンプルデータ
 Content.includes(:materials).each do |content|
   MATERIALS_NUM.times do |i|
     num = i + 1
-    content.materials.find_or_create_by!(name: "ビス#{num}") do |m|
+    content.materials.find_or_create_by!(name: "ねじ#{num}") do |m|
       m.content_id = content.id
       m.name = "ねじ#{num}"
       m.amount = 100
