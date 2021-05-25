@@ -52,3 +52,7 @@ Layout/CommentIndentation:
 # 最大ネスト
 RSpec/NestedGroups:
   Max: 10
+
+# 最大expect数
+RSpec/MultipleExpectations:
+  Max: 10

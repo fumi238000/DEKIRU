@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :material do
-    content { nil }
-    name { "MyString" }
+    association :content, factory: :content
+    name { "ねじ" }
     amount { 1 }
-    unit { "MyString" }
+    unit { "本" }
   end
 end
