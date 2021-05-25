@@ -63,7 +63,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |cont
     num = i + 1
     content.makes.find_or_create_by!(detail: "作り方#{num}") do |m|
       m.content_id = content.id
-      m.detail = "作り方{num}"
+      m.detail = "作り方#{num}"
     end
   end
 end
