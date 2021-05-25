@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.timestamps null: false
     end
 
+    # TODO: 後ほどインデックスを復活させること
     # add_index :users, :name,                 unique: true
     # add_index :users, :email,                unique: true
     # add_index :users, :reset_password_token, unique: true
