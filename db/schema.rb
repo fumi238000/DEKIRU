@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_033417) do
+ActiveRecord::Schema.define(version: 2021_05_25_052700) do
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2021_05_25_033417) do
     t.integer "recommend_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "makes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "content_id", null: false
+    t.string "detail", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_makes_on_content_id"
   end
 
   create_table "materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -46,5 +54,6 @@ ActiveRecord::Schema.define(version: 2021_05_25_033417) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "makes", "contents"
   add_foreign_key "materials", "contents"
 end
