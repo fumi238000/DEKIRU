@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :make do
-    content { nil }
-    detail { "MyString" }
+    association :content, factory: :content
+    detail { "作り方はこちら" }
   end
 end
