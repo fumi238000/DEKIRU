@@ -1,1 +1,44 @@
-<h1>TOPページ</h1>
+<div>
+  <h1>DEKIRU</h1>
+  <p>写真</p>
+</div>
+
+<br/>
+
+<div>
+  <p>人気xx情報</p>
+  <%= link_to ">>全て見る", root_path %>
+  <%= render partial: "layouts/content_card", collection: @popularity_contents, as: "content" %>
+</div>
+
+<br/>
+
+<div>
+  <p>おすすめxx情報</p>
+  <%= link_to ">>全て見る", root_path %>
+  <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+</div>
+
+<br/>
+
+<div>
+  <p>カテゴリー一覧</p>
+  <%= link_to ">>全て見る", root_path %>
+  <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+</div>
+
+<br/>
+
+<div>
+  <p>キーワード検索</p>
+  <%= link_to ">>全て見る", root_path %>
+  <%= link_to "キーワード", root_path %>
+　<%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
+</div>
