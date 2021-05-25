@@ -3,6 +3,7 @@
 USER_NUM = 5
 CONTENT_NUM = 10
 MATERIALS_NUM = 5
+MAKES_NUM = 4
 
 #-----------------------------------------
 puts "テストデータのインポート開始"
@@ -19,6 +20,7 @@ USER_NUM.times do |i|
     u.password = "password"
   end
 end
+
 puts "ユーザーのテストデータを作成しました"
 
 #-----------------------------------------
@@ -39,7 +41,7 @@ puts "コンテンツのテストデータを作成しました"
 #-----------------------------------------
 # material sample date
 #-----------------------------------------
-Content.includes(:materials).each do |content|
+Content.where("title LIKE ?", "コンテンツ%").includes(:materials).each do |content|
   MATERIALS_NUM.times do |i|
     num = i + 1
     content.materials.find_or_create_by!(name: "ねじ#{num}") do |m|
@@ -52,6 +54,21 @@ Content.includes(:materials).each do |content|
 end
 
 puts "材料のテストデータを作成しました"
+
+#-----------------------------------------
+# make sample date
+#-----------------------------------------
+Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |content|
+  MAKES_NUM.times do |i|
+    num = i + 1
+    content.makes.find_or_create_by!(detail: "作り方#{num}") do |m|
+      m.content_id = content.id
+      m.detail = "作り方{num}"
+    end
+  end
+end
+
+puts "作り方のテストデータを作成しました"
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
