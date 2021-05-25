@@ -44,3 +44,11 @@ Style/WordArray:
 
 Style/SymbolArray:
   Enabled: false
+
+# コメントアウト可能
+Layout/CommentIndentation:
+  Enabled: false
+
+# 最大ネスト
+RSpec/NestedGroups:
+  Max: 10

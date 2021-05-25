@@ -49,3 +49,7 @@ Rails/UnknownEnv:
     - test        # rubocop default.yml
     - production  # rubocop default.yml
     - staging
+
+# seeds時に"put"でメッセージを表示したい
+Rails/Output:
+  Enabled: false
