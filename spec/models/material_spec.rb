@@ -30,7 +30,7 @@ RSpec.describe Material, type: :model do
     end
 
     describe "amount" do
-      context "入力さていない時", type: :do do
+      context "入力さていない時" do
         let(:material) { build(:material, amount: "") }
         it "エラーが出力される" do
           expect(subject).to eq false
