@@ -1,7 +1,6 @@
 <%= form_with model: @make, local: true do |f| %>
   <%#= render 'layouts/error_messages', model: f.object %>
 
-  <%# valueを編集する%>
   <%= f.hidden_field :content_id, value: @content_id %>
   
   <div>

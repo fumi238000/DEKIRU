@@ -1,5 +1,4 @@
 class ContentsController < ApplicationController
-  # TODO: adminユーザー出ない場合、リダイレクトする処理を実装する
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_content, only: %i[show update edit destroy]
 
