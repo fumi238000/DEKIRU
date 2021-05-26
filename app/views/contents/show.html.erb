@@ -6,7 +6,6 @@
   <%= link_to "削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
 <% end %>
 
-
 <!-- movie -->
 <p>youtube:<%#= @content.movie_url %></p>
 
@@ -16,11 +15,18 @@
 <p>ポイント:<%= @content.point %></p>
 
 <!-- 材料 -->
-
+<h2>材料</h2>
+<% if admin_user? %>
+  <%= link_to "追加", new_material_path(params: { content_id: @content.id }) %>
+<% end %>
+<!-- 材料一覧 -->
+<%= render partial: "material_card", collection: @materials, as: "material" %>
 
 <!-- 作り方 -->
 <h2>作り方</h2>
-<%= link_to "追加", new_make_path(params: { content_id: @content.id }) %>
+<% if admin_user? %>
+  <%= link_to "追加", new_make_path(params: { content_id: @content.id }) %>
+<% end %>
 <!-- 作り方一覧 -->
 <%= render partial: "make_card", collection: @makes, as: "make" %>
 

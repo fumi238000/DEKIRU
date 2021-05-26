@@ -3,14 +3,18 @@
     <div>
       <span><%= make_counter + 1 %>.<span>
       <span><%= make.detail %><span>
-      <%# アイコンを実装すること%>
-      <%= link_to edit_make_path(make.id, params: { content_id: make.content.id }), method: :get do %>
-        <i class="fas fa-pen"></i>
+
+      <% if admin_user?%>
+        <!-- 編集ボタン-->
+        <%= link_to edit_make_path(make.id, params: { content_id: make.content.id }), method: :get do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+        <!-- 削除ボタン-->
+        <%= link_to make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
       <% end %>
 
-      <%= link_to make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete do %>
-        <i class="far fa-trash-alt"></i>
-       <% end %>
     </div>
   </li>
 </ul>

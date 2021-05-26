@@ -1,0 +1,27 @@
+<%= form_with model: @material, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.hidden_field :content_id, value: @content_id %>
+  
+  <div>
+    <h2>材料名</h2>
+    <p><%= f.text_field :name %></p>
+  </div>
+
+  <div>
+    <h2>分量</h2>
+    <p><%= f.text_field :amount %></p>
+  </div>
+
+  <div>
+    <h2>単位</h2>
+    <p><%= f.text_field :unit %></p>
+  </div>
+
+
+  <div>
+    <%# valueを編集する %>
+    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
+  </div>
+  
+<% end %>
