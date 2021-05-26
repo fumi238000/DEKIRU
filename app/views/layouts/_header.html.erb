@@ -8,7 +8,7 @@
   <% if user_signed_in? %>
     <%# ログイン時 %>
     <%#= link_to "アカウント編集", edit_user_registration_path %>
-    <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
     <%= link_to "マイページ", root_path %>
   <% else %>
     <%# 非ログイン時 %>
