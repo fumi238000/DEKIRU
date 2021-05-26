@@ -10,7 +10,19 @@ puts "テストデータのインポート開始"
 #-----------------------------------------
 
 #-----------------------------------------
-# user sample date
+# admin_user sample date
+#-----------------------------------------
+User.find_or_create_by!(email: "admin@example.com") do |u|
+  u.name = "管理者ユーザー"
+  u.email = "admin@example.com"
+  u.password = "password"
+  u.user_type = "admin"
+end
+
+puts "管理者のテストデータを作成しました"
+
+#-----------------------------------------
+# general_user sample date
 #-----------------------------------------
 USER_NUM.times do |i|
   id = i + 1
