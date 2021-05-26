@@ -5,14 +5,31 @@
 
 
 <% if admin_user? %>
-<%= link_to "編集", edit_content_path %>
-<%# アラートの追加 %>
-<%# アラートにデザインを当てる %>
-<%= link_to "削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
+  <%= link_to "編集", edit_content_path %>
+  <%# アラートの追加 %>
+  <%# アラートにデザインを当てる %>
+  <%= link_to "削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
 <% end %>
 
+
+<!-- movie -->
+<p>youtube:<%#= @content.movie_url %></p>
+
+<!-- 説明 -->
 <p>タイトル:<%= @content.title %></p>
 <p>サブタイトル:<%= @content. subtitle %></p>
-<p>youtube:<%#= @content.movie_url %></p>
-<p>コメント:<%= @content.comment %></p>
 <p>ポイント:<%= @content.point %></p>
+
+<!-- 材料 -->
+
+
+<!-- 作り方 -->
+<h2>作り方</h2>
+<%= link_to "追加", new_make_path(params: { content_id: @content.id }) %>
+
+<!-- 作り方一覧 -->
+<%= render partial: "make_card", collection: @makes, as: "make" %>
+
+<!-- コメント-->
+<p>コメント:<%= @content.comment %></p>
+<!-- コメントフォームがここにくる-->

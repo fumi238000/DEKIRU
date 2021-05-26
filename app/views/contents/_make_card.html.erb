@@ -1,0 +1,12 @@
+<ol>  
+  <li>
+    <div>
+      <%# 回数をここに記載する%>
+      <span><%= make.id %>.<span>
+      <span><%= make.detail %><span>
+      <%# アイコンを実装すること%>
+      <%= link_to "編集", edit_make_path(make.id, params: { content_id: make.content.id }) %>
+      <%= link_to "削除", make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
+      <div>
+  </li>
+</ol>
