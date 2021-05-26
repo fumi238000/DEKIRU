@@ -1,8 +1,7 @@
 <ol>  
   <li>
     <div>
-      <%# 回数をここに記載する%>
-      <span><%= make.id %>.<span>
+      <span><%= make_counter + 1 %>.<span>
       <span><%= make.detail %><span>
       <%# アイコンを実装すること%>
       <%= link_to "編集", edit_make_path(make.id, params: { content_id: make.content.id }) %>
