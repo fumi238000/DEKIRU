@@ -1,5 +1,4 @@
 class ContentsController < ApplicationController
-  # TODO: adminユーザー出ない場合、リダイレクトする処理を実装する
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_content, only: %i[show update edit destroy]
 
@@ -13,6 +12,8 @@ class ContentsController < ApplicationController
   end
 
   def show
+    @makes = @content.makes
+    # @makes = @content.includes(:makes)
   end
 
   def create
@@ -50,6 +51,7 @@ class ContentsController < ApplicationController
       params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point)
     end
 
+    # TODO: 共通化すること
     def admin_checker
       ## ログインしているか
       redirect_to root_path, alert: "不正なアクセスです" and return unless user_signed_in?

@@ -1,0 +1,16 @@
+<%= form_with model: @make, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.hidden_field :content_id, value: @content_id %>
+  
+  <div>
+    <h2>作り方</h2>
+    <p><%= f.text_area :detail %></p>
+  </div>
+  
+  <div>
+    <%# valueを編集する %>
+    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
+  </div>
+  
+<% end %>
