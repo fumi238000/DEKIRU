@@ -1,0 +1,32 @@
+<%= form_with model: @content, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+  <div>
+    <h2>タイトル</h2>
+    <p><%= f.text_field :title %></p>
+  </div>
+  
+  <div>    
+    <h2>サブタイトル</h2>
+    <p><%= f.text_area :subtitle %></p>
+  </div>
+  
+  <div>
+    <h2>youtube</h2>
+    <%= f.text_field :movie_url %>
+  </div>
+  
+  <div>  
+    <h2>コメント</h2>
+    <p><%= f.text_area :comment %></p>
+  </div>
+
+  <div>  
+    <h2>ポイント</h2>
+    <p><%= f.text_area :point %></p>
+  </div>
+
+  <div>
+    <%= f.submit "確定する"%>
+  </div>
+  
+<% end %>

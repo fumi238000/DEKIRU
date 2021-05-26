@@ -1,0 +1,5 @@
+ <h1>index</h1>
+
+<%= link_to "新規作成",new_content_path %>
+
+<%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
