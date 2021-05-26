@@ -34,17 +34,17 @@ RSpec.describe "Contents", type: :request do
         end
       end
 
-      context "ユーザーが管理者の場合" do
-        xit "新規登録ボタンが表示される" do
-          sign_in @user
-          # 表示される処理
-        end
-      end
-
       context "ユーザーが管理者でない場合" do
         xit "新規登録ボタンが表示されない" do
           sign_in @admin
           # 表示されない処理
+        end
+      end
+
+      context "ユーザーが管理者の場合" do
+        xit "新規登録ボタンが表示される" do
+          sign_in @user
+          # 表示される処理
         end
       end
     end
@@ -113,14 +113,14 @@ RSpec.describe "Contents", type: :request do
         end
       end
 
-      context "管理者でない場合" do
+      context "ユーザーが管理者でない場合" do
         xit "xxボタンが表示されないこと" do
           sign_in @user
           ## テスト
         end
       end
 
-      context "管理者の場合" do
+      context "ユーザーが管理者の場合" do
         xit "xxボタンが表示されること" do
           sign_in @admin
           ## テスト
@@ -151,7 +151,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者でない場合" do
+    context "ユーザーが管理者でない場合" do
       it "コンテンツの件数が変化しないこと" do
         sign_in @user
         expect { subject }.to change { Content.count }.by(0)
@@ -161,7 +161,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者の場合" do
+    context "ユーザーが管理者の場合" do
       it "コンテンツの件数が1件増加すること" do
         sign_in @admin
         expect { subject }.to change { Content.count }.by(1)
@@ -194,7 +194,7 @@ RSpec.describe "Contents", type: :request do
         end
       end
 
-      context "管理者でない場合" do
+      context "ユーザーが管理者でない場合" do
         it "リダイレクトすること" do
           sign_in @user
           subject
@@ -204,7 +204,7 @@ RSpec.describe "Contents", type: :request do
         end
       end
 
-      context "管理者の場合"
+      context "ユーザーが管理者の場合"
 
         it "コンテンツが更新されること" do # rubocop:disable all
           sign_in @admin
@@ -236,7 +236,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者でない場合" do
+    context "ユーザーが管理者でない場合" do
       it "リダイレクトされること" do
         sign_in @user
         subject
@@ -246,7 +246,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者の場合" do
+    context "ユーザーが管理者の場合" do
       it "指定したidのコンテンツが表示されること" do
         sign_in @admin
         subject
@@ -274,7 +274,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者でない場合" do
+    context "ユーザーが管理者でない場合" do
       it "リダイレクトされること" do
         sign_in @user
         expect { subject }.to change { Content.count }.by(0)
@@ -284,7 +284,7 @@ RSpec.describe "Contents", type: :request do
       end
     end
 
-    context "管理者の場合" do
+    context "ユーザーが管理者の場合" do
       before { @content = create(:content) }
 
       it "コンテンツが削除されること" do
