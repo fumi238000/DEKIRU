@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
 
   def show
     @makes = @content.makes
-    # @makes = @content.includes(:makes)
+    @materials = @content.materials
   end
 
   def create
