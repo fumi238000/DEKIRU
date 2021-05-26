@@ -1,3 +1,13 @@
+<%= link_to "戻る", contents_path %>
+
+<%# 日本語化しておくといいかも %>
+<%# adminユーザーのみ表示させること %>
+<%= link_to "編集", edit_content_path %>
+
+<%# アラートの追加 %>
+<%# アラートにデザインを当てる %>
+<%= link_to "削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
+
 <p>タイトル:<%= @content.title %></p>
 <p>サブタイトル:<%= @content. subtitle %></p>
 <p>youtube:<%#= @content.movie_url %></p>
