@@ -1,15 +1,21 @@
-<%= link_to "DEKIRU(ロゴ)", root_path %>
+<header>
 
-<%# 後日実装する %>
-<%= render partial: "layouts/input_form"%>
+  <%= link_to "DEKIRU(ロゴ)", root_path %>
 
-<% if user_signed_in? %>
-  <%# ログイン時 %>
-  <%#= link_to "アカウント編集", edit_user_registration_path %>
-  <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-  <%= link_to "マイページ", root_path %>
-<% else %>
-  <%# 非ログイン時 %>
-  <%#= link_to "新規登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <% end %>
+  <%# 後日実装する %>
+  <%= render partial: "layouts/input_form"%>
+
+  <% if user_signed_in? %>
+    <%# ログイン時 %>
+    <%#= link_to "アカウント編集", edit_user_registration_path %>
+    <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+    <%= link_to "マイページ", root_path %>
+  <% else %>
+    <%# 非ログイン時 %>
+    <%#= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+
+</header>
+
+<hr>
