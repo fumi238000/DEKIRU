@@ -26,7 +26,7 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
-      redirect_to content_show_path(id: @content.id), notice: "【#{@content.title}】の内容を更新しました"
+      redirect_to content_show_path(id: @content.id), notice: "内容を更新しました"
     else
       render :edit
     end
