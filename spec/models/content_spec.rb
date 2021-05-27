@@ -112,6 +112,15 @@ RSpec.describe Content, type: :model do
           end
         end
       end
+
+      describe "content_delete" do
+        context "contentが削除された時" do
+          xit "紐づいている情報も削除される" do
+            # 材料
+            # 作り方
+          end
+        end
+      end
     end
   end
 end
