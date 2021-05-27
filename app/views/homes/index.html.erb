@@ -6,16 +6,16 @@
 <br/>
 
 <div>
-  <p>人気xx情報</p>
-  <%= link_to ">>全て見る", root_path %>
+  <p>人気情報</p>
+  <%= link_to ">>全て見る", popular_content_path %>
   <%= render partial: "layouts/content_card", collection: @popularity_contents, as: "content" %>
 </div>
 
 <br/>
 
 <div>
-  <p>おすすめxx情報</p>
-  <%= link_to ">>全て見る", root_path %>
+  <p>おすすめ情報</p>
+  <%= link_to ">>全て見る", recommend_content_path %>
   <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
 </div>
 
