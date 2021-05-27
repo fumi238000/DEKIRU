@@ -4,7 +4,7 @@ FactoryBot.define do
     detail { Faker::Book.title }
   end
 
-  trait :invalid do
+  trait :make_invalid do
     detail { "" }
   end
 end

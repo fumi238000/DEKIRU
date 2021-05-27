@@ -74,7 +74,7 @@ RSpec.describe "Makes", type: :request do
       end
 
       context "パラメータが異常な時" do
-        let(:make_params) { { make: attributes_for(:make, :invalid, content_id: content.id) } }
+        let(:make_params) { { make: attributes_for(:make, :make_invalid, content_id: content.id) } }
         it "コンテンツの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { Make.count }.by(0)
@@ -84,56 +84,56 @@ RSpec.describe "Makes", type: :request do
         end
       end
     end
+  end
 
-    describe "PUT #update" do
-      subject { patch(make_path(make.id), params: make_params) }
+  describe "PUT #update" do
+    subject { patch(make_path(make.id), params: make_params) }
 
-      let(:content) { create(:content) }
-      let(:content_id) { content.id }
-      let(:make) { create(:make, content_id: content_id) }
-      let(:make_params) { { make: attributes_for(:make, content_id: content.id) } }
+    let(:content) { create(:content) }
+    let(:content_id) { content.id }
+    let(:make) { create(:make, content_id: content_id) }
+    let(:make_params) { { make: attributes_for(:make, content_id: content.id) } }
 
-      context "未ログインユーザーの場合" do
-        it "リダイレクトすること" do
-          subject
+    context "未ログインユーザーの場合" do
+      it "リダイレクトすること" do
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "ユーザーが管理者でない場合" do
+      it "リダイレクトすること" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "ユーザーが管理者の場合" do
+      context "パラメータが正常な時" do
+        it "コンテンツが更新されること" do
+          sign_in @admin
+          new_make = make_params[:make]
+          expect { subject }.to change { make.reload.detail }.from(make.detail).to(new_make[:detail])
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to root_path
-          expect(flash[:alert]).to eq("不正なアクセスです")
+          expect(response).to redirect_to content_show_path(make.content)
+          expect(flash[:notice]).to eq("作り方を更新しました")
         end
       end
 
-      context "ユーザーが管理者でない場合" do
-        it "リダイレクトすること" do
-          sign_in @user
-          subject
-          expect(response).to have_http_status(:found)
-          expect(response).to redirect_to root_path
-          expect(flash[:alert]).to eq("不正なアクセスです")
-        end
-      end
+      context "パラメータが異常な時" do
+        let(:make_params) { { make: attributes_for(:make, :make_invalid, content_id: content.id) } }
 
-      context "ユーザーが管理者の場合" do
-        context "パラメータが正常な時" do
-          it "コンテンツが更新されること" do
-            sign_in @admin
-            new_make = make_params[:make]
-            expect { subject }.to change { make.reload.detail }.from(make.detail).to(new_make[:detail])
-            expect(response).to have_http_status(:found)
-            expect(response).to redirect_to content_show_path(make.content)
-            expect(flash[:notice]).to eq("作り方を更新しました")
-          end
-        end
-
-        context "パラメータが異常な時" do
-          let(:make_params) { { make: attributes_for(:make, :invalid, content_id: content.id) } }
-
-          it "コンテンツが更新できないこと" do
-            sign_in @admin
-            expect { subject }.not_to change { make.reload.detail }
-            expect(response).to have_http_status(:ok)
-            # TODO: エラーメッセージが表示されること
-            # expect(response.body).to include "を入力してください"
-          end
+        it "コンテンツが更新できないこと" do
+          sign_in @admin
+          expect { subject }.not_to change { make.reload.detail }
+          expect(response).to have_http_status(:ok)
+          # TODO: エラーメッセージが表示されること
+          # expect(response.body).to include "を入力してください"
         end
       end
     end
