@@ -44,6 +44,9 @@ class ContentsController < ApplicationController
   def recommend
   end
 
+  def popular
+  end
+
   private
 
     def set_content
