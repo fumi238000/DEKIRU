@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+https://dekiru-app-staging.herokuapp.com/
