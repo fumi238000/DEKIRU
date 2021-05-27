@@ -41,6 +41,9 @@ class ContentsController < ApplicationController
     redirect_to contents_path, alert: "【#{@content.title}】を削除しました"
   end
 
+  def recommend
+  end
+
   private
 
     def set_content
