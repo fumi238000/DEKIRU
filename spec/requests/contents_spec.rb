@@ -58,14 +58,7 @@ RSpec.describe "Contents", type: :request do
         subject
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to root_path
-      end
-    end
-
-    context "ユーザーが管理者の場合" do
-      it "リスクエストが成功する" do
-        sign_in @admin
-        subject
-        expect(response).to have_http_status(:ok)
+        expect(flash[:alert]).to eq("不正なアクセスです")
       end
     end
 
@@ -75,6 +68,15 @@ RSpec.describe "Contents", type: :request do
         subject
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+
+      context "ユーザーが管理者の場合" do
+        it "リスクエストが成功する" do
+          sign_in @admin
+          subject
+          expect(response).to have_http_status(:ok)
+        end
       end
     end
   end
@@ -109,21 +111,27 @@ RSpec.describe "Contents", type: :request do
     # TOOD: capybara部分は別タスクで実行する
       context "未ログインユーザーの場合" do
         xit "xxボタンが表示されないこと" do
-          ## テスト
+          # テスト
+          # 作り方（追加・編集・削除）
+          # 材料
         end
       end
 
       context "ユーザーが管理者でない場合" do
         xit "xxボタンが表示されないこと" do
           sign_in @user
-          ## テスト
+          # テスト
+          # 作り方（追加・編集・削除）
+          # 材料
         end
       end
 
       context "ユーザーが管理者の場合" do
         xit "xxボタンが表示されること" do
           sign_in @admin
-          ## テスト
+          # テスト
+          # 作り方（追加・編集・削除）
+          # 材料
         end
       end
     end
