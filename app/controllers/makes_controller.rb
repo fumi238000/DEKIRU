@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  # before_action :admin_checker, only: %i[new create update edit destroy]
+  before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_make, only: %i[update edit destroy]
 
   def new
