@@ -42,9 +42,11 @@ class ContentsController < ApplicationController
   end
 
   def recommend
+    @contents = Content.all
   end
 
   def popular
+    @contents = Content.all
   end
 
   private
