@@ -2,6 +2,7 @@
 # 定数
 USER_NUM = 5
 CONTENT_NUM = 10
+RECOMMEND_CONTENT_NUM = 9
 MATERIALS_NUM = 5
 MAKES_NUM = 4
 
@@ -10,7 +11,7 @@ puts "テストデータのインポート開始"
 #-----------------------------------------
 
 #-----------------------------------------
-# admin_user sample date
+# admin_user
 #-----------------------------------------
 User.find_or_create_by!(email: "admin@example.com") do |u|
   u.name = "管理者ユーザー"
@@ -22,7 +23,7 @@ end
 puts "管理者のテストデータを作成しました"
 
 #-----------------------------------------
-# general_user sample date
+# general_user
 #-----------------------------------------
 USER_NUM.times do |i|
   id = i + 1
@@ -36,7 +37,7 @@ end
 puts "ユーザーのテストデータを作成しました"
 
 #-----------------------------------------
-# content sample date
+# content
 #-----------------------------------------
 CONTENT_NUM.times do |i|
   id = i + 1
@@ -51,7 +52,23 @@ end
 puts "コンテンツのテストデータを作成しました"
 
 #-----------------------------------------
-# material sample date
+# recommend_content
+#-----------------------------------------
+RECOMMEND_CONTENT_NUM.times do |i|
+  id = i + 1
+  Content.find_or_create_by!(title: "おすすめコンテンツ#{id}") do |c|
+    c.title = "おすすめコンテンツ#{id}"
+    c.subtitle = "サブタイトル"
+    c.movie_url = ""
+    c.comment = "コメント"
+    c.point = "ポイント"
+    c.recommend_status = "recommend"
+  end
+end
+puts "おすすめコンテンツのテストデータを作成しました"
+
+#-----------------------------------------
+# material
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").includes(:materials).each do |content|
   MATERIALS_NUM.times do |i|
@@ -68,7 +85,7 @@ end
 puts "材料のテストデータを作成しました"
 
 #-----------------------------------------
-# make sample date
+# make
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |content|
   MAKES_NUM.times do |i|

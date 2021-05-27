@@ -9,4 +9,6 @@ class Content < ApplicationRecord
   validates :comment, presence: true, length: { in: 1..32, allow_blank: true }
   validates :point, presence: true, length: { in: 1..32, allow_blank: true }
   # validates recommend_status:, presence: true
+
+  enum recommend_status: { general: 0, recommend: 1 }
 end
