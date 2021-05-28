@@ -14,4 +14,9 @@ class Content < ApplicationRecord
   # validates recommend_status:, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
+
+  # お気に入り判定
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end
