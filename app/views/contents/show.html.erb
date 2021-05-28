@@ -40,7 +40,8 @@
 
 <!-- review -->
 <h2>レビュー</h2>
-<% if admin_user? %>
+<% if user_signed_in? %>
+  <%# TODO: 管理者ユーザーはレビューを登録できない様にするか検討 %>
   <%= link_to "レビューする >>", new_review_path(params: { content_id: @content.id }) %>
 <% end %>
 

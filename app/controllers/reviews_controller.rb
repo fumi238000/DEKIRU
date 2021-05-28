@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :admin_checker, only: %i[new create destroy]
   before_action :set_review, only: %i[destroy]
-  # TODO: 管理者ユーザーはレビューを登録できない様にする
+  # TODO: 管理者ユーザーはレビューを登録できない様にするか検討
 
   def new
     @review = Review.new
@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    # 削除できる様にするか検討する
   end
 
   private
