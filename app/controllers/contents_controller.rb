@@ -49,6 +49,10 @@ class ContentsController < ApplicationController
     # @contents = Content.includes(:favorites)#.order("favorites.date DESC")
   end
 
+  def newest
+    @contents = Content.order(created_at: :desc)
+  end
+
   def recommend
     @contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
   end

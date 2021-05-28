@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :contents, only: %i[index new edit create update destroy]
   get "/content_show/:id", to: "contents#show", as: "content_show"
-  get "/recommend_content", to: "contents#recommend"
-  get "/popular_content", to: "contents#popular"
+  get "/recommend_contents", to: "contents#recommend"
+  get "/popular_contents", to: "contents#popular"
+  get "/newest_contents", to: "contents#newest"
   resources :contents do
     resource :favorites, only: [:create, :destroy]
   end
