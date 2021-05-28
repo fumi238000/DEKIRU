@@ -3,6 +3,7 @@ class Content < ApplicationRecord
   has_many :makes, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :users
 
   validates :title, presence: true, length: { in: 1..16, allow_blank: true }
   validates :subtitle, presence: true, length: { in: 1..32, allow_blank: true }
