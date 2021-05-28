@@ -14,7 +14,7 @@ RSpec.describe Review, type: :model do
     describe "comment" do
       context "入力さていない時" do
         let(:review) { build(:review, comment: "") }
-        it "保存ができない", type: :do do
+        it "保存ができない" do
           expect(subject).to eq false
           expect(review.errors[:comment]).to include "を入力してください"
         end
