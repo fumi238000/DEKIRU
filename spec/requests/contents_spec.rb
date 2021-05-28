@@ -1,5 +1,3 @@
-## TODO: 文言を統一すること
-
 require "rails_helper"
 
 RSpec.describe "Contents", type: :request do
