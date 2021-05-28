@@ -5,6 +5,7 @@ CONTENT_NUM = 10
 RECOMMEND_CONTENT_NUM = 9
 MATERIALS_NUM = 5
 MAKES_NUM = 4
+REVIEWS_NUM = 3
 
 #-----------------------------------------
 puts "テストデータのインポート開始"
@@ -98,6 +99,23 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |cont
 end
 
 puts "作り方のテストデータを作成しました"
+
+
+#-----------------------------------------
+# review
+#-----------------------------------------
+Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |content|
+  REVIEWS_NUM.times do |i|
+    num = i + 1
+    content.reviews.find_or_create_by!(comment: "コメント#{num}") do |r|
+      r.user_id = User.general.sample.id
+      r.comment = "コメント#{num}"
+    end
+  end
+end
+
+puts "レビューのテストデータを作成しました"
+
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
