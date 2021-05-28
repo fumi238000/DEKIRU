@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :admin_checker, only: %i[new create destroy]
+  before_action :authenticate_user!, only: %i[new create destroy]
   before_action :set_review, only: %i[destroy]
   # TODO: 管理者ユーザーはレビューを登録できない様にするか検討
 
