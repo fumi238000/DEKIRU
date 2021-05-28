@@ -1,3 +1,6 @@
 <h1>おすすめ情報一覧</h1>
 
-<%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+<%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+
+<!-- ページネーション -->
+<%#= paginate @recommend_contents %>

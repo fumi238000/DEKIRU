@@ -7,7 +7,7 @@
 
 <div>
   <p>人気情報</p>
-  <%= link_to ">>全て見る", popular_content_path %>
+  <%= link_to ">>全て見る", popular_contents_path %>
   <%= render partial: "layouts/content_card", collection: @popularity_contents, as: "content" %>
 </div>
 
@@ -15,8 +15,16 @@
 
 <div>
   <p>おすすめ情報</p>
-  <%= link_to ">>全て見る", recommend_content_path %>
+  <%= link_to ">>全て見る", recommend_contents_path %>
   <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+</div>
+
+<br/>
+
+<div>
+  <p>新着情報</p>
+  <%= link_to ">>全て見る", newest_contents_path %>
+  <%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
 </div>
 
 <br/>
