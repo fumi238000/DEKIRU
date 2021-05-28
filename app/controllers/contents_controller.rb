@@ -1,7 +1,8 @@
 class ContentsController < ApplicationController
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_content, only: %i[show update edit destroy]
-  RECOMMEND_CONTENT_NUM = 9
+  RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
+  PER_PAGE = 12 # 1ページの表示数
 
   def index
     @contents = Content.all
@@ -44,17 +45,18 @@ class ContentsController < ApplicationController
   end
 
   def popular
-    @contents = Content.all
+    @popular_contents = Content.all.page(params[:page]).per(PER_PAGE)
     # TODO: お気に入りの数で判定する
     # @contents = Content.includes(:favorites)#.order("favorites.date DESC")
   end
 
   def newest
-    @contents = Content.order(created_at: :desc)
+    @new_contents = Content.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
   end
 
   def recommend
-    @contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
+    @recommend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
+    # @recomend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM).page(params[:page]).per(PER_PAGE) # ページネーションの場合
   end
 
   private
