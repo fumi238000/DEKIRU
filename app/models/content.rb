@@ -2,6 +2,8 @@ class Content < ApplicationRecord
   has_many :materials, dependent: :destroy
   has_many :makes, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :users
 
   validates :title, presence: true, length: { in: 1..16, allow_blank: true }
   validates :subtitle, presence: true, length: { in: 1..32, allow_blank: true }
@@ -12,4 +14,9 @@ class Content < ApplicationRecord
   # validates recommend_status:, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
+
+  # お気に入り判定
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end

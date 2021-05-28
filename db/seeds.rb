@@ -6,7 +6,7 @@ RECOMMEND_CONTENT_NUM = 9
 MATERIALS_NUM = 5
 MAKES_NUM = 4
 REVIEWS_NUM = 3
-
+FAVORITES_NUM = 5
 #-----------------------------------------
 puts "テストデータのインポート開始"
 #-----------------------------------------
@@ -29,7 +29,7 @@ puts "管理者のテストデータを作成しました"
 USER_NUM.times do |i|
   id = i + 1
   User.find_or_create_by!(email: "user#{id}@example.com") do |u|
-    u.name = "ユーザー#{id}"
+    u.name = "テストユーザー#{id}"
     u.email = "user#{id}@example.com"
     u.password = "password"
   end
@@ -114,6 +114,20 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |co
 end
 
 puts "レビューのテストデータを作成しました"
+
+#-----------------------------------------
+# favorite
+#-----------------------------------------
+User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites).each do |user|
+  FAVORITES_NUM.times do
+    content = Content.all.sample
+    user.favorites.find_or_create_by!(content_id: content.id) do |f|
+      f.content_id = content.id
+    end
+  end
+end
+
+puts "お気に入りのテストデータを作成しました"
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
