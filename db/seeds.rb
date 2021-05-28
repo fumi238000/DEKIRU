@@ -118,8 +118,6 @@ puts "レビューのテストデータを作成しました"
 #-----------------------------------------
 # favorite
 #-----------------------------------------
-# Content.where("title LIKE ?", "コンテンツ%").includes(:favorites).each do |content|
-
 User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites).each do |user|
   FAVORITES_NUM.times do
     content = Content.all.sample

@@ -44,8 +44,9 @@ class ContentsController < ApplicationController
   end
 
   def popular
-    # TODO: pv数を元に表示させる
     @contents = Content.all
+    # TODO: お気に入りの数で判定する
+    # @contents = Content.includes(:favorites)#.order("favorites.date DESC")
   end
 
   def recommend
