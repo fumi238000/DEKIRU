@@ -1,0 +1,29 @@
+<div>
+
+  <!-- 写真 -->
+  <div>
+    <p>レビューの写真<%#= review.image %></p>
+  </div>
+
+  <!-- ユーザー情報 -->
+  <div>
+
+    <!-- ユーザーの写真 -->
+    <div>
+      <p>ユーザーの写真<%#= review.user.thumbnail %></p>
+    </div>
+
+    <!-- ユーザーネーム -->
+    <div>
+      <p>ユーザーネーム:<%= review.user.name %></p>
+    </div>
+  
+  </div>
+
+
+  <!-- レビュー -->
+  <div>
+    <p>レビュー:<%= review.comment%></p>
+  </div>
+
+</div>

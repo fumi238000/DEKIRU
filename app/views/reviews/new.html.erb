@@ -1,0 +1,24 @@
+<h1>レビュー登録</h1>
+
+<%= form_with model: @review, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.hidden_field :content_id, value: @content_id %>
+
+  <div>
+    <h2>| 写真</h2>
+    <p>写真をここに<%#= f.text_area :comment %></p>
+  </div>
+
+
+  <div>
+    <h2>| レビュー</h2>
+    <p><%= f.text_area :comment %></p>
+  </div>
+  
+  <div>
+    <%# valueを編集する %>
+    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
+  </div>
+  
+<% end %>
