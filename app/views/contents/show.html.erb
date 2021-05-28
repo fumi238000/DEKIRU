@@ -41,7 +41,7 @@
 <!-- review -->
 <h2>レビュー</h2>
 <% if admin_user? %>
-  <%= link_to "レビューする >>", root_path %>
+  <%= link_to "レビューする >>", new_review_path(params: { content_id: @content.id }) %>
 <% end %>
 
 <!-- レビューフォームがここにくる-->
