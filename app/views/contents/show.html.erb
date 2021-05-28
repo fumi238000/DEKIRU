@@ -30,6 +30,19 @@
 <!-- 作り方一覧 -->
 <%= render partial: "make_card", collection: @makes, as: "make" %>
 
-<!-- コメント-->
-<p>コメント:<%= @content.comment %></p>
-<!-- コメントフォームがここにくる-->
+<br/>
+
+<!-- ポイント -->
+<h2>ポイント</h2>
+<p>コメント:<%= @content.point %></p>
+
+<br/>
+
+<!-- review -->
+<h2>レビュー</h2>
+<% if admin_user? %>
+  <%= link_to "レビューする >>", root_path %>
+<% end %>
+
+<!-- レビューフォームがここにくる-->
+<%= render partial: "review_card", collection: @reviews, as: "review" %>
