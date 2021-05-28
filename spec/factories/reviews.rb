@@ -4,4 +4,8 @@ FactoryBot.define do
     association :user, factory: :user
     comment { "コメント" }
   end
+
+  trait :review_invalid do
+    comment { "" }
+  end
 end
