@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
       # 新規登録用ストロングパラメータ
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :thumbnail])
       # アカウント編集用ストロングパラメータ
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :thumbnail])
     end
 end

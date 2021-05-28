@@ -1,7 +1,9 @@
 <h1>MyPage</h1>
 
 <!-- 写真-->
-<div>写真</div>
+<div>
+  <%= image_tag @user.thumbnail.url %>
+</div>
 
 <!-- 名前-->
 <h1>名前：<%= @user.name %></h1>
