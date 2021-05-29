@@ -7,7 +7,7 @@
 
   <div>
     <h2>| 写真</h2>
-    <p>写真をここに<%#= f.text_area :comment %></p>
+    <%= f.file_field :image, accept: "image/png,image/jpeg" %>
   </div>
 
 

@@ -2,7 +2,7 @@
 
   <!-- 写真 -->
   <div>
-    <p>レビューの写真<%#= review.image %></p>
+    <%= image_tag review.image.thumb214.url %>
   </div>
 
   <!-- ユーザー情報 -->
@@ -10,7 +10,7 @@
 
     <!-- ユーザーの写真 -->
     <div>
-      <p>ユーザーの写真<%#= review.user.thumbnail %></p>
+      <p>ユーザーの写真<%=image_tag review.user.thumbnail.thumb27.url %></p>
     </div>
 
     <!-- ユーザーネーム -->
@@ -19,7 +19,6 @@
     </div>
   
   </div>
-
 
   <!-- レビュー -->
   <div>

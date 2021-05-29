@@ -7,7 +7,9 @@
 <% end %>
 
 <!-- movie -->
-<p>youtube:<%#= @content.movie_url %></p>
+<%# TODO: 将来的には動画を表示させること%>
+<!-- <p>youtube:<%#= @content.movie_url %></p> -->
+<p><%= image_tag @content.movie_thumbnail.url %></p>
 
 <!-- 説明 -->
 <p>タイトル:<%= @content.title %></p>

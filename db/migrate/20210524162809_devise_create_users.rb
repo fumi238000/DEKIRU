@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     create_table :users, bulk: true do |t|
       ## Database authenticatable
       t.string :name, null: false, unique: true
-      t.string :thumbnail, null: false, default: ""
+      t.string :thumbnail, default: ""
       t.integer :user_type, null: false, default: 0
       t.string :email, null: false, unique: true
       t.string :encrypted_password, null: false, default: ""

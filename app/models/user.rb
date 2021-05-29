@@ -20,4 +20,5 @@ class User < ApplicationRecord
                                  message: "で利用できるのは、半角英数字および記号(@, -, _)のみです。" }
 
   enum user_type: { general: 0, admin: 1 }
+  mount_uploader :thumbnail, ThumbnailUploader
 end

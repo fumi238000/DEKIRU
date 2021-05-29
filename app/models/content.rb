@@ -14,6 +14,7 @@ class Content < ApplicationRecord
   # validates recommend_status:, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
+  mount_uploader :movie_thumbnail, MovieThumbnailUploader
 
   # お気に入り判定
   def favorited_by?(user)

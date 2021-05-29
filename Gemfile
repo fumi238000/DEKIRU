@@ -4,12 +4,14 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4.2", require: false
+gem "carrierwave", "~> 2.0"
 gem "devise"
 gem "devise-i18n"
 gem "dotenv-rails"
 gem "font-awesome-sass"
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
+gem "mini_magick"
 gem "mysql2", ">= 0.4.4"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.7"
