@@ -62,7 +62,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "おすすめコンテンツ#{id}") do |c|
     c.title = "おすすめコンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = "https://youtu.be/gLbTluYSb_U"
+    c.movie_url = "https://www.youtube.com/embed/JispFS6zeDw"
     c.comment = "コメント"
     c.point = "ポイント"
     c.recommend_status = "recommend"
