@@ -1,8 +1,7 @@
 <%= link_to content_show_path(content.id) do %>
   <div>
     <div>
-      <%# TODO: youtubeのサムネ画像を保存する処理を実装後に実装%>
-      <%= image_tag content.movie_thumbnail.url %>
+      <%= image_tag "http://img.youtube.com/vi/#{content.movie_id}/mqdefault.jpg" %>
     </div>
     <div>
       <%= content.title%>

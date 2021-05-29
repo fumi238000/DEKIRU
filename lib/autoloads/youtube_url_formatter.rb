@@ -25,14 +25,4 @@ class YoutubeUrlFormatter
       youtube_movie_id[1]
     end
   end
-
-  # サムネイル画像取得
-  # def self.thumbnail_format(url)
-  #   src_match = SRC_REGEX.match(url)
-  #   url = src_match[1] if src_match
-  #   youtube_movie_id = YOUTUBE_ID_REGEX.match(url)
-  #   if youtube_movie_id
-  #     youtube_movie_id[1]
-  #   end
-  # end
 end
