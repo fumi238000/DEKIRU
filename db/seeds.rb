@@ -45,9 +45,11 @@ CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツ#{id}") do |c|
     c.title = "コンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = ""
+    c.movie_url = "https://youtu.be/Otrc2zAlJyM"
     c.comment = "コメント"
     c.point = "ポイント"
+    # TODO: 将来的にyoutubeのサムネを取得すること
+    c.movie_thumbnail = open("./db/fixtures/movie_sample_image.jpg")
   end
 end
 puts "コンテンツのテストデータを作成しました"
@@ -60,10 +62,11 @@ RECOMMEND_CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "おすすめコンテンツ#{id}") do |c|
     c.title = "おすすめコンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = ""
+    c.movie_url = "https://youtu.be/gLbTluYSb_U"
     c.comment = "コメント"
     c.point = "ポイント"
     c.recommend_status = "recommend"
+    c.movie_thumbnail = open("./db/fixtures/movie_sample_image.jpg")
   end
 end
 puts "おすすめコンテンツのテストデータを作成しました"
@@ -79,6 +82,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:materials).each do |
       m.name = "ねじ#{num}"
       m.amount = 100
       m.unit = "個"
+      # 商品へのリンクがあっても面白いかもしれない
     end
   end
 end
@@ -107,6 +111,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |co
   REVIEWS_NUM.times do |i|
     num = i + 1
     content.reviews.find_or_create_by!(comment: "コメント#{num}") do |r|
+      r.image = open("./db/fixtures/review_sample.png")
       r.user_id = User.general.sample.id
       r.comment = "コメント#{num}"
     end
