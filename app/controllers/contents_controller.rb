@@ -67,6 +67,6 @@ class ContentsController < ApplicationController
 
     def content_params
       movie_id = YoutubeUrlFormatter.movie_id_format(params[:content][:movie_url])
-      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point, :movie_thumbnail).merge(movie_id: movie_id)
+      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point).merge(movie_id: movie_id)
     end
 end
