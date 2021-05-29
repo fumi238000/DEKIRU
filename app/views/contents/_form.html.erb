@@ -15,12 +15,6 @@
     <%= f.text_field :movie_url %>
   </div>
 
-  <!-- TODO: URLから自動で取得できるようにしておくため、将来的にはhiddenで実装-->
-   <div>
-    <h2>サムネイル画像</h2>
-    <%= f.file_field :movie_thumbnail, accept: "image/png,image/jpeg" %>
-  </div>
-
   <div>
     <h2>コメント</h2>
     <p><%= f.text_area :comment %></p>

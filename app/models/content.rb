@@ -14,10 +14,23 @@ class Content < ApplicationRecord
   # validates recommend_status:, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
-  mount_uploader :movie_thumbnail, MovieThumbnailUploader
+  # TODO: サムネイル画像のURLを保存するかどうか検討
+  # mount_uploader :movie_thumbnail, MovieThumbnailUploader
 
   # お気に入り判定
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  # 動画保存処理
+  before_save do
+    format_url = YoutubeUrlFormatter.url_format(movie_url)
+    if format_url.present?
+      self.movie_url = format_url
+    else
+      # 失敗した場合はバリデーションエラーを出す
+      self.errors.add(:movie_url, "YouTubeのURL以外は無効です")
+      throw(:abort)
+    end
   end
 end
