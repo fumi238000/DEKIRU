@@ -20,4 +20,16 @@ class Content < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  # 動画保存処理
+  before_save do
+    format_url = YoutubeUrlFormatter.url_format(movie_url)
+    if format_url.present?
+      self.movie_url = format_url
+    else
+      # 失敗した場合はバリデーションエラーを出す
+      self.errors.add(:movie_url, "YouTubeのURL以外は無効です")
+      throw(:abort)
+    end
+  end
 end
