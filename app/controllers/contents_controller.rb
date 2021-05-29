@@ -66,6 +66,6 @@ class ContentsController < ApplicationController
     end
 
     def content_params
-      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point)
+      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point, :movie_thumbnail)
     end
 end

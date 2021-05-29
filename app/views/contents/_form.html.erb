@@ -4,23 +4,29 @@
     <h2>タイトル</h2>
     <p><%= f.text_field :title %></p>
   </div>
-  
-  <div>    
+
+  <div>
     <h2>サブタイトル</h2>
     <p><%= f.text_area :subtitle %></p>
   </div>
-  
+
   <div>
-    <h2>youtube</h2>
+    <h2>youtube_URL</h2>
     <%= f.text_field :movie_url %>
   </div>
-  
-  <div>  
+
+  <!-- TODO: URLから自動で取得できるようにしておくため、将来的にはhiddenで実装-->
+   <div>
+    <h2>サムネイル画像</h2>
+    <%= f.file_field :movie_thumbnail, accept: "image/png,image/jpeg" %>
+  </div>
+
+  <div>
     <h2>コメント</h2>
     <p><%= f.text_area :comment %></p>
   </div>
 
-  <div>  
+  <div>
     <h2>ポイント</h2>
     <p><%= f.text_area :point %></p>
   </div>
@@ -28,5 +34,5 @@
   <div>
     <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
   </div>
-  
+
 <% end %>
