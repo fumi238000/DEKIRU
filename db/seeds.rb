@@ -45,11 +45,12 @@ CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツ#{id}") do |c|
     c.title = "コンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = "https://youtu.be/Otrc2zAlJyM"
+    c.movie_url = "https://www.youtube.com/watch?v=Otrc2zAlJyM"
     c.comment = "コメント"
     c.point = "ポイント"
     # TODO: 将来的にyoutubeのサムネを取得すること
     c.movie_thumbnail = open("./db/fixtures/movie_sample_image.jpg")
+    c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
   end
 end
 puts "コンテンツのテストデータを作成しました"
@@ -62,7 +63,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "おすすめコンテンツ#{id}") do |c|
     c.title = "おすすめコンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = "https://www.youtube.com/embed/JispFS6zeDw"
+    c.movie_url = "https://www.youtube.com/watch?v=cdz-cs_kYto&t=108s"
     c.comment = "コメント"
     c.point = "ポイント"
     c.recommend_status = "recommend"
