@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :response do
-    question { nil }
-    response_content { "MyString" }
+    association :question, factory: :question
+    response_content { Faker::Lorem.characters(number: 100) }
   end
 end
