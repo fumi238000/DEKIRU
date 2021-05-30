@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  # TODO: 共通化すること
+  # # TODO: 共通化すること
   TOP_PAGE_CONTENT = 3 # おすすめコンテンツの最大数
 
   def index

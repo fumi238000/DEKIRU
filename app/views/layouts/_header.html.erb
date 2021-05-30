@@ -1,21 +1,20 @@
 <header>
 
-  <%= link_to "DEKIRU(ロゴ)", root_path %>
+  <!-- ロゴ -->
+  <span><%= link_to "DEKIRU(ロゴ)", root_path %></span>
 
-  <%# 後日実装する %>
-  <%= render partial: "layouts/input_form"%>
+  <!-- 検索フォーム -->
+  <%= render partial: 'layouts/search_form'%>
 
   <% if user_signed_in? %>
     <%# ログイン時 %>
-    <%#= link_to "アカウント編集", edit_user_registration_path %>
-    <!--　テスト用 -->
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-    <%= link_to "マイページ", mypage_path(current_user) %>
+    <!--　テスト用(ログアウトは後日削除) -->
+    <span><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></span>
+    <span><%= link_to "マイページ", mypage_path(current_user) %></span>
   <% else %>
     <%# 非ログイン時 %>
-    <%#= link_to "新規登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+    <span><%= link_to "ログイン", new_user_session_path %></span>
+  <% end %>
 
 </header>
 
