@@ -4,6 +4,7 @@ class Content < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :users
+  has_many :questions, dependent: :destroy
   belongs_to :category, optional: true
 
   validates :title, presence: true, length: { in: 1..16, allow_blank: true }
