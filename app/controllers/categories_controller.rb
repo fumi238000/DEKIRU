@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :admin_checker, only: %i[new create update edit destroy]
-  before_action :set_category, only: %i[update edit destroy]
+  before_action :set_category, only: %i[show update edit destroy]
 
   def index
     @categories = Category.all
@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+  end
+
+  def show
+    @contents = @category.contents.page(params[:page]).per(PER_PAGE)
   end
 
   def create

@@ -1,6 +1,7 @@
   <div>
     <hr>
     <span><%= category.name %></span>
+    <%= link_to "このカテゴリーへ移動 >> " , category_path(category.id) %>
 
     <% category.contents.first(3).each do |content|%>
       <%= link_to content_show_path(content.id) do %>
