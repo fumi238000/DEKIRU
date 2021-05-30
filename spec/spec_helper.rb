@@ -13,7 +13,13 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require "capybara/rspec"
+
 RSpec.configure do |config|
+  # capybara
+  config.include Capybara::DSL, type: :request
+  config.include Capybara::RSpecMatchers, type: :request
+
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true unless meta.has_key?(:aggregate_failures)
   end
