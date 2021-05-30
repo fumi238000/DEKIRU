@@ -1,5 +1,9 @@
 FactoryBot.define do
   factory :category do
-    name { "MyString" }
+    name { Faker::Book.title }
+  end
+
+  trait :category_invalid do
+    name { "" }
   end
 end
