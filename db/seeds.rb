@@ -7,6 +7,7 @@ MATERIALS_NUM = 5
 MAKES_NUM = 4
 REVIEWS_NUM = 3
 FAVORITES_NUM = 5
+CATEGORIES_NUM = 5
 #-----------------------------------------
 puts "テストデータのインポート開始"
 #-----------------------------------------
@@ -36,6 +37,17 @@ USER_NUM.times do |i|
 end
 
 puts "ユーザーのテストデータを作成しました"
+
+#-----------------------------------------
+# category
+#-----------------------------------------
+CATEGORIES_NUM.times do |i|
+  id = i + 1
+  Category.find_or_create_by!(name: "カテゴリー#{id}") do |c|
+    c.name = "カテゴリー#{id}"
+  end
+end
+puts "カテゴリーのテストデータを作成しました"
 
 #-----------------------------------------
 # content

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_091027) do
+ActiveRecord::Schema.define(version: 2021_05_30_032612) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
@@ -22,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_05_29_091027) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "movie_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_contents_on_category_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_091027) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "contents", "categories"
   add_foreign_key "favorites", "contents"
   add_foreign_key "favorites", "users"
   add_foreign_key "makes", "contents"
