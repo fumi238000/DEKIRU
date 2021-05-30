@@ -1,0 +1,7 @@
+<hr/>
+<h2>カテゴリー一覧画面</h2>
+<% if admin_user? %>
+  <%= link_to "追加", new_category_path %>
+<% end %>
+
+<%= render partial: "category_card", collection: @categories, as: "category" %>

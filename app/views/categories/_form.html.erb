@@ -1,0 +1,12 @@
+<%= form_with model: @category, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+  <div>
+    <h2>カテゴリー名</h2>
+    <p><%= f.text_field :name %></p>
+  </div>
+
+  <div>
+    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
+  </div>
+
+<% end %>

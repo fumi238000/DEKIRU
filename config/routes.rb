@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get "/mypage/:id", to: "users#show", as: "mypage"
   root "homes#index"
+  resources :categories, only: %i[index new show edit create update destroy]
   resources :contents, only: %i[index new edit create update destroy]
   get "/content_show/:id", to: "contents#show", as: "content_show"
   get "/recommend_contents", to: "contents#recommend"

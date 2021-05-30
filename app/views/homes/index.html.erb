@@ -31,8 +31,8 @@
 
 <div>
   <p>カテゴリー一覧</p>
-  <%= link_to ">>全て見る", root_path %>
-  <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+  <%= link_to ">>全て見る", categories_path %>
+  <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
 </div>
 
 <br/>
@@ -41,7 +41,7 @@
   <p>キーワード検索</p>
   <%= link_to ">>全て見る", root_path %>
   <%= link_to "キーワード", root_path %>
-　<%= link_to "キーワード", root_path %>
+  <%= link_to "キーワード", root_path %>
   <%= link_to "キーワード", root_path %>
   <%= link_to "キーワード", root_path %>
   <%= link_to "キーワード", root_path %>

@@ -1,0 +1,8 @@
+<h1><%= @category.name%><h1>
+
+
+<%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+
+<!-- ページネーション -->
+<%= paginate @contents %>
+

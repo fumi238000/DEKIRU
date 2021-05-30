@@ -61,6 +61,7 @@ CONTENT_NUM.times do |i|
     c.comment = "コメント"
     c.point = "ポイント"
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+    c.category_id = Category.all.sample.id
   end
 end
 puts "コンテンツのテストデータを作成しました"
@@ -78,6 +79,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
     c.point = "ポイント"
     c.recommend_status = "recommend"
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+    c.category_id = Category.all.sample.id
   end
 end
 puts "おすすめコンテンツのテストデータを作成しました"
