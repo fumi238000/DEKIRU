@@ -152,6 +152,20 @@ end
 puts "質問のテストデータを作成しました"
 
 #-----------------------------------------
+# response
+#-----------------------------------------
+Question.all.each do |question|
+  next unless question.response.nil?
+
+  Response.create!(
+    question_id: question.id,
+    response_content: "返信内容返信内容返信内容返信内容返信内容返信内容",
+  )
+end
+
+puts "質問返信のテストデータを作成しました"
+
+#-----------------------------------------
 # favorite
 #-----------------------------------------
 User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites).each do |user|
