@@ -8,6 +8,8 @@ MAKES_NUM = 4
 REVIEWS_NUM = 3
 FAVORITES_NUM = 5
 CATEGORIES_NUM = 5
+QUESTIONS_NUM = 5
+
 #-----------------------------------------
 puts "テストデータのインポート開始"
 #-----------------------------------------
@@ -132,6 +134,22 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |co
 end
 
 puts "レビューのテストデータを作成しました"
+
+#-----------------------------------------
+# question
+#-----------------------------------------
+Content.where("title LIKE ?", "コンテンツ%").each do |content|
+  QUESTIONS_NUM.times do |i|
+    num = i + 1
+    content.questions.find_or_create_by!(question_content: "質問内容#{num}") do |q|
+      q.user_id = User.general.sample.id
+      q.question_content = "質問内容#{num}"
+      # m.status = 0
+    end
+  end
+end
+
+puts "質問のテストデータを作成しました"
 
 #-----------------------------------------
 # favorite
