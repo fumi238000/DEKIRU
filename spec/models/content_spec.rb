@@ -85,10 +85,26 @@ RSpec.describe Content, type: :model do
       end
 
       describe "content_delete" do
-        context "contentが削除された時" do
-          xit "紐づいている情報も削除される" do
-            # 材料
-            # 作り方
+        context "コンテンツが削除された時" do
+          subject { content.destroy }
+
+          create_num = 5
+          let(:content) { create(:content) }
+
+          context "そのカテゴリーの作り方が存在する場合" do
+            before { create_list(:make, create_num, content_id: content.id) }
+
+            it "紐づいている作り方が削除される" do
+              expect { subject }.to change { Make.count }.by(-create_num)
+            end
+          end
+
+          context "そのカテゴリーの材料が存在する場合" do
+            before { create_list(:material, create_num, content_id: content.id) }
+
+            it "紐づいている材料が削除される" do
+              expect { subject }.to change { Material.count }.by(-create_num)
+            end
           end
         end
       end
