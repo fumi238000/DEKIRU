@@ -10,6 +10,6 @@ FactoryBot.define do
   end
 
   trait :content_invalid do
-    detail { "" }
+    title { "" }
   end
 end

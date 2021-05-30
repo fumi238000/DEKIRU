@@ -160,12 +160,26 @@ RSpec.describe "Contents", type: :request do
     end
 
     context "ユーザーが管理者の場合" do
-      it "コンテンツの件数が1件増加すること" do
-        sign_in @admin
-        expect { subject }.to change { Content.count }.by(1)
-        expect(response).to have_http_status(:found)
-        expect(response).to redirect_to content_show_path(Content.last)
-        expect(flash[:notice]).to eq("【#{Content.last.title}】を作成しました")
+      context "パラメータが正常な時" do
+        it "コンテンツの件数が1件増加すること" do
+          sign_in @admin
+          expect { subject }.to change { Content.count }.by(1)
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to content_show_path(Content.last)
+          expect(flash[:notice]).to eq("【#{Content.last.title}】を作成しました")
+        end
+      end
+
+      context "パラメータが異常な時" do
+        let(:content_params) { { content: attributes_for(:content, :content_invalid) } }
+
+        it "コンテンツの件数が増加しないこと", type: :do do
+          sign_in @admin
+          expect { subject }.to change { Content.count }.by(0)
+          expect(response).to have_http_status(:ok)
+          # TODO: エラーメッセージが表示されること
+          # expect(response.body).to include "を入力してください"
+        end
       end
     end
 
@@ -195,7 +209,7 @@ RSpec.describe "Contents", type: :request do
       end
 
       context "ユーザーが管理者の場合"
-
+      context "パラメータが正常な時" do
         it "コンテンツが更新されること" do # rubocop:disable all
           sign_in @admin
           new_content = content_params[:content]
@@ -208,6 +222,19 @@ RSpec.describe "Contents", type: :request do
           expect(response).to redirect_to content_show_path(Content.last)
           expect(flash[:notice]).to eq("内容を更新しました")
         end
+      end
+
+      context "パラメータが異常な時" do
+        let(:content_params) { { content: attributes_for(:content, :content_invalid) } }
+
+        it "コンテンツが更新できないこと", type: :do do
+          sign_in @admin
+          expect { subject }.not_to change { content.reload }
+          expect(response).to have_http_status(:ok)
+          # TODO: エラーメッセージが表示されること
+          # expect(response.body).to include "を入力してください"
+        end
+      end
     end
   end
 
