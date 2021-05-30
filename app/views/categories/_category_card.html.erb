@@ -1,6 +1,8 @@
   <div>
-    <span><%= category.name %></span>
-  
+    <%= link_to  category_path(category) do %>
+      <span><%= category.name %></span>
+    <% end %>
+    
     <% if admin_user? %>
       <!-- 編集ボタン-->
       <%= link_to  edit_category_path(category), method: :get do %>
