@@ -21,26 +21,38 @@
 
 </div>
 
+
+<br/>
+
 <!-- 返信-->
-<% if question.response.present?%>
 
-  <!-- DEKRIU情報 -->
-  <div>
-    <span>DEKIRU</span>
-    <%= image_tag @admin.thumbnail.thumb27.url %>
-  </div>
-  <!-- 返信内容 -->
-  <div>
-    <%= question.response.response_content %>
-  </div>
+<div>
+  <% if question.response.present?%>
 
-<% else %>
+    <!-- DEKRIU情報 -->
+    <div>
+      <span>DEKIRU</span>
+      <%= image_tag @admin.thumbnail.thumb27.url %>
+    </div>
+    <!-- 返信内容 -->
+    <div>
+      <%= question.response.response_content %>
+    </div>
 
-  <!-- 返信リンク -->
-  <% if admin_user? && question.response.nil? %>
-    <%= link_to "返信する", new_response_path(question_id: question.id) %>
+    <!-- 削除リンク -->
+    <% if admin_user? %>
+      <span><%= link_to "削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %></span>
+    <% end %>
+
+  <% else %>
+
+    <!-- 返信リンク -->
+    <% if admin_user? && question.response.nil? %>
+      <span><%= link_to "返信する", new_response_path(question_id: question.id) %></span>
+    <% end %>
+
   <% end %>
 
-<% end %>
+</div>
 
 <hr>
