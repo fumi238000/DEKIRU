@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :materials, only: %i[new create edit update destroy]
   resources :reviews, only: %i[new create destroy]
   resources :questions, only: %i[index create destroy]
+  resources :responses, only: %i[new create update edit destroy]
 end

@@ -1,0 +1,18 @@
+<h1>返信する</h1>
+
+
+<%= form_with model: @response, local: true do |f| %>
+  <%#= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.hidden_field :question_id, value: @question_id %>
+  
+  <div>
+    <h2>返信内容</h2>
+    <p><%= f.text_area :response_content %></p>
+  </div>
+  
+  <div>
+    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
+  </div>
+  
+<% end %>
