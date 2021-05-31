@@ -41,6 +41,7 @@
 
     <!-- 削除リンク -->
     <% if admin_user? %>
+      <span><%= link_to "編集", edit_response_path(question.response, question_id: question.id) %></span>
       <span><%= link_to "削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %></span>
     <% end %>
 

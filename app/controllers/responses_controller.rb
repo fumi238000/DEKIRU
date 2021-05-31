@@ -25,7 +25,7 @@ class ResponsesController < ApplicationController
   end
 
   def edit
-    @content_id = params[:content_id]
+    @question_id = params[:question_id]
   end
 
   def destroy
