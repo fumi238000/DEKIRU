@@ -9,6 +9,7 @@ REVIEWS_NUM = 3
 FAVORITES_NUM = 5
 CATEGORIES_NUM = 5
 QUESTIONS_NUM = 5
+CONTENT_TAGS = ["リフォーム", "メンテナンス", "お風呂", "トイレ", "洗面"].freeze
 
 #-----------------------------------------
 puts "テストデータのインポート開始"
@@ -178,6 +179,26 @@ User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites)
 end
 
 puts "お気に入りのテストデータを作成しました"
+
+#-----------------------------------------
+# TagMaster
+#-----------------------------------------
+# タグ（コンテンツ用）
+CONTENT_TAGS.each do |tag|
+  TagMaster.content.find_or_create_by!(tag_name: tag) do |t|
+    t.tag_name = tag
+  end
+end
+puts "コンテンツのタグを作成しました"
+
+# TODO: 検討中
+# タグ（カテゴリー用）
+# CATEGORY_TAGS.each do |tag|
+#   TagMaster.category.find_or_create_by!(tag_name: tag) do |t|
+#     t.tag_name = tag
+#   end
+# end
+# puts "カテゴリー用タグを作成しました"
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
