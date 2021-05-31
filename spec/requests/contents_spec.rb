@@ -173,7 +173,7 @@ RSpec.describe "Contents", type: :request do
       context "パラメータが異常な時" do
         let(:content_params) { { content: attributes_for(:content, :content_invalid) } }
 
-        it "コンテンツの件数が増加しないこと", type: :do do
+        it "コンテンツの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { Content.count }.by(0)
           expect(response).to have_http_status(:ok)
@@ -227,7 +227,7 @@ RSpec.describe "Contents", type: :request do
       context "パラメータが異常な時" do
         let(:content_params) { { content: attributes_for(:content, :content_invalid) } }
 
-        it "コンテンツが更新できないこと", type: :do do
+        it "コンテンツが更新できないこと" do
           sign_in @admin
           expect { subject }.not_to change { content.reload }
           expect(response).to have_http_status(:ok)
