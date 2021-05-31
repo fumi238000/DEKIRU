@@ -1,0 +1,2 @@
+class TagMaster < ApplicationRecord
+end
