@@ -181,7 +181,7 @@ end
 puts "お気に入りのテストデータを作成しました"
 
 #-----------------------------------------
-# TagMaster
+# tag_master
 #-----------------------------------------
 # タグ（コンテンツ用）
 CONTENT_TAGS.each do |tag|
@@ -189,7 +189,7 @@ CONTENT_TAGS.each do |tag|
     t.tag_name = tag
   end
 end
-puts "コンテンツのタグを作成しました"
+puts "タグを作成しました"
 
 # TODO: 検討中
 # タグ（カテゴリー用）
@@ -199,6 +199,22 @@ puts "コンテンツのタグを作成しました"
 #   end
 # end
 # puts "カテゴリー用タグを作成しました"
+
+SAMPLE_CONTENT_TAGS = TagMaster.content
+
+#-----------------------------------------
+# content_tag
+#-----------------------------------------
+# コンテンツタグ
+Content.all.each do |content|
+  tag = SAMPLE_CONTENT_TAGS.sample
+  ContentTag.find_or_create_by!(content_id: content.id, tag_id: tag.id) do |t|
+    t.content_id = content.id
+    t.tag_id = tag.id
+  end
+end
+
+puts "コンテンツにタグを作成しました"
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
