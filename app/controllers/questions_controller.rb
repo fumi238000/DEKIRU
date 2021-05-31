@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
+  before_action :set_question, only: %i[destroy]
+
   # 質問できるのは、ログインユーザーのみ
 
   def index
@@ -23,10 +25,13 @@ class QuestionsController < ApplicationController
   private
 
     def set_question
-      # エラーを吐かせるようにする
-      @question = current_user.question.find(params[:id])
-      # @post = current_user.posts.find_by(id: params[:id])
-      # redirect_to root_path, alert: "権限がありません" if @post.nil?
+      case current_user.user_type
+      when "admin"
+        @question = Question.find(params[:id])
+      when "general"
+        @question = current_user.questions.find_by(id: params[:id])
+        redirect_to root_path, alert: "権限がありません" if @question.nil?
+      end
     end
 
     def question_params

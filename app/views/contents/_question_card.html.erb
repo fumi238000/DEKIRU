@@ -1,12 +1,18 @@
+<div>
+
   <div>
-  
-    <div>
-      <%= image_tag question.user.thumbnail.thumb27.url %>
-      <%= question.user.name %>
-    </div>
-  
-    <div>
-      <%= question.question_content %>
-    </div>
-  
+    <%= image_tag question.user.thumbnail.thumb27.url %>
+    <%= question.user.name %>
   </div>
+
+  <div>
+    <%= question.question_content %>
+  </div>
+
+  <% if question.user == current_user || admin_user? %>
+    <div>
+      <%= link_to "削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %>
+    </div>
+  <% end %>
+
+</div>
