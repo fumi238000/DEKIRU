@@ -16,10 +16,13 @@ class Content < ApplicationRecord
   validates :comment, presence: true, length: { in: 1..32, allow_blank: true }
   validates :point, presence: true, length: { in: 1..32, allow_blank: true }
   # validates recommend_status:, presence: true
+  validate :tag_master_ids, :content_tag_checker
 
   enum recommend_status: { general: 0, recommend: 1 }
   # TODO: サムネイル画像のURLを保存するかどうか検討
   # mount_uploader :movie_thumbnail, MovieThumbnailUploader
+
+  MAX_CONTENT_TAGS = 3
 
   # お気に入り判定
   def favorited_by?(user)
@@ -35,6 +38,13 @@ class Content < ApplicationRecord
       # 失敗した場合はバリデーションエラーを出す
       self.errors.add(:movie_url, "YouTubeのURL以外は無効です")
       throw(:abort)
+    end
+  end
+
+  # タグを登録数の制限
+  def content_tag_checker
+    unless self.tag_masters.content.count <= MAX_CONTENT_TAGS
+      errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
     end
   end
 end
