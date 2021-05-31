@@ -15,8 +15,9 @@ class ContentsController < ApplicationController
     @makes = @content.makes
     @materials = @content.materials
     @reviews = @content.reviews.includes(:user)
-    @questions = @content.questions.includes(:user)
+    @questions = @content.questions.includes(:user, :response)
     @question = Question.new
+    @admin = User.admin.first
   end
 
   def create

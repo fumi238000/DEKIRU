@@ -1,18 +1,59 @@
+<hr>
+
+<!-- 質問-->
 <div>
 
+  <!-- 質問ユーザー -->
   <div>
     <%= image_tag question.user.thumbnail.thumb27.url %>
     <%= question.user.name %>
   </div>
 
+  <!-- 質問内容 -->
   <div>
     <%= question.question_content %>
   </div>
 
+  <!-- 削除リンク-->
   <% if question.user == current_user || admin_user? %>
     <div>
       <%= link_to "削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %>
     </div>
+  <% end %>
+
+</div>
+
+
+<br/>
+
+<!-- 返信-->
+
+<div>
+  <% if question.response.present?%>
+
+    <!-- DEKRIU情報 -->
+    <div>
+      <span>DEKIRU</span>
+      <%= image_tag @admin.thumbnail.thumb27.url %>
+    </div>
+    <!-- 返信内容 -->
+    <div>
+      <%= question.response.response_content %>
+    </div>
+
+    <!-- 削除リンク -->
+    <% if admin_user? %>
+      <span><%= link_to "編集", edit_response_path(question.response, question_id: question.id) %></span>
+      <span><%= link_to "削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %></span>
+    <% end %>
+
+  <% else %>
+
+    <!-- 返信リンク -->
+    <% if admin_user? && question.response.nil? %>
+      <span><%= link_to "返信する", new_response_path(question_id: question.id) %></span>
+    <% end %>
+
   <% end %>
 
 </div>
