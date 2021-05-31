@@ -40,13 +40,5 @@
 <div>
   <p>キーワード検索</p>
   <%= link_to ">>全て見る", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
+  <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
 </div>
