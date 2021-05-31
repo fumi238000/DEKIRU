@@ -3,8 +3,8 @@ class ResponsesController < ApplicationController
   before_action :set_response, only: %i[update edit destroy]
 
   def new
-    @question_id = params[:question_id]
     @response = Response.new
+    @question_id = params[:question_id]
   end
 
   def create
