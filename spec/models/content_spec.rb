@@ -14,7 +14,6 @@ RSpec.describe Content, type: :model do
     describe "title" do
       context "入力さていない時" do
         let(:content) { build(:content, title: "") }
-
         it "保存ができない" do
           expect(subject).to eq false
           expect(content.errors[:title]).to include "を入力してください"
@@ -68,7 +67,6 @@ RSpec.describe Content, type: :model do
       describe "point" do
         context "入力さていない時" do
           let(:content) { build(:content, point: "") }
-
           it "保存ができない" do
             expect(subject).to eq false
             expect(content.errors[:point]).to include "を入力してください"
