@@ -25,6 +25,25 @@
     <p><%= f.text_area :point %></p>
   </div>
 
+  <!-- コンテンツタグ-->
+  <div>
+
+    <h2>タグ</h2>
+    <span>コンテンツタグ選択（選択式3つまで）</span>
+
+    <div>
+      <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
+        <%= tag.label do %>
+          <div>
+            <span><%= tag.check_box %></span>
+            <p><%= tag.object.tag_name %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+
   <div>
     <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}%>
   </div>
