@@ -16,6 +16,15 @@
 <p>サブタイトル:<%= @content. subtitle %></p>
 <p>コメント:<%= @content.comment %></p>
 
+<!-- タグ -->
+<h2>タグ</h2>
+<div>
+  <% @content.tag_masters.each do |tag| %>
+    <span>
+      <%= tag.tag_name %>
+    </span>
+  <% end %>
+</div>
 
 <!-- お気に入り -->
 <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
