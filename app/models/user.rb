@@ -3,8 +3,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_contents, through: :favorites, source: :content
   has_many :questions, dependent: :destroy
-  has_many :content_tags, dependent: :destroy
-  has_many :tag_masters, through: :content_tags
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

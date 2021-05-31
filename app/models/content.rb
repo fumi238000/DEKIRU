@@ -5,6 +5,8 @@ class Content < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :users
   has_many :questions, dependent: :destroy
+  has_many :content_tags, dependent: :destroy
+  has_many :tag_masters, through: :content_tags
   belongs_to :category, optional: true
 
   validates :title, presence: true, length: { in: 1..16, allow_blank: true }
