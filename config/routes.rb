@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :makes, only: %i[new create edit update destroy]
   resources :materials, only: %i[new create edit update destroy]
   resources :reviews, only: %i[new create destroy]
+  resources :questions, only: %i[create destroy]
 end
