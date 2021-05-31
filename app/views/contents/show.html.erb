@@ -59,6 +59,7 @@
 
 <br/>
 
+
 <!-- review -->
 <h2>レビュー</h2>
 <% if user_signed_in? %>
@@ -66,5 +67,29 @@
   <%= link_to "レビューする >>", new_review_path(params: { content_id: @content.id }) %>
 <% end %>
 
-<!-- レビューフォームがここにくる-->
+<!-- レビュー一覧-->
 <%= render partial: "review_card", collection: @reviews, as: "review" %>
+
+<br/>
+
+<!-- 質問 -->
+<h2>質問する</h2>
+
+<!-- 質問フォーム -->
+<% if user_signed_in? %>
+  <% if current_user.general? %>
+    <%= render "question_form" %>
+  <% else %>
+    <p>管理者は質問できません。</p>
+  <% end %>
+<% else %>
+  <p>ログインすると、質問ができます</p>
+<% end %>
+<br/>
+
+<!-- 質問と返信 -->
+<h2>質問</h2>
+<%= render partial: "question_card", collection: @questions, as: "question" %>
+
+
+<%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
