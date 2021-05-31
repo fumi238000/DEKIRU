@@ -77,7 +77,11 @@
 
 <!-- 質問フォーム -->
 <% if user_signed_in? %>
-  <%= render "question_form" %>
+  <% if current_user.general? %>
+    <%= render "question_form" %>
+  <% else %>
+    <p>管理者は質問できません。</p>
+  <% end %>
 <% else %>
   <p>ログインすると、質問ができます</p>
 <% end %>
