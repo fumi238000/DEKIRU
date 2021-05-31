@@ -59,6 +59,7 @@
 
 <br/>
 
+
 <!-- review -->
 <h2>レビュー</h2>
 <% if user_signed_in? %>
@@ -66,5 +67,16 @@
   <%= link_to "レビューする >>", new_review_path(params: { content_id: @content.id }) %>
 <% end %>
 
-<!-- レビューフォームがここにくる-->
+<!-- レビュー一覧-->
 <%= render partial: "review_card", collection: @reviews, as: "review" %>
+
+<br/>
+
+<!-- 質問 -->
+<h2>質問する</h2>
+
+<!-- 質問フォーム -->
+<%= render "question_form" %>
+
+<!-- 質問と返信 -->
+<%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
