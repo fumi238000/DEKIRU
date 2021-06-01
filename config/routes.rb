@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # devise_for :users
-
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index new show edit create update destroy]
   resources :contents, only: %i[index new edit create update destroy]
   get "/content_show/:id", to: "contents#show", as: "content_show"
+  get "/search_contents", to: "contents#search"
   get "/recommend_contents", to: "contents#recommend"
   get "/popular_contents", to: "contents#popular"
   get "/newest_contents", to: "contents#newest"

@@ -38,15 +38,7 @@
 <br/>
 
 <div>
-  <p>キーワード検索</p>
-  <%= link_to ">>全て見る", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
-  <%= link_to "キーワード", root_path %>
+  <p>キーワード</p>
+  <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
+  <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
 </div>
