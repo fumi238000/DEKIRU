@@ -6,4 +6,6 @@ class Contact < ApplicationRecord
   validates :remote_ip, presence: true
 
   enum status: { before: 0, after: 1 }
+
+  include Confirmable
 end
