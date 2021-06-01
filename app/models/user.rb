@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_contents, through: :favorites, source: :content
   has_many :questions, dependent: :destroy
+  has_many :contacts, dependent: :destroy # TODO: userが消えたとき、お問い合わせ内容を消して良いか検討する
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
