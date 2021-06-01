@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      content:
+        title: タイトル
+        subtitle: サブタイトル
+        movie_url: URL
+        comment: コメント
+        point: ポイント
+      make:
+        detail: 作り方
+      material:
+        name: 材料名
+        amount: 量
+        unit: 単位
+      category:
+        name: カテゴリー名
+      user:
+        name: ユーザー名
+        content: レビュー評価
+      review:
+        comment: レビュー内容
+        image: 写真
+      question:
+        response_content: 質問内容
+      response:
+        response_content: 返信内容
+      tag_master: 
+        tag_name: タグ名
+      contact:
+        title: お問い合わせタイトル
+        content: お問い合わせ内容
