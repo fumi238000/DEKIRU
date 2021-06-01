@@ -1,14 +1,17 @@
 <header>
 
   <!-- ロゴ -->
-  <span><%= link_to "DEKIRU(ロゴ)", root_path %></span>
-
+  <%= link_to root_path do %>
+    <span>
+      <%= image_tag "deKiRU-logo.png" %>
+    </span>
+  <% end %>
   <!-- 検索フォーム -->
   <%= render partial: 'layouts/search_form'%>
 
   <% if user_signed_in? %>
     <%# ログイン時 %>
-    <!--　テスト用(ログアウトは後日削除) -->
+    <!-- テスト用(ログアウトは後日削除) -->
     <span><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></span>
     <span><%= link_to "マイページ", mypage_path(current_user) %></span>
   <% else %>
