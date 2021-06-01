@@ -5,6 +5,7 @@ ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "carrierwave", "~> 2.0"
+gem "colorize"
 gem "devise"
 gem "devise-i18n"
 gem "dotenv-rails"
