@@ -12,6 +12,7 @@ class MakesController < ApplicationController
     if @make.save
       redirect_to content_show_path(@make.content.id), notice: "作り方を追加しました"
     else
+      @content_id = make_params[:content_id]
       render :new
     end
   end
@@ -20,6 +21,7 @@ class MakesController < ApplicationController
     if @make.update(make_params)
       redirect_to content_show_path(@make.content.id), notice: "作り方を更新しました"
     else
+      @content_id = make_params[:content_id]
       render :edit
     end
   end

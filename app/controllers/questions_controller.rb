@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to content_show_path(@question.content.id), notice: "質問を作成しました。返信をお待ちください。"
     else
+      # TODO: フロントバリデージョンを実装することで、renderさせないもしくはredirectさせる
       render :new
     end
   end

@@ -1,6 +1,6 @@
 <!-- 返信フォーム -->
 <%= form_with model: @response, local: true do |f| %>
-  <%#= render 'layouts/error_messages', model: f.object %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :question_id, value: @question_id %>
 
   <div>

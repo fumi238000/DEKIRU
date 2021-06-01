@@ -12,6 +12,7 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to content_show_path(@response.question.content.id), notice: "質問に対して返信しました"
     else
+      @question_id = response_params[:question_id]
       render :new
     end
   end
@@ -20,6 +21,7 @@ class ResponsesController < ApplicationController
     if @response.update(response_params)
       redirect_to content_show_path(@response.question.content.id), notice: "返信内容を更新しました"
     else
+      @question_id = response_params[:question_id]
       render :edit
     end
   end

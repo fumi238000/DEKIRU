@@ -26,7 +26,7 @@ module MovieShareApp
     config.i18n.default_locale = :ja
     config.time_zone = "Asia/Tokyo"
     config.autoload_paths << Rails.root.join("lib/autoloads")
-
+    config.action_view.field_error_proc = proc {|html_tag, _instance| html_tag } # エラーメッセージの自動挿入を防ぐ
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
