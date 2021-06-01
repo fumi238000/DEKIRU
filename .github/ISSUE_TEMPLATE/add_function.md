@@ -3,6 +3,7 @@ name: 機能追加
 about: 機能追加用のIssueテンプレート
 title: "[機能開発]"
 labels: 機能開発
+projects: DEKIRU_project
 assignees: fumi238000
 
 ---
