@@ -25,7 +25,7 @@ User.find_or_create_by!(email: "admin@example.com") do |u|
   u.user_type = "admin"
 end
 
-puts "管理者のテストデータを作成しました"
+puts "管理者のテストデータを作成しました".green
 
 #-----------------------------------------
 # general_user
@@ -39,7 +39,7 @@ USER_NUM.times do |i|
   end
 end
 
-puts "ユーザーのテストデータを作成しました"
+puts "ユーザーのテストデータを作成しました".green
 
 #-----------------------------------------
 # category
@@ -50,7 +50,7 @@ CATEGORIES_NUM.times do |i|
     c.name = "カテゴリー#{id}"
   end
 end
-puts "カテゴリーのテストデータを作成しました"
+puts "カテゴリーのテストデータを作成しました".green
 
 #-----------------------------------------
 # content
@@ -67,7 +67,7 @@ CONTENT_NUM.times do |i|
     c.category_id = Category.all.sample.id
   end
 end
-puts "コンテンツのテストデータを作成しました"
+puts "コンテンツのテストデータを作成しました".green
 
 #-----------------------------------------
 # recommend_content
@@ -85,7 +85,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
     c.category_id = Category.all.sample.id
   end
 end
-puts "おすすめコンテンツのテストデータを作成しました"
+puts "おすすめコンテンツのテストデータを作成しました".green
 
 #-----------------------------------------
 # material
@@ -103,7 +103,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:materials).each do |
   end
 end
 
-puts "材料のテストデータを作成しました"
+puts "材料のテストデータを作成しました".green
 
 #-----------------------------------------
 # make
@@ -118,7 +118,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |cont
   end
 end
 
-puts "作り方のテストデータを作成しました"
+puts "作り方のテストデータを作成しました".green
 
 #-----------------------------------------
 # review
@@ -134,7 +134,7 @@ Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |co
   end
 end
 
-puts "レビューのテストデータを作成しました"
+puts "レビューのテストデータを作成しました".green
 
 #-----------------------------------------
 # question
@@ -150,7 +150,7 @@ Content.where("title LIKE ?", "コンテンツ%").each do |content|
   end
 end
 
-puts "質問のテストデータを作成しました"
+puts "質問のテストデータを作成しました".green
 
 #-----------------------------------------
 # response
@@ -164,7 +164,7 @@ Question.all.each do |question|
   )
 end
 
-puts "質問返信のテストデータを作成しました"
+puts "質問返信のテストデータを作成しました".green
 
 #-----------------------------------------
 # favorite
@@ -178,7 +178,7 @@ User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites)
   end
 end
 
-puts "お気に入りのテストデータを作成しました"
+puts "お気に入りのテストデータを作成しました".green
 
 #-----------------------------------------
 # tag_master
@@ -189,7 +189,7 @@ CONTENT_TAGS.each do |tag|
     t.tag_name = tag
   end
 end
-puts "タグを作成しました"
+puts "タグを作成しました".green
 
 # TODO: 検討中
 # タグ（カテゴリー用）
@@ -214,7 +214,7 @@ Content.all.each do |content|
   end
 end
 
-puts "コンテンツにタグを作成しました"
+puts "コンテンツにタグを作成しました".green
 
 #-----------------------------------------
 # contact
@@ -228,7 +228,7 @@ Contact.create!(user_id: user.id) do |c|
   # c.status = 0 # 将来的に使用する可能性があるため記述
 end
 
-puts "お問い合わせのテストデータを作成しました"
+puts "お問い合わせのテストデータを作成しました".green
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
