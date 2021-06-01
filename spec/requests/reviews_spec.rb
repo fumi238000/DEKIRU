@@ -52,7 +52,7 @@ RSpec.describe "Reviews", type: :request do
 
     context "ユーザーが管理者でない場合" do
       context "パラメータが正常な時" do
-        xit "レビューの件数が1件増加すること" do
+        it "レビューの件数が1件増加すること" do
           sign_in @user
           expect { subject }.to change { Review.count }.by(1)
           expect(response).to have_http_status(:found)
@@ -76,7 +76,7 @@ RSpec.describe "Reviews", type: :request do
     # TODO: 検討する
     context "ユーザーが管理者の場合" do
       context "パラメータが正常な時" do
-        xit "レビューの件数が1件増加すること" do
+        it "レビューの件数が1件増加すること" do
           sign_in @admin
           expect { subject }.to change { Review.count }.by(1)
           expect(response).to have_http_status(:found)

@@ -6,7 +6,7 @@ RSpec.describe Review, type: :model do
 
     context "データが条件を満たす時" do
       let(:review) { build(:review) }
-      xit "保存ができる" do
+      it "保存ができる" do
         expect(subject).to eq true
       end
     end
@@ -14,7 +14,7 @@ RSpec.describe Review, type: :model do
     describe "comment" do
       context "入力さていない時" do
         let(:review) { build(:review, comment: "") }
-        xit "保存ができない" do
+        it "保存ができない" do
           expect(subject).to eq false
           expect(review.errors[:comment]).to include "を入力してください"
         end
@@ -22,7 +22,7 @@ RSpec.describe Review, type: :model do
 
       context "500文字以上の場合" do
         let(:review) { build(:review, comment: "1" * 501) }
-        xit "保存ができない" do
+        it "保存ができない" do
           expect(subject).to eq false
           expect(review.errors[:comment]).to include "は500文字以内で入力してください"
         end
@@ -31,7 +31,7 @@ RSpec.describe Review, type: :model do
       describe "image" do
         context "入力さていない時" do
           let(:review) { build(:review, image: "") }
-          xit "保存ができない" do
+          it "保存ができない" do
             expect(subject).to eq false
             expect(review.errors[:image]).to include "を入力してください"
           end
