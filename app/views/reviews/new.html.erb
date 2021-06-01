@@ -1,7 +1,7 @@
 <h1>レビュー登録</h1>
 
 <%= form_with model: @review, local: true do |f| %>
-  <%#= render 'layouts/error_messages', model: f.object %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
   <%= f.hidden_field :content_id, value: @content_id %>
 

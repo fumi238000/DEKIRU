@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to content_show_path(@review.content.id), notice: "レビューを追加しました"
     else
+      @content_id = review_params[:content_id]
       render :new
     end
   end
