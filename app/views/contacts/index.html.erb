@@ -5,7 +5,7 @@
       </div>
       <div>
         <%= form_with model: @contact, local: true do |form| %>
-          <%#= render 'layouts/error_messages', model: form.object %>
+          <%= render 'layouts/error_messages', model: form.object %>
           <%= form.hidden_field :submitted %>
 
           <% if @contact.submitted == "1" %>   
