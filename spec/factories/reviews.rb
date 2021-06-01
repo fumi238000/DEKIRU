@@ -3,7 +3,7 @@ FactoryBot.define do
     association :content, factory: :content
     association :user, factory: :user
     comment { "コメント" }
-    # image { "写真" }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/test_sample.png"), "image/png") }
   end
 
   trait :review_invalid do
