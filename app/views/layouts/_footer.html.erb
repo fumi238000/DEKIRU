@@ -5,9 +5,12 @@
 
   <div>
 
-    <div>
-      <%= link_to "DEKIRU(ロゴ)", root_path %>
-    </div>
+    <!-- ロゴ -->
+    <%= link_to root_path do %>
+      <span>
+        <%= image_tag "deKiRU-logo.png" %>
+      </span>
+    <% end %>
 
     <div>
       <%= link_to "トップ", root_path %>
