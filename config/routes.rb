@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[new create destroy]
   resources :questions, only: %i[index create destroy]
   resources :responses, only: %i[new create update edit destroy]
+  resources :contacts, only: %i[index create]
 end
