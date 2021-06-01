@@ -7,9 +7,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       # ユーザーにメールを送信
-      # ContactMailer.user_email(@contact).deliver_now
+      ContactMailer.user_email(@contact).deliver_now
       # 管理者にメールを送信
-      # ContactMailer.admin_email(@contact).deliver_now
+      ContactMailer.admin_email(@contact).deliver_now
       redirect_to root_path, notice: "お問い合わせ内容を受け付けました。"
     else
       render :index

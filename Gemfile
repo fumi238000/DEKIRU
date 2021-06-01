@@ -36,6 +36,7 @@ end
 
 group :development do
   gem "bullet"
+  gem "letter_opener_web", "~> 1.0"
   gem "listen", "~> 3.2"
   gem "pre-commit", require: false
   gem "spring"
