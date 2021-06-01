@@ -1,5 +1,5 @@
 <%= form_with model: @content, local: true do |f| %>
-  <%#= render 'layouts/error_messages', model: f.object %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <h2>タイトル</h2>
     <p><%= f.text_field :title %></p>

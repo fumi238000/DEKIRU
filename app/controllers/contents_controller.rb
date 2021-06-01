@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
   # PER_PAGE = 12 # 1ページの表示数
 
   def index
-    @content = Content.all
+    @contents = Content.all.page(params[:page]).per(PER_PAGE)
   end
 
   def new

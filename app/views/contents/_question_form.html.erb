@@ -1,6 +1,6 @@
 <div>
   <%= form_with model: @question, local: true do |f| %>
-  <%#= render 'layouts/error_messages', model: f.object %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :content_id, value: @content.id %>
   
   <div>
