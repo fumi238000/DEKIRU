@@ -21,6 +21,6 @@ class User < ApplicationRecord
                        format: { with: /\A[a-zA-Z\d@\-_]+\z/, allow_blank: true,
                                  message: "で利用できるのは、半角英数字および記号(@, -, _)のみです。" }
 
-  enum user_type: { general: 0, admin: 1 }
+  enum user_type: { general: 0, admin: 1, discontinued: 2 }
   mount_uploader :thumbnail, ThumbnailUploader
 end
