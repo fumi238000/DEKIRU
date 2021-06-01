@@ -1,5 +1,5 @@
 <%= form_with model: @material, local: true do |f| %>
-  <%#= render 'layouts/error_messages', model: f.object %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
   <%= f.hidden_field :content_id, value: @content_id %>
   

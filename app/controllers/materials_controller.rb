@@ -12,6 +12,7 @@ class MaterialsController < ApplicationController
     if @material.save
       redirect_to content_show_path(@material.content.id), notice: "材料を追加しました"
     else
+      @content_id = params[:content_id]
       render :new
     end
   end
@@ -20,6 +21,7 @@ class MaterialsController < ApplicationController
     if @material.update(material_params)
       redirect_to content_show_path(@material.content.id), notice: "材料を更新しました"
     else
+      @content_id = material_params[:content_id]
       render :edit
     end
   end
