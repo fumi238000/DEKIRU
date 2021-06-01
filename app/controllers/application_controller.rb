@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_search
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # 定数
   RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
@@ -13,8 +14,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: "不正なアクセスです" and return unless user_signed_in?     # ログインしているか
     redirect_to root_path, alert: "不正なアクセスです" and return unless current_user.admin? # ログインユーザーが管理者か
   end
-
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 

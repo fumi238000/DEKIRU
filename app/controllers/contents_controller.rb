@@ -5,6 +5,11 @@ class ContentsController < ApplicationController
   # PER_PAGE = 12 # 1ページの表示数
 
   def index
+    # # タグ検索
+    if params[:tag_id]
+      @search_word = TagMaster.find_by(id: params[:tag_id]).tag_name
+      @contents = TagMaster.find_by(id: params[:tag_id]).contents.page(params[:page]).per(PER_PAGE)
+    end
   end
 
   def new

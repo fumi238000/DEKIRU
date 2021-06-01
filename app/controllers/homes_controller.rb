@@ -9,9 +9,5 @@ class HomesController < ApplicationController
     @new_contents = Content.order(created_at: :desc).first(TOP_PAGE_CONTENT)
     @categories = Category.includes(:contents).first(TOP_PAGE_CONTENT)
     @content_tags = TagMaster.all
-    # # タグ検索
-    # if params[:tag_id]
-    #   @creators = TagMaster.find_by(id: params[:tag_id]).creators.joins(:menus).includes(:creator_tags, :tag_masters, :menus)
-    # end
   end
 end
