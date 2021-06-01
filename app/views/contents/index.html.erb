@@ -5,23 +5,10 @@
   <%= link_to "新規作成",new_content_path %>
 <% end %>
 
-<!-- content_search_word -->
-<% if params[:q].present? && @search_word.present? %>
-  <p>●「 <%= @search_word %> 」の検索結果<p>
-<% end %>
-
-<% if params[:tag_id].present? && @search_word.present? %>
-  <p>●キーワード「 <%= @search_word %> 」<p>
-<% end %>
-
 <!-- content_card -->
-<% if @contents.exists? %>
-  <div>
-    <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
-  </div>
-<% else %>
-  <p>検索結果はありません</p>
-<% end %>
+<div>
+  <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+</div>
 
 <!-- ページネーション  -->
 <%= paginate @contents %>

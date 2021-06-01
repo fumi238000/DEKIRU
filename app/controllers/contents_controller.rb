@@ -5,11 +5,7 @@ class ContentsController < ApplicationController
   # PER_PAGE = 12 # 1ページの表示数
 
   def index
-    # # タグ検索
-    if params[:tag_id]
-      @search_word = TagMaster.find_by(id: params[:tag_id]).tag_name
-      @contents = TagMaster.find_by(id: params[:tag_id]).contents.page(params[:page]).per(PER_PAGE)
-    end
+    @content = Content.all
   end
 
   def new
@@ -63,6 +59,14 @@ class ContentsController < ApplicationController
   def recommend
     @recommend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
     # @recomend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM).page(params[:page]).per(PER_PAGE) # ページネーションの場合
+  end
+
+  def search
+    # # タグ検索
+    if params[:tag_id]
+      @search_word = TagMaster.find_by(id: params[:tag_id]).tag_name
+      @contents = TagMaster.find_by(id: params[:tag_id]).contents.page(params[:page]).per(PER_PAGE)
+    end
   end
 
   private
