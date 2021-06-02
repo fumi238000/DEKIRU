@@ -22,11 +22,14 @@ class Content < ApplicationRecord
   # TODO: サムネイル画像のURLを保存するかどうか検討
   # mount_uploader :movie_thumbnail, MovieThumbnailUploader
 
-  MAX_CONTENT_TAGS = 3
-
   # お気に入り判定
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  # お気に入りが多い順番で取得
+  def self.order_populer
+    Kaminari.paginate_array(self.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id)))
   end
 
   # 動画保存処理
@@ -46,10 +49,5 @@ class Content < ApplicationRecord
     unless self.tag_masters.content.count <= MAX_CONTENT_TAGS
       errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
     end
-  end
-
-  # お気に入りが多い順番で取得
-  def self.order_populer
-    self.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id))
   end
 end

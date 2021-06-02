@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   # 定数
   RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
   PER_PAGE = 12 # 1ページの表示数
+  MAX_CONTENT_TAGS = 3 # タグ可能数
 
   def redirect_root
     redirect_back(fallback_location: root_path) and return
