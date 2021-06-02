@@ -47,9 +47,8 @@ class ContentsController < ApplicationController
   end
 
   def popular
-    @popular_contents = Content.all.page(params[:page]).per(PER_PAGE)
-    # TODO: お気に入りの数で判定する
-    # @contents = Content.includes(:favorites)#.order("favorites.date DESC")
+    @popular_contents = Content.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id))
+    @popular_contents = Kaminari.paginate_array(@popular_contents).page(params[:page]).per(PER_PAGE)
   end
 
   def newest
