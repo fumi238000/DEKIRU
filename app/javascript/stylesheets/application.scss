@@ -2,8 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-//TODO: 併用して使用できない可能性があるので、チェックすること
-//font-awesome
+
+.blue-btn {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
+}
+
+
+// TODO: 併用して使用できない可能性があるので、チェックすること
+// font-awesome
 // @import 'font-awesome-sprockets';
 // @import 'font-awesome';
 // @import "@fortawesome/fontawesome-free/scss/fontawesome";
