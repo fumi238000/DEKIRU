@@ -1,23 +1,33 @@
 <header>
+  <div class="p-4 flex justify-center items-center">
 
   <!-- ロゴ -->
-  <%= link_to root_path do %>
-    <span>
+  <div class="flex-auto">
+    <%= link_to root_path do %>
       <%= image_tag "deKiRU-logo.png" %>
-    </span>
-  <% end %>
-  <!-- 検索フォーム -->
-  <%= render partial: 'layouts/search_form'%>
+    <% end %>
+  </div>
 
-  <% if user_signed_in? %>
-    <%# ログイン時 %>
-    <!-- テスト用(ログアウトは後日削除) -->
-    <span><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></span>
-    <span><%= link_to "マイページ", mypage_path(current_user) %></span>
-  <% else %>
-    <%# 非ログイン時 %>
-    <span><%= link_to "ログイン", new_user_session_path %></span>
-  <% end %>
+  <!-- 検索フォーム -->
+  <div class="flex-none">
+    <%= render partial: 'layouts/search_form'%>
+  </div>
+
+  <!-- xxxx -->
+  <div class="flex-auto">
+    <div class="float-right">
+      <% if user_signed_in? %>
+        <%# ログイン時 %>
+        <!-- テスト用(ログアウトは後日削除) -->
+        <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "blue-btn"%>
+        <span><%= link_to "マイページ", mypage_path(current_user) %></span>
+      <% else %>
+        <%# 非ログイン時 %>
+        <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
+      <% end %>
+    </div>
+
+  </div>
 
 </header>
 
