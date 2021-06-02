@@ -45,9 +45,7 @@ class ContentsController < ApplicationController
   end
 
   def popular
-    @popular_contents = Content.all.page(params[:page]).per(PER_PAGE)
-    # TODO: お気に入りの数で判定する
-    # @contents = Content.includes(:favorites)#.order("favorites.date DESC")
+    @popular_contents = Content.order_populer.page(params[:page]).per(PER_PAGE)
   end
 
   def newest
