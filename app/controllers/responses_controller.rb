@@ -4,6 +4,7 @@ class ResponsesController < ApplicationController
 
   def new
     @response = Response.new
+    # TODO: params[:question_id]がnilの場合の対応を追加
     @question_id = params[:question_id]
   end
 
