@@ -5,4 +5,8 @@ FactoryBot.define do
     question_content { Faker::Lorem.characters(number: 100) }
     status { 0 }
   end
+
+  trait :question_invalid do
+    question_content { "" }
+  end
 end
