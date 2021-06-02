@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # 定数
+  # 定数 # TODO: 後日別の方法を検討する
   RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
   PER_PAGE = 12 # 1ページの表示数
 
