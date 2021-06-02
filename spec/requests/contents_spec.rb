@@ -302,8 +302,6 @@ RSpec.describe "Contents", type: :request do
     end
 
     context "ユーザーが管理者の場合" do
-      before { @content = create(:content) }
-
       it "コンテンツが削除されること" do
         sign_in @admin
         expect { subject }.to change { Content.count }.by(-1)

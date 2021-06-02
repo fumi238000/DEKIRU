@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :admin_checker, only: %i[new create update edit destroy]
+  before_action :admin_checker, only: %i[index new create update edit destroy]
   before_action :set_category, only: %i[show update edit destroy]
 
   def index
@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, notice: "カテゴリーを追加しました"
+      redirect_to categories_path, notice: "カテゴリーを作成しました"
     else
       render :new
     end
