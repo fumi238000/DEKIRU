@@ -47,8 +47,8 @@ class ContentsController < ApplicationController
   end
 
   def popular
-    @popular_contents = Content.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id))
-    @popular_contents = Kaminari.paginate_array(@popular_contents).page(params[:page]).per(PER_PAGE)
+    @popular_contents = Kaminari.paginate_array(Content.order_populer).
+                          page(params[:page]).per(PER_PAGE)
   end
 
   def newest

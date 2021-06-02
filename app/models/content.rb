@@ -47,4 +47,9 @@ class Content < ApplicationRecord
       errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
     end
   end
+
+  # お気に入りが多い順番で取得
+  def self.order_populer
+    self.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id))
+  end
 end
