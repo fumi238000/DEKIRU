@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
+  before_action :admin_checker, only: %i[destroy]
+  before_action :user_checker, only: %i[create]
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_question, only: %i[destroy]
-
-  # 質問できるのは、ログインユーザーのみ
 
   def index
     # 質問一覧画面
@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy!
-    redirect_to content_show_path(@question.content.id), alert: "質問をを削除しました"
+    redirect_to content_show_path(@question.content.id), alert: "質問を削除しました"
   end
 
   private
