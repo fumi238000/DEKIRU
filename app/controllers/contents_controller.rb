@@ -1,8 +1,6 @@
 class ContentsController < ApplicationController
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_content, only: %i[show update edit destroy]
-  # RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
-  # PER_PAGE = 12 # 1ページの表示数
 
   def index
     @contents = Content.all.page(params[:page]).per(PER_PAGE)

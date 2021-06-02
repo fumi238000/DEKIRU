@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
-  # # TODO: 共通化すること
-  TOP_PAGE_CONTENT = 3 # おすすめコンテンツの最大数
+  TOP_PAGE_CONTENT = 3 # TOPページに表示するコンテンツ
 
   def index
     @popularity_contents = Content.first(TOP_PAGE_CONTENT) # TODO: 人気ベスト10をランダムに表示
