@@ -31,4 +31,30 @@ class User < ApplicationRecord
       user.name = "ゲストユーザー"
     end
   end
+
+  def self.create_guest_sample_date # rubocop:disable all
+    gest_user = User.find_by(email: "guest@example.com")
+    favorite_num = 10
+    reviews_num = 3
+
+    # お気に入りサンプルデータ
+    favorite_num.times do
+      content = Content.all.sample
+      gest_user.favorites.find_or_create_by!(content_id: content.id) do |f|
+        f.content_id = content.id
+      end
+    end
+
+    # レビューサンプルデータ
+    Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).first(3).each do |content|
+      reviews_num.times do |i|
+        num = i + 1
+        content.reviews.find_or_create_by!(comment: "ゲストコメント#{num}") do |r|
+          r.image = open("./db/fixtures/review_sample.png")
+          r.user_id = gest_user.id
+          r.comment = "ゲストコメント#{num}"
+        end
+      end
+    end
+  end
 end
