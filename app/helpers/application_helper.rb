@@ -11,4 +11,9 @@ module ApplicationHelper
       current_user.general?
     end
   end
+
+  # youtubeのサムネイル画像を取得
+  def youtube_thumbnail(movie_id)
+    "http://img.youtube.com/vi/#{movie_id}/mqdefault.jpg"
+  end
 end
