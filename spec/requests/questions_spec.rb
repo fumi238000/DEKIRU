@@ -78,7 +78,7 @@ RSpec.describe "Questions", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトされること" do
         sign_in @user
         expect { subject }.to change { Question.count }.by(0)
@@ -88,7 +88,7 @@ RSpec.describe "Questions", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "質問が削除されること" do
         sign_in @admin
         expect { subject }.to change { Question.count }.by(-1)

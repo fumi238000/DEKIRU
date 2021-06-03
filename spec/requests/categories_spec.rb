@@ -33,14 +33,14 @@ RSpec.describe "Categories", type: :request do
   #       end
   #     end
 
-  #     context "ユーザーが管理者でない場合" do
+  #     context "一般ユーザーの場合" do
   #       xit "新規登録ボタンが表示されない" do
   #         sign_in @admin
   #         # 表示されない処理
   #       end
   #     end
 
-  #     context "ユーザーが管理者の場合" do
+  #     context "管理者の場合" do
   #       xit "新規登録ボタンが表示される" do
   #         sign_in @user
   #         # 表示される処理
@@ -61,7 +61,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトする" do
         sign_in @user
         subject
@@ -70,7 +70,7 @@ RSpec.describe "Categories", type: :request do
         expect(flash[:alert]).to eq("不正なアクセスです")
       end
 
-      context "ユーザーが管理者の場合" do
+      context "管理者の場合" do
         it "リスクエストが成功する" do
           sign_in @admin
           subject
@@ -110,14 +110,14 @@ RSpec.describe "Categories", type: :request do
         end
       end
 
-      context "ユーザーが管理者でない場合" do
+      context "一般ユーザーの場合" do
         xit "xxボタンが表示されないこと" do
           sign_in @user
           # テスト
         end
       end
 
-      context "ユーザーが管理者の場合" do
+      context "管理者の場合" do
         xit "xxボタンが表示されること" do
           sign_in @admin
           # テスト
@@ -140,7 +140,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "カテゴリーの件数が変化しないこと" do
         sign_in @user
         expect { subject }.to change { Category.count }.by(0)
@@ -150,7 +150,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       context "パラメータが正常な時" do
         it "カテゴリーの件数が1件増加すること" do
           sign_in @admin
@@ -189,7 +189,7 @@ RSpec.describe "Categories", type: :request do
         end
       end
 
-      context "ユーザーが管理者でない場合" do
+      context "一般ユーザーの場合" do
         it "リダイレクトすること" do
           sign_in @user
           subject
@@ -199,7 +199,7 @@ RSpec.describe "Categories", type: :request do
         end
       end
 
-      context "ユーザーが管理者の場合"
+      context "管理者の場合"
       context "パラメータが正常な時" do
         it "カテゴリーが更新されること" do
           sign_in @admin
@@ -240,7 +240,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトされること" do
         sign_in @user
         subject
@@ -250,7 +250,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "指定したidのカテゴリーが表示されること" do
         sign_in @admin
         subject
@@ -274,7 +274,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトされること" do
         sign_in @user
         expect { subject }.to change { Category.count }.by(0)
@@ -284,7 +284,7 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "カテゴリーが削除されること" do
         sign_in @admin
         expect { subject }.to change { Category.count }.by(-1)

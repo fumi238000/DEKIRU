@@ -79,7 +79,7 @@ RSpec.describe "Contents", type: :feature do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "新規作成リンクが表示されること" do
         sign_in @admin
         visit content_show_path(@content.id)

@@ -18,7 +18,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトする" do
         sign_in @user
         subject
@@ -28,7 +28,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "リスクエストが成功する" do
         sign_in @admin
         subject
@@ -52,7 +52,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "コンテンツの件数が変化しないこと" do
         sign_in @user
         expect { subject }.to change { Make.count }.by(0)
@@ -62,7 +62,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       context "パラメータが正常な時" do
         it "コンテンツの件数が1件増加すること" do
           sign_in @admin
@@ -103,7 +103,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトすること" do
         sign_in @user
         subject
@@ -113,7 +113,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       context "パラメータが正常な時" do
         it "コンテンツが更新されること" do
           sign_in @admin
@@ -155,7 +155,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトされること" do
         sign_in @user
         subject
@@ -165,7 +165,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "指定したidの「作り方」が表示されること" do
         sign_in @admin
         subject
@@ -190,7 +190,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リダイレクトされること" do
         sign_in @user
         expect { subject }.to change { Make.count }.by(0)
@@ -200,7 +200,7 @@ RSpec.describe "Makes", type: :request do
       end
     end
 
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       it "コンテンツが削除されること" do
         sign_in @admin
         expect { subject }.to change { Make.count }.by(-1)
