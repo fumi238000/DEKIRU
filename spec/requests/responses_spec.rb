@@ -31,7 +31,7 @@ RSpec.describe "Responses", type: :request do
     end
 
     context "ユーザーが管理者の場合" do
-      it "リスクエストが成功する", type: :do do
+      it "リスクエストが成功する" do
         sign_in @admin
         subject
         expect(response).to have_http_status(:ok)
