@@ -10,7 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # TODO: こういった定数はどこかに定義しておく？
+  # TODO: こういった定数はどこかに定義しておく
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   # バリデージョン

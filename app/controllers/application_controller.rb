@@ -2,10 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # 定数 # TODO: 後日別の方法を検討する
-  RECOMMEND_CONTENT_NUM = 9 # おすすめコンテンツの最大数
-  PER_PAGE = 12 # 1ページの表示数
-  MAX_CONTENT_TAGS = 3 # タグ可能数
+  TOP_PAGE_CONTENT = Settings.top_page_content # TOPページに表示するコンテンツ
+  RECOMMEND_CONTENT_NUM = Settings.recommend_content_num # おすすめコンテンツの最大数
+  PER_PAGE = Settings.per_page # 1ページの表示数
+  MAX_CONTENT_TAGS = Settings.max_countent_tags # タグ可能数
 
   def redirect_root
     redirect_back(fallback_location: root_path) and return
