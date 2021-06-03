@@ -20,7 +20,14 @@ RSpec.describe Review, type: :model do
         end
       end
 
-      context "500文字以上の場合" do
+      context "500文字の場合" do
+        let(:review) { build(:review, comment: "1" * 500) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "501文字の場合" do
         let(:review) { build(:review, comment: "1" * 501) }
         it "保存ができない" do
           expect(subject).to eq false

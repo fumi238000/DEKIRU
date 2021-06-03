@@ -20,7 +20,14 @@ RSpec.describe Content, type: :model do
         end
       end
 
-      context "16文字以上の場合" do
+      context "16文字の場合" do
+        let(:content) { build(:content, title: "1" * 16) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "17文字の場合" do
         let(:content) { build(:content, title: "1" * 17) }
         it "保存ができない" do
           expect(subject).to eq false
@@ -37,7 +44,14 @@ RSpec.describe Content, type: :model do
           end
         end
 
-        context "32文字以上の場合" do
+        context "32文字の場合" do
+          let(:content) { build(:content, subtitle: "1" * 16) }
+          it "保存ができる" do
+            expect(subject).to eq true
+          end
+        end
+
+        context "33文字の場合" do
           let(:content) { build(:content, subtitle: "1" * 33) }
           it "保存ができない" do
             expect(subject).to eq false
@@ -55,7 +69,14 @@ RSpec.describe Content, type: :model do
           end
         end
 
-        context "32文字以上の場合" do
+        context "32文字の場合" do
+          let(:content) { build(:content, comment: "1" * 32) }
+          it "保存ができる" do
+            expect(subject).to eq true
+          end
+        end
+
+        context "33文字の場合" do
           let(:content) { build(:content, comment: "1" * 33) }
           it "保存ができない" do
             expect(subject).to eq false
@@ -73,7 +94,14 @@ RSpec.describe Content, type: :model do
           end
         end
 
-        context "32文字以上の場合" do
+        context "32文字の場合" do
+          let(:content) { build(:content, point: "1" * 32) }
+          it "保存ができる" do
+            expect(subject).to eq true
+          end
+        end
+
+        context "33文字以上の場合" do
           let(:content) { build(:content, point: "1" * 33) }
           it "保存ができない" do
             expect(subject).to eq false
