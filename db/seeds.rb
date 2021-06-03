@@ -1,5 +1,3 @@
-# TODO: 定数をまとめること
-# 定数
 USER_NUM = 5
 CONTENT_NUM = 20
 RECOMMEND_CONTENT_NUM = 9

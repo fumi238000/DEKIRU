@@ -1,6 +1,4 @@
 class HomesController < ApplicationController
-  TOP_PAGE_CONTENT = 3 # TOPページに表示するコンテンツ
-
   def index
     @popularity_contents = Content.order_populer.first(TOP_PAGE_CONTENT) # TODO: 人気ベスト10をランダムに表示
     @recommend_contents = Content.recommend.order("RAND()").limit(TOP_PAGE_CONTENT)
