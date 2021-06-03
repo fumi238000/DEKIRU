@@ -19,8 +19,12 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports.
-  config.consider_all_requests_local = false
+  # 本番環境のみ404を表示
+  if Rails.env.production?
+    config.consider_all_requests_local = false
+  elsif Rails.env.development?
+    config.consider_all_requests_local = true
+  end
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
