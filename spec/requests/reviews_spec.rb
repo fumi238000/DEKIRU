@@ -18,14 +18,14 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       it "リスクエストが成功する" do
         sign_in @user
         subject
         expect(response).to have_http_status(:ok)
       end
 
-      context "ユーザーが管理者の場合" do
+      context "管理者の場合" do
         it "リスクエストが成功する" do
           sign_in @admin
           subject
@@ -50,7 +50,7 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
-    context "ユーザーが管理者でない場合" do
+    context "一般ユーザーの場合" do
       context "パラメータが正常な時" do
         it "レビューの件数が1件増加すること" do
           sign_in @user
@@ -74,7 +74,7 @@ RSpec.describe "Reviews", type: :request do
     end
 
     # TODO: 検討する
-    context "ユーザーが管理者の場合" do
+    context "管理者の場合" do
       context "パラメータが正常な時" do
         it "レビューの件数が1件増加すること" do
           sign_in @admin

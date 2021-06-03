@@ -20,7 +20,14 @@ RSpec.describe Question, type: :model do
         end
       end
 
-      context "100文字以上の場合" do
+      context "100文字の場合" do
+        let(:question) { build(:question, question_content: "1" * 100) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "101文字の場合" do
         let(:question) { build(:question, question_content: "1" * 101) }
         it "保存ができない" do
           expect(subject).to eq false

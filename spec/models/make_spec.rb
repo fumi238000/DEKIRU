@@ -20,7 +20,14 @@ RSpec.describe Make, type: :model do
         end
       end
 
-      context "32文字以上の場合" do
+      context "32文字の場合" do
+        let(:make) { build(:make, detail: "1" * 32) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "33文字の場合" do
         let(:make) { build(:make, detail: "1" * 33) }
         it "保存ができない" do
           expect(subject).to eq false

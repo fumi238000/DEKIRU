@@ -20,7 +20,14 @@ RSpec.describe Material, type: :model do
         end
       end
 
-      context "16文字以上の場合" do
+      context "16文字の場合" do
+        let(:material) { build(:material, name: "1" * 16) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "17文字の場合" do
         let(:material) { build(:material, name: "1" * 17) }
         it "保存ができない" do
           expect(subject).to eq false
@@ -38,7 +45,14 @@ RSpec.describe Material, type: :model do
         end
       end
 
-      context "5文字以上の場合" do
+      context "5文字の場合" do
+        let(:material) { build(:material, amount: "1" * 5) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "6文字の場合" do
         let(:material) { build(:material, amount: "1" * 6) }
         it "エラーが出力される" do
           expect(subject).to eq false
@@ -48,7 +62,6 @@ RSpec.describe Material, type: :model do
 
       context "数字以外の場合" do
         let(:material) { build(:material, amount: "a" * 5) }
-
         it "エラーが出力される" do
           expect(subject).to eq false
           expect(material.errors.messages[:amount]).to include "は数値で入力してください"
@@ -65,7 +78,14 @@ RSpec.describe Material, type: :model do
         end
       end
 
-      context "5文字以上の場合" do
+      context "5文字の場合" do
+        let(:material) { build(:material, unit: "1" * 5) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "6文字の場合" do
         let(:material) { build(:material, unit: "1" * 6) }
         it "保存ができない" do
           expect(subject).to eq false
