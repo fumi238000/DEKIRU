@@ -12,31 +12,6 @@ RSpec.describe "Contents", type: :feature do
     @response = create(:response, question_id: @end_question.id) # 返信
   end
 
-  describe "GET #index" do
-    context "未ログインユーザーの場合" do
-      it "新規登録リンクが表示されない" do
-        visit contents_path
-        expect(page).not_to have_link "新規作成"
-      end
-    end
-
-    context "一般ユーザーの場合" do
-      it "新規登録リンクが表示されない" do
-        sign_in @user
-        visit contents_path
-        expect(page).not_to have_link "新規作成"
-      end
-    end
-
-    context "管理者の場合" do
-      it "新規登録リンクが表示される" do
-        sign_in @admin
-        visit contents_path
-        expect(page).to have_link "新規作成", href: new_content_path
-      end
-    end
-  end
-
   describe "GET #show" do
     let(:content) { create(:content) }
 
