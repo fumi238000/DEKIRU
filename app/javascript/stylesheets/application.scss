@@ -7,6 +7,9 @@
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
 }
 
+.admin-btn {
+  @apply border-solid border-4 border-blue-500 text-blue-500
+}
 
 // TODO: 併用して使用できない可能性があるので、チェックすること
 // font-awesome

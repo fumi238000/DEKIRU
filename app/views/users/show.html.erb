@@ -20,3 +20,22 @@
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
 </div>
 
+<hr>
+
+<% if admin_user? %>
+  <p>管理者専用</p>
+  <p>1.タグ一覧</p>
+  <div>
+    <%= link_to "タグの追加", new_tag_master_path, class:"admin-btn" %>
+  </div>
+  <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+
+  <p>2.カテゴリー作成</p>
+  <%= link_to "追加", new_category_path, class:"admin-btn" %>
+
+  <p>3.コンテンツ作成</p>
+  <!-- 新規作成リンク(管理者のみ) -->
+  <%= link_to "新規作成",new_content_path, class:"admin-btn" %>
+
+
+<% end %>

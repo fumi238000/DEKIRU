@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
 
   def show
-    # @user = User.find_by(current_user)
+    @content_tags = TagMaster.all
   end
 
   def set_user
