@@ -55,8 +55,12 @@ RSpec/NestedGroups:
 
 # 最大expect数
 RSpec/MultipleExpectations:
-  Max: 10
+  Enabled: false
 
 # 環境変数の読み込み設定
 Rails/EnvironmentVariableAccess:
   AllowReads: true
+
+# 同じ文言の許可
+RSpec/ExampleLength:
+  Enabled: false

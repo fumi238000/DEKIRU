@@ -6,13 +6,9 @@
 
       <% if admin_user?%>
         <!-- 編集ボタン-->
-        <%= link_to edit_make_path(make.id, params: { content_id: make.content.id }), method: :get do %>
-          <i class="fas fa-pen"></i>
-        <% end %>
+        <%= link_to "編集する", edit_make_path(make.id, params: { content_id: make.content.id }), method: :get %>
         <!-- 削除ボタン-->
-        <%= link_to make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
+        <%= link_to "削除する", make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
       <% end %>
 
     </div>

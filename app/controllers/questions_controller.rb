@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :admin_checker, only: %i[destroy]
-  before_action :user_checker, only: %i[create]
+  before_action :user_general_checker, only: %i[create]
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_question, only: %i[destroy]
 

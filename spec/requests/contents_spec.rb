@@ -23,29 +23,6 @@ RSpec.describe "Contents", type: :request do
         expect(Content.count).to eq(create_content)
       end
     end
-
-    # TOOD: capybara部分は別タスクで実行する
-    context "画面に遷移した時" do
-      context "未ログインユーザーの場合" do
-        xit "新規登録ボタンが表示されない" do
-          # 表示されない処理
-        end
-      end
-
-      context "ユーザーが管理者でない場合" do
-        xit "新規登録ボタンが表示されない" do
-          sign_in @admin
-          # 表示されない処理
-        end
-      end
-
-      context "ユーザーが管理者の場合" do
-        xit "新規登録ボタンが表示される" do
-          sign_in @user
-          # 表示される処理
-        end
-      end
-    end
   end
 
   describe "GET #new" do
@@ -103,33 +80,6 @@ RSpec.describe "Contents", type: :request do
         it "エラーが発生する" do
           # TODO: 将来404へ遷移する様にする
           expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
-        end
-      end
-
-    # TOOD: capybara部分は別タスクで実行する
-      context "未ログインユーザーの場合" do
-        xit "xxボタンが表示されないこと" do
-          # テスト
-          # 作り方（追加・編集・削除）
-          # 材料
-        end
-      end
-
-      context "ユーザーが管理者でない場合" do
-        xit "xxボタンが表示されないこと" do
-          sign_in @user
-          # テスト
-          # 作り方（追加・編集・削除）
-          # 材料
-        end
-      end
-
-      context "ユーザーが管理者の場合" do
-        xit "xxボタンが表示されること" do
-          sign_in @admin
-          # テスト
-          # 作り方（追加・編集・削除）
-          # 材料
         end
       end
     end
@@ -210,7 +160,7 @@ RSpec.describe "Contents", type: :request do
 
       context "ユーザーが管理者の場合"
       context "パラメータが正常な時" do
-        it "コンテンツが更新されること" do # rubocop:disable all
+        it "コンテンツが更新されること" do
           sign_in @admin
           new_content = content_params[:content]
           expect { subject }.to change { content.reload.title }.from(content.title).to(new_content[:title]).
