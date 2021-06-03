@@ -13,7 +13,8 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to content_show_path(@question.content.id), notice: "質問を作成しました。返信をお待ちください。"
     else
-      redirect_to content_show_path(@question.content.id), alert: "エラーが発生しました。500文字以内で入力してください。"
+      error_message = Question.question_error_message(@question)
+      redirect_to content_show_path(@question.content.id), alert: error_message.to_s
     end
   end
 

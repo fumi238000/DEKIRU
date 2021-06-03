@@ -1,11 +1,10 @@
 <div>
   <%= form_with model: @question, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :content_id, value: @content.id %>
   
   <div>
     <h2>質問</h2>
-    <p><%= f.text_area :question_content %></p>
+    <p><%= f.text_area :question_content, placeholder: "100文字以内", maxlength:"100" %></p>
   </div>
 
     <div>
