@@ -1,7 +1,7 @@
 <%= link_to content_show_path(content.id) do %>
   <div>
     <div>
-      <%= image_tag "http://img.youtube.com/vi/#{content.movie_id}/mqdefault.jpg" %>
+      <%= image_tag youtube_thumbnail(content.movie_id) %>
     </div>
     <div>
       <%= content.title%>
