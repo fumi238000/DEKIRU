@@ -23,6 +23,7 @@
         <span><%= link_to "マイページ", mypage_path(current_user) %></span>
       <% else %>
         <%# 非ログイン時 %>
+         <span><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%></span>
         <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
       <% end %>
     </div>

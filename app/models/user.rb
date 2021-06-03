@@ -23,4 +23,12 @@ class User < ApplicationRecord
 
   enum user_type: { general: 0, admin: 1, discontinued: 2 }
   mount_uploader :thumbnail, ThumbnailUploader
+
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64(10)
+      user.name = "ゲストユーザー"
+    end
+  end
 end
