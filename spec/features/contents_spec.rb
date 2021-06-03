@@ -109,7 +109,7 @@ RSpec.describe "Contents", type: :feature do
         expect(page).not_to have_link "レビューする >>", href: new_review_path(params: { content_id: @content.id })
       end
 
-      it "質問できない状態にあること", type: :do do
+      it "質問できない状態にあること" do
         sign_in @admin
         visit content_show_path(@content.id)
         expect(page).to have_content "管理者は質問できません。"
