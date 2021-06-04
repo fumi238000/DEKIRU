@@ -50,7 +50,7 @@
     <%# 返信がない場合、返信を作成するリンクを表示%>
     <!-- 返信リンク -->
     <% if admin_user? && question.response.nil? %>
-      <span><%= link_to "返信する", new_response_path(question_id: question.id), class:"admin-link" %></span>
+      <span><%= link_to ">>返信する", new_response_path(question_id: question.id), class:"admin-link" %></span>
     <% end %>
 
   <% end %>
