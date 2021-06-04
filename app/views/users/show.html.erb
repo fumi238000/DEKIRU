@@ -1,41 +1,63 @@
-<h1>MyPage</h1>
+<h2 class="text-center">MyPage</h2>
 
-<!-- 写真-->
+<div  class="text-center">
+  <!-- 写真-->
+  <div>
+    <%= image_tag @user.thumbnail.url%>
+  </div>
+  <!-- 名前-->
+  <h1>名前：<%= @user.name %></h1>
 <div>
-  <%= image_tag @user.thumbnail.url %>
+
+<!-- お気に入り一覧-->
+<div class="my-8 text-center">
+  <%= link_to new_content_path, class:"blue-link border border-blue-500 w-40 py-2 px-4 hover:bg-blue-500 hover:text-white" do %>
+    <button class="w-32">お気に入り一覧</button>
+  <% end %>
 </div>
 
-<!-- 名前-->
-<h1>名前：<%= @user.name %></h1>
-
-<div>
-  <%= link_to "お気に入り一覧",new_content_path %>
+<!-- アカウント編集-->
+<div class="my-8 text-center">
+  <%= link_to edit_user_registration_path(current_user), class:"blue-link border border-blue-500  py-2 px-4 hover:bg-blue-500 hover:text-white" do %>
+    <button class="w-32">アカウント編集</button>
+  <% end %>
 </div>
 
-<div>
-  <%= link_to "アカウント編集", edit_user_registration_path(current_user) %>
-</div>
-
-<div>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+<!-- ログアウト-->
+<div class="my-8 text-center">
+  <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "red-link w-40 border border-red-500 py-2 px-4 w-32 hover:bg-red-500 hover:text-white" do%>
+    <button class="w-32">ログアウト</button>
+  <% end %>
 </div>
 
 <hr>
 
 <% if admin_user? %>
-  <p>管理者専用</p>
-  <p>1.タグ一覧</p>
-  <div>
-    <%= link_to "タグの追加", new_tag_master_path, class:"admin-btn" %>
-  </div>
-  <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+  <div class="text-left">
+    <h2 class="m-4">管理者専用</p>
+    
+    <br/>
 
-  <p>2.カテゴリー作成</p>
-  <%= link_to "追加", new_category_path, class:"admin-btn" %>
+    <h2 class="m-4">1.タグ一覧</p>
+    <%= link_to ">>追加", new_tag_master_path, class:"admin-link" %>
+    <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+  
+    <br/>
 
-  <p>3.コンテンツ作成</p>
-  <!-- 新規作成リンク(管理者のみ) -->
-  <%= link_to "新規作成",new_content_path, class:"admin-btn" %>
+    <h2 class="m-4">2.カテゴリー作成</p>
+    <div>
+      <%= link_to ">>追加", new_category_path, class:"admin-link" %>
+    </div>
+  
+    <br/>
 
+    <div>
+      <h2>3.コンテンツ作成</p>
+      <!-- 新規作成リンク(管理者のみ) -->
+      <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
+    </div>
+    
+    
+    </div>  
 
 <% end %>

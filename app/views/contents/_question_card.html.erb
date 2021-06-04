@@ -17,7 +17,7 @@
   <!-- 削除リンク-->
   <% if question.user == current_user || admin_user? %>
     <div>
-      <%= link_to "削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %>
+      <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"red-link" %>
     </div>
   <% end %>
 
@@ -42,15 +42,15 @@
     </div>
     <!-- 削除リンク -->
     <% if admin_user? %>
-      <span><%= link_to "編集", edit_response_path(question.response, question_id: question.id) %></span>
-      <span><%= link_to "削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete %></span>
+      <span><%= link_to ">>編集", edit_response_path(question.response, question_id: question.id), class:"admin-link" %></span>
+      <span><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"admin-link" %></span>
     <% end %>
 
   <% else %>
     <%# 返信がない場合、返信を作成するリンクを表示%>
     <!-- 返信リンク -->
     <% if admin_user? && question.response.nil? %>
-      <span><%= link_to "返信する", new_response_path(question_id: question.id) %></span>
+      <span><%= link_to "返信する", new_response_path(question_id: question.id), class:"admin-link" %></span>
     <% end %>
 
   <% end %>

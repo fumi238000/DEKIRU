@@ -1,9 +1,10 @@
-<%= link_to "戻る", contents_path %>
+<%# TODO: 修正する%>
+<%= link_to ">>戻る", contents_path, class:"blue-link" %>
 
 <% if admin_user? %>
-  <%= link_to "編集", edit_content_path %>
+  <%= link_to ">>編集", edit_content_path, class:"admin-link" %>
   <%# TODO: アラートにデザインを当てる %>
-  <%= link_to "削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
+  <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
 <% end %>
 
 <!-- movie -->
@@ -20,7 +21,7 @@
 <h2>タグ</h2>
 <div>
   <% @content.tag_masters.each do |tag| %>
-    <span>
+    <span class="content-tag-btn">
       <%= tag.tag_name %>
     </span>
   <% end %>
@@ -31,31 +32,40 @@
 
 <div if="content-<%= @content.id %>">
 
+
+<br/>
+
   <%# TODO: 条件分岐をリファクタリングすること%>
   <% if user_signed_in? %>
-    <% if @content.favorited_by?(current_user) %>
-      <%# お気に入りから外す %>
-      <%= link_to "⭐️", content_favorites_path(@content), method: :delete, remote: true %>
-    <% else %>
-      <%# お気に入りに追加 %>
-      <%= link_to "☆", content_favorites_path(@content), method: :post, remote: true %>
-    <% end %>
+    <div class="my-4">
+      <% if @content.favorited_by?(current_user) %>
+        <%# お気に入りから外す %>
+        <%= link_to "⭐️", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %>
+      <% else %>
+        <%# お気に入りに追加 %>
+        <%= link_to "☆", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %>
+      <% end %>
+    </div>
   <% end %>
 </div>
-<p>LGTM:<%= @content.favorites.count %></p>
+<p>お気に入り数:<%= @content.favorites.count %></p>
+
+<br/>
 
 <!-- 材料 -->
 <h2>材料</h2>
 <% if admin_user? %>
-  <%= link_to "追加", new_material_path(params: { content_id: @content.id }) %>
+  <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
 <% end %>
 <!-- 材料一覧 -->
 <%= render partial: "material_card", collection: @materials, as: "material" %>
 
+<br/>
+
 <!-- 作り方 -->
 <h2>作り方</h2>
 <% if admin_user? %>
-  <%= link_to "追加", new_make_path(params: { content_id: @content.id }) %>
+  <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
 <% end %>
 <!-- 作り方一覧 -->
 <%= render partial: "make_card", collection: @makes, as: "make" %>
@@ -72,7 +82,7 @@
 <!-- review -->
 <h2>レビュー</h2>
 <% if general_user? %>
-  <%= link_to "レビューする >>", new_review_path(params: { content_id: @content.id }) %>
+  <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
 <% end %>
 
 <!-- レビュー一覧-->
