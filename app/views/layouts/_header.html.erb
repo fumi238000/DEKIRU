@@ -2,7 +2,7 @@
   <div class="p-4 flex justify-center items-center">
 
   <!-- ロゴ -->
-  <div class="flex-auto">
+  <div class="flex-grow">
     <%= link_to root_path do %>
       <%= image_tag "deKiRU-logo.png" %>
     <% end %>
@@ -14,13 +14,11 @@
   </div>
 
   <!-- xxxx -->
-  <div class="flex-auto">
+  <div class="flex-grow">
     <div class="float-right">
       <% if user_signed_in? %>
         <%# ログイン時 %>
-        <!-- テスト用(ログアウトは後日削除) -->
-        <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "blue-btn"%>
-        <span><%= link_to "マイページ", mypage_path(current_user) %></span>
+        <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
       <% else %>
         <%# 非ログイン時 %>
          <span><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%></span>

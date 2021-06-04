@@ -3,20 +3,70 @@
 @import "tailwindcss/utilities";
 
 
+//************ボタン**************//
+
+
+//mailボタン
 .blue-btn {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full
 }
 
-.admin-btn {
-  @apply border-solid border-4 border-blue-500 text-blue-500
+//deleteボタン
+.red-btn {
+  @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full
 }
 
-// TODO: 併用して使用できない可能性があるので、チェックすること
-// font-awesome
-// @import 'font-awesome-sprockets';
-// @import 'font-awesome';
-// @import "@fortawesome/fontawesome-free/scss/fontawesome";
-// // インポート管理
-// @import "initialize";
-// @import "module";
-// @import "partial";
+//詳細遷移ボタン
+.show-btn {
+  @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
+}
+
+// お気に入りボタン
+.favorite-btn {
+  @apply text-white bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
+}
+
+.no-favorite-btn {
+  @apply text-green-500 border border-green-500 hover:bg-green-700  font-bold py-2 px-4 rounded-full
+}
+
+//タグボタン
+.content-tag-btn {
+  @apply text-white bg-gray-500 border-0  py-2 px-6 focus:outline-none  text-lg
+}
+
+//管理者ボタン
+// .admin-btn {
+//   @apply text-white bg-pink-500  text-sm 
+// }
+
+.submit-btn {
+  @apply text-white bg-green-500 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
+}
+
+//************リンク**************//
+
+
+//TODO: 幅を広げたい！
+
+//mailCRUDリンク
+.blue-link {
+  @apply text-blue-700 text-sm
+}
+
+//削除リンク
+.red-link {
+  @apply text-red-700 text-sm
+}
+
+.red-link {
+  @apply text-red-700 text-sm
+}
+
+//管理者CRUDリンク
+.admin-link {
+  @apply text-pink-500  text-sm
+}
+
+
+

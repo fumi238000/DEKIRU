@@ -6,9 +6,9 @@
 
       <% if admin_user?%>
         <!-- 編集ボタン-->
-        <%= link_to "編集する", edit_make_path(make.id, params: { content_id: make.content.id }), method: :get %>
+        <%= link_to ">>編集", edit_make_path(make.id, params: { content_id: make.content.id }), method: :get, class: "admin-link" %>
         <!-- 削除ボタン-->
-        <%= link_to "削除する", make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete %>
+        <%= link_to ">>削除", make_path(make.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class: "admin-link" %>
       <% end %>
 
     </div>

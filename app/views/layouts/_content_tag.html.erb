@@ -1,11 +1,11 @@
 
 <%= link_to search_contents_path(tag_id: tag.id) do %>
-  <div>
-    <span><%= tag[:tag_name] %></span>
+  <div class="p-4 flex">
+    <span class="content-tag-btn"><%= tag[:tag_name] %></span>
     <% if admin_user? %>
       <%# TODO: home#indexの場合、非表示にしたい。%>
-    　<%= link_to "編集", edit_tag_master_path(tag.id) , class:"admin-btn" %>
-  　  <%= link_to "削除", tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-btn" %>
+    　<%= link_to ">>編集", edit_tag_master_path(tag.id) , class:"admin-link" %>
+  　  <%= link_to ">>削除", tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
     <% end %>
   </div>
 <% end %>
