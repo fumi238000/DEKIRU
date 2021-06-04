@@ -1,21 +1,7 @@
-  <div>
-    <hr>
-    <span><%= category.name %></span>
-    <%= link_to "このカテゴリーへ移動 >> " , category_path(category.id) %>
-
+<div>
+  <div><%= category.name %></div>
+  <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
+  <%= render partial: "layouts/content_card", collection: category.contents.first(3), as: "content" %>
     <% category.contents.first(3).each do |content|%>
-      <%= link_to content_show_path(content.id) do %>
-    
-      <div>
-        <div>
-          <%= image_tag "http://img.youtube.com/vi/#{content.movie_id}/mqdefault.jpg" %>
-        </div>
-        <div>
-          <%= content.title%>
-        </div>
-      </div>
-    
-      <% end %>
-    <% end %>
-
-  </div>
+  <% end %>
+</div>
