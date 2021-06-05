@@ -1,7 +1,7 @@
 <h2 class="h2">お気に入り一覧</h2>
 
 <% if  @favorite_contents.exists? %>
-  <div class="md:flex justify-center flex-wrap">
+  <div class="md:flex justify-start flex-wrap">
     <%= render partial: "layouts/content_card", collection: @favorite_contents, as: "content" %>
   </div>
 <% else %>
