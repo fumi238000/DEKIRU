@@ -1,0 +1,12 @@
+<h2 class="h2">お気に入り一覧</h2>
+
+<% if  @favorite_contents.exists? %>
+  <div class="md:flex justify-center flex-wrap">
+    <%= render partial: "layouts/content_card", collection: @favorite_contents, as: "content" %>
+  </div>
+<% else %>
+  <p class="my-16 py-64">現在お気に入りはありません。</p>
+<% end %>
+
+<!-- ページネーション -->
+<%= paginate @favorite_contents %>
