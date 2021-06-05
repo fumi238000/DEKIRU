@@ -1,6 +1,6 @@
-  <div>
+  <div class="p-3">
     <%= link_to  category_path(category) do %>
-      <span><%= category.name %></span>
+      <span class="category-tag-btn"><%= category.name %></span>
     <% end %>
     
     <% if admin_user? %>
