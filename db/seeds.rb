@@ -72,8 +72,8 @@ puts "コンテンツのテストデータを作成しました".green
 #-----------------------------------------
 RECOMMEND_CONTENT_NUM.times do |i|
   id = i + 1
-  Content.find_or_create_by!(title: "おすすめコンテンツ#{id}") do |c|
-    c.title = "おすすめコンテンツ#{id}"
+  Content.find_or_create_by!(title: "コンテンツ(おすすめ)#{id}") do |c|
+    c.title = "コンテンツ(おすすめ)#{id}"
     c.subtitle = "サブタイトル"
     c.movie_url = "https://www.youtube.com/watch?v=FuYdTDx8ZP4"
     c.comment = "コメント"
