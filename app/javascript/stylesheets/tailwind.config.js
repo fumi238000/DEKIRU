@@ -3,6 +3,15 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      //ブレイクポイント
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2x1': '15360px',
+      },
+      //ベースカラー
       colors: {
         dekiru: {
           main: '#FFFFFF',

@@ -8,9 +8,11 @@
 <br/>
 
 <div class="bg-dekiru-light_blue p-4">
-  <div class="flex">
-    <h2>人気情報</h2>
-    <%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %>
+  <div class="flex justify-center">
+    <div>
+      <h2 class="h2">人気情報</h2>
+      <%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %>
+    </div>
   </div>
   
   <div class="md:flex justify-center">
@@ -21,10 +23,12 @@
 <br/>
 
 <div class="bg-dekiru-light_blue p-4">
-  <div class="flex">
-    <h2 class=" text-lg">おすすめ情報</h2>
-    <%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %>
-  </div>
+    <div class="flex justify-center">
+      <div>
+        <h2 class="h2">おすすめ情報</h2>
+        <%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %>
+      </div>
+    </div>
   <div class="md:flex justify-center">
     <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
   </div>
@@ -33,9 +37,11 @@
 <br/>
 
 <div class="bg-dekiru-light_blue p-4">
-  <div class="flex">
-    <h2>新着情報</h2>
-    <%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %>
+  <div class="flex justify-center">
+    <div>
+      <h2 class="h2">新着情報</h2>
+      <%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %>
+    </div>
   </div>
   <div class="md:flex justify-center">
     <%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
@@ -45,9 +51,11 @@
 <br/>
 
 <div class="bg-dekiru-light_blue p-4">
-  <div class="flex">
-    <h2>カテゴリー一覧</h2>
-    <%= link_to ">>全て見る", categories_path, class:"blue-link" %>
+  <div class="flex justify-center">
+    <div>
+      <h2 class="h2">カテゴリー一覧</h2>
+      <%= link_to ">>全て見る", categories_path, class:"blue-link" %>
+    </div>
   </div>
     <!-- 横にして！-->
    <div class="md:flex justify-center">
@@ -58,7 +66,7 @@
 <br/>
 
 <div class="bg-dekiru-light_blue p-4 mb-4">
-  <div>キーワード</div>
+  <h2 class="h2">キーワード</h2>
   <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
   <div class="flex justify-start flex-wrap my-2"> 
     <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>

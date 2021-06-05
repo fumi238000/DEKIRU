@@ -2,6 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+//************文字**************//
+.h1 {
+  @apply text-4xl text-dekiru-font
+}
+
+.h2 {
+  @apply text-2xl text-dekiru-font font-medium py-2
+}
 
 //************ボタン**************//
 
@@ -80,6 +88,10 @@
   @apply border w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
 }
 //TODO: border-b-2を入れるとエラーが出るので対応する
+
+.login-field {
+  @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+}
 
 
 .text-area {
