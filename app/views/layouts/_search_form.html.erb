@@ -1,7 +1,8 @@
 <!-- 検索フォーム -->
 <div>
   <%= search_form_for @q, url: search_contents_path do |f| %>
-    <%= f.search_field :title_cont , class:"form-input px-4 py-3 rounded-full bg-gray-200"%>
-    <%= f.submit %><i class="fas fa-search"></i>
+    <%= f.search_field :title_cont , class:"text-filed bg-gray-200 rounded-full p-2", placeholder:"検索"%>
+    <%# これをアイコンにする%>
+    <%= f.submit class: "bg-white"%>
   <% end %>
 </div>

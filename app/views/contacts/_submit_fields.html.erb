@@ -1,8 +1,8 @@
   <div>
-    <span><%= form.label :title %> (必須)</span>
-    <%= form.text_field :title, required: true %>
+    <span><%= form.label :title, class:"form-title" %> (必須)</span>
+    <%= form.text_field :title, required: true, class: "text-field" %>
   </div>
   <div>
-    <span><%= form.label :content %> (必須)</span>
-    <p><%= form.text_area :content, required: true %></p>
+    <span><%= form.label :content, class:"form-title" %> (必須)</span>
+    <p><%= form.text_area :content, required: true, class:"text-area" %></p>
   </div>

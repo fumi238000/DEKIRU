@@ -19,10 +19,14 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン", class:"submit-btn" %>
     <%# TODO: 共通化すること %>
     <%#= f.submit  t(".sign_in") %>
   </div>
 <% end %>
+
+<div class="my-4">
+  <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%>
+</div>
 
 <%= render "users/shared/links" %>

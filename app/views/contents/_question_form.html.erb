@@ -1,15 +1,16 @@
-<div>
   <%= form_with model: @question, local: true do |f| %>
-  <%= f.hidden_field :content_id, value: @content.id %>
-  
-  <div>
-    <h2>質問</h2>
-    <p><%= f.text_area :question_content, placeholder: "100文字以内", maxlength:"100" %></p>
-  </div>
+    <div class="form-body">
 
-    <div>
-      <%= f.submit "質問する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn"%>
-    </div>
-  
+      <%= f.hidden_field :content_id, value: @content.id %>
+
+      <div>
+        <h2 class="text-title">質問</h2>
+        <p><%= f.text_area :question_content, placeholder: "100文字以内", maxlength:"100", class:"text-area" %></p>
+      </div>
+
+        <div>
+          <%= f.submit "質問する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn"%>
+        </div>
+     </div>
+
   <% end %>
-</div>
