@@ -32,7 +32,7 @@
 
 //タグボタン
 .content-tag-btn {
-  @apply text-white bg-gray-500 border-0  py-2 px-6 focus:outline-none  text-lg
+  @apply text-white bg-gray-500 border-0  m-1 py-2 px-6 focus:outline-none  text-lg
 }
 
 //管理者ボタン
@@ -41,7 +41,7 @@
 // }
 
 .submit-btn {
-  @apply text-white bg-green-500 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
+  @apply text-white bg-green-500 py-2 px-6 m-4 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
 }
 
 //************リンク**************//
@@ -69,4 +69,26 @@
 }
 
 
+//************カード**************//
+
+
+
+//************ フォーム **************//
+.form-body {
+  @apply w-10/12 mx-auto md:max-w-md m-4
+}
+
+.form-title {
+  @apply text-lg block mt-4 mb-2 text-left text-gray-500 border-l-4 pl-2 border-gray-300
+}
+
+.text-field {
+  @apply border w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+}
+//TODO: border-b-2を入れるとエラーが出るので対応する
+
+
+.text-area {
+  @apply border w-full py-8 focus:outline-none focus:border-gray-500 focus:bg-gray-100 
+}
 
