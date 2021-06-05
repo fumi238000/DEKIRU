@@ -6,48 +6,22 @@ RSpec.describe "Categories", type: :request do
     @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
   end
 
-  # TODO: category#index作成後に実装
-  # describe "GET #index" do
-  #   subject { get(categories_path) }
+  describe "GET #index" do
+    subject { get(categories_path) }
 
-  #   create_category = 3
+    create_category = 3
 
-  #   context "カテゴリーが存在する場合" do
-  #     before { create_list(:category, create_category) }
+    context "カテゴリーが存在する場合" do
+      before { create_list(:category, create_category) }
 
-  #     it "カテゴリー一覧を取得できること" do
-  #       subject
-  #       expect(response).to have_http_status(:ok)
-  #       expect(response.body).to include(*category.pluck(:title))
-  #       # TODO: youtube動画登録機能実装時に使用する
-  #       # expect(response.body).to include(*category.pluck(:thumbnail))
-  #       expect(category.count).to eq(create_category)
-  #     end
-  #   end
-
-  #   # TOOD: capybara部分は別タスクで実行する
-  #   context "画面に遷移した時" do
-  #     context "未ログインユーザーの場合" do
-  #       xit "新規登録ボタンが表示されない" do
-  #         # 表示されない処理
-  #       end
-  #     end
-
-  #     context "一般ユーザーの場合" do
-  #       xit "新規登録ボタンが表示されない" do
-  #         sign_in @admin
-  #         # 表示されない処理
-  #       end
-  #     end
-
-  #     context "管理者の場合" do
-  #       xit "新規登録ボタンが表示される" do
-  #         sign_in @user
-  #         # 表示される処理
-  #       end
-  #     end
-  #   end
-  # end
+      it "カテゴリー一覧を取得できること" do
+        subject
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include(*Category.pluck(:name))
+        expect(Category.count).to eq(create_category)
+      end
+    end
+  end
 
   describe "GET #new" do
     subject { get(new_category_path) }
