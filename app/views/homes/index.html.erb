@@ -1,4 +1,4 @@
-<div class="bg-blue-100 p-4">
+<div class="bg-dekiru-light_blue p-4">
   <h1 class="text-blue-500 text-lg">DEKIRUのトップ画像が来る</h1>
   <div>
     <%= image_tag youtube_thumbnail(Content.first.movie_id) %>
@@ -7,7 +7,7 @@
 
 <br/>
 
-<div class="bg-blue-100 p-4">
+<div class="bg-dekiru-light_blue p-4">
   <div class="flex">
     <h2>人気情報</h2>
     <%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %>
@@ -20,9 +20,9 @@
 
 <br/>
 
-<div class="bg-blue-100 p-4">
+<div class="bg-dekiru-light_blue p-4">
   <div class="flex">
-    <p>おすすめ情報</p>
+    <h2 class=" text-lg">おすすめ情報</h2>
     <%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %>
   </div>
   <div class="md:flex justify-center">
@@ -32,9 +32,9 @@
 
 <br/>
 
-<div class="bg-blue-100 p-4">
+<div class="bg-dekiru-light_blue p-4">
   <div class="flex">
-    <p>新着情報</p>
+    <h2>新着情報</h2>
     <%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %>
   </div>
   <div class="md:flex justify-center">
@@ -44,9 +44,9 @@
 
 <br/>
 
-<div class="bg-blue-100 p-4">
+<div class="bg-dekiru-light_blue p-4">
   <div class="flex">
-    <p>カテゴリー一覧</p>
+    <h2>カテゴリー一覧</h2>
     <%= link_to ">>全て見る", categories_path, class:"blue-link" %>
   </div>
     <!-- 横にして！-->
@@ -57,7 +57,7 @@
 
 <br/>
 
-<div class="bg-blue-200 p-4">
+<div class="bg-dekiru-light_blue p-4 mb-4">
   <div>キーワード</div>
   <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
   <div class="flex justify-start flex-wrap my-2"> 

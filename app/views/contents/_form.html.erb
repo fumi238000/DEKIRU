@@ -36,7 +36,7 @@
         <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
           <%= tag.label do %>
             <div class="flex flex-wrap">
-              <div class="bg-green-500 px-4 py-2 m-1 text-white">
+              <div class="bg-dekiru-keyword px-4 py-2 m-1 text-white">
                 <span><%= tag.check_box %></span>
                 <span><%= tag.object.tag_name %></span>
               </div>

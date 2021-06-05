@@ -1,7 +1,7 @@
 <%= link_to content_show_path(content.id) do %>
-  <div class="w-11/12 m-4 max-w-md mx-auto my-4 shadow-x1 rounded-lg overflow-hidden">
+  <div class="w-11/12 m-4 max-w-md mx-auto my-4 shadow-x1  overflow-hidden bg-white">
     <%= image_tag youtube_thumbnail(content.movie_id), class:"h-48 w-full object-cover" %>
-    <div class="p-4 text-sm text-gray-500">
+    <div class="p-1 text-lg text-dekiru-font text-sm">
       <%= content.title %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!-- 検索フォーム -->
 <div>
   <%= search_form_for @q, url: search_contents_path do |f| %>
-    <%= f.search_field :title_cont , class:"text-filed bg-gray-200 rounded-full p-2", placeholder:"検索"%>
+    <%= f.search_field :title_cont , class:"text-filed bg-gray-200 rounded-full p-2", placeholder:"キーワードを入力"%>
     <%# これをアイコンにする%>
     <%= f.submit class: "bg-white"%>
   <% end %>
