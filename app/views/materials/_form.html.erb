@@ -1,26 +1,31 @@
 <%= form_with model: @material, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-
-  <%= f.hidden_field :content_id, value: @content_id %>
+  <div class="form-body">
   
-  <div>
-    <h2>材料名</h2>
-    <p><%= f.text_field :name %></p>
+    <%= render 'layouts/error_messages', model: f.object %>
+  
+    <%= f.hidden_field :content_id, value: @content_id %>
+    
+    <div>
+      <h2 class="form-title">材料名</h2>
+      <p><%= f.text_field :name , class: "text-field"%></p>
+    </div>
+  
+    <div>
+      <h2 class="form-title">分量</h2>
+      <p><%= f.text_field :amount , class: "text-field"%></p>
+    </div>
+  
+    <div>
+      <h2 class="form-title">単位</h2>
+      <p><%= f.text_field :unit , class: "text-field"%></p>
+    </div>
+  
+  
+    <div>
+      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
+    </div>
+  
   </div>
 
-  <div>
-    <h2>分量</h2>
-    <p><%= f.text_field :amount %></p>
-  </div>
-
-  <div>
-    <h2>単位</h2>
-    <p><%= f.text_field :unit %></p>
-  </div>
-
-
-  <div>
-    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
-  </div>
   
 <% end %>

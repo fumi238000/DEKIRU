@@ -1,15 +1,19 @@
 <%= form_with model: @make, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-
-  <%= f.hidden_field :content_id, value: @content_id %>
+  <div class="form-body">
   
-  <div>
-    <h2>作り方</h2>
-    <p><%= f.text_area :detail %></p>
-  </div>
+    <%= render 'layouts/error_messages', model: f.object %>
   
-  <div>
-    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
-  </div>
+    <%= f.hidden_field :content_id, value: @content_id %>
+    
+    <div>
+      <h2 class="form-title">作り方</h2>
+      <p><%= f.text_area :detail, class:"text-area" %></p>
+    </div>
+    
+    <div>
+      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
+    </div>
+    
+    </div>
   
 <% end %>

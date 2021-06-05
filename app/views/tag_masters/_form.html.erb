@@ -1,16 +1,18 @@
 <%= form_with model: @tag_master, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="form-body">
 
-  <div>
-    <h2>タグの名前</h2>
-    <p><%= f.text_field :tag_name, placeholder: "タグの名前を入力" %></p>
+    <%= render 'layouts/error_messages', model: f.object %>
+  
+    <div>
+      <h2 class ="form-title">タグの名前</h2>
+      <p><%= f.text_field :tag_name, class: "text-field", placeholder: "タグの名前を入力" %></p>
+    </div>
+    
+    <!-- タグタイプ -->
+    <%#= f.text_area :detail %>
+    
+    <div>
+      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
+    </div>
   </div>
-  
-  <!-- タグタイプ -->
-  <%#= f.text_area :detail %>
-  
-  <div>
-    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
-  </div>
-  
 <% end %>

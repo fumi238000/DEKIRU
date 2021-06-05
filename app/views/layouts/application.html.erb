@@ -8,11 +8,11 @@
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
   </head>
   <body>
-    <div class="text-center">  
-      <%= render "layouts/flash" %>
-      <%= render "layouts/header" %>
+    <%= render "layouts/flash" %>
+    <%= render "layouts/header" %>
+    <div class="text-center mx-4 md:mx-20 xl:mx-80">  
       <%= yield %>
-      <%= render "layouts/footer"%>
     </div>
+    <%= render "layouts/footer"%>
   </body>
 </html>

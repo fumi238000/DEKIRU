@@ -1,51 +1,55 @@
 <%= form_with model: @content, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div>
-    <h2>タイトル</h2>
-    <p><%= f.text_field :title %></p>
-  </div>
+  <div class="form-body">
 
-  <div>
-    <h2>サブタイトル</h2>
-    <p><%= f.text_area :subtitle %></p>
-  </div>
-
-  <div>
-    <h2>youtube_URL</h2>
-    <%= f.text_field :movie_url %>
-  </div>
-
-  <div>
-    <h2>コメント</h2>
-    <p><%= f.text_area :comment %></p>
-  </div>
-
-  <div>
-    <h2>ポイント</h2>
-    <p><%= f.text_area :point %></p>
-  </div>
-
-  <!-- コンテンツタグ-->
-  <div>
-
-    <h2>タグ</h2>
-    <span>コンテンツタグ選択（選択式3つまで）</span>
+    <%= render 'layouts/error_messages', model: f.object %>
 
     <div>
-      <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
-        <%= tag.label do %>
-          <div>
-            <span><%= tag.check_box %></span>
-            <p><%= tag.object.tag_name %></p>
-          </div>
+      <h2 class="form-title">タイトル</h2>
+      <p><%= f.text_field :title, class: "text-field"%></p>
+    </div>
+
+    <div>
+      <h2 class="form-title">サブタイトル</h2>
+      <p><%= f.text_area :subtitle, class:"text-area" %></p>
+    </div>
+
+    <div>
+      <h2 class="form-title">youtube_URL</h2>
+      <%= f.text_field :movie_url, class: "text-field"%>
+    </div>
+
+    <div>
+      <h2 class="form-title">コメント</h2>
+      <p><%= f.text_area :comment, class:"text-area" %></p>
+    </div>
+
+    <div>
+      <h2 class="form-title">ポイント</h2>
+      <p><%= f.text_area :point, class:"text-area" %></p>
+    </div>
+
+    <!-- コンテンツタグ-->
+    <div>
+      <h2 class="form-title">タグ（3つまで）</h2>
+
+      <div>
+        <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
+          <%= tag.label do %>
+            <div class="flex flex-wrap">
+              <div class="bg-dekiru-keyword px-4 py-2 m-1 text-white">
+                <span><%= tag.check_box %></span>
+                <span><%= tag.object.tag_name %></span>
+              </div>
+
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
     </div>
 
   </div>
-
-  <div>
-    <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
-  </div>
-
 <% end %>

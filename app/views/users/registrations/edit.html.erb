@@ -1,54 +1,58 @@
 <%# TODO: ルーディングを調整すること%>
 
-<h2>アカウント編集</h2>
+<h2 class="h2">アカウント編集</h2>
 <%= link_to "戻る", :back %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <div class="form-body">
+
+    <%= render "users/shared/error_messages", resource: resource %>
+    
+    <div class="field">
+      <%= f.label :name, class: "form-title" %><br />
+      <%= f.text_field :name, class: "text-field" %>
+    </div>
   
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :email, class: "form-title" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
+    </div>
+  
+  
+    <div class="field">
+      <%= f.label :thumbnail, class: "form-title" %><br />
+      <%= f.file_field :thumbnail, accept: "image/png,image/jpeg", class: "text-field" %>
+    </div>
+  
+  
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  
+    <div class="field">
+      <%= f.label "新しいパスワード【変更する場合は入力】",class: "form-title" %><br />
+      <%#= f.label :password %><!-- <br /> -->
+      <%= f.password_field :password, autocomplete: "new-password", class: "text-field" %>
+    </div>
+  
+    <div class="field">
+      <%= f.label "新しいパスワード(確認用)【変更する場合は入力】",class: "form-title" %><br />
+      <%#= f.label :password_confirmation %><!-- <br /> -->
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field" %>
+    </div>
+  
+    <div class="field">
+      <%#= f.label :current_password %><!-- <br /> -->
+      <%# TODO: 必須のマークを変更したい %>
+      <%= f.label "現在のパスワード【必須】",class: "form-title" %><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "text-field" %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit "確定する", class:"submit-btn" %>
+      <%#= f.submit "Update" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :thumbnail %><br />
-    <%= f.file_field :thumbnail, accept: "image/png,image/jpeg" %>
-  </div>
-
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label "新しいパスワード【変更する場合は入力】" %><br />
-    <%#= f.label :password %><!-- <br /> -->
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "新しいパスワード(確認用)【変更する場合は入力】" %><br />
-    <%#= f.label :password_confirmation %><!-- <br /> -->
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%#= f.label :current_password %><!-- <br /> -->
-    <%# TODO: 必須のマークを変更したい %>
-    <%= f.label "現在のパスワード【必須】" %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "確定する", class:"submit-btn" %>
-    <%#= f.submit "Update" %>
   </div>
 <% end %>
 

@@ -1,12 +1,12 @@
 <div>
 <p>以下の内容で送信します。よろしいでしょうか？</p>
   <div>
-    <span><%= form.label :title %></span>
-    <%= form.text_field :title, readonly: true %>
+    <span><%= form.label :title, class:"form-title" %></span>
+    <%= form.text_field :title, readonly: true, class: "text-field" %>
     <%= form.hidden_field :title %>
   </div>
   <div>
-    <span><%= form.label :content %></span>
+    <span><%= form.label :content, class:"form-title" %></span>
     <%= form.text_area :content, readonly: true %>
     <%= form.hidden_field :content %>
   </div>

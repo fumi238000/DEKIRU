@@ -1,8 +1,8 @@
-<h2 class="text-center">MyPage</h2>
+<h2 class="text-lg text-center">MyPage</h2>
 
-<div  class="text-center">
+<div class="text-center">
   <!-- 写真-->
-  <div>
+  <div class="image-style">
     <%= image_tag @user.thumbnail.url%>
   </div>
   <!-- 名前-->
@@ -11,14 +11,14 @@
 
 <!-- お気に入り一覧-->
 <div class="my-8 text-center">
-  <%= link_to new_content_path, class:"blue-link border border-blue-500 w-40 py-2 px-4 hover:bg-blue-500 hover:text-white" do %>
+  <%= link_to new_content_path, class:"blue-link border border-blue-500 w-40 py-2 px-4 hover:bg-dekiru-blue hover:text-white" do %>
     <button class="w-32">お気に入り一覧</button>
   <% end %>
 </div>
 
 <!-- アカウント編集-->
 <div class="my-8 text-center">
-  <%= link_to edit_user_registration_path(current_user), class:"blue-link border border-blue-500  py-2 px-4 hover:bg-blue-500 hover:text-white" do %>
+  <%= link_to edit_user_registration_path(current_user), class:"blue-link border border-blue-500  py-2 px-4 hover:bg-dekiru-blue hover:text-white" do %>
     <button class="w-32">アカウント編集</button>
   <% end %>
 </div>
@@ -52,7 +52,7 @@
     <br/>
 
     <div>
-      <h2>3.コンテンツ作成</p>
+      <h2 class="h2">3.コンテンツ作成</p>
       <!-- 新規作成リンク(管理者のみ) -->
       <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
     </div>

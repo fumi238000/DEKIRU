@@ -2,26 +2,39 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+//************文字**************//
+.h1 {
+  @apply text-4xl text-dekiru-font
+}
+
+.h2 {
+  @apply text-2xl text-dekiru-font font-medium py-2
+}
 
 //************ボタン**************//
 
 
 //mailボタン
+// TODO: hover用の色を作成すること
 .blue-btn {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full
+  @apply bg-dekiru-blue hover:bg-dekiru-light_blue text-white font-bold py-2 px-4  rounded-lg
 }
 
 //deleteボタン
+// TODO: 色を検討する
 .red-btn {
-  @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full
+  @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4  rounded-lg
 }
 
 //詳細遷移ボタン
+// TODO: 色を検討する
 .show-btn {
   @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
 }
 
+
 // お気に入りボタン
+// TODO: 色を検討する
 .favorite-btn {
   @apply text-white bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
 }
@@ -32,33 +45,22 @@
 
 //タグボタン
 .content-tag-btn {
-  @apply text-white bg-gray-500 border-0  py-2 px-6 focus:outline-none  text-lg
+  @apply text-white bg-dekiru-keyword border-0  m-1 py-2 px-6 focus:outline-none text-lg
 }
 
-//管理者ボタン
-// .admin-btn {
-//   @apply text-white bg-pink-500  text-sm 
-// }
-
+//TOOD: 色を検討する,hoverも同様
 .submit-btn {
-  @apply text-white bg-green-500 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
+  @apply text-white bg-green-500 py-2 px-6 m-4 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
 }
 
 //************リンク**************//
 
-
-//TODO: 幅を広げたい！
-
 //mailCRUDリンク
 .blue-link {
-  @apply text-blue-700 text-sm
+  @apply text-dekiru-blue text-sm
 }
 
 //削除リンク
-.red-link {
-  @apply text-red-700 text-sm
-}
-
 .red-link {
   @apply text-red-700 text-sm
 }
@@ -69,4 +71,31 @@
 }
 
 
+//************カード**************//
+.image-style {
+  @apply w-60 m-auto p-4
+}
+
+//************ フォーム **************//
+.form-body {
+  @apply w-10/12 mx-auto md:max-w-md m-4
+}
+
+.form-title {
+  @apply text-lg block mt-4 mb-2 text-left text-gray-500 border-l-4 pl-2 border-dekiru-font
+}
+
+.text-field {
+  @apply border w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+}
+//TODO: border-b-2を入れるとエラーが出るので対応する
+
+.login-field {
+  @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+}
+
+
+.text-area {
+  @apply border w-full py-8 focus:outline-none focus:border-gray-500 focus:bg-gray-100 
+}
 
