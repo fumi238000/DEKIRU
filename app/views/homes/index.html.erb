@@ -1,6 +1,5 @@
-<div class="bg-dekiru-light_blue p-4">
-  <h1 class="text-blue-500 text-lg">DEKIRUのトップ画像が来る</h1>
-  <div>
+<div class=" bg-dekiru-light_blue p-4 mt-4">
+  <div class="w-96 h-96 m-auto">
     <%= image_tag youtube_thumbnail(Content.first.movie_id) %>
   </div>
 </div>
@@ -58,7 +57,7 @@
     </div>
   </div>
     <!-- 横にして！-->
-   <div class="md:flex justify-center">
+   <div class="md:flex  justify-center">
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
   </div>
 </div>

@@ -8,8 +8,10 @@
 <% end %>
 
 <!-- movie -->
-<div>
-  <%= embed_youtube(@content.movie_url) %>
+<div class="m-auto p-4 border">
+  <div class="m-auto p-4 border container">
+    <%= embed_youtube(@content.movie_url) %>
+  </div>
 </div>
 
 <!-- 説明 -->
@@ -88,7 +90,7 @@
   <% end %>
 
   <!-- レビュー一覧-->
-  <div class="md:flex justify-center">
+  <div class="md:flex justify-start flex-wrap">
     <%= render partial: "review_card", collection: @reviews, as: "review" %>
   </div>
 </div>  

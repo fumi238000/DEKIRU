@@ -1,22 +1,30 @@
 <div class="mx-4">
 
   <!-- 写真 -->
-  <div>
+  <div class="image-style">
     <%= image_tag review.image.thumb214.url %>
   </div>
 
   <!-- ユーザー情報 -->
-  <div class="flex">
+  <div class="bg-red-300 p-4">
+      <%=image_tag review.user.thumbnail.thumb27.url %>
+
 
     <!-- ユーザーの写真 -->
-    <%=image_tag review.user.thumbnail.thumb27.url %>
+    <div class="bg-red-300">
+      <%=image_tag review.user.thumbnail.thumb27.url %>
+      <%#= review.user.name %>
+    </div>
+  
     <!-- ユーザーネーム -->
-    <%= review.user.name %>
+    <div class="bg-red-300">
+      <%= review.user.name %>
+    </div>
   
   </div>
 
   <!-- レビュー -->
-  <div>
+  <div class="text-left p-1">
     <p>レビュー:<%= review.comment%></p>
   </div>
 

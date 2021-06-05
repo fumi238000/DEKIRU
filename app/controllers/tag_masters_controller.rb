@@ -28,7 +28,7 @@ class TagMastersController < ApplicationController
 
   def destroy
     @tag_master.destroy!
-    redirect_to mypage_path(current_user), notice: "タグを削除しました"
+    redirect_to mypage_path(current_user), alert: "タグを削除しました"
   end
 
   private
