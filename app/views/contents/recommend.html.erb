@@ -1,6 +1,6 @@
 <h1>おすすめ情報一覧</h1>
-
-<%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
-
+<div class="md:flex justify-center">
+  <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+</div>
 <!-- ページネーション -->
 <%#= paginate @recommend_contents %>

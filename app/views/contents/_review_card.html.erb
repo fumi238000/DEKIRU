@@ -1,4 +1,4 @@
-<div>
+<div class="mx-4">
 
   <!-- 写真 -->
   <div>
@@ -6,17 +6,12 @@
   </div>
 
   <!-- ユーザー情報 -->
-  <div>
+  <div class="flex">
 
     <!-- ユーザーの写真 -->
-    <div>
-      <p>ユーザーの写真<%=image_tag review.user.thumbnail.thumb27.url %></p>
-    </div>
-
+    <%=image_tag review.user.thumbnail.thumb27.url %>
     <!-- ユーザーネーム -->
-    <div>
-      <p>ユーザーネーム:<%= review.user.name %></p>
-    </div>
+    <%= review.user.name %>
   
   </div>
 
