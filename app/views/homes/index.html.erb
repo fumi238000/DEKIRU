@@ -1,12 +1,11 @@
-<div class=" border p-4 mt-4">
-  <div class="w-96 h-96 m-auto">
-    <%= image_tag youtube_thumbnail(Content.first.movie_id) %>
+<div class=" border my-8">
+  <div class="w-full">
+    <%= image_tag youtube_thumbnail(Content.first.movie_id), class:"w-full" %>
   </div>
 </div>
 
-<br/>
-
-<div class="border p-4">
+<!--  人気情報 -->
+<div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
       <h2 class="h2">人気情報</h2>
@@ -19,9 +18,8 @@
   </div>
 </div>
 
-<br/>
-
-<div class="border p-4">
+<!--  おすすめ情報 -->
+<div class="border p-4 my-8 bg-gray-100">
     <div class="flex justify-center">
       <div>
         <h2 class="h2">おすすめ情報</h2>
@@ -33,9 +31,8 @@
   </div>
 </div>
 
-<br/>
-
-<div class="border p-4">
+<!--  新着情報 -->
+<div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
       <h2 class="h2">新着情報</h2>
@@ -47,9 +44,7 @@
   </div>
 </div>
 
-<br/>
-
-<div class="border p-4">
+<div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
       <h2 class="h2">カテゴリー一覧</h2>
@@ -64,7 +59,7 @@
 
 <br/>
 
-<div class="border p-4 mb-4">
+<div class="border p-4 mb-8 bg-gray-100">
   <h2 class="h2">キーワード</h2>
   <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
   <div class="flex justify-start flex-wrap my-2"> 
