@@ -1,11 +1,20 @@
-<ul>  
-  <li>
-    <div>
-      <span><%= material_counter + 1 %>.<span>
-      <span><%= material.name %><span>
-      <span><%= material.amount %><span>
-      <span><%= material.unit %><span>
-      
+<ul>
+  <li class="mb-4">
+    <div class="flex border-b">
+
+      <!-- 材料名-->
+      <div class="w-1/2">
+        <%= material_counter + 1 %>.
+        <%= material.name %>
+      </div>
+
+      <!-- 数・量-->
+      <div class="w-1/2 text-right">
+        <%= material.amount %>
+        <%= material.unit %>
+      </div>
+
+      <!-- 材料CRUD-->
       <% if admin_user? %>
         <!-- 編集ボタン-->
         <%= link_to ">>編集", edit_material_path(material.id, params: { content_id: material.content.id }), method: :get, class: "admin-link" %>
@@ -14,5 +23,7 @@
       <% end %>
 
     </div>
+
+
   </li>
 </ul>
