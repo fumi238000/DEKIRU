@@ -1,5 +1,7 @@
-<%# TODO: 修正する%>
-<%= link_to ">>戻る", contents_path, class:"blue-link" %>
+<div class="text-left p-4">
+  <%# TODO: 戻るを実装すること%>
+  <%= link_to ">>戻る", contents_path, class:"blue-link" %>
+</div>
 
 <% if admin_user? %>
   <%= link_to ">>編集", edit_content_path, class:"admin-link" %>
