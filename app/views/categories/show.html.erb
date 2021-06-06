@@ -1,7 +1,7 @@
-<h1><%= @category.name%><h1>
-
-<%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
-
+<h2 class="h2 py-8"><%= @category.name%><h2>
+<div class="content-style">
+  <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+</div>
 <!-- ページネーション -->
 <%= paginate @contents, window: 1 %>
 <div class="py-4">

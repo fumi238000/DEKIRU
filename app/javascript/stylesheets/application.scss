@@ -8,7 +8,7 @@
 }
 
 .h2 {
-  @apply text-2xl text-dekiru-font font-medium py-2
+  @apply text-2xl text-dekiru-font font-medium
 }
 
 //************ボタン**************//
@@ -103,6 +103,11 @@
   @apply border w-full py-8 focus:outline-none focus:border-gray-500 focus:bg-gray-100 
 }
 
+
+//************ コンテンツ  **************//
+.content-style {
+  @apply md:flex justify-center flex-wrap mb-16
+}
 
 //************ ページネーション  **************//
 .page-link {

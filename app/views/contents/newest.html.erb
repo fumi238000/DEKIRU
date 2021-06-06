@@ -1,6 +1,7 @@
-<h1>新着情報一覧</h1>
-
-<%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
+<h2 class="h2 py-8">新着情報一覧</h2>
+<div class="content-style">
+  <%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
+</div>
 
 <!-- ページネーション -->
 <%= paginate @new_contents, window: 1 %>
