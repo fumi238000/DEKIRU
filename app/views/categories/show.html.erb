@@ -1,8 +1,9 @@
 <h1><%= @category.name%><h1>
 
-
 <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
 
 <!-- ページネーション -->
-<%= paginate @contents %>
-
+<%= paginate @contents, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@contents)%>
+</div>

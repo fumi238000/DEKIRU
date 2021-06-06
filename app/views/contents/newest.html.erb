@@ -3,4 +3,7 @@
 <%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
 
 <!-- ページネーション -->
-<%= paginate @new_contents %>
+<%= paginate @new_contents, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@new_contents)%>
+</div>
