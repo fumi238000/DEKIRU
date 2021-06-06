@@ -1,30 +1,24 @@
-<div>
-    <div>
-      <div>
-        <h1>お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
-      </div>
-      <div>
-        <%= form_with model: @contact, local: true do |form| %>
-          <div class="form-body">
+<h2 class="h2 mt-16 mb-12">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h2>
+<div class="pb-8">
+  <%= form_with model: @contact, local: true do |form| %>
+    <div class="form-body">
 
-            <%= render 'layouts/error_messages', model: form.object %>
-            <%= form.hidden_field :submitted %>
+      <%= render 'layouts/error_messages', model: form.object %>
+      <%= form.hidden_field :submitted %>
 
-            <% if @contact.submitted == "1" %>   
-              <%# 確認画面 %>
-              <%= render "confirm_fields", form: form %>
-              <div>
-                <div><%= form.button "戻る", name: "contact[confirmed]", value: "" %></div>
-                <div><%= form.button "送信", name: "contact[confirmed]", value: "1" %></div>
-              </div>
-                <% else %>
-              <%# 投稿画面 %>
-              <%= render "submit_fields", form: form %>
-              <div><%= form.submit "確認" %></div>
-            <% end %>
-
-          </div>
-        <% end %>
+      <% if @contact.submitted == "1" %>
+        <%# 確認画面 %>
+        <%= render "confirm_fields", form: form %>
+        <div>
+          <div class="mt-4"><%= form.button "戻る", name: "contact[confirmed]", value: "", class:"submit-btn" %></div>
+          <div><%= form.button "送信", name: "contact[confirmed]", value: "1", class:"submit-btn" %></div>
         </div>
+          <% else %>
+        <%# 投稿画面 %>
+        <%= render "submit_fields", form: form %>
+        <div class="py-8"><%= form.submit "確認", class:"submit-btn" %></div>
+      <% end %>
+
     </div>
+  <% end %>
 </div>
