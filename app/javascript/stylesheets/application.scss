@@ -74,7 +74,6 @@
   @apply text-pink-500  text-sm
 }
 
-
 //************カード**************//
 .image-style {
   @apply w-60 m-auto p-4
@@ -86,23 +85,21 @@
 }
 
 .form-title {
-  @apply text-lg block mt-4 mb-2 text-left text-gray-500 border-l-4 pl-2 border-dekiru-font
+  @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue
 }
 
 .text-field {
-  @apply border w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+  @apply border text-dekiru-font w-full py-2 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30
 }
-//TODO: border-b-2を入れるとエラーが出るので対応する
 
+.text-area {
+  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30
+}
+
+//TODO: border-b-2を入れるとエラーが出るので対応する
 .login-field {
   @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
 }
-
-
-.text-area {
-  @apply border w-full py-8 focus:outline-none focus:border-gray-500 focus:bg-gray-100 
-}
-
 
 //************ コンテンツ  **************//
 .content-style {
