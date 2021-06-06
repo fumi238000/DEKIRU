@@ -20,7 +20,7 @@
 <p>コメント:<%= @content.comment %></p>
 
 <!-- タグ -->
-<h2 class="h2">タグ</h2>
+<h2 class="h2 py-8">タグ</h2>
 <div>
   <% @content.tag_masters.each do |tag| %>
     <span class="content-tag-btn">
@@ -56,7 +56,7 @@
 
 <!-- 材料 -->
 <div class="mb-4">
-  <h2 class="h2">材料</h2>
+  <h2 class="h2 py-8">材料</h2>
   <% if admin_user? %>
     <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
   <% end %>
@@ -67,7 +67,7 @@
 
 <!-- 作り方 -->
 <div class="mb-4">
-  <h2 class="h2">作り方</h2>
+  <h2 class="h2 py-8">作り方</h2>
   <% if admin_user? %>
     <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
   <% end %>
@@ -76,7 +76,7 @@
 </div>  
 
 <!-- ポイント -->
-<h2 class="h2">ポイント</h2>
+<h2 class="h2 py-8">ポイント</h2>
 <p>コメント:<%= @content.point %></p>
 
 <br/>
@@ -84,7 +84,7 @@
 
 <!-- review -->
 <div class="mb-4">
-  <h2 class="h2">レビュー</h2>
+  <h2 class="h2 py-8">レビュー</h2>
   <% if general_user? %>
     <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
   <% end %>
@@ -97,7 +97,7 @@
 
 
 <!-- 質問 -->
-<h2 class="h2">質問する</h2>
+<h2 class="h2 py-8">質問する</h2>
 
 <!-- 質問フォーム -->
 <% if user_signed_in? %>
@@ -112,7 +112,7 @@
 <br/>
 
 <!-- 質問と返信 -->
-<h2 class="h2">質問</h2>
+<h2 class="h2 py-8">質問</h2>
 <%= render partial: "question_card", collection: @questions, as: "question" %>
 
 

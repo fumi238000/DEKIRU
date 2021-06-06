@@ -1,6 +1,7 @@
-<h1>おすすめ情報一覧</h1>
-<div class="md:flex justify-center">
+<h2 class="h2 py-8">おすすめ情報一覧</h2>
+<div class="content-style">
   <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
 </div>
+
 <!-- ページネーション -->
-<%#= paginate @recommend_contents %>
+<%#= paginate @contents, window: 1 %>

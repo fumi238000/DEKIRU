@@ -1,17 +1,20 @@
-<h2 class="h2">コンテンツ一覧</h2>
+<h2 class="h2 py-8">コンテンツ一覧</h2>
 
 <!-- content_search_word -->
 <% if params[:q].present? && @search_word.present? %>
-  <p>●「 <%= @search_word %> 」の検索結果<p>
+  <p>「 <%= @search_word %> 」の検索結果<p>
 <% end %>
 
 <% if params[:tag_id].present? && @search_word.present? %>
-  <p>●キーワード「 <%= @search_word %> 」<p>
+  <div>
+    <div class="text-dekiru-font text-sm">キーワード</div>
+    <div class="text-dekiru-font">「 <%= @search_word %> 」</div>
+  <div>
 <% end %>
 
 <!-- content_card -->
 <% if @contents.exists? %>
-  <div>
+  <div class="content-style">
     <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
   </div>
 <% else %>
