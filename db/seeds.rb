@@ -119,22 +119,6 @@ end
 puts "作り方のテストデータを作成しました".green
 
 #-----------------------------------------
-# review
-#-----------------------------------------
-Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |content|
-  REVIEWS_NUM.times do |i|
-    num = i + 1
-    content.reviews.find_or_create_by!(comment: "コメント#{num}") do |r|
-      r.image = open("./db/fixtures/review_sample.png")
-      r.user_id = User.general.sample.id
-      r.comment = "コメント#{num}"
-    end
-  end
-end
-
-puts "レビューのテストデータを作成しました".green
-
-#-----------------------------------------
 # question
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").each do |content|
@@ -227,6 +211,22 @@ Contact.create!(user_id: user.id) do |c|
 end
 
 puts "お問い合わせのテストデータを作成しました".green
+
+#-----------------------------------------
+# review
+#-----------------------------------------
+# Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |content|
+#   REVIEWS_NUM.times do |i|
+#     num = i + 1
+#     content.reviews.find_or_create_by!(comment: "コメント#{num}") do |r|
+#       r.image = open("./db/fixtures/review_sample.png")
+#       r.user_id = User.general.sample.id
+#       r.comment = "コメント#{num}"
+#     end
+#   end
+# end
+
+# puts "レビューのテストデータを作成しました".green
 
 #-----------------------------------------
 puts "テストデータのインポート終了"
