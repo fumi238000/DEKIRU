@@ -1,9 +1,14 @@
 <ul>  
-  <li>
-    <div>
-      <span><%= make_counter + 1 %>.</span>
-      <span><%= make.detail %></span>
+  <li class="mb-4">
+    <div class="border-b">
 
+      <!-- 作り方-->
+      <div>
+        <%= make_counter + 1 %>.
+        <%= make.detail %>
+      </div>
+
+      <!-- 作り方CRUD-->
       <% if admin_user?%>
         <!-- 編集ボタン-->
         <%= link_to ">>編集", edit_make_path(make.id, params: { content_id: make.content.id }), method: :get, class: "admin-link" %>
