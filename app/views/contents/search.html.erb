@@ -19,4 +19,7 @@
 <% end %>
 
 <!-- ページネーション  -->
-<%= paginate @contents %>
+<%= paginate @contents, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@contents)%>
+</div>

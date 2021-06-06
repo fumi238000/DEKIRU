@@ -103,3 +103,18 @@
   @apply border w-full py-8 focus:outline-none focus:border-gray-500 focus:bg-gray-100 
 }
 
+
+//************ ページネーション  **************//
+.page-link {
+  @apply text-dekiru-blue py-4 px-4  my-4 border hover:bg-dekiru-blue hover:text-white
+}
+
+//activeの場合、固定する
+.page-active-link {
+  @apply text-white py-4 px-4  my-4 border bg-dekiru-blue
+}
+
+//1つ進む・1つ戻る
+.pagenate-btn {
+  @apply text-dekiru-blue py-4 px-24 mx-1 my-4 border hover:bg-dekiru-blue hover:text-white
+}

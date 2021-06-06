@@ -9,4 +9,7 @@
 <% end %>
 
 <!-- ページネーション -->
-<%= paginate @favorite_contents %>
+<%= paginate @favorite_contents, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@favorite_contents)%>
+</div>

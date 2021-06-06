@@ -2,5 +2,9 @@
 <div class="md:flex justify-center flex-wrap">
     <%= render partial: "layouts/content_card", collection: @popular_contents, as: "content" %>
 </div>
+
 <!-- ページネーション -->
-<%= paginate @popular_contents %>
+<%= paginate @contents, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@contents)%>
+</div>
