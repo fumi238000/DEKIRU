@@ -126,3 +126,10 @@
 .required_content {
   @apply text-sm ml-2 bg-red-400 text-white p-1
 }
+
+iframe {
+  width: 100%;
+  max-width: 556px;
+  height: 315px;
+  margin: 0 auto;
+}

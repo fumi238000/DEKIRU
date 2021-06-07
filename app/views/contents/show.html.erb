@@ -14,15 +14,14 @@
 
 <!-- コンテンツ -->
 <div class="mb-8 border bg-gray-100">
+
   <!-- movie -->
-  <div class="p-4 mb-4 m-auto">
-    <div class="w-full">
-      <%= embed_youtube(@content.movie_url) %>
-    </div>
+  <div class="px-2 pt-16 pb-4">
+    <%= embed_youtube(@content.movie_url) %>
   </div>
 
   <!-- お気に入り -->
-  <div class=" pb-4">
+  <div class="pb-4">
     <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
     <div class="mb-4" if="content-<%= @content.id %>">
       <%# TODO: 条件分岐をリファクタリングすること%>
