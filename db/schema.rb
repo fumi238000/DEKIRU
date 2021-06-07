@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2021_06_01_023047) do
     t.bigint "content_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["content_id"], name: "index_content_tags_on_content_id"
-    t.index ["tag_id"], name: "index_content_tags_on_tag_id"
+    t.index ["content_id", "tag_id"], name: "index_content_tags_on_content_id_and_tag_id", unique: true
+    t.index ["tag_id"], name: "fk_rails_8b91f3a2e3"
   end
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
