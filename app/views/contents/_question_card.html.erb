@@ -14,10 +14,14 @@
     </div>
 
     <!-- 質問CRUD -->
+    <%# TODO: リファクタリングする %>
     <% if question.user == current_user || admin_user? %>
+      <% if question.response.nil? %>
       <div class="text-left p-4">
         <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"red-link" %>
       </div>
+    <% end %>
+
     <% end %>
   </div>
 
