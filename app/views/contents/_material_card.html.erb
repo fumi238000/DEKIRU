@@ -12,18 +12,13 @@
       <div class="w-1/2 text-right">
         <%= material.amount %>
         <%= material.unit %>
+        <!-- 材料CRUD-->
+        <% if admin_user? %>
+          <%= link_to ">>編集", edit_material_path(material.id, params: { content_id: material.content.id }), method: :get, class: "admin-link" %>
+          <%= link_to ">>削除", material_path(material.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class: "admin-link" %>
+        <% end %>
       </div>
 
-      <!-- 材料CRUD-->
-      <% if admin_user? %>
-        <!-- 編集ボタン-->
-        <%= link_to ">>編集", edit_material_path(material.id, params: { content_id: material.content.id }), method: :get, class: "admin-link" %>
-        <!-- 削除ボタン-->
-        <%= link_to ">>削除", material_path(material.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class: "admin-link" %>
-      <% end %>
-
     </div>
-
-
   </li>
 </ul>

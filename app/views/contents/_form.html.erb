@@ -4,27 +4,27 @@
     <%= render 'layouts/error_messages', model: f.object %>
 
     <div>
-      <h2 class="form-title">タイトル</h2>
+      <h2 class="form-title">タイトル<span class="required_content">必須</span></h2>
       <p><%= f.text_field :title, class: "text-field"%></p>
     </div>
 
     <div>
-      <h2 class="form-title">サブタイトル</h2>
+      <h2 class="form-title">サブタイトル<span class="required_content">必須</span></h2>
       <p><%= f.text_area :subtitle, class:"text-area" %></p>
     </div>
 
     <div>
-      <h2 class="form-title">youtube_URL</h2>
+      <h2 class="form-title">youtube_URL<span class="required_content">必須</span></h2>
       <%= f.text_field :movie_url, class: "text-field"%>
     </div>
 
     <div>
-      <h2 class="form-title">コメント</h2>
+      <h2 class="form-title">コメント<span class="required_content">必須</span></h2>
       <p><%= f.text_area :comment, class:"text-area" %></p>
     </div>
 
     <div>
-      <h2 class="form-title">ポイント</h2>
+      <h2 class="form-title">ポイント<span class="required_content">必須</span></h2>
       <p><%= f.text_area :point, class:"text-area" %></p>
     </div>
 

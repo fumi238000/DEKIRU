@@ -4,7 +4,7 @@
     <%= render 'layouts/error_messages', model: f.object %>
   
     <div>
-      <h2 class ="form-title">タグの名前</h2>
+      <h2 class ="form-title">タグの名前<span class="required_content">必須</span></h2>
       <p><%= f.text_field :tag_name, class: "text-field", placeholder: "タグの名前を入力" %></p>
     </div>
     

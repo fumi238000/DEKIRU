@@ -1,13 +1,16 @@
-<div class="text-left p-4">
-  <%# TODO: 戻るを実装すること%>
-  <%= link_to ">>戻る", contents_path, class:"blue-link" %>
-</div>
+<div class="flex p-4">
+  <div class="mr-4">
+    <%= link_to ">>戻る", :back, class:"blue-link" %>
+  </div>
 
-<% if admin_user? %>
-  <%= link_to ">>編集", edit_content_path, class:"admin-link" %>
-  <%# TODO: アラートにデザインを当てる %>
-  <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
-<% end %>
+  <% if admin_user? %>
+  <div>
+    <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
+    <%# TODO: アラートにデザインを当てる %>
+    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
+  </div>
+  <% end %>
+</div>
 
 <!-- コンテンツ -->
 <div class="mb-8 border bg-gray-100">
@@ -60,9 +63,6 @@
   </div>
 </div>
 
-
-
-
 <!-- 材料 -->
 <div class="mb-8 border bg-gray-100">
   <h2 class="h2 m-4">材料</h2>
@@ -75,7 +75,6 @@
     <%= render partial: "material_card", collection: @materials, as: "material" %>
   </div>
 </div>
-
 
 <!-- 作り方 -->
 <div class="mb-8 border bg-gray-100">
@@ -104,7 +103,6 @@
       <div class="px-4 py-2 text-right">
         <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
       </div>
-
     <% end %>
 
     <!-- レビューカード -->

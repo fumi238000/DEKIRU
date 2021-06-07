@@ -5,29 +5,31 @@
     <%= render "users/shared/error_messages", resource: resource %>
   
     <div class="field">
-      <%= f.label :name, class:"form-title" %><br />
+      <div class="form-title">ユーザー名<span class="required_content">必須</span></div>
       <%= f.text_field :name, class: "text-field", class: "text-field" %>
     </div>
   
     <div class="field">
-      <%= f.label :email, class:"form-title" %><br />
+      <div class="form-title">メールアドレス<span class="required_content">必須</span></div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
     </div>
   
     <div class="field">
-      <div class="form-title">パスワード(8文字以上)</div>
+      <div class="form-title">パスワード(8文字以上)<span class="required_content">必須</span></div>
       <%= f.password_field :password, autocomplete: "new-password", class: "text-field" %>
     </div>
   
     <div class="field">
-      <%= f.label :password_confirmation, class:"form-title" %><br />
+    <div class="form-title">確認用パスワード(8文字以上)<span class="required_content">必須</span></div>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field" %>
     </div>
   
-    <div class="actions">
+    <div class="actions my-4">
       <%= f.submit "作成する", class:"submit-btn" %>
     </div>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="mt-4 mb-8">
+  <%= render "users/shared/links" %>
+</div>
