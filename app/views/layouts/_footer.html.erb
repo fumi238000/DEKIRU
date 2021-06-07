@@ -1,25 +1,27 @@
-<footer class="h-auto border bg-dekiru-base py-8 text-center">
+<footer class="bg-dekiru-base py-8 text-center">
 
-  <div class="mx-4 md:flex md:mx-20 xl:mx-80">
+  <div class="p-4 md:flex md:mx-20 xl:mx-80">
 
     <!-- ロゴ -->
-    <div class=" md:w-1/2">
-      <span class="bg-blue-400">
-        <%= link_to root_path do %>      
-          <%= image_tag "deKiRU-logo.png", size: "150x50" %>
-        <% end %>
-      </span>
+    <div class="p-4 mx-auto max-w-xs md:w-1/2 md:ml-0">
+      <!-- <div class="border p-4  m-auto bg-dekiru-blue"> -->
+        <%#= link_to root_path do %>
+          <%= image_tag "deKiRU-logo.png",size: "150×50", class:"w-full"%>
+        <%# end %>
+     <!--</div> -->
     </div>
 
     <!-- 各種リンク -->
-    <ul class="md:text-right text-dekiru-font md:w-1/2">
+    <ul class="p-4 text-dekiru-font md:w-1/2 md:text-right">
       <li class="mb-8 md:mb-4"><%= link_to "トップ", root_path %></li>
       <li class="mb-8 md:mb-4"><%= link_to "カテゴリー一覧", categories_path %></li>
       <% if user_signed_in? %>
         <li class="mb-8 md:mb-4"><%= link_to "マイページ", mypage_path(current_user) %></li>
-        <li class="mb-8 md:mb-4"><%= link_to "お問い合わせ", contacts_path %></li>
+        <li class="mb-8"><%= link_to "お問い合わせ", contacts_path %></li>
       <% end %>
     </ul>
+
+
   </div>
 
 </footer>
