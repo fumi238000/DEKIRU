@@ -1,4 +1,4 @@
-<h1>レビュー登録</h1>
+<h1 class="h2 my-8">レビュー登録</h1>
 
 <%= form_with model: @review, local: true do |f| %>
   <div class="form-body">
@@ -8,13 +8,13 @@
     <%= f.hidden_field :content_id, value: @content_id %>
   
     <div>
-      <h2 class="form-title">写真</h2>
+      <div class="form-title">写真<span class="required_content">必須</span></div>
       <%= f.file_field :image, accept: "image/png,image/jpeg" %>
     </div>
   
   
     <div>
-      <h2 class="form-title">レビュー</h2>
+      <div class="form-title">レビュー<span class="required_content">必須</span></div>
       <p><%= f.text_area :comment, class:"text-area" %></p>
     </div>
     

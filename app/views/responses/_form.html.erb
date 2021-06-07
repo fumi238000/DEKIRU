@@ -1,25 +1,31 @@
-<!-- 返信フォーム -->
-<%= form_with model: @response, local: true do |f| %>
-  <div class="form-body">
-    <%= render 'layouts/error_messages', model: f.object %>
-    <%= f.hidden_field :question_id, value: @question_id %>
-  
-    <div>
-      <h2 class="form-title">返信内容</h2>
-      <p><%= f.text_area :response_content, class:"text-area" %></p>
-    </div>
-  
-    <div>
-      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
-    </div>
-  </div>
-
-<% end %>
-
 <!-- 質問内容 -->
-<div class="bg-dekiru-light_blue">
-  <h2 class="h2 py-8">質問内容</h2>
+<div class="py-8">
+  <div class="mb-8">
+    <span class="text-lg border-b border-dekiru-blue">質問内容</span>
+  </div>
   <div>
     <%= Question.find_by(@question).question_content %>
   </div>
+</div>
+
+<!-- 返信フォーム -->
+<div class="py-16">
+
+  <%= form_with model: @response, local: true do |f| %>
+    <div class="form-body">
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= f.hidden_field :question_id, value: @question_id %>
+
+      <div>
+        <h2 class="form-title">返信内容<span class="required_content">必須</span></h2>
+        <p><%= f.text_area :response_content, class:"text-area" %></p>
+      </div>
+
+      <div>
+        <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
+      </div>
+    </div>
+
+  <% end %>
+
 </div>

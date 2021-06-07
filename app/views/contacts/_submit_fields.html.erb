@@ -1,8 +1,8 @@
   <div>
-    <span><%= form.label :title, class:"form-title" %></span>
+    <div class="form-title">お問い合わせタイトル<span class="required_content">必須</span></div>
     <%= form.text_field :title, required: true, class: "text-field" %>
   </div>
   <div>
-    <span><%= form.label :content, class:"form-title" %></span>
+    <div class="form-title">お問い合わせ内容<span class="required_content">必須</span></div>
     <p><%= form.text_area :content, required: true, class:"text-area" %></p>
   </div>

@@ -6,17 +6,17 @@
     <%= f.hidden_field :content_id, value: @content_id %>
     
     <div>
-      <h2 class="form-title">材料名</h2>
+      <h2 class="form-title">材料名<span class="required_content">必須</span></h2>
       <p><%= f.text_field :name , class: "text-field"%></p>
     </div>
   
     <div>
-      <h2 class="form-title">分量</h2>
+      <h2 class="form-title">分量<span class="required_content">必須</span></h2>
       <p><%= f.text_field :amount , class: "text-field"%></p>
     </div>
   
     <div>
-      <h2 class="form-title">単位</h2>
+      <h2 class="form-title">単位<span class="required_content">必須</span></h2>
       <p><%= f.text_field :unit , class: "text-field"%></p>
     </div>
   

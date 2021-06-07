@@ -120,3 +120,9 @@
 .pagenate-btn {
   @apply text-dekiru-blue py-4 px-24 mx-1 my-4 border hover:bg-dekiru-blue hover:text-white
 }
+
+//************ その他  **************//
+//必須マーク
+.required_content {
+  @apply text-sm ml-2 bg-red-400 text-white p-1
+}
