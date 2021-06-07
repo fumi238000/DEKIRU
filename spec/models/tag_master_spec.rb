@@ -36,10 +36,13 @@ RSpec.describe TagMaster, type: :model do
       end
 
       context "すでに同じ名前が存在してする場合" do
-        let(:tag_master) { build(:tag_master, tag_name: "") }
-        xit "保存ができない" do
+        before { create(:tag_master, tag_name: "タグ") }
+
+        let(:tag_master) { build(:tag_master, tag_name: "タグ") }
+
+        it "保存ができない" do
           expect(subject).to eq false
-          expect(tag_master.errors[:tag_name]).to include "を入力してください"
+          expect(tag_master.errors[:tag_name]).to include "はすでに存在します"
         end
       end
     end
