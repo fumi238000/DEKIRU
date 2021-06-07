@@ -93,7 +93,7 @@
 }
 
 .text-area {
-  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30
+  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30 
 }
 
 //TODO: border-b-2を入れるとエラーが出るので対応する
