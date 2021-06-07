@@ -34,6 +34,14 @@ RSpec.describe TagMaster, type: :model do
           expect(tag_master.errors.messages[:tag_name]).to include "は10文字以内で入力してください"
         end
       end
+
+      context "すでに同じ名前が存在してする場合" do
+        let(:tag_master) { build(:tag_master, tag_name: "") }
+        xit "保存ができない" do
+          expect(subject).to eq false
+          expect(tag_master.errors[:tag_name]).to include "を入力してください"
+        end
+      end
     end
   end
 end

@@ -3,4 +3,8 @@ FactoryBot.define do
     tag_name { Faker::Lorem.characters(number: 10) }
     # tag_type { 0 }
   end
+
+  trait :tag_master_invalid do
+    tag_name { "" }
+  end
 end
