@@ -7,17 +7,17 @@
     
     <div>
       <h2 class="form-title">材料名<span class="required_content">必須</span></h2>
-      <p><%= f.text_field :name , class: "text-field"%></p>
+      <p><%= f.text_field :name ,placeholder: "材料の名前(16文字以内)", class: "text-field"%></p>
     </div>
   
     <div>
       <h2 class="form-title">分量<span class="required_content">必須</span></h2>
-      <p><%= f.text_field :amount , class: "text-field"%></p>
+      <p><%= f.text_field :amount, placeholder: "(例) 1", class: "text-field"%></p>
     </div>
   
     <div>
       <h2 class="form-title">単位<span class="required_content">必須</span></h2>
-      <p><%= f.text_field :unit , class: "text-field"%></p>
+      <p><%= f.text_field :unit , placeholder: "(例) 枚",class: "text-field"%></p>
     </div>
   
   

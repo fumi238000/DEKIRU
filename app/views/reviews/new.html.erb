@@ -2,20 +2,18 @@
 
 <%= form_with model: @review, local: true do |f| %>
   <div class="form-body">
-
     <%= render 'layouts/error_messages', model: f.object %>
   
     <%= f.hidden_field :content_id, value: @content_id %>
-  
+
     <div>
       <div class="form-title">写真<span class="required_content">必須</span></div>
       <%= f.file_field :image, accept: "image/png,image/jpeg" %>
     </div>
   
-  
     <div>
       <div class="form-title">レビュー<span class="required_content">必須</span></div>
-      <p><%= f.text_area :comment, class:"text-area" %></p>
+      <p><%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)", class:"text-area" %></p>
     </div>
     
     <div>

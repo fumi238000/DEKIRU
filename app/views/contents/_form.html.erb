@@ -5,49 +5,47 @@
 
     <div>
       <h2 class="form-title">タイトル<span class="required_content">必須</span></h2>
-      <p><%= f.text_field :title, class: "text-field"%></p>
+      <p><%= f.text_field :title, placeholder: "コンテンツ名(16文字以内)", class: "text-field"%></p>
     </div>
 
     <div>
       <h2 class="form-title">サブタイトル<span class="required_content">必須</span></h2>
-      <p><%= f.text_area :subtitle, class:"text-area" %></p>
+      <p><%= f.text_area :subtitle, placeholder: "サブタイトル(32文字以内)",class:"text-area" %></p>
     </div>
 
     <div>
       <h2 class="form-title">youtube_URL<span class="required_content">必須</span></h2>
-      <%= f.text_field :movie_url, class: "text-field"%>
+      <span class="text-sm">Youtube上にアップロードされているページのURLを貼り付けて下さい</span>
+      <%= f.text_field :movie_url, placeholder: "(例) https://youtube.com/sample",class: "text-field"%>
     </div>
 
     <div>
       <h2 class="form-title">コメント<span class="required_content">必須</span></h2>
-      <p><%= f.text_area :comment, class:"text-area" %></p>
+      <p><%= f.text_area :comment, placeholder: "コンテンツに対するコンテンツ(32文字以内)",class:"text-area" %></p>
     </div>
 
     <div>
       <h2 class="form-title">ポイント<span class="required_content">必須</span></h2>
-      <p><%= f.text_area :point, class:"text-area" %></p>
+      <p><%= f.text_area :point, placeholder: "コンテンツのポイント(32文字以内)",class:"text-area" %></p>
     </div>
 
     <!-- コンテンツタグ-->
     <div>
       <h2 class="form-title">タグ（3つまで）</h2>
 
-      <div>
+      <div class="flex flex-wrap justify-start py-4 mb-8">
         <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
-          <%= tag.label do %>
-            <div class="flex flex-wrap">
-              <div class="bg-dekiru-keyword px-4 py-2 m-1 text-white">
+            <%= tag.label do %>
+              <div class="content-tag-btn">
                 <span><%= tag.check_box %></span>
                 <span><%= tag.object.tag_name %></span>
               </div>
-
-            </div>
-          <% end %>
+            <% end %>
         <% end %>
       </div>
     </div>
 
-    <div>
+    <div class="my-16">
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
     </div>
 
