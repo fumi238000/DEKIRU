@@ -5,6 +5,11 @@ class Question < ApplicationRecord
 
   validates :question_content, presence: true, length: { in: 1..100, allow_blank: true }
 
+  def response_nil?
+    self.response.nil?
+  end
+
+  # エラーメッセージ
   def self.question_error_message(q)
     case q.errors.full_messages
     when ["Question contentを入力してください"]

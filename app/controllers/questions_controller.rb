@@ -19,8 +19,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy!
-    redirect_to content_show_path(@question.content.id), alert: "質問を削除しました"
+    if @question.response_nil?  # 返信が存在している場合、削除できない
+      @question.destroy!
+      redirect_to content_show_path(@question.content.id), alert: "質問を削除しました"
+    else
+      redirect_to content_show_path(@question.content.id), alert: "この質問は削除することができません"
+    end
   end
 
   private
