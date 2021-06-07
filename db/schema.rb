@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_023047) do
     t.integer "tag_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_name"], name: "index_tag_masters_on_tag_name", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
