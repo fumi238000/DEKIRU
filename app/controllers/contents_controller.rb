@@ -63,6 +63,7 @@ class ContentsController < ApplicationController
       @search_word = TagMaster.find_by(id: params[:tag_id]).tag_name
       @contents = TagMaster.find_by(id: params[:tag_id]).contents.page(params[:page]).per(PER_PAGE)
     end
+    # MEMO: ワード検索はapplication_controllerに記載
   end
 
   private
