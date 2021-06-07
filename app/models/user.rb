@@ -32,10 +32,9 @@ class User < ApplicationRecord
     end
   end
 
-  def self.create_guest_sample_date # rubocop:disable all
+  def self.create_guest_sample_date
     gest_user = User.find_by(email: "guest@example.com")
     favorite_num = 10
-    reviews_num = 3
 
     # お気に入りサンプルデータ
     favorite_num.times do
@@ -45,16 +44,18 @@ class User < ApplicationRecord
       end
     end
 
+    # TODO: 画像導入時にエラーが発生
+    # reviews_num = 3
     # レビューサンプルデータ
-    Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).first(3).each do |content|
-      reviews_num.times do |i|
-        num = i + 1
-        content.reviews.find_or_create_by!(comment: "ゲストコメント#{num}") do |r|
-          r.image = open("./db/fixtures/review_sample.png")
-          r.user_id = gest_user.id
-          r.comment = "ゲストコメント#{num}"
-        end
-      end
-    end
+    # Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).first(3).each do |content|
+    #   reviews_num.times do |i|
+    #     num = i + 1
+    #     content.reviews.find_or_create_by!(comment: "ゲストコメント#{num}") do |r|
+    #       r.image = open("./db/fixtures/review_sample.png")
+    #       r.user_id = gest_user.id
+    #       r.comment = "ゲストコメント#{num}"
+    #     end
+    #   end
+    # end
   end
 end
