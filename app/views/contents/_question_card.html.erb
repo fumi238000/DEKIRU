@@ -4,8 +4,8 @@
   <div  class="border border-gray-300 rounded-lg mb-4">
     <!-- 質問ユーザー -->
     <div class="flex px-4 py-8">
-      <%= image_tag question.user.thumbnail.thumb27.url %>
-      <%= question.user.name %>
+      <%= image_tag question.user.thumbnail.thumb27.url, class:"rounded-full border border-gray-300"%>
+      <span class="ml-4"><%= question.user.name %></span>
     </div>
 
     <!-- 質問内容 -->
@@ -32,8 +32,8 @@
     <% if question.response.present?%> <%# 返信がある場合、返信を表示する%>
       <!-- DEKRIU情報 -->
       <div class="flex justify-end px-4 py-8">
-        <span>deKiRU</span><!-- TODO: 少し変かもしれない。全て大文字にするか相談する -->
-        <%= image_tag @admin.thumbnail.thumb27.url %>
+        <span class="mr-4">deKiRU</span><!-- TODO: 少し変かもしれない。全て大文字にするか相談する -->
+        <%= image_tag @admin.thumbnail.thumb27.url ,class:"rounded-full border border-gray-300"%>
       </div>
       <!-- 返信内容 -->
       <div class="text-right px-4 py-8">

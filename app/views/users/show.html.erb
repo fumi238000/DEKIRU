@@ -3,13 +3,13 @@
   <h2 class="h2 py-8">MyPage</h2>
 
   <!-- 写真 + 名前 -->
-  <div>
+  <div class="py-8">
     <!-- 写真-->
-    <div class="image-style">
-      <%= image_tag @user.thumbnail.url%>
+      <div class="image-style m-auto">
+      <%= image_tag @user.thumbnail.url ,class:"w-full rounded-full border-4 border-dekiru-blue"%>
     </div>
     <!-- 名前-->
-    <p>ユーザー名：<%= @user.name %></p>
+    <p class="text-lg"><%= @user.name %></p>
   </div>
 
   <!-- お気に入り一覧-->
