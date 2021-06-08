@@ -92,6 +92,8 @@ puts "おすすめコンテンツのテストデータを作成しました".gre
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").includes(:materials).each do |content|
   MATERIALS_NUM.times do |i|
+    next unless rand(2).zero? # tureの場合、作成
+
     num = i + 1
     content.materials.find_or_create_by!(name: "材料のサンプル#{num}(最大16文字)") do |m|
       m.content_id = content.id
@@ -110,6 +112,8 @@ puts "材料のテストデータを作成しました".green
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").includes(:makes).each do |content|
   MAKES_NUM.times do |i|
+    next unless rand(2).zero? # tureの場合、作成
+
     num = i + 1
     content.makes.find_or_create_by!(detail: "作り方サンプルデータ#{num}作り方サンプルデータ#{num}(最大32文字まで)") do |m|
       m.content_id = content.id
@@ -125,6 +129,8 @@ puts "作り方のテストデータを作成しました".green
 #-----------------------------------------
 Content.where("title LIKE ?", "コンテンツ%").each do |content|
   QUESTIONS_NUM.times do |i|
+    next unless rand(2).zero? # tureの場合、作成
+
     num = i + 1
     user = User.general.sample
     content.questions.find_or_create_by!(user_id: user.id) do |q|
@@ -141,6 +147,7 @@ puts "質問のテストデータを作成しました".green
 # response
 #-----------------------------------------
 Question.all.each do |question|
+  next unless rand(2).zero? # tureの場合、作成
   next unless question.response.nil?
 
   Response.create!(
@@ -192,6 +199,8 @@ SAMPLE_CONTENT_TAGS = TagMaster.content
 #-----------------------------------------
 # コンテンツタグ
 Content.all.each do |content|
+  next unless rand(2).zero? # tureの場合、作成する
+
   tag = SAMPLE_CONTENT_TAGS.sample
   ContentTag.find_or_create_by!(content_id: content.id, tag_id: tag.id) do |t|
     t.content_id = content.id
@@ -220,12 +229,14 @@ puts "お問い合わせのテストデータを作成しました".green
 # review
 #-----------------------------------------
 # Content.where("title LIKE ?", "コンテンツ%").includes(:reviews).each do |content|
-#   REVIEWS_NUM.times do
-#     user = User.general.sample
-#     content.reviews.find_or_create_by!(user_id: user.id) do |r|
-#       r.image = open("./db/fixtures/review_sample.png")
-#       r.user_id = user.id
-#       r.comment = "コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最" # 500文字 # rubocop:disable all
+#   if rand(2).zero?  # tureの場合、作成する
+#     REVIEWS_NUM.times do
+#       user = User.general.sample
+#       content.reviews.find_or_create_by!(user_id: user.id) do |r|
+#         r.image = open("./db/fixtures/review_sample.png")
+#         r.user_id = user.id
+#         r.comment = "コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最大500文字)コメント(最" # 500文字 # rubocop:disable all
+#       end
 #     end
 #   end
 # end
