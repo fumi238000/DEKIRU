@@ -58,7 +58,7 @@ CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツ#{id}") do |c|
     c.title = "コンテンツ#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = "https://www.youtube.com/watch?v=Otrc2zAlJyM"
+    c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
     c.comment = "コメント"
     c.point = "ポイント"
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
@@ -75,7 +75,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツ(おすすめ)#{id}") do |c|
     c.title = "コンテンツ(おすすめ)#{id}"
     c.subtitle = "サブタイトル"
-    c.movie_url = "https://www.youtube.com/watch?v=FuYdTDx8ZP4"
+    c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
     c.comment = "コメント"
     c.point = "ポイント"
     c.recommend_status = "recommend"
