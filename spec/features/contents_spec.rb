@@ -47,7 +47,7 @@ RSpec.describe "Contents", type: :feature do
         expect(page).not_to have_link ">>削除", href: make_path(@make.id)
         expect(page).to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
         expect(page).to have_link ">>削除", href: question_path(@do_question)
-        expect(page).to have_link ">>削除", href: question_path(@end_question)
+        expect(page).not_to have_link ">>削除", href: question_path(@end_question)
         expect(page).not_to have_link ">>返信する", href: new_response_path(question_id: @do_question.id)
         expect(page).not_to have_link ">>編集", href: edit_response_path(@end_question.response, question_id: @end_question.id)
         expect(page).not_to have_link ">>削除", href: response_path(@end_question.response)
@@ -92,19 +92,11 @@ RSpec.describe "Contents", type: :feature do
         expect(page).not_to have_button "質問する"
       end
 
-      context "質問が存在する時" do
-        it "リンクが表示される" do
-          sign_in @admin
-          visit content_show_path(@content.id)
-          expect(page).to have_link ">>削除", href: question_path(@do_question)
-          expect(page).to have_link ">>削除", href: question_path(@end_question)
-        end
-      end
-
       context "質問があるが,返信がない場合" do
         it "リンクが表示される" do
           sign_in @admin
           visit content_show_path(@content.id)
+          expect(page).to have_link ">>削除", href: question_path(@do_question)
           expect(page).to have_link ">>返信する", href: new_response_path(question_id: @do_question.id)
         end
       end
@@ -115,6 +107,12 @@ RSpec.describe "Contents", type: :feature do
           visit content_show_path(@content.id)
           expect(page).to have_link ">>編集", href: edit_response_path(@end_question.response, question_id: @end_question.id)
           expect(page).to have_link ">>削除", href: response_path(@end_question.response)
+        end
+
+        it "質問を削除するリンクが表示されない" do
+          sign_in @admin
+          visit content_show_path(@content.id)
+          expect(page).not_to have_link ">>削除", href: question_path(@end_question)
         end
       end
     end
