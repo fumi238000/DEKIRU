@@ -32,17 +32,18 @@ class User < ApplicationRecord
     end
   end
 
+  # TODO: ゲストユーザにテストデータを作成する場合
   def self.create_guest_sample_date
-    gest_user = User.find_by(email: "guest@example.com")
-    favorite_num = 10
+    # gest_user = User.find_by(email: "guest@example.com")
 
     # お気に入りサンプルデータ
-    favorite_num.times do
-      content = Content.all.sample
-      gest_user.favorites.find_or_create_by!(content_id: content.id) do |f|
-        f.content_id = content.id
-      end
-    end
+    # favorite_num = 10
+    # favorite_num.times do
+    #   content = Content.all.sample
+    #   gest_user.favorites.find_or_create_by!(content_id: content.id) do |f|
+    #     f.content_id = content.id
+    #   end
+    # end
 
     # TODO: 画像導入時にエラーが発生
     # reviews_num = 3
