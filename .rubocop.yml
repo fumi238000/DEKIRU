@@ -32,7 +32,7 @@ Style/FrozenStringLiteralComment:
 
 # 1行の最大
 Layout/LineLength:
-  Max: 160
+  Max: 170
 
 # （お好みで設定）文字列はダブルクォートに統一
 Style/StringLiterals:
