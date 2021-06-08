@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :user_general_checker, only: %i[index create]
+
   def index
     @contact = Contact.new
   end
