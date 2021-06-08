@@ -10,6 +10,7 @@ FAVORITES_NUM = 5
 CATEGORIES_NUM = 5
 QUESTIONS_NUM = 5
 CONTENT_TAGS = ["リフォーム", "メンテナンス", "お風呂", "トイレ", "洗面", "引越し", "新築", "買い替え", "引越し直前", "引き渡し前", "トラブル", "DIY", "キーワード(10字)", "ワード(10文字！)", "ワード(10字？)"].freeze
+MAX_CONTENT_TAGS = 3
 
 #-----------------------------------------
 puts "テストデータのインポート開始"
@@ -199,12 +200,14 @@ SAMPLE_CONTENT_TAGS = TagMaster.content
 #-----------------------------------------
 # コンテンツタグ
 Content.all.each do |content|
-  next unless rand(2).zero? # tureの場合、作成する
+  rand(1..MAX_CONTENT_TAGS).times do
+    next unless rand(2).zero? # tureの場合、作成する
 
-  tag = SAMPLE_CONTENT_TAGS.sample
-  ContentTag.find_or_create_by!(content_id: content.id, tag_id: tag.id) do |t|
-    t.content_id = content.id
-    t.tag_id = tag.id
+    tag = SAMPLE_CONTENT_TAGS.sample
+    ContentTag.find_or_create_by!(content_id: content.id, tag_id: tag.id) do |t|
+      t.content_id = content.id
+      t.tag_id = tag.id
+    end
   end
 end
 
