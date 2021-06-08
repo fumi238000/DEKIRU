@@ -26,20 +26,18 @@
   <div class="pb-4">
     <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
     <div class="mb-4" if="content-<%= @content.id %>">
+      <% if general_user? %>
       <%# TODO: 条件分岐をリファクタリングすること%>
-      <% if user_signed_in? %>
         <div class="my-4">
           <% if @content.favorited_by?(current_user) %>
-            <%# お気に入りから外す %>
-            <%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %>
+            <%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %> <%# お気に入りから外す %>
           <% else %>
-            <%# お気に入りに追加 %>
-            <%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %>
+            <%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %><%# お気に入りに追加 %>
           <% end %>
         </div>
       <% end %>
     </div>
-    <!-- <p>お気に入り数:<%= @content.favorites.count %></p> -->
+    <p>お気に入り数:<%= @content.favorites.count %></p>
   </div>
 
   <!-- 説明 -->

@@ -18,7 +18,7 @@ RSpec.describe "Contents", type: :feature do
       it "ユーザー専用リンクが表示されないこと" do
         visit content_show_path(@content.id)
         expect(page).not_to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
-        # お気に入りリンクが表示されない
+        expect(page).not_to have_link "お気に入りする", href: content_favorites_path(@content)
       end
 
       it "管理者専用リンクが表示されないこと" do
@@ -42,7 +42,7 @@ RSpec.describe "Contents", type: :feature do
         sign_in @user
         visit content_show_path(@content.id)
         expect(page).to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
-        # お気に入りリンクが表示される
+        expect(page).to have_link "お気に入りする", href: content_favorites_path(@content)
       end
 
       it "管理者専用リンクが表示されないこと" do
@@ -81,8 +81,8 @@ RSpec.describe "Contents", type: :feature do
     # 管理者
   context "管理者の場合" do
     it "ユーザー専用リンクが表示されないこと" do
-        # お気に入りボタン
       expect(page).not_to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
+      expect(page).not_to have_link "お気に入りする", href: content_favorites_path(@content)
     end
 
     it "管理者専用リンクが表示されること" do
