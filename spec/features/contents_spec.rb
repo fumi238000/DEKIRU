@@ -13,8 +13,6 @@ RSpec.describe "Contents", type: :feature do
   end
 
   describe "GET #show" do
-    let(:content) { create(:content) }
-
     context "未ログインユーザーの場合" do
       # 異常値のみ
       it "各リンクが表示されないこと" do

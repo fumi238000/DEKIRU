@@ -26,7 +26,7 @@ RSpec.describe "Homes", type: :feature do
     end
 
     context "管理者の場合" do
-      it "各リンクが表示されること", type: :do do
+      it "各リンクが表示されること" do
         sign_in @admin
         visit root_path
         expect(page).to have_link ">>編集", href: edit_tag_master_path(@tag.id) # タグ編集
