@@ -1,36 +1,41 @@
-<h1 class="my-8">ログイン</h1>
+<h1 class="mt-16 mb-8">ログイン</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="form-body py-8">
+<div class="form-body py-16 px-8 border shadow-lg mb-24 bg-dekiru-base">
   
   <div class="field">
     <h2 class="form-title">メールアドレス<span class="required_content">必須</span></h2>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",required: true, class:"login-field" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",required: true, class:"text-field" %>
   </div>
 
   <div class="field">
     <h2 class="form-title">パスワード<span class="required_content">必須</span></h2>
-    <%= f.password_field :password, autocomplete: "current-password",required: true, class:"login-field" %>
+    <%= f.password_field :password, autocomplete: "current-password",required: true, class:"text-field" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field my-4">
+    <div class="field my-8 mb-4">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
+  <!-- ログイン-->
   <div class="actions">
     <%= f.submit "ログイン", class:"submit-btn" %>
-    <%# TODO: 共通化すること %>
-    <%#= f.submit  t(".sign_in") %>
   </div>
-</div>
 
+  <!-- 新規作成 -->
+  <div>
+    <%= render "users/shared/links" %>
+  </div>
+  
+  <!-- ゲストログイン(後日削除予定)-->
+  <div class="mt-10">
+    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%>
+  </div>
+
+</div>
 <% end %>
 
-<%= render "users/shared/links" %>
 
-<div class="my-4">
-  <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%>
-</div>

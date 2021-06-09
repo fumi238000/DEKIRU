@@ -1,29 +1,33 @@
-<h1 class="py-8">コンテンツ一覧</h1>
+<h1 class="pt-8">コンテンツ一覧</h1>
 
-<!-- ワード検索の場合 -->
-<% if params[:q].present? && @search_word.present? %>
-  <p>「 <%= @search_word %> 」の検索結果<p>
-<% end %>
-
-<!-- タグ検索の場合 -->
-<% if params[:tag_id].present? && @search_word.present? %>
-  <div>
-    <div class="text-dekiru-font text-sm">キーワード</div>
-    <div class="text-dekiru-font">「 <%= @search_word %> 」</div>
-  <div>
-<% end %>
-
-<!-- content_card -->
-<% if @contents.exists? %>
-  <div class="content-style">
-    <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+<div class="mt-4 mb-16">
+  
+  <!-- ワード検索の場合 -->
+  <% if params[:q].present? && @search_word.present? %>
+    <p class="p-4">「 <%= @search_word %> 」の検索結果</p>
+  <% end %>
+  
+  <!-- タグ検索の場合 -->
+  <% if params[:tag_id].present? && @search_word.present? %>
+    <div>
+      <div class="text-dekiru-font text-sm">キーワード</div>
+      <div class="text-dekiru-font">「 <%= @search_word %> 」</div>
+    </div>
+  <% end %>
+  
+  <!-- content_card -->
+  <% if @contents.exists? %>
+    <div class="content-style">
+      <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+    </div>
+  <% else %>
+    <p>検索結果はありません</p>
+  <% end %>
+  
+  <!-- ページネーション  -->
+  <%= paginate @contents, window: 1 %>
+  <div class="py-4">
+    <%= page_entries_info(@contents)%>
   </div>
-<% else %>
-  <p>検索結果はありません</p>
-<% end %>
 
-<!-- ページネーション  -->
-<%= paginate @contents, window: 1 %>
-<div class="py-4">
-  <%= page_entries_info(@contents)%>
 </div>

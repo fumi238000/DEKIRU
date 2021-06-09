@@ -13,24 +13,19 @@
   </div>
 
   <!-- お気に入り一覧-->
-  <div class="my-8 text-center">
-    <%= link_to favorite_contents_path, class:"blue-link border border-blue-500 w-40 py-2 px-4 hover:bg-dekiru-blue hover:text-white" do %>
-      <button class="w-32">お気に入り一覧</button>
-    <% end %>
+  <div class="my-8">
+    <%= link_to "お気に入り一覧", favorite_contents_path, class:"blue-btn" %>
   </div>
 
   <!-- アカウント編集-->
-  <div class="my-8 text-center">
-    <%= link_to edit_user_registration_path(current_user), class:"blue-link border border-blue-500  py-2 px-4 hover:bg-dekiru-blue hover:text-white" do %>
-      <button class="w-32">アカウント編集</button>
-    <% end %>
+  <div class="my-8">
+    <%= link_to "アカウント編集", edit_user_registration_path(current_user), class:"blue-btn"%>
   </div>
 
+
   <!-- ログアウト-->
-  <div class="my-8 text-center">
-    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-link w-40 border border-red-500 py-2 px-4 w-32 hover:bg-red-500 hover:text-white" do%>
-      <button class="w-32">ログアウト</button>
-    <% end %>
+  <div class="my-8 m-auto">
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-btn"%>
   </div>
 
   <!-- 管理者専用-->
@@ -38,24 +33,40 @@
     <div class="text-left p-8">
       <h2 class="text-pink-500">管理者専用</h2>
       
-      <h2 class="py-8">1.タグ一覧</h2>
-      <div>
-        <%= link_to ">>追加", new_tag_master_path, class:"admin-link" %>
-        <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
-      </div>
 
-      <h2 class="py-8">2.カテゴリー作成</h2>
-      <div>
-        <%= link_to ">>追加", new_category_path, class:"admin-link" %>
-      </div>
 
-      <div>
-        <h2 class="py-8">3.コンテンツ作成</h2>
+      <!-- コンテンツ -->
+      <div class="my-8">
+        <h2>1.コンテンツ作成</h2>
         <!-- 新規作成リンク(管理者のみ) -->
         <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
       </div>
 
+      <!-- カテゴリー -->
+      <div class="my-8">
+
+      <h2>2.カテゴリー作成</h2>
+      <div>
+        <%= link_to ">>追加", new_category_path, class:"admin-link" %>
+      </div>
+      </div>
+
+
+
+      <!-- タグ -->
+      <div class="my-8">
+        <h2>3.タグ一覧</h2>
+        <div class="my-4">
+          <%= link_to ">>追加", new_tag_master_path, class:"admin-link" %>
+          <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+        </div>
+      </div>
+
+
+
     </div>
+
+
   <% end %>
 
   </div>

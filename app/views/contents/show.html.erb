@@ -1,141 +1,141 @@
-<div class="flex p-4">
-  <div class="mr-4">
-    <%= link_to ">>戻る", :back, class:"blue-link" %>
-  </div>
-
-  <% if admin_user? %>
-  <div>
-    <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
-    <%# TODO: アラートにデザインを当てる %>
-    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
-  </div>
-  <% end %>
-</div>
-
-<!-- コンテンツ -->
-<div class="mb-8 border bg-gray-100">
-
-  <!-- movie -->
-  <div class="movie">
-    <div class="movie__inner">
-      <%= embed_youtube(@content.movie_url) %>
+<div class="mb-32">
+  <div class="flex p-4">
+    <div class="mr-4">
+      <%= link_to ">>戻る", :back, class:"blue-link" %>
     </div>
+  
+    <% if admin_user? %>
+    <div>
+      <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
+      <%# TODO: アラートにデザインを当てる %>
+      <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
+    </div>
+    <% end %>
   </div>
-
-  <!-- お気に入り -->
-  <div class="pb-4">
-    <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
-    <div class="mb-4" if="content-<%= @content.id %>">
-      <% if general_user? %>
-      <%# TODO: 条件分岐をリファクタリングすること%>
-        <div class="my-4">
-          <% if @content.favorited_by?(current_user) %>
-            <%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %> <%# お気に入りから外す %>
-          <% else %>
-            <%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %><%# お気に入りに追加 %>
-          <% end %>
-        </div>
+  
+  <!-- コンテンツ -->
+  <div class="mb-8 border bg-gray-100">
+  
+    <!-- movie -->
+    <div class="movie">
+      <div class="movie__inner">
+        <%= embed_youtube(@content.movie_url) %>
+      </div>
+    </div>
+  
+    <!-- お気に入り -->
+    <div class="pb-4">
+      <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
+      <div class="mb-4" if="content-<%= @content.id %>">
+        <% if general_user? %>
+        <%# TODO: 条件分岐をリファクタリングすること%>
+          <div class="my-8">
+            <% if @content.favorited_by?(current_user) %>
+              <%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %> <%# お気に入りから外す %>
+            <% else %>
+              <%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %><%# お気に入りに追加 %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <p>お気に入り数:<%= @content.favorites.count %></p>
+    </div>
+  
+    <!-- 説明 -->
+    <div>
+      <p class="text-lg py-4"><%= @content.title %></p>
+      <p class="text-sm p-8"><%= @content. subtitle %></p>
+      <p class="text-md p-8"><%= @content.comment %></p>
+    </div>
+  
+  </div>
+  
+  
+  <!-- タグ -->
+  <div class="p-4 mb-8">
+    <h2 class="mb-4">タグ</h2>
+    <div>
+      <% @content.tag_masters.each do |tag| %>
+        <span class="content-tag-btn">
+          <%= tag.tag_name %>
+        </span>
       <% end %>
     </div>
-    <p>お気に入り数:<%= @content.favorites.count %></p>
   </div>
-
-  <!-- 説明 -->
-  <div>
-    <p class="text-lg py-4"><%= @content.title %></p>
-    <p class="text-sm p-8"><%= @content. subtitle %></p>
-    <p class="text-md p-8"><%= @content.comment %></p>
-  </div>
-
-</div>
-
-
-<!-- タグ -->
-<div class="p-4 mb-8">
-  <h2 class="mb-4">タグ</h2>
-  <div>
-    <% @content.tag_masters.each do |tag| %>
-      <span class="content-tag-btn">
-        <%= tag.tag_name %>
-      </span>
+  
+  <!-- 材料 -->
+  <div class="mb-8 border bg-gray-100">
+    <h2 class="m-4">材料</h2>
+    <!-- 新規作成 -->
+    <% if admin_user? %>
+      <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
     <% end %>
-  </div>
-</div>
-
-<!-- 材料 -->
-<div class="mb-8 border bg-gray-100">
-  <h2 class="m-4">材料</h2>
-  <!-- 新規作成 -->
-  <% if admin_user? %>
-    <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
-  <% end %>
-  <!-- 材料一覧 -->
-  <div class="py-4 px-8 text-left text-lg">
-    <%= render partial: "material_card", collection: @materials, as: "material" %>
-  </div>
-</div>
-
-<!-- 作り方 -->
-<div class="mb-8 border bg-gray-100">
-  <h2 class="m-4">作り方</h2>
-  <% if admin_user? %>
-    <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
-  <% end %>
-  <!-- 作り方一覧 -->
-  <div class="py-4 px-8 text-left text-lg">
-    <%= render partial: "make_card", collection: @makes, as: "make" %>
-  </div>
-</div>
-
-<!-- ポイント -->
-<div class="mb-8 pb-8 border bg-gray-100">
-  <h2 class="py-8">ポイント</h2>
-  <p class="text-left p-8"><%= @content.point %></p>
-</div>
-
-<!-- review -->
-<div class="mb-8 p-4 border bg-gray-100">
-
-  <div class="mb-4 bg-gray-100">
-    <h2 class="pt-8 pm-4">レビュー</h2>
-    <% if general_user? %>
-      <div class="px-4 py-2 text-right">
-        <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
-      </div>
-
-    <% end %>
-
-    <!-- レビューカード -->
-    <div class="md:flex justify-start flex-wrap bg-white">
-      <%= render partial: "review_card", collection: @reviews, as: "review" %>
+    <!-- 材料一覧 -->
+    <div class="py-4 px-8 text-left text-lg">
+      <%= render partial: "material_card", collection: @materials, as: "material" %>
     </div>
   </div>
-</div>
-
-
-<!-- 質問と返信 -->
-<div class="py-4 my-4 bg-dekiru-base">
-
-  <!-- 質問フォーム -->
-  <h2 class="mt-8 mb-4">質問</h2>
-  <%= render partial: "question_card", collection: @questions, as: "question" %>
-  <%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
-
-  <!-- 質問 -->
-  <h2 class="py-4">質問する</h2>
-  <!-- 質問フォーム -->
-  <div>
-  <% if user_signed_in? %>
-    <% if current_user.general? %>
-      <%= render "question_form" %>
-    <% else %>
-      <p>管理者は質問できません。</p>
+  
+  <!-- 作り方 -->
+  <div class="mb-8 border bg-gray-100">
+    <h2 class="m-4">作り方</h2>
+    <% if admin_user? %>
+      <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
     <% end %>
-  <% else %>
-    <p>ログインすると、質問ができます</p>
-  <% end %>
+    <!-- 作り方一覧 -->
+    <div class="py-4 px-8 text-left text-lg">
+      <%= render partial: "make_card", collection: @makes, as: "make" %>
+    </div>
   </div>
-
+  
+  <!-- ポイント -->
+  <div class="mb-8 pb-8 border bg-gray-100">
+    <h2 class="py-8">ポイント</h2>
+    <p class="text-left p-8"><%= @content.point %></p>
+  </div>
+  
+  <!-- review -->
+  <div class="mb-8 p-4 border bg-gray-100">
+  
+    <div class="mb-4 bg-gray-100">
+      <h2 class="pt-8 pm-4">レビュー</h2>
+      <% if general_user? %>
+        <div class="px-4 py-2 text-right">
+          <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
+        </div>
+  
+      <% end %>
+  
+      <!-- レビューカード -->
+      <div class="md:flex justify-start flex-wrap bg-white">
+        <%= render partial: "review_card", collection: @reviews, as: "review" %>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- 質問と返信 -->
+  <div class="py-4 my-4 bg-dekiru-base">
+  
+    <!-- 質問フォーム -->
+    <h2 class="mt-8 mb-4">質問</h2>
+    <%= render partial: "question_card", collection: @questions, as: "question" %>
+    <%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
+  
+    <!-- 質問 -->
+    <h2 class="py-4">質問する</h2>
+    <!-- 質問フォーム -->
+    <div>
+    <% if user_signed_in? %>
+      <% if current_user.general? %>
+        <%= render "question_form" %>
+      <% else %>
+        <p>管理者は質問できません。</p>
+      <% end %>
+    <% else %>
+      <p>ログインすると、質問ができます</p>
+    <% end %>
+    </div>
+  
+  </div>
 </div>
-
-
