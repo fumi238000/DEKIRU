@@ -7,7 +7,7 @@
   <div>
     <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
     <%# TODO: アラートにデザインを当てる %>
-    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
+    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
   </div>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<div class="text-center pt-16 pb-32 border border-red-500">
+<div class="text-center pt-16 pb-32">
   <!-- タイトル-->
   <h2 class="h2 py-8">MyPage</h2>
 
@@ -28,7 +28,7 @@
 
   <!-- ログアウト-->
   <div class="my-8 text-center">
-    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "red-link w-40 border border-red-500 py-2 px-4 w-32 hover:bg-red-500 hover:text-white" do%>
+    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-link w-40 border border-red-500 py-2 px-4 w-32 hover:bg-red-500 hover:text-white" do%>
       <button class="w-32">ログアウト</button>
     <% end %>
   </div>

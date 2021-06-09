@@ -18,7 +18,7 @@
     <% if question.user == current_user || admin_user? %>
       <% if question.response.nil? %>
       <div class="text-left p-4">
-        <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"red-link" %>
+        <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"red-link" %>
       </div>
     <% end %>
 
@@ -43,7 +43,7 @@
       <% if admin_user? %>
         <div class="flex justify-end p-4">
           <div class= "px-4 mr-1 text-right"><%= link_to ">>編集", edit_response_path(question.response, question_id: question.id), class:"admin-link" %></div>
-          <div><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"admin-link" %></div>
+          <div><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？, disable_with: "送信中..."'}, method: :delete, class:"admin-link" %></div>
         </div>
       <% end %>
 

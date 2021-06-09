@@ -11,7 +11,7 @@
         <%= render "confirm_fields", form: form %>
         <div>
           <div class="mt-4"><%= form.button "戻る", name: "contact[confirmed]", value: "", class:"submit-btn" %></div>
-          <div><%= form.button "送信", name: "contact[confirmed]", value: "1", class:"submit-btn" %></div>
+          <div><%= form.button "送信", name: "contact[confirmed]", value: "1", data: { disable_with: "送信中..." }, class:"submit-btn" %></div>
         </div>
           <% else %>
         <%# 投稿画面 %>
