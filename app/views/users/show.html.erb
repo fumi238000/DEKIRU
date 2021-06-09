@@ -1,6 +1,6 @@
 <div class="text-center pt-16 pb-32">
   <!-- タイトル-->
-  <h2 class="h2 py-8">MyPage</h2>
+  <h1 class="py-8">MyPage</h1>
 
   <!-- 写真 + 名前 -->
   <div class="py-8">
@@ -38,19 +38,19 @@
     <div class="text-left p-8">
       <h2 class="text-pink-500">管理者専用</h2>
       
-      <h2 class="h2 py-8">1.タグ一覧</h2>
+      <h2 class="py-8">1.タグ一覧</h2>
       <div>
         <%= link_to ">>追加", new_tag_master_path, class:"admin-link" %>
         <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
       </div>
 
-      <h2 class="h2 py-8">2.カテゴリー作成</h2>
+      <h2 class="py-8">2.カテゴリー作成</h2>
       <div>
         <%= link_to ">>追加", new_category_path, class:"admin-link" %>
       </div>
 
       <div>
-        <h2 class="h2 py-8">3.コンテンツ作成</h2>
+        <h2 class="py-8">3.コンテンツ作成</h2>
         <!-- 新規作成リンク(管理者のみ) -->
         <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
       </div>

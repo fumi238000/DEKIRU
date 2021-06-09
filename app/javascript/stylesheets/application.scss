@@ -2,18 +2,18 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-//************文字**************//
-.h1 {
-  @apply text-4xl text-dekiru-font
-}
 
-.h2 {
-  @apply text-2xl text-dekiru-font font-medium
+//************ BASE **************//
+@layer base {
+  h1 {
+    @apply text-2xl text-dekiru-font;
+  }
+  h2 {
+    @apply text-lg text-dekiru-font font-medium;
+  }
 }
 
 //************ボタン**************//
-
-
 //mailボタン
 // TODO: hover用の色を作成すること
 .blue-btn {

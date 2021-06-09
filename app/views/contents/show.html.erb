@@ -52,7 +52,7 @@
 
 <!-- タグ -->
 <div class="p-4 mb-8">
-  <h2 class="h2 mb-4">タグ</h2>
+  <h2 class="mb-4">タグ</h2>
   <div>
     <% @content.tag_masters.each do |tag| %>
       <span class="content-tag-btn">
@@ -64,7 +64,7 @@
 
 <!-- 材料 -->
 <div class="mb-8 border bg-gray-100">
-  <h2 class="h2 m-4">材料</h2>
+  <h2 class="m-4">材料</h2>
   <!-- 新規作成 -->
   <% if admin_user? %>
     <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
@@ -77,7 +77,7 @@
 
 <!-- 作り方 -->
 <div class="mb-8 border bg-gray-100">
-  <h2 class="h2 m-4">作り方</h2>
+  <h2 class="m-4">作り方</h2>
   <% if admin_user? %>
     <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
   <% end %>
@@ -89,7 +89,7 @@
 
 <!-- ポイント -->
 <div class="mb-8 pb-8 border bg-gray-100">
-  <h2 class="h2 py-8">ポイント</h2>
+  <h2 class="py-8">ポイント</h2>
   <p class="text-left p-8"><%= @content.point %></p>
 </div>
 
@@ -97,7 +97,7 @@
 <div class="mb-8 p-4 border bg-gray-100">
 
   <div class="mb-4 bg-gray-100">
-    <h2 class="h2 pt-8 pm-4">レビュー</h2>
+    <h2 class="pt-8 pm-4">レビュー</h2>
     <% if general_user? %>
       <div class="px-4 py-2 text-right">
         <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
@@ -117,12 +117,12 @@
 <div class="py-4 my-4 bg-dekiru-base">
 
   <!-- 質問フォーム -->
-  <h2 class="h2 mt-8 mb-4">質問</h2>
+  <h2 class="mt-8 mb-4">質問</h2>
   <%= render partial: "question_card", collection: @questions, as: "question" %>
   <%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
 
   <!-- 質問 -->
-  <h2 class="h2 py-4">質問する</h2>
+  <h2 class="py-4">質問する</h2>
   <!-- 質問フォーム -->
   <div>
   <% if user_signed_in? %>
