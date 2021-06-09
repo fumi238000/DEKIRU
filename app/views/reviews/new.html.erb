@@ -5,14 +5,15 @@
     <%= render 'layouts/error_messages', model: f.object %>
   
     <%= f.hidden_field :content_id, value: @content_id %>
-
-    <div>
-      <div class="form-title">写真<span class="required_content">必須</span></div>
-      <div class="mx-auto max-w-4xl">
-        <%= f.file_field :image, accept: "image/png,image/jpeg", class:"block"%>
-      </div>
-    </div>
   
+     <div class="field">
+        <div class="form-title">写真<span class="required_content">必須</span></div>
+        <div class="max-w-4xl mx-auto">
+          <%= f.label :image, class: "image_input_btn file_field" %>
+          <%= f.file_field :image, accept: "image/png,image/jpeg", class: "hidden" %>
+        </div>
+      </div>
+
     <div>
       <div class="form-title">レビュー<span class="required_content">必須</span></div>
       <%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)",required: true, class:"text-area" %>
