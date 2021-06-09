@@ -14,6 +14,7 @@ ja:
         amount: 量
         unit: 単位
       category:
+        category: カテゴリー
         name: カテゴリー名
       user:
         name: ユーザー名
@@ -30,3 +31,13 @@ ja:
       contact:
         title: お問い合わせタイトル
         content: お問い合わせ内容
+    models:
+      make: 作り方
+      material: 材料
+      category: カテゴリー
+      user: ユーザー
+      review: レビュー
+      question: 質問
+      response: 返信
+      tag_master: タグ
+      contact: お問い合わせ

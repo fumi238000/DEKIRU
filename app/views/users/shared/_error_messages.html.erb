@@ -1,15 +1,23 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2 class="h2 py-8">
+  <div class="mt-10 mb-20">
+    <div class="mx-auto max-w-4xl mb-10">
       <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
+                   count: resource.errors.count,
+                   resource: resource.class.model_name.human.downcase)
+         %>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="flex flex-col space-y-3 m-1">
+          <div class="bg-red-100 p-5 w-full border-l-4 border-red-700">
+            <div class="flex space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="flex-none fill-current text-red-500 h-4 w-4">
+            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z" /></svg>
+              <div class="flex-1 leading-tight text-sm text-red-700">
+                <li class="block text-left"><%= message %></li>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 <% end %>
