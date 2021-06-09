@@ -90,11 +90,11 @@
 }
 
 .text-field {
-  @apply border text-dekiru-font w-full py-2 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
+  @apply border   text-dekiru-font w-full py-2 focus:outline-none focus:ring-1 focus:ring-dekiru-blue focus:ring-opacity-50 focus:border-dekiru-blue max-w-4xl resize-none rounded
 }
 
 .text-area {
-  @apply border text-dekiru-font w-full py-8 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
+  @apply border text-dekiru-font w-full py-8 focus:outline-none focus:ring-1 focus:ring-dekiru-blue focus:ring-opacity-30 focus:border-dekiru-blue max-w-4xl resize-none rounded
 }
 
 //TODO: text-fieldは将来的にこちらを実装する予定
