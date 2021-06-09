@@ -7,7 +7,7 @@
   <div>
     <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
     <%# TODO: アラートにデザインを当てる %>
-    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
+    <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
   </div>
   <% end %>
 </div>
@@ -113,23 +113,29 @@
 </div>
 
 
-<!-- 質問 -->
-<h2 class="h2 py-4">質問する</h2>
-<!-- 質問フォーム -->
-<% if user_signed_in? %>
-  <% if current_user.general? %>
-    <%= render "question_form" %>
-  <% else %>
-    <p>管理者は質問できません。</p>
-  <% end %>
-<% else %>
-  <p>ログインすると、質問ができます</p>
-<% end %>
-<br/>
-
 <!-- 質問と返信 -->
-<h2 class="h2 mt-8 mb-4">質問</h2>
-<%= render partial: "question_card", collection: @questions, as: "question" %>
+<div class="py-4 my-4 bg-dekiru-base">
+
+  <!-- 質問フォーム -->
+  <h2 class="h2 mt-8 mb-4">質問</h2>
+  <%= render partial: "question_card", collection: @questions, as: "question" %>
+  <%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
+
+  <!-- 質問 -->
+  <h2 class="h2 py-4">質問する</h2>
+  <!-- 質問フォーム -->
+  <div>
+  <% if user_signed_in? %>
+    <% if current_user.general? %>
+      <%= render "question_form" %>
+    <% else %>
+      <p>管理者は質問できません。</p>
+    <% end %>
+  <% else %>
+    <p>ログインすると、質問ができます</p>
+  <% end %>
+  </div>
+
+</div>
 
 
-<%# TODO: jqueryでアコーディオンを検討(長くなるので) %>

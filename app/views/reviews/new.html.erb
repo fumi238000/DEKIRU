@@ -8,16 +8,18 @@
 
     <div>
       <div class="form-title">写真<span class="required_content">必須</span></div>
-      <%= f.file_field :image, accept: "image/png,image/jpeg" %>
+      <div class="mx-auto max-w-4xl">
+        <%= f.file_field :image, accept: "image/png,image/jpeg", class:"block"%>
+      </div>
     </div>
   
     <div>
       <div class="form-title">レビュー<span class="required_content">必須</span></div>
-      <p><%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)", class:"text-area" %></p>
+      <%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)",required: true, class:"text-area" %>
     </div>
     
     <div>
-      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
+      <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
     </div>
   
   </div>

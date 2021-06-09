@@ -9,7 +9,7 @@
         <i class="fas fa-pen"></i>
       <% end %>
       <!-- 削除ボタン-->
-      <%= link_to category_path(category), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete do %>
+      <%= link_to category_path(category), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete do %>
        <i class="far fa-trash-alt"></i>
       <% end %>
     <% end %>

@@ -1,16 +1,16 @@
-<h2 class="h2">ログイン</h2>
+<h2 class="h2 my-8">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="form-body">
+<div class="form-body py-8">
   
   <div class="field">
-    <%= f.label :email, class:"form-title"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"login-field" %>
+    <h2 class="form-title">メールアドレス<span class="required_content">必須</span></h2>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",required: true, class:"login-field" %>
   </div>
 
   <div class="field">
-    <%= f.label :password, class:"form-title" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class:"login-field" %>
+    <h2 class="form-title">パスワード<span class="required_content">必須</span></h2>
+    <%= f.password_field :password, autocomplete: "current-password",required: true, class:"login-field" %>
   </div>
 
   <% if devise_mapping.rememberable? %>

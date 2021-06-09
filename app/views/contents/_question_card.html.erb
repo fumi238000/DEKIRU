@@ -1,7 +1,7 @@
-<div class="p-2 mb-4">
+<div class="p-4 mb-4 mx-4 max-w-4xl mx-auto">
 
   <!-- 質問-->
-  <div  class="border border-gray-300 rounded-lg mb-4">
+  <div  class="border bg-white rounded-lg mb-4">
     <!-- 質問ユーザー -->
     <div class="flex px-4 py-8">
       <%= image_tag question.user.thumbnail.thumb27.url, class:"rounded-full border border-gray-300"%>
@@ -18,7 +18,7 @@
     <% if question.user == current_user || admin_user? %>
       <% if question.response.nil? %>
       <div class="text-left p-4">
-        <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"red-link" %>
+        <%= link_to ">>削除", question_path(question), data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"red-link" %>
       </div>
     <% end %>
 
@@ -27,7 +27,7 @@
 
 
   <!--返信-->
-  <div class="border bg-gray-100 rounded-lg">
+  <div class="border bg-blue-100 rounded-lg">
 
     <% if question.response.present?%> <%# 返信がある場合、返信を表示する%>
       <!-- DEKRIU情報 -->
@@ -43,7 +43,7 @@
       <% if admin_user? %>
         <div class="flex justify-end p-4">
           <div class= "px-4 mr-1 text-right"><%= link_to ">>編集", edit_response_path(question.response, question_id: question.id), class:"admin-link" %></div>
-          <div><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？'}, method: :delete, class:"admin-link" %></div>
+          <div><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？, disable_with: "送信中..."'}, method: :delete, class:"admin-link" %></div>
         </div>
       <% end %>
 

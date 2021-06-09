@@ -5,7 +5,7 @@
     <% if admin_user? %>
       <%# TODO: home#indexの場合、非表示にしたい。%>
     　<%= link_to ">>編集", edit_tag_master_path(tag.id) , class:"admin-link" %>
-  　  <%= link_to ">>削除", tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？'}, method: :delete, class:"admin-link" %>
+  　  <%= link_to ">>削除", tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
     <% end %>
   </div>
 <% end %>
