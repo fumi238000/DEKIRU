@@ -10,12 +10,12 @@
     
     <div class="field">
       <div class="form-title">ユーザー名<span class="required_content">必須</span></div>
-      <%= f.text_field :name, placeholder: "名前入力(16文字以内)", class: "text-field"%>
+      <%= f.text_field :name, placeholder: "名前入力(16文字以内)",required: true, class: "text-field"%>
     </div>
   
     <div class="field">
       <div class="form-title">メールアドレス<span class="required_content">必須</span></div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例：sample@gmail.com", class: "text-field" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例：sample@gmail.com",required: true, class: "text-field" %>
     </div>
   
   
@@ -33,7 +33,7 @@
       <%= f.label "新しいパスワード【変更する場合は入力】",class: "form-title" %>
       <%#= f.label :password %><!-- <br /> -->
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "例：pass2021", class: "text-field" %>
-      <span>(８文字以上１６文字以内、有効な記号　- _ @)</span>
+      <span class="text-sm text-left">(８文字以上１６文字以内、有効な記号　- _ @)</span>
     </div>
   
     <div class="field">
@@ -46,7 +46,7 @@
       <%#= f.label :current_password %><!-- <br /> -->
       <%# TODO: 必須のマークを変更したい %>
       <div class="form-title">現在のパスワード<span class="required_content">必須</span></div>
-      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード", class: "text-field" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード",required: true, class: "text-field" %>
     </div>
   
     <div class="actions">

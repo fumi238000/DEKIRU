@@ -2,7 +2,7 @@
   <div class="form-body">
     <%= render 'layouts/error_messages', model: f.object %>
     <h2 class="form-title">カテゴリー名<span class="required_content">必須</span></h2>
-    <%= f.text_field :name , class: "text-field", placeholder: "カテゴリー名(16文字以内)" %>
+    <%= f.text_field :name , placeholder: "カテゴリー名(16文字以内)", required: true, class: "text-field" %>
     <div>
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？'}, class:"submit-btn" %>
     </div>
