@@ -9,7 +9,7 @@
 <div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
-      <h2 class="h2">人気情報</h2>
+      <h2 class="pt-4">人気情報</h2>
       <%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %>
     </div>
   </div>
@@ -23,7 +23,7 @@
 <div class="border p-4 my-8 bg-gray-100">
     <div class="flex justify-center">
       <div>
-        <h2 class="h2">おすすめ情報</h2>
+        <h2 class="pt-4">おすすめ情報</h2>
         <%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %>
       </div>
     </div>
@@ -36,7 +36,7 @@
 <div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
-      <h2 class="h2">新着情報</h2>
+      <h2 class="pt-4">新着情報</h2>
       <%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %>
     </div>
   </div>
@@ -48,7 +48,7 @@
 <div class="border p-4 my-8 bg-gray-100">
   <div class="flex justify-center">
     <div>
-      <h2 class="h2">カテゴリー一覧</h2>
+      <h2 class="pt-4">カテゴリー一覧</h2>
       <%= link_to ">>全て見る", categories_path, class:"blue-link" %>
     </div>
   </div>
@@ -61,7 +61,7 @@
 <br/>
 
 <div class="border p-4 mb-8 bg-gray-100">
-  <h2 class="h2">キーワード</h2>
+  <h2 class="pt-4">キーワード</h2>
   <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
   <div class="flex justify-start flex-wrap my-2"> 
     <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>

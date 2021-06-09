@@ -2,44 +2,43 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-//************文字**************//
-.h1 {
-  @apply text-4xl text-dekiru-font
-}
 
-.h2 {
-  @apply text-2xl text-dekiru-font font-medium
+//************ BASE **************//
+@layer base {
+  h1 {
+    @apply text-2xl text-dekiru-font;
+  }
+  h2 {
+    @apply text-2xl text-dekiru-font font-medium;
+  }
 }
 
 //************ボタン**************//
+//ベース
+.base_btn {
+ @apply text-white font-bold py-2 px-6 my-8 rounded-lg focus:outline-none shadow-lg 
+}
 
-
-//mailボタン
-// TODO: hover用の色を作成すること
+//背景色・hover時の背景色
 .blue-btn {
-  @apply bg-dekiru-blue hover:bg-dekiru-light_blue text-white font-bold py-2 px-4 rounded-lg
+  @apply base_btn bg-dekiru-blue hover:bg-dekiru-light_blue
 }
 
-//deleteボタン
-// TODO: 色を検討する
 .red-btn {
-  @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg
+  @apply base_btn bg-red-500 hover:bg-red-700
 }
 
-//詳細遷移ボタン
-// TODO: 色を検討する
-.show-btn {
-  @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
+.submit-btn {
+  @apply base_btn bg-green-500 hover:bg-green-700 
 }
 
 // お気に入りボタン
-// TODO: 色を検討する
 .favorite-btn {
-  @apply text-white bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full
+  @apply text-white bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full my-4
 }
 
 .no-favorite-btn {
-  @apply text-green-500 border border-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded-full
+  @apply text-green-500 border border-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded-full 
 }
 
 //カテゴリータグ
@@ -49,19 +48,15 @@
 
 //コンテンツタグ
 .content-tag-btn {
-  @apply text-white bg-dekiru-keyword border-0 m-1 py-2 px-6 focus:outline-none text-lg
+  @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg
 }
 
-//TOOD: 色を検討する,hoverも同様
-.submit-btn {
-  @apply text-white bg-green-500 py-2 px-6 m-4 focus:outline-none hover:bg-pink-600 rounded text-lg rounded-full
-}
 
 //************リンク**************//
 
 //mailCRUDリンク
 .blue-link {
-  @apply text-dekiru-blue text-sm
+  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue
 }
 
 //削除リンク
