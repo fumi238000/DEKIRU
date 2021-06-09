@@ -35,7 +35,7 @@ RSpec.describe "Questions", type: :request do
 
       context "パラメータが異常な時" do
         let(:question_params) { { question: attributes_for(:question, :question_invalid, user_id: @user.id, content_id: content.id) } }
-        it "質問の件数が増加しないこと", type: :do do
+        it "質問の件数が増加しないこと" do
           sign_in @user
           expect { subject }.to change { Question.count }.by(0)
           expect(response).to have_http_status(:found)
