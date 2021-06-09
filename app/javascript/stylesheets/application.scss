@@ -80,20 +80,21 @@
 }
 
 //************ フォーム **************//
-.form-body {
-  @apply w-10/12 mx-auto md:max-w-md m-4
-}
+//消すかリファクタリングで使用するか
+// .form-body {
+//   @apply  
+// }
 
 .form-title {
   @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue
 }
 
 .text-field {
-  @apply border text-dekiru-font w-full py-2 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30
+  @apply border text-dekiru-font w-full py-2 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
 }
 
 .text-area {
-  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue focus:bg-dekiru-light_blue focus:opacity-30 
+  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
 }
 
 //TODO: border-b-2を入れるとエラーが出るので対応する
