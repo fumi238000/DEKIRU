@@ -1,4 +1,5 @@
 <%# TODO: ルーディングを調整すること%>
+<div class="p-4 mb-60">
 
 <h2 class="h2 pt-8 pb-4">アカウント編集</h2>
 <%= link_to ">>マイページへ戻る", mypage_path(current_user), class:"blue-link"%>
@@ -32,8 +33,8 @@
     <div class="field">
       <%= f.label "新しいパスワード【変更する場合は入力】",class: "form-title" %>
       <%#= f.label :password %><!-- <br /> -->
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "例：pass2021", class: "text-field" %>
-      <span class="text-sm text-left">(８文字以上１６文字以内、有効な記号　- _ @)</span>
+      <div><%= f.password_field :password, autocomplete: "new-password", placeholder: "例：pass2021", class: "text-field" %></div>
+      <span class="supplement_comment">(８文字以上１６文字以内、有効な記号　- _ @)</span>
     </div>
   
     <div class="field">
@@ -51,11 +52,9 @@
   
     <div class="actions">
       <%= f.submit "確定する", class:"submit-btn" %>
-      <%#= f.submit "Update" %>
     </div>
-
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <%# アカウント削除ボタンを導入する場合は以下をコメントアウト %>
 <%#= button_to "このアカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除しますか？" }, method: :delete %>

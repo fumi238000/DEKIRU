@@ -15,7 +15,7 @@
 
     <div>
       <h2 class="form-title">youtube_URL<span class="required_content">必須</span></h2>
-      <span class="text-sm">Youtube上にアップロードされているページのURLを貼り付けて下さい</span>
+      <span class="supplement_comment">Youtube上にアップロードされているページのURLを貼り付けて下さい</span>
       <%= f.text_field :movie_url, placeholder: "(例) https://youtube.com/sample",required: true, class: "text-field"%>
     </div>
 
@@ -30,7 +30,7 @@
     </div>
 
     <!-- コンテンツタグ-->
-    <div>
+    <div class="max-w-4xl mx-auto">
       <h2 class="form-title">タグ（3つまで）</h2>
 
       <div class="flex flex-wrap justify-start py-4 mb-8">

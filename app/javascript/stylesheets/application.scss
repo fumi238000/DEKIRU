@@ -86,7 +86,7 @@
 // }
 
 .form-title {
-  @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue
+  @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue max-w-4xl mx-auto
 }
 
 .text-field {
@@ -94,12 +94,12 @@
 }
 
 .text-area {
-  @apply border text-dekiru-font　w-full py-8 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
+  @apply border text-dekiru-font w-full py-8 focus:outline-none focus:border-dekiru-blue max-w-4xl resize-none
 }
 
-//TODO: border-b-2を入れるとエラーが出るので対応する
+//TODO: text-fieldは将来的にこちらを実装する予定
 .login-field {
-  @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100
+  @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100 max-w-4xl resize-none
 }
 
 //************ コンテンツ **************//
@@ -127,6 +127,12 @@
 .required_content {
   @apply text-sm ml-2 bg-red-400 text-white p-1
 }
+
+//補足コメント
+.supplement_comment {
+  @apply my-2 text-sm text-left block max-w-4xl mx-auto opacity-70
+}
+
 
 //************ movie **************//
 .movie__inner {
