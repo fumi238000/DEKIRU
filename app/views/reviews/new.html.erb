@@ -6,11 +6,12 @@
   
     <%= f.hidden_field :content_id, value: @content_id %>
   
-     <div class="field">
-        <div class="form-title">写真<span class="required_content">必須</span></div>
+      <div class="field pb-4">
+        <h2 class="form-title">写真<span class="required_content">必須</span></h2>
         <div class="max-w-4xl mx-auto">
-          <%= f.label :image, class: "file_field" %>
-          <%= f.file_field :image, accept: "image/png,image/jpeg", class: "hidden" %>
+          <%#= image_tag @user.thumbnail.url, id: :img_prev ,class:"my-4 border-4 border-gray-300"%>
+          <label class="file_field" for="review_image">選択する</label>
+          <%= f.file_field :thumbnail, id: "review_image", accept: "image/png,image/jpeg", class: "hidden" %>
         </div>
       </div>
 
@@ -18,10 +19,10 @@
       <div class="form-title">レビュー<span class="required_content">必須</span></div>
       <%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)",required: true, class:"text-area" %>
     </div>
-    
+
     <div>
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
     </div>
-  
+
   </div>
 <% end %>

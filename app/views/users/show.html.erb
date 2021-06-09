@@ -22,7 +22,6 @@
     <%= link_to "アカウント編集", edit_user_registration_path(current_user), class:"blue-btn"%>
   </div>
 
-
   <!-- ログアウト-->
   <div class="my-8 m-auto">
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-btn"%>
@@ -32,8 +31,6 @@
   <% if admin_user? %>
     <div class="text-left p-8">
       <h2 class="text-pink-500">管理者専用</h2>
-      
-
 
       <!-- コンテンツ -->
       <div class="my-8">
@@ -51,8 +48,6 @@
       </div>
       </div>
 
-
-
       <!-- タグ -->
       <div class="my-8">
         <h2>3.タグ一覧</h2>
@@ -62,10 +57,7 @@
         </div>
       </div>
 
-
-
     </div>
-
 
   <% end %>
 
