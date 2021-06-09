@@ -76,27 +76,6 @@ RSpec.describe "Categories", type: :request do
           expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end
-
-    # TOOD: capybara部分は別タスクで実行する
-      context "未ログインユーザーの場合" do
-        xit "xxボタンが表示されないこと" do
-          # テスト
-        end
-      end
-
-      context "一般ユーザーの場合" do
-        xit "xxボタンが表示されないこと" do
-          sign_in @user
-          # テスト
-        end
-      end
-
-      context "管理者の場合" do
-        xit "xxボタンが表示されること" do
-          sign_in @admin
-          # テスト
-        end
-      end
     end
   end
 
