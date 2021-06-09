@@ -29,7 +29,7 @@
 }
 
 .submit-btn {
-  @apply base_btn bg-green-500 hover:bg-green-700 
+  @apply base_btn bg-green-500 hover:bg-green-700
 }
 
 // お気に入りボタン
@@ -65,11 +65,11 @@
 }
 
 .red-link {
-  @apply text-red-700 text-sm
+  @apply text-red-700 hover:text-red-300 text-sm
 }
 
 .admin-link {
-  @apply text-pink-500 text-sm
+  @apply text-pink-500 hover:text-pink-300 text-sm
 }
 
 //************カード**************//
