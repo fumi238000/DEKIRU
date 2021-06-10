@@ -20,6 +20,8 @@ module.exports = {
           light_blue: '#72FFFF',
           font: '#000000',
           keyword: '#595959',
+          // gray: bg-gray-100,
+          admin: '#FA198B',
         }
       },
     },

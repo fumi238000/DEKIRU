@@ -12,22 +12,26 @@
     <p class="text-lg"><%= @user.name %></p>
   </div>
 
+<div>
   <!-- お気に入り一覧-->
-  <div class="my-8">
-    <%= link_to "お気に入り一覧", favorite_contents_path, class:"blue-btn" %>
-  </div>
+  <span class="block m-auto max-w-sm">
+    <%= link_to "お気に入り一覧", favorite_contents_path, class:"blue-btn w-2/3 block m-auto" %>
+  </span>
 
   <!-- アカウント編集-->
-  <div class="my-8">
-    <%= link_to "アカウント編集", edit_user_registration_path(current_user), class:"blue-btn"%>
-  </div>
+  <span class="block w-full m-auto max-w-sm">
+    <%= link_to "アカウント編集", edit_user_registration_path(current_user), class:"blue-btn w-2/3 m-auto block"%>
+  </span>
 
   <!-- ログアウト-->
-  <div class="my-8 m-auto">
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-btn"%>
-  </div>
+  <span class="block w-full m-auto max-w-sm">
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", disable_with: "送信中..." }, class: "red-btn w-2/3  block m-auto"%>
+</span>
+
+</div>
 
   <!-- 管理者専用-->
+</div>
   <% if admin_user? %>
     <div class="text-left p-8">
       <h2 class="text-pink-500">管理者専用</h2>

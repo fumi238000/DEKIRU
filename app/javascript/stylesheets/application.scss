@@ -29,7 +29,7 @@
 }
 
 .submit-btn {
-  @apply base_btn bg-green-500 hover:bg-green-700 
+  @apply base_btn bg-green-500 hover:bg-green-700
 }
 
 // お気に入りボタン
@@ -46,9 +46,13 @@
   @apply text-white bg-dekiru-blue border-0 m-1 py-2 px-6 focus:outline-none text-lg
 }
 
-//コンテンツタグ
+//コンテンツタグ(リンクあり)
 .content-tag-btn {
   @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg
+}
+//コンテンツタグ(リンクなし)
+.content-tag-style {
+  @apply text-white bg-dekiru-keyword border-0 m-1 py-2 px-6 focus:outline-none text-lg
 }
 
 .file_field {
@@ -56,20 +60,16 @@
 }
 
 //************リンク**************//
-
-//mailCRUDリンク
 .blue-link {
   @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue
 }
 
-//削除リンク
 .red-link {
-  @apply text-red-700 text-sm
+  @apply text-red-700 hover:text-red-300 text-sm
 }
 
-//管理者CRUDリンク
 .admin-link {
-  @apply text-pink-500 text-sm
+  @apply text-dekiru-admin hover:text-pink-300 text-sm
 }
 
 //************カード**************//
@@ -130,7 +130,6 @@
 .supplement_comment {
   @apply my-2 text-sm text-left block max-w-4xl mx-auto opacity-70
 }
-
 
 //************ movie **************//
 .movie__inner {
