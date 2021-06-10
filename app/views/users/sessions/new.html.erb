@@ -20,20 +20,23 @@
     </div>
   <% end %>
 
-  <!-- ログイン-->
-  <div class="actions">
-    <%= f.submit "ログイン", class:"submit-btn" %>
+  <div>
+    <!-- ログイン-->
+    <span class="block m-auto max-w-sm">
+      <%= f.submit "ログイン", class:"submit-btn w-2/3  block m-auto" %>
+    </span>
+
+    <!-- 新規作成 -->
+    <span class="block m-auto max-w-sm">
+      <%= render "users/shared/links" %>
+    </span>
+
+    <!-- ゲストログイン(後日削除予定)-->
+    <span class="block m-auto max-w-sm">
+      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn w-2/3  block m-auto"%>
+    </span>
   </div>
 
-  <!-- 新規作成 -->
-  <div>
-    <%= render "users/shared/links" %>
-  </div>
-  
-  <!-- ゲストログイン(後日削除予定)-->
-  <div class="mt-10">
-    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "blue-btn"%>
-  </div>
 
 </div>
 <% end %>
