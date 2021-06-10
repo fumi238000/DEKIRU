@@ -15,7 +15,7 @@
   </div>
   
   <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/content_card", collection: @popularity_contents, as: "content" %>
+    <%= render partial: "layouts/top_page_content_card", collection: @popularity_contents, as: "content" %>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
       </div>
     </div>
   <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
+    <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
   </div>
 </div>
 
@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/content_card", collection: @new_contents, as: "content" %>
+    <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
   </div>
 </div>
 
@@ -53,7 +53,7 @@
     </div>
   </div>
     <!-- 横にして！-->
-   <div class="md:flex justify-center py-8 mb:py-16">
+   <div class="py-8 mb:py-16">
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
   </div>
 </div>
