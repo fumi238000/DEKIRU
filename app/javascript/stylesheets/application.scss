@@ -78,10 +78,9 @@
 }
 
 //************ フォーム **************//
-//消すかリファクタリングで使用するか
-// .form-body {
-//   @apply  
-// }
+.form-body {
+  @apply pt-8 pb-16 
+}
 
 .form-title {
   @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue max-w-4xl mx-auto
@@ -144,4 +143,3 @@ iframe {
   width: 100%;
   height: 100%;
 }
-
