@@ -1,7 +1,7 @@
-<div>
+<div class="flex">
   <div class="text-lg"><%= category.name %></div>
   <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
-    <%= render partial: "layouts/content_card", collection: category.contents.first(3), as: "content" %>
-      <% category.contents.first(3).each do |content|%>
+    <%= render partial: "layouts/content_card", collection: category.contents.first(2), as: "content" %>
+      <% category.contents.first(2).each do |content|%>
     <% end %>
 </div>
