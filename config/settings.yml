@@ -3,4 +3,4 @@
 recommend_content_num: 9 # おすすめコンテンツの最大数
 per_page: 12 # 1ページの表示数
 max_countent_tags: 3 # タグ可能数
-top_page_content: 3 # TOPページに表示するコンテンツ
+top_page_content: 2 # TOPページに表示するコンテンツ

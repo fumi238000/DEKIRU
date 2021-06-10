@@ -1,7 +1,9 @@
-<div>
-  <div class="text-lg"><%= category.name %></div>
-  <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
-    <%= render partial: "layouts/content_card", collection: category.contents.first(3), as: "content" %>
-      <% category.contents.first(3).each do |content|%>
-    <% end %>
+<div class="py-8">
+  <h2 class="text-lg"><%= category.name %></h2>
+  <div>
+    <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
+     <div class="flex">
+      <%= render partial: "layouts/top_page_content_card", collection: category.contents.first(2), as: "content" %>
+    </div>
+  </div>
 </div>

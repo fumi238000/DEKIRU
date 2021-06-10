@@ -97,17 +97,16 @@
   <!-- review -->
   <div class="mb-8 p-4 border bg-gray-100">
   
-    <div class="mb-4 bg-gray-100">
+    <div class="mb-4">
       <h2 class="pt-8 pm-4">レビュー</h2>
       <% if general_user? %>
         <div class="px-4 py-2 text-right">
           <%= link_to ">>レビューする", new_review_path(params: { content_id: @content.id }), class:"blue-link" %>
         </div>
-  
       <% end %>
   
       <!-- レビューカード -->
-      <div class="md:flex justify-start flex-wrap bg-white">
+      <div class="md:flex justify-start flex-wrap bg-white bg-gray-100">
         <%= render partial: "review_card", collection: @reviews, as: "review" %>
       </div>
     </div>
