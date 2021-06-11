@@ -43,6 +43,14 @@ end
 puts "ユーザーのテストデータを作成しました".green
 
 #-----------------------------------------
+# admin user
+#-----------------------------------------
+
+AdminUser.create!(email: "admin2@example.com", password: "password", password_confirmation: "password") if Rails.env.development?
+
+puts "admin用の管理者ユーザーのテストデータを作成しました".green
+
+#-----------------------------------------
 # category
 #-----------------------------------------
 CATEGORIES_NUM.times do |i|
