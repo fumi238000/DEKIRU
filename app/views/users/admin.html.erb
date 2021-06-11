@@ -1,5 +1,4 @@
-  <%# if admin_user? %>
-    <div class="text-left p-8">
+    <div class="text-left p-8 mt-8 mb-16">
       <h2 class="text-pink-500">管理者専用</h2>
 
       <!-- コンテンツ -->
@@ -11,13 +10,12 @@
       </div>
 
       <!-- カテゴリー -->
-      <div class="my-8">
-
-      <h2>2.カテゴリー</h2>
-      <div>
-        <div><%= link_to ">>追加", new_category_path, class:"admin-link" %><div>
-        <div><%= link_to ">>カテゴリー一覧",admin_categories_path, class:"admin-link" %><div>
-      </div>
+      <div class="my-8 ">
+        <h2>2.カテゴリー</h2>
+        <div>
+          <div><%= link_to ">>追加", new_category_path, class:"admin-link" %></div>
+          <div><%= link_to ">>カテゴリー一覧",admin_categories_path, class:"admin-link" %></div>
+        </div>
       </div>
 
       <!-- タグ -->
@@ -26,7 +24,6 @@
         <div class="my-4">
           <div><%= link_to ">>追加", new_tag_master_path, class:"admin-link" %></div>
           <div><%= link_to ">>タグ一覧", admin_tag_masters_path, class:"admin-link" %></div>
-
           <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
         </div>
       </div>
@@ -35,22 +32,21 @@
       <div class="my-8">
         <h2>4.質問</h2>
         <div class="my-4">
-          <%= link_to ">>質問一覧（返信できていない質問を取得し、表示するページを作成する？）", new_tag_master_path, class:"admin-link" %>
+          <div><%= link_to ">>質問一覧", questions_path, class:"admin-link" %></div>
           <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
         </div>
       </div>
 
-    <!-- 質問 -->
+    <!-- お問い合わせ -->
       <div class="my-8">
         <h2>5.お問い合わせ</h2>
         <div class="my-4">
-          <%= link_to ">>質問一覧", admin_contacts_path, class:"admin-link" %>
-          <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+          <div><%= link_to ">>質問一覧", admin_contacts_path, class:"admin-link" %></div>
+          <div><%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %></div>
         </div>
-      </div>g
+      </div>
 
     </div>
 
-  <%# end %>
 
-  </div>
+  

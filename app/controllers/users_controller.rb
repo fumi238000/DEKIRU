@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show favorite]
+  before_action :admin_checker, only: %i[admin]
 
   def show
     @content_tags = TagMaster.all
