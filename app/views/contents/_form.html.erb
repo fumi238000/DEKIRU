@@ -45,15 +45,29 @@
       </div>
     </div>
 
+
+    <!-- コンテンツタグ-->
+    <div class="max-w-4xl mx-auto">
+      <h2 class="form-title">カテゴリー</h2>
+      <div class="flex flex-wrap justify-start py-4 mb-8">
+        <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
+          <%= f.collection_select(:category_id, Category.all, :id, :name, { },{ class: "focus:outline-none text-dekiru-font" }) %>
+        </span>
+      </div>
+    </div>
+
    <!-- ステータス -->
    <div class="text-left">
       <h2 class="form-title">ステータス</h2>
       <div class="py-4">
         <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
-          <%= f.select :public_status, [ ["非公開", "non_published"], ["公開する", "published"]], { class:"text-blue-300 focus:outline-none" } %>
+          <%= f.select :public_status, [ ["非公開", "non_published"], ["公開する", "published"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
         </span>
       </div>
     </div>
+
+
+
 
     <div class="my-16">
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
