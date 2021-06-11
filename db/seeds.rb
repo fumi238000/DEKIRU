@@ -76,10 +76,28 @@ CONTENT_NUM.times do |i|
     c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
     c.category_id = Category.all.sample.id
+    c.public_status = "published"
   end
 end
 puts "コンテンツのテストデータを作成しました".green
 
+#-----------------------------------------
+# non_published_content
+#-----------------------------------------
+CONTENT_NUM.times do |i|
+  id = i + 1
+  Content.find_or_create_by!(title: "非公開コンテンツ#{id}") do |c|
+    c.title = "非公開コンテンツ#{id}" # 最大16文字
+    c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
+    c.movie_url = "https://www.youtube.com/watch?v=lE6RYpe9IT0"
+    c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
+    c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
+    c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+    c.category_id = Category.all.sample.id
+    c.public_status = "non_published"
+  end
+end
+puts "非公開コンテンツのテストデータを作成しました".green
 #-----------------------------------------
 # recommend_content
 #-----------------------------------------
@@ -94,6 +112,7 @@ RECOMMEND_CONTENT_NUM.times do |i|
     c.recommend_status = "recommend"
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
     c.category_id = Category.all.sample.id
+    c.public_status = "published"
   end
 end
 puts "おすすめコンテンツのテストデータを作成しました".green
