@@ -45,10 +45,12 @@ puts "ユーザーのテストデータを作成しました".green
 #-----------------------------------------
 # admin user
 #-----------------------------------------
-
-AdminUser.create!(email: "admin2@example.com", password: "password", password_confirmation: "password") if Rails.env.development?
-
-puts "admin用の管理者ユーザーのテストデータを作成しました".green
+AdminUser.find_or_create_by!(email: "admin2@example.com") do |t|
+  t.email = "admin2@example.com"
+  t.password = "password"
+  t.password_confirmation = "password"
+  puts "管理者データを作成しました".green
+end
 
 #-----------------------------------------
 # category
