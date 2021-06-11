@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_002245) do
+ActiveRecord::Schema.define(version: 2021_06_11_051517) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "namespace"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_002245) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "movie_id"
     t.bigint "category_id"
+    t.integer "public_status", default: 0
     t.index ["category_id"], name: "index_contents_on_category_id"
   end
 
