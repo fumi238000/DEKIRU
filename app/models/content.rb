@@ -32,7 +32,7 @@ class Content < ApplicationRecord
 
   # お気に入りが多い順番で取得
   def self.order_populer
-    Kaminari.paginate_array(self.find(Favorite.group(:content_id).order("count(content_id) desc").pluck(:content_id)))
+    Kaminari.paginate_array(self.published.where(id: Favorite.group(:content_id).order("count(content_id) desc").select(:content_id)))
   end
 
   # 動画保存処理

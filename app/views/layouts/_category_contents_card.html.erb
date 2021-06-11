@@ -3,7 +3,7 @@
   <div>
     <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
      <div class="flex">
-      <%= render partial: "layouts/top_page_content_card", collection: category.contents.first(2), as: "content" %>
+      <%= render partial: "layouts/top_page_content_card", collection: category.contents.published.first(2), as: "content" %>
     </div>
   </div>
 </div>

@@ -49,12 +49,11 @@ class ContentsController < ApplicationController
   end
 
   def newest
-    @new_contents = Content.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+    @new_contents = Content.published.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
   end
 
   def recommend
-    @recommend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
-    # @recomend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM).page(params[:page]).per(PER_PAGE) # ページネーションの場合
+    @recommend_contents = Content.published.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
   end
 
   def search
