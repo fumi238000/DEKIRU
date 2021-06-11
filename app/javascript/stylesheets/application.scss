@@ -28,6 +28,9 @@
   @apply base_btn bg-red-500 hover:bg-red-700
 }
 
+.admin-btn {
+  @apply base_btn bg-dekiru-admin hover:bg-red-100
+}
 .submit-btn {
   @apply base_btn bg-dekiru-blue hover:bg-dekiru-light_blue
 }

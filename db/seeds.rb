@@ -45,8 +45,8 @@ puts "ユーザーのテストデータを作成しました".green
 #-----------------------------------------
 # admin user
 #-----------------------------------------
-AdminUser.find_or_create_by!(email: "admin2@example.com") do |t|
-  t.email = "admin2@example.com"
+AdminUser.find_or_create_by!(email: "admin@example.com") do |t|
+  t.email = "admin@example.com"
   t.password = "password"
   t.password_confirmation = "password"
   puts "管理者データを作成しました".green
@@ -245,7 +245,7 @@ puts "コンテンツにタグを作成しました".green
 #-----------------------------------------
 # contact
 #-----------------------------------------
-user = User.first
+user = User.general.first
 Contact.create!(user_id: user.id) do |c|
   c.user_id = user.id
   c.title = "お問い合わせのタイトル(最大16文字)お問い合わせのタイトル最大" # 32文字

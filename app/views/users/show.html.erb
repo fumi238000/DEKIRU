@@ -33,9 +33,10 @@
   <!-- 管理者専用-->
 
     <!-- 管理者画面へ-->
-  <span class="block w-full m-auto max-w-sm">
-    <%= link_to "管理者画面へ", admin_page_path, class: "bg-dekiru-admin  text-white w-2/3  block m-auto"%>
-  </span>
-
+  <% if admin_user? %>
+    <span class="block w-full m-auto max-w-sm">
+      <%= link_to "管理者画面へ", admin_page_path, class: "admin-btn w-2/3  block m-auto"%>
+    </span>
+  <% end %>
 
 </div>

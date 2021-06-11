@@ -1,18 +1,33 @@
-<div class="mb-32">
-  <div class="flex p-4">
-    <div class="mr-4">
-      <%= link_to ">>戻る", :back, class:"blue-link" %>
-    </div>
+<%# 各種リンク%>
+<div class="p-4">
+
+    <div class="flex">
+    
+      <%# root %>
+      <span class="mr-4 px-2"><%= link_to ">>トップ", root_path, class:"blue-link"%></span>
+    
+      <%# カテゴリーリンク%>
+      <span class="mr-4 px-2"><%= link_to ">>#{@content.category.name}", category_path(@content.category), class:"blue-link"%></span>
   
-    <% if admin_user? %>
-    <div>
-      <%= link_to ">>編集", edit_content_path, class:"admin-link mr-4" %>
-      <%# TODO: アラートにデザインを当てる %>
-      <%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
-    </div>
-    <% end %>
-  </div>
+      <%# タグリンク%>
+      <% @content.tag_masters.each do |tag|%>
+        <span class="px-2"><%= link_to ">>#{tag.tag_name}",search_contents_path(tag_id: tag.id), class:"blue-link"%></span>
+　    <% end %> 
   
+  
+    </div>
+　 
+  <%# 管理者用 %>  
+  <% if admin_user? %>
+      <div class="flex m-4">
+        <span class="mr-4"><%= link_to ">>編集", edit_content_path(@content), class:"admin-link"%></span>
+        <span><%= link_to ">>削除", content_path(@content), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %></span>
+      </div>
+  <% end %>
+
+</div>
+
+
   <!-- コンテンツ -->
   <div class="mb-8 border bg-gray-100">
   
