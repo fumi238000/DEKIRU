@@ -49,12 +49,11 @@ class ContentsController < ApplicationController
   end
 
   def newest
-    @new_contents = Content.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+    @new_contents = Content.published.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
   end
 
   def recommend
-    @recommend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
-    # @recomend_contents = Content.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM).page(params[:page]).per(PER_PAGE) # ページネーションの場合
+    @recommend_contents = Content.published.recommend.order("RAND()").limit(RECOMMEND_CONTENT_NUM)
   end
 
   def search
@@ -74,6 +73,6 @@ class ContentsController < ApplicationController
 
     def content_params
       movie_id = YoutubeUrlFormatter.movie_id_format(params[:content][:movie_url])
-      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point, tag_master_ids: []).merge(movie_id: movie_id)
+      params.require(:content).permit(:title, :subtitle, :movie_url, :comment, :point, :public_status, :category_id, tag_master_ids: []).merge(movie_id: movie_id)
     end
 end

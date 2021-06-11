@@ -64,3 +64,6 @@ Rails/EnvironmentVariableAccess:
 # 同じ文言の許可
 RSpec/ExampleLength:
   Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false

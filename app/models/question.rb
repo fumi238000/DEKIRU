@@ -5,7 +5,14 @@ class Question < ApplicationRecord
 
   validates :question_content, presence: true, length: { in: 1..100, allow_blank: true }
 
+  enum status: { before: 0, after: 1 }
+
   def response_nil?
     self.response.nil?
+  end
+
+  def status_update
+    self.status = "after" if self.status == "before"
+    self.save!
   end
 end

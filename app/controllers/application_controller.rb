@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
     # 検索
     def set_search
-      @q = Content.ransack(params[:q]) # 検索対象
+      @q = Content.published.ransack(params[:q]) # 検索対象
       @contents = @q.result.page(params[:page]).per(PER_PAGE) # 検索結果
       @search_word = params[:q].present? ? params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_cont] : "" # 検索ワード
     end

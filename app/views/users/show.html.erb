@@ -31,38 +31,12 @@
 </div>
 
   <!-- 管理者専用-->
-</div>
+
+    <!-- 管理者画面へ-->
   <% if admin_user? %>
-    <div class="text-left p-8">
-      <h2 class="text-pink-500">管理者専用</h2>
-
-      <!-- コンテンツ -->
-      <div class="my-8">
-        <h2>1.コンテンツ作成</h2>
-        <!-- 新規作成リンク(管理者のみ) -->
-        <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
-      </div>
-
-      <!-- カテゴリー -->
-      <div class="my-8">
-
-      <h2>2.カテゴリー作成</h2>
-      <div>
-        <%= link_to ">>追加", new_category_path, class:"admin-link" %>
-      </div>
-      </div>
-
-      <!-- タグ -->
-      <div class="my-8">
-        <h2>3.タグ一覧</h2>
-        <div class="my-4">
-          <%= link_to ">>追加", new_tag_master_path, class:"admin-link" %>
-          <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
-        </div>
-      </div>
-
-    </div>
-
+    <span class="block w-full m-auto max-w-sm">
+      <%= link_to "管理者画面へ", admin_page_path, class: "admin-btn w-2/3  block m-auto"%>
+    </span>
   <% end %>
 
-  </div>
+</div>

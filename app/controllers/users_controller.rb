@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show favorite]
+  before_action :admin_checker, only: %i[admin]
 
   def show
     @content_tags = TagMaster.all
@@ -7,6 +8,9 @@ class UsersController < ApplicationController
 
   def favorite
     @favorite_contents = @user.favorited_contents.page(params[:page]).per(PER_PAGE)
+  end
+
+  def admin
   end
 
   def set_user

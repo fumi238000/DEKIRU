@@ -4,14 +4,13 @@ class ResponsesController < ApplicationController
 
   def new
     @response = Response.new
-    # TODO: params[:question_id]がnilの場合の対応を追加
     @question_id = params[:question_id]
   end
 
   def create
     @response = Response.new(response_params)
     if @response.save
-      redirect_to content_show_path(@response.question.content.id), notice: "質問に対して返信しました"
+      redirect_to questions_path, notice: "質問に対して返信しました"
     else
       @question_id = response_params[:question_id]
       render :new
@@ -33,6 +32,7 @@ class ResponsesController < ApplicationController
 
   def destroy
     @response.destroy!
+    @response.question.update!(status: "before")
     redirect_to content_show_path(@response.question.content.id), alert: "返信内容を削除しました"
   end
 

@@ -5,7 +5,9 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[destroy]
 
   def index
-    # 質問一覧画面
+    @before_questions = Question.before.includes(:content).page(params[:page]).per(PER_PAGE)
+    @after_questions = Question.after.includes(:response).page(params[:page]).per(PER_PAGE)
+    @question = Question.new
   end
 
   def create

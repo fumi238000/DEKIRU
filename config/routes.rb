@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   end
   get "/mypage/:id", to: "users#show", as: "mypage"
   get "/favorite_contents", to: "users#favorite"
+  get "/admin_page", to: "users#admin"
   root "homes#index"
   resources :categories, only: %i[index new show edit create update destroy]
   resources :contents, only: %i[index new edit create update destroy]

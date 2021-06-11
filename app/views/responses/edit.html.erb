@@ -1,3 +1,5 @@
+<%= link_to ">>コンテンツ詳細へ戻る", content_show_path(Question.find_by(params[:question_id]).content.id), class:"admin-link text-left block my-4"%>
+
 <h1 class="my-8">返信を編集する</h1>
 
 <%= render "form" %>

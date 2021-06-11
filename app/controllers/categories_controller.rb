@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @contents = @category.contents.page(params[:page]).per(PER_PAGE)
+    @contents = @category.contents.published.page(params[:page]).per(PER_PAGE)
   end
 
   def create

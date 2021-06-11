@@ -1,0 +1,21 @@
+<%= link_to ">>管理者ページへ戻る", admin_page_path, class:"admin-link text-left block my-4" %>
+
+<h1 class="py-8">質問一覧【未返信】</h1>
+
+<!-- question_card -->
+<h2 class="my-4"><%= Question.before.count %>件の質問が届いています</h2>
+<div>
+  <%= render partial: "question_card", collection: @before_questions, as: "question" %>
+</div>
+
+<!-- <h2>返信済</h2> -->
+<!-- <div>
+  <%#= render partial: "question_card", collection: @after_questions, as: "question" %>
+</div>
+ -->
+
+<!-- ページネーション  -->
+<%= paginate @before_questions, window: 1 %>
+<div class="py-4">
+  <%= page_entries_info(@before_questions)%>
+</div>
