@@ -1,4 +1,4 @@
-<h1 class="py-8">質問一覧画面</h1>
+<h1 class="py-8">質問一覧【未返信】</h1>
 
 <!-- question_card -->
 <h2 class="my-4"><%= Question.before.count %>件の質問が届いています</h2>
@@ -13,7 +13,7 @@
  -->
 
 <!-- ページネーション  -->
-<%#= paginate @questions, window: 1 %>
+<%= paginate @before_questions, window: 1 %>
 <div class="py-4">
-  <%#= page_entries_info(@questions)%>
+  <%= page_entries_info(@before_questions)%>
 </div>

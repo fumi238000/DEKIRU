@@ -124,17 +124,16 @@
     <!-- 質問 -->
     <h2 class="py-4">質問する</h2>
     <!-- 質問フォーム -->
-    <div>
-    <% if user_signed_in? %>
-      <% if current_user.general? %>
-        <%= render "question_form" %>
+      <% if user_signed_in? %>
+        <% if current_user.general? %>
+          <%= render "question_form" %>
+        <% else %>
+          <p>管理者は質問できません。</p>
+        <% end %>
       <% else %>
-        <p>管理者は質問できません。</p>
+        <p>ログインすると、質問ができます</p>
       <% end %>
-    <% else %>
-      <p>ログインすると、質問ができます</p>
-    <% end %>
     </div>
-  
   </div>
+  
 </div>
