@@ -19,7 +19,7 @@ class Content < ApplicationRecord
   # validates recommend_status:, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
-  enum publick_status: { not_public: 0, public: 1 }
+  enum public_status: { non_published: 0, published: 1 }
 
   # TODO: サムネイル画像のURLを保存するかどうか検討
   # mount_uploader :movie_thumbnail, MovieThumbnailUploader
