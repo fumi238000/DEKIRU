@@ -10,8 +10,6 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     if @response.save
-      # TODO: リファクタリング
-      @response.question.update!(status: "after")
       redirect_to questions_path, notice: "質問に対して返信しました"
     else
       @question_id = response_params[:question_id]
@@ -34,7 +32,6 @@ class ResponsesController < ApplicationController
 
   def destroy
     @response.destroy!
-    # TODO: リファクタリング
     @response.question.update!(status: "before")
     redirect_to content_show_path(@response.question.content.id), alert: "返信内容を削除しました"
   end

@@ -10,4 +10,9 @@ class Question < ApplicationRecord
   def response_nil?
     self.response.nil?
   end
+
+  def status_update
+    self.status = "after" if self.status == "before"
+    self.save!
+  end
 end
