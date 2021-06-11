@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @favorite_contents = @user.favorited_contents.page(params[:page]).per(PER_PAGE)
   end
 
+  def admin
+  end
+
   def set_user
     @user = current_user
     redirect_to root_path, alert: "不正なアクセスです" if @user.nil?
