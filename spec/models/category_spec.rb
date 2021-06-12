@@ -21,11 +21,18 @@ RSpec.describe Category, type: :model do
         end
       end
 
-      context "16文字以上の場合" do
-        let(:category) { build(:category, name: "1" * 17) }
+      context "8文字以上の場合" do
+        let(:category) { build(:category, name: "1" * 8) }
+        it "保存ができる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "9文字の場合" do
+        let(:category) { build(:category, name: "1" * 9) }
         it "保存ができない" do
           expect(subject).to eq false
-          expect(category.errors.messages[:name]).to include "は16文字以内で入力してください"
+          expect(category.errors.messages[:name]).to include "は8文字以内で入力してください"
         end
       end
 

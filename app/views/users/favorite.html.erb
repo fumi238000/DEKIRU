@@ -1,3 +1,7 @@
+<div class="mx-4 md:mx-20 xl:mx-16">
+  <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link text-left block my-4"%>
+</div>
+
 <h1 class="py-8">お気に入り一覧</h1>
 
 <% if  @favorite_contents.exists? %>

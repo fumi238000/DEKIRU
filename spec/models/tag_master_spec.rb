@@ -20,18 +20,18 @@ RSpec.describe TagMaster, type: :model do
         end
       end
 
-      context "10文字の場合" do
-        let(:tag_master) { build(:tag_master, tag_name: "1" * 10) }
+      context "8文字の場合" do
+        let(:tag_master) { build(:tag_master, tag_name: "1" * 8) }
         it "保存ができる" do
           expect(subject).to eq true
         end
       end
 
-      context "11文字の場合" do
-        let(:tag_master) { build(:tag_master, tag_name: "1" * 11) }
+      context "9文字の場合" do
+        let(:tag_master) { build(:tag_master, tag_name: "1" * 9) }
         it "保存ができない" do
           expect(subject).to eq false
-          expect(tag_master.errors.messages[:tag_name]).to include "は10文字以内で入力してください"
+          expect(tag_master.errors.messages[:tag_name]).to include "は8文字以内で入力してください"
         end
       end
 

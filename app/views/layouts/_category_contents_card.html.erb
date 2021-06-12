@@ -1,9 +1,9 @@
-<div class="py-8">
-  <h2 class="text-lg"><%= category.name %></h2>
-  <div>
-    <%= link_to ">>このカテゴリーへ移動" , category_path(category.id), class: "blue-link" %>
-     <div class="flex">
-      <%= render partial: "layouts/top_page_content_card", collection: category.contents.published.first(2), as: "content" %>
-    </div>
+<div class="py-8 bg-dekiru-base m-4">
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <p class=" md:border-none border-dekiru-blue md:w-1/2 md:text-left"><%= category.name %></p>
+    <p class="md:w-1/2 md:text-right md:mr-4"><%= link_to ">>このカテゴリーへ移動", category_path(category.id), class:"blue-link" %></p>
+ 　</div>
+  <div class="flex">
+    <%= render partial: "layouts/top_page_content_card", collection: category.contents.published.first(2), as: "content" %>
   </div>
 </div>

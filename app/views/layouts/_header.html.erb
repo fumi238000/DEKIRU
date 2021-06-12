@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-10 p-1 text-center bg-dekiru-base">
+<header class="sticky top-0 z-10 p-1 text-center bg-dekiru-base shadow-sm">
   <div class="mx-4 md:mx-20 xl:mx-60 py-4 flex text-center justify-center items-center">
 
     <!-- ロゴ -->
@@ -19,6 +19,7 @@
         <% if user_signed_in? %>
           <%# ログイン時 %>
           <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
+
         <% else %>
           <%# 非ログイン時 %>
           <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
