@@ -9,7 +9,7 @@ REVIEWS_NUM = 3
 FAVORITES_NUM = 5
 CATEGORIES_NUM = 5
 QUESTIONS_NUM = 5
-CONTENT_TAGS = ["リフォーム", "メンテナンス", "お風呂", "トイレ", "洗面", "引越し", "新築", "買い替え", "引越し直前", "引き渡し前", "トラブル", "DIY", "キーワード(10字)", "ワード(10文字！)", "ワード(10字？)"].freeze
+CONTENT_TAGS = ["リフォーム", "メンテナンス", "お風呂", "トイレ", "洗面", "引越し", "新築", "買い替え", "引越し直前", "引き渡し前", "トラブル", "DIY", "ホワイトウッド"].freeze
 MAX_CONTENT_TAGS = 3
 
 #-----------------------------------------
@@ -57,8 +57,8 @@ end
 #-----------------------------------------
 CATEGORIES_NUM.times do |i|
   id = i + 1
-  Category.find_or_create_by!(name: "テスト用カテゴリー#{id}(16文字") do |c|
-    c.name = "テスト用カテゴリー#{id}(16文字)" # 最大16文字
+  Category.find_or_create_by!(name: "テストカテゴリ#{id}") do |c|
+    c.name = "テストカテゴリ#{id}" # 最大8文字
   end
 end
 puts "カテゴリーのテストデータを作成しました".green
