@@ -36,7 +36,7 @@
 <div class="my-8 max-w-6xl mx-auto">
   <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
     <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">新着情報</h2>
-    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %></p>
+    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %></p>
  　</div>
   <div class="md:flex justify-center py-8 mb:py-16">
     <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
