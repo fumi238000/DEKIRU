@@ -2,16 +2,18 @@
 <div class="mt-8 mb-16">
     <%# TODO: 文字を重ねたい%>
     <div class="text-5xl py-4">dekiru</div>
-    <%= image_tag "background-sample.png"%>
+    
+    <div class="max-w-6xl mx-auto">
+      <%= image_tag "background-sample.png"%>
+    </div>
+
 </div>
 
 <!--  人気情報 -->
-<div class="border p-4 my-8 bg-gray-100">
-  <div class="flex justify-center">
-    <div>
-      <h2 class="pt-4">人気情報</h2>
-      <%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %>
-    </div>
+<div class="my-8 max-w-6xl mx-auto">
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+      <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">人気情報</h2>
+      <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %></p>
   </div>
   
   <div class="md:flex justify-center py-8 mb:py-16">
@@ -20,49 +22,46 @@
 </div>
 
 <!--  おすすめ情報 -->
-<div class="border p-4 my-8 bg-gray-100">
-    <div class="flex justify-center">
-      <div>
-        <h2 class="pt-4">おすすめ情報</h2>
-        <%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %>
-      </div>
-    </div>
+<div class="my-8 max-w-6xl mx-auto">   
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">おすすめ情報</h2>
+    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %></p>
+ 　</div>
   <div class="md:flex justify-center py-8 mb:py-16">
     <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
   </div>
 </div>
 
 <!--  新着情報 -->
-<div class="border p-4 my-8 bg-gray-100">
-  <div class="flex justify-center">
-    <div>
-      <h2 class="pt-4">新着情報</h2>
-      <%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %>
-    </div>
-  </div>
+<div class="my-8 max-w-6xl mx-auto">
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">新着情報</h2>
+    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %></p>
+ 　</div>
   <div class="md:flex justify-center py-8 mb:py-16">
     <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
   </div>
 </div>
 
-<div class="border p-4 my-8 bg-gray-100">
-  <div class="flex justify-center">
-    <div>
-      <h2 class="pt-4">カテゴリー一覧</h2>
-      <%= link_to ">>全て見る", categories_path, class:"blue-link" %>
-    </div>
-  </div>
+<!--  カテゴリー -->
+<div class="my-8 max-w-6xl mx-auto">
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">カテゴリー一覧</h2>
+    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", categories_path, class:"blue-link" %></p>
+ 　</div>
    <div class="py-8 mb:py-16">
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
   </div>
 </div>
 
-<br/>
+<div class="my-8 max-w-6xl mx-auto">
+  
+    <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">キーワード</h2>
+    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%#= link_to ">>全て見る", categories_path, class:"blue-link" %></p><%# TODO: 数が多くなった場合実装する%>
+ 　</div>
 
-<div class="border p-4 mb-8 bg-gray-100">
-  <h2 class="pt-4">キーワード</h2>
-  <%#= link_to ">>全て見る", root_path %><%# TODO: 数が多くなった場合実装する%>
-  <div class="flex justify-start flex-wrap my-2"> 
+  <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
     <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
   </div>
 

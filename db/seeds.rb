@@ -71,7 +71,8 @@ CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツタイトル#{id}(16字)") do |c|
     c.title = "コンテンツタイトル#{id}(16字)" # 最大16文字
     c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
-    c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
+    c.movie_url = "https://www.youtube.com/watch?v=0JxT2x1B6QM"
+    # c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
     c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
     c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
     c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
@@ -106,7 +107,8 @@ RECOMMEND_CONTENT_NUM.times do |i|
   Content.find_or_create_by!(title: "コンテンツ(おすすめデータ)#{id}") do |c|
     c.title = "コンテンツ(おすすめデータ)#{id}" # 最大16文字
     c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
-    c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
+    c.movie_url = "https://www.youtube.com/watch?v=0JxT2x1B6QM"
+    # c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
     c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
     c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
     c.recommend_status = "recommend"

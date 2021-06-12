@@ -6,10 +6,10 @@
 //************ BASE **************//
 @layer base {
   h1 {
-    @apply text-2xl text-dekiru-font;
+    @apply text-4xl text-dekiru-font;
   }
   h2 {
-    @apply text-2xl text-dekiru-font font-medium;
+    @apply text-2xl md:text-3xl text-dekiru-font font-medium;
   }
 }
 
@@ -113,7 +113,7 @@
 
 //************ コンテンツ **************//
 .content-style {
-  @apply md:flex justify-center flex-wrap mb-16
+  @apply md:flex justify-start flex-wrap mb-16
 }
 
 //************ ページネーション **************//
