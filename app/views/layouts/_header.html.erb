@@ -19,6 +19,7 @@
         <% if user_signed_in? %>
           <%# ログイン時 %>
           <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
+
         <% else %>
           <%# 非ログイン時 %>
           <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>

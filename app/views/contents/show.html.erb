@@ -2,7 +2,7 @@
 <%= render "content_top_links", locals: @content %>
 
 <!-- コンテンツ -->
-<div class="mb-8 border bg-gray-100">
+<div class="mb-8 border bg-dekiru-base">
 
   <!-- movie -->
   <div class="movie">
@@ -52,7 +52,7 @@
 </div>
 
 <!-- 材料 -->
-<div class="mb-8 border bg-gray-100">
+<div class="mb-8 border bg-dekiru-base">
   <h2 class="m-4">材料</h2>
   <!-- 新規作成 -->
   <% if admin_user? %>
@@ -65,7 +65,7 @@
 </div>
 
 <!-- 作り方 -->
-<div class="mb-8 border bg-gray-100">
+<div class="mb-8 border bg-dekiru-base">
   <h2 class="m-4">作り方</h2>
   <% if admin_user? %>
     <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
@@ -77,13 +77,13 @@
 </div>
 
 <!-- ポイント -->
-<div class="mb-8 pb-8 border bg-gray-100">
+<div class="mb-8 pb-8 border bg-dekiru-base">
   <h2 class="py-8">ポイント</h2>
   <p class="text-left p-8"><%= @content.point %></p>
 </div>
 
 <!-- review -->
-<div class="mb-8 p-4 border bg-gray-100">
+<div class="mb-8 p-4 border bg-dekiru-base">
 
   <div class="mb-4">
     <h2 class="pt-8 pm-4">レビュー</h2>
@@ -94,7 +94,7 @@
     <% end %>
 
     <!-- レビューカード -->
-    <div class="md:flex justify-start flex-wrap bg-white bg-gray-100">
+    <div class="md:flex justify-start flex-wrap bg-white bg-dekiru-base">
       <%= render partial: "review_card", collection: @reviews, as: "review" %>
     </div>
   </div>
