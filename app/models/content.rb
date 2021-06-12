@@ -53,4 +53,15 @@ class Content < ApplicationRecord
       errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
     end
   end
+
+  # CSVインポート
+  CSV_COLUMNS = %w[title subtitle movie_url comment point movie_id category_id].freeze
+
+  def self.import_csv(file:)
+    list = []
+    CSV.foreach(file.path, headers: true) do |row|
+      list << row.to_h.slice(*CSV_COLUMNS)
+    end
+    Content.import!(list)
+  end
 end

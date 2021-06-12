@@ -47,7 +47,18 @@
         </div>
       </div>
 
+    <!-- CSVインポート-->
+    <div class="my-8">
+      <h2>6.インポート</h2>
+      <%= form_with url: import_path do |f| %>
+        <div class="max-w-4xl">
+          <div class="my-4">
+            <label class="file_field" for="csv_import">CSVファイルを選択</label>
+            <%= f.file_field :file, id: "csv_import", accept: "text/csv", class: "hidden"%>
+          </div>
+          <span><%= f.submit "インポートを開始する", data: { confirm: 'インポートします。よろしいでしょうか？', disable_with: "送信中..."}, class:"admin-btn" %></span>
+        </div>
+      <% end %>
     </div>
 
-
-  
+  </div>
