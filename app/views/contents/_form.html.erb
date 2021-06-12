@@ -32,7 +32,6 @@
     <!-- コンテンツタグ-->
     <div class="max-w-4xl mx-auto">
       <h2 class="form-title">タグ（3つまで）</h2>
-
       <div class="flex flex-wrap justify-start py-4 mb-8">
         <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
             <%= tag.label do %>
@@ -45,8 +44,7 @@
       </div>
     </div>
 
-
-    <!-- コンテンツタグ-->
+    <!-- カテゴリー-->
     <div class="max-w-4xl mx-auto">
       <h2 class="form-title">カテゴリー</h2>
       <div class="flex flex-wrap justify-start py-4 mb-8">
@@ -57,17 +55,14 @@
     </div>
 
    <!-- ステータス -->
-   <div class="text-left">
+   <div class="mx-auto max-w-4xl">
       <h2 class="form-title">ステータス</h2>
-      <div class="py-4">
+      <div class="py-4 text-left">
         <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
           <%= f.select :public_status, [ ["非公開", "non_published"], ["公開する", "published"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
         </span>
       </div>
     </div>
-
-
-
 
     <div class="my-16">
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
