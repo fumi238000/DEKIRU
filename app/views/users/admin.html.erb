@@ -1,64 +1,70 @@
-    <div class="text-left p-8 mt-8 mb-16">
-      <h2 class="text-pink-500">管理者専用</h2>
+<div class="text-left p-8 mt-8 mb-16">
+  <h2 class="text-pink-500">管理者専用</h2>
 
-      <!-- コンテンツ -->
-      <div class="my-8">
-        <h2>1.コンテンツ</h2>
-        <!-- 新規作成リンク(管理者のみ) -->
-        <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
-        <div><%= link_to ">>コンテンツ一覧",contents_path, class:"admin-link" %></div>
-      </div>
-
-      <!-- カテゴリー -->
-      <div class="my-8 ">
-        <h2>2.カテゴリー</h2>
-        <div>
-          <div><%= link_to ">>追加", new_category_path, class:"admin-link" %></div>
-          <div><%= link_to ">>カテゴリー一覧",admin_categories_path, class:"admin-link" %></div>
-        </div>
-      </div>
-
-      <!-- タグ -->
-      <div class="my-8">
-        <h2>3.タグ</h2>
-        <div class="my-4">
-          <div><%= link_to ">>追加", new_tag_master_path, class:"admin-link" %></div>
-          <div><%= link_to ">>タグ一覧", admin_tag_masters_path, class:"admin-link" %></div>
-          <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
-        </div>
-      </div>
-
-      <!-- 質問 -->
-      <div class="my-8">
-        <h2>4.質問</h2>
-        <div class="my-4">未回答：<%= Question.before.count %>件</div>
-        <div class="my-4">
-          <div><%= link_to ">>質問一覧", questions_path, class:"admin-link" %></div>
-          <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
-        </div>
-      </div>
-
-    <!-- お問い合わせ -->
-      <div class="my-8">
-        <h2>5.お問い合わせ</h2>
-        <div class="my-4">
-          <div><%= link_to ">>質問一覧", admin_contacts_path, class:"admin-link" %></div>
-          <div><%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %></div>
-        </div>
-      </div>
-
-    <!-- CSVインポート-->
-    <div class="my-8">
-      <h2>6.インポート</h2>
-      <%= form_with url: import_path do |f| %>
-        <div class="max-w-4xl">
-          <div class="my-4">
-            <label class="file_field" for="csv_import">CSVファイルを選択</label>
-            <%= f.file_field :file, id: "csv_import", accept: "text/csv", class: "hidden"%>
-          </div>
-          <span><%= f.submit "インポートを開始する", data: { confirm: 'インポートします。よろしいでしょうか？', disable_with: "送信中..."}, class:"admin-btn" %></span>
-        </div>
-      <% end %>
-    </div>
-
+  <!-- コンテンツ -->
+  <div class="my-8">
+    <h2>1.コンテンツ</h2>
+    <!-- 新規作成リンク(管理者のみ) -->
+    <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
+    <div><%= link_to ">>コンテンツ一覧",contents_path, class:"admin-link" %></div>
   </div>
+
+  <!-- カテゴリー -->
+  <div class="my-8 ">
+    <h2>2.カテゴリー</h2>
+    <div>
+      <div><%= link_to ">>追加", new_category_path, class:"admin-link" %></div>
+      <div><%= link_to ">>カテゴリー一覧",admin_categories_path, class:"admin-link" %></div>
+    </div>
+  </div>
+
+  <!-- タグ -->
+  <div class="my-8">
+    <h2>3.タグ</h2>
+    <div class="my-4">
+      <div><%= link_to ">>追加", new_tag_master_path, class:"admin-link" %></div>
+      <div><%= link_to ">>タグ一覧", admin_tag_masters_path, class:"admin-link" %></div>
+      <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+    </div>
+  </div>
+
+  <!-- 質問 -->
+  <div class="my-8">
+    <h2>4.質問</h2>
+    <div class="my-4">未回答：<%= Question.before.count %>件</div>
+    <div class="my-4">
+      <div><%= link_to ">>質問一覧", questions_path, class:"admin-link" %></div>
+      <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
+    </div>
+  </div>
+
+  <!-- お問い合わせ -->
+  <div class="my-8">
+    <h2>5.お問い合わせ</h2>
+    <div class="my-4">
+      <div><%= link_to ">>質問一覧", admin_contacts_path, class:"admin-link" %></div>
+      <div><%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %></div>
+    </div>
+  </div>
+
+  <!-- CSVインポート-->
+  <div class="my-8">
+    <h2>6.インポート<span class="text-sm px-4">(コンテンツ)</span></h2>
+    <%= form_with url: import_path do |f| %>
+      <div class="max-w-4xl">
+        <div class="my-4">
+          <label class="file_field" for="csv_import">CSVファイルを選択</label>
+          <%= f.file_field :file, id: "csv_import", accept: "text/csv", class: "hidden"%>
+        </div>
+        <span><%= f.submit "インポートを開始する", data: { confirm: 'インポートします。よろしいでしょうか？', disable_with: "送信中..."}, class:"admin-btn" %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- CSVエクスポート-->
+  <div class="my-8">
+    <h2>7.エクスポート<span class="text-sm px-4">(コンテンツ)</span></h2>
+    <span class="my-4 block"><%= link_to "エクスポートを開始する", contents_path(format: :csv), data: { confirm: 'エクスポートします。よろしいでしょうか？', disable_with: "送信中..."}, class:"admin-btn" %></span>
+  </div>
+
+</div>
