@@ -21,6 +21,9 @@ class Content < ApplicationRecord
   enum recommend_status: { general: 0, recommend: 1 }
   enum public_status: { non_published: 0, published: 1 }
 
+  # CSV
+  CSV_COLUMNS = %w[title subtitle movie_url comment point movie_id category_id].freeze
+
   # TODO: サムネイル画像のURLを保存するかどうか検討
   # mount_uploader :movie_thumbnail, MovieThumbnailUploader
   MAX_CONTENT_TAGS = Settings.max_countent_tags
@@ -51,6 +54,25 @@ class Content < ApplicationRecord
   def content_tag_checker
     unless self.tag_masters.content.count <= MAX_CONTENT_TAGS
       errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
+    end
+  end
+
+  # CSVインポート
+  def self.import_csv(file:)
+    list = []
+    CSV.foreach(file.path, headers: true) do |row|
+      list << row.to_h.slice(*CSV_COLUMNS)
+    end
+    Content.import!(list)
+  end
+
+  # CSVエクスポート
+  def self.generate_csv
+    CSV.generate do |csv|
+      csv << CSV_COLUMNS
+      all.find_each do |user|
+        csv << CSV_COLUMNS.map {|col| user.send(col) }
+      end
     end
   end
 end

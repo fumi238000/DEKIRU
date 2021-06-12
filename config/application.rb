@@ -1,4 +1,5 @@
 require_relative "boot"
+require "csv"
 
 require "rails"
 # Pick the frameworks you want:

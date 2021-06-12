@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   resources :responses, only: %i[new create update edit destroy]
   resources :contacts, only: %i[index create]
   resources :tag_masters, only: %i[new create update edit destroy]
+    # CSV
+  resources :contents, only: :index do
+    collection { resource :import, only: :create, controller: :import }
+  end
 end
