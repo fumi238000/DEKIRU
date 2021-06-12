@@ -24,4 +24,7 @@ Things you may want to cover:
 * ...
 
 
-https://dekiru-app-staging.herokuapp.com/
+
+
+## Papertrail(Staging)
+https://my.papertrailapp.com/systems/dekiru-app-staging/events
