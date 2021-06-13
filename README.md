@@ -1,5 +1,5 @@
 # DEKIRU
-現役の住宅営業マンが住宅に関する情報を発信するために作成したサービスです。
+現役のベテラン住宅営業マンが、直に住宅に関する情報を発信するために作成したサービスです。
 
 
 ## URL
@@ -9,10 +9,15 @@ https://dekiru-app.herokuapp.com/
 https://my.papertrailapp.com/systems/dekiru-app-staging/events
 
 
+## コンセプト
+
 
 ## 製作背景
 
 ## 解決したい課題
+
+
+
 
 ## 機能一覧
 
@@ -38,3 +43,15 @@ https://my.papertrailapp.com/systems/dekiru-app-staging/events
 
 ## インフラ
 - Heroku
+
+## 資料
+- ER図
+
+- ユースケース
+
+## 追加予定の機能
+- SendGridを使用したメール送信機能
+- コンテンツの追加
+
+## About me
+新卒で４年間、新築住宅会社の営業をしておりました。2020年4月からWebエンジニアを目指して勉強中です。
