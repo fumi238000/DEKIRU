@@ -44,7 +44,7 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
 
   # デフォルト画像
   def default_url(*args)
-    "/images/fallback/" + [version_name, "thumbnail_default.png"].compact.join("_") #rubocop:disable all
+    "/images/fallback/" + [version_name, "thumbnail_default.jpg"].compact.join("_") #rubocop:disable all
   end
 
   # jpg に変換
