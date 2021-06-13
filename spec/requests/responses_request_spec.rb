@@ -70,7 +70,7 @@ RSpec.describe "Responses", type: :request do
           sign_in @admin
           expect { subject }.to change { Response.count }.by(1)
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to content_show_path(Response.last.question.content)
+          expect(response).to redirect_to questions_path
           expect(flash[:notice]).to eq("質問に対して返信しました")
         end
       end

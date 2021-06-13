@@ -4,10 +4,11 @@ RSpec.describe "Reviews", type: :request do
   before do
     @user = FactoryBot.create(:user) # ユーザー
     @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
+    @content = create(:content, public_status: "published")
   end
 
   describe "GET #new" do
-    subject { get(new_review_path) }
+    subject { get(new_review_path, params: { content_id: @content.id }) }
 
     context "未ログインユーザーの場合" do
       it "リダイレクトする" do
@@ -38,8 +39,7 @@ RSpec.describe "Reviews", type: :request do
   describe "POST #create" do
     subject { post(reviews_path, params: review_params) }
 
-    let(:content) { create(:content) }
-    let(:review_params) { { review: attributes_for(:review, content_id: content.id) } }
+    let(:review_params) { { review: attributes_for(:review, content_id: @content.id) } }
 
     context "未ログインユーザの場合" do
       it "コンテンツの件数が変化しないこと" do
@@ -62,7 +62,7 @@ RSpec.describe "Reviews", type: :request do
       end
 
       context "パラメータが異常な時" do
-        let(:review_params) { { review: attributes_for(:review, :review_invalid, content_id: content.id) } }
+        let(:review_params) { { review: attributes_for(:review, :review_invalid, content_id: @content.id) } }
         it "レビューの件数が増加しないこと" do
           sign_in @user
           expect { subject }.to change { Review.count }.by(0)
@@ -73,7 +73,6 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
-    # TODO: 検討する
     context "管理者の場合" do
       context "パラメータが正常な時" do
         it "レビューの件数が1件増加すること" do
@@ -86,7 +85,7 @@ RSpec.describe "Reviews", type: :request do
       end
 
       context "パラメータが異常な時" do
-        let(:review_params) { { review: attributes_for(:review, :review_invalid, content_id: content.id) } }
+        let(:review_params) { { review: attributes_for(:review, :review_invalid, content_id: @content.id) } }
         it "レビューの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { Review.count }.by(0)
