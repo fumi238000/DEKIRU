@@ -83,6 +83,7 @@
 </div>
 
 <!-- review -->
+<% if @content.reviews.present?%>
 <div class="mb-8 p-4 border bg-dekiru-base">
 
   <div class="mb-4">
@@ -99,15 +100,19 @@
     </div>
   </div>
 </div>
+<% end %>
 
 
 <!-- 質問と返信 -->
 <div class="py-4 my-4 bg-dekiru-base">
+  <% binding.pry %>
+  <% if @content.questions.present?%>
 
-  <!-- 質問フォーム -->
-  <h2 class="mt-8 mb-4">質問</h2>
-  <%= render partial: "question_card", collection: @questions, as: "question" %>
-  <%# TODO: jqueryでアコーディオンを検討(長くなるので) %>
+    <!-- 質問フォーム -->
+    <h2 class="mt-8 mb-4">質問</h2>
+    <%= render partial: "question_card", collection: @questions, as: "question" %>
+
+  <% end %>
 
   <!-- 質問 -->
   <h2 class="py-4">質問する</h2>
