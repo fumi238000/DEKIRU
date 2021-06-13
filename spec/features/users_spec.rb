@@ -11,7 +11,7 @@ RSpec.describe "Users", type: :feature do
     # MEMO: 未ログインユーザーの場合、遷移できないためテストなし
 
     context "ユーザーが一般ユーザーの場合" do
-      it "管理者専用リンクが表示されないこと", type: :do do
+      it "管理者専用リンクが表示されないこと" do
         sign_in @user
         visit mypage_path(@user)
         expect(page).not_to have_link "管理者画面へ", href: admin_page_path

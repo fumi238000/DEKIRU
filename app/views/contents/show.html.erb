@@ -16,7 +16,7 @@
     <% if general_user? %>
       <%= render "favorite_button", locals: @content %>
     <% end %>
-    <p>お気に入り数:<%= @content.favorites.count %></p>
+    <p class="py-2">お気に入り数:<%= @content.favorites.count %></p>
   </div>
 
   <!-- 説明 -->
@@ -71,9 +71,7 @@
 </div>
 
 <!-- review -->
-<% if @content.reviews.present?%>
 <div class="mb-8 p-4 border bg-dekiru-base">
-
   <div class="mb-4">
     <h2 class="pt-8 pm-4">レビュー</h2>
     <% if general_user? %>
@@ -88,7 +86,6 @@
     </div>
   </div>
 </div>
-<% end %>
 
 
 <!-- 質問と返信 -->

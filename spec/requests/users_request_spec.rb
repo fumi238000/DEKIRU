@@ -68,7 +68,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET /admin", type: :do do
+  describe "GET /admin" do
     subject { get(admin_page_path) }
 
     context "未ログインユーザーの場合" do
