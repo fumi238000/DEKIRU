@@ -20,7 +20,10 @@
   
       <div>
         <div class="form-title">レビュー<span class="required_content">必須</span></div>
-        <%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)",required: true, class:"text-area" %>
+        <%= f.text_area :comment, placeholder: "レビュー内容(500文字以内)",required: true, maxlength: "500", class:"text-area", id: "textarea" %>
+        <div class="text-right max-w-4xl mx-auto">
+          <span id="message" class="p-4 block"></span>
+        </div>
       </div>
   
       <div class="mt-8">
