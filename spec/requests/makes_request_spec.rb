@@ -198,7 +198,7 @@ RSpec.describe "Makes", type: :request do
     end
 
     context "管理者の場合" do
-      it "コンテンツが削除されること" do
+      it "作り方が削除されること" do
         sign_in @admin
         expect { subject }.to change { Make.count }.by(-1)
         expect(response).to have_http_status(:found)

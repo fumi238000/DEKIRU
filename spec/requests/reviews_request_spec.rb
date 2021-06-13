@@ -96,6 +96,54 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
-  # TODO: 削除機能を追加した場合、destroyのテストを実装すること
+    describe "GET #destroy" do
+      subject { delete(review_path(@review.id)) }
+
+      context "未ログインユーザーの場合" do
+        it "リダイレクトされること" do
+          expect { subject }.to change { Review.count }.by(0)
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to new_user_session_path
+          expect(flash[:alert]).to eq("ログインもしくはアカウント登録してください。")
+        end
+      end
+
+      context "一般ユーザーの場合" do
+        context "自分の投稿したレビューの場合" do
+          before { @review = create(:review, user_id: @user.id) }
+
+          it "レビューが削除されること", type: :do do
+            sign_in @user
+            expect { subject }.to change { Review.count }.by(-1)
+            expect(response).to have_http_status(:found)
+            expect(response).to redirect_to content_show_path(@review.content)
+            expect(flash[:alert]).to eq("レビューを削除しました")
+          end
+        end
+
+        context "自分の投稿したレビューでない場合" do
+          let(:user) { create(:user) }
+          it "リダイレクトされること" do
+            sign_in user
+            expect { subject }.to change { Review.count }.by(0)
+            expect(response).to have_http_status(:found)
+            expect(response).to redirect_to root_path
+            expect(flash[:alert]).to eq("権限がありません")
+          end
+        end
+      end
+
+      context "管理者の場合" do
+        before { @review = create(:review, user_id: @user.id) }
+
+        it "レビューが削除されること", type: :do do
+          sign_in @admin
+          expect { subject }.to change { Review.count }.by(-1)
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to content_show_path(@review.content)
+          expect(flash[:alert]).to eq("レビューを削除しました")
+        end
+      end
+    end
   end
 end
