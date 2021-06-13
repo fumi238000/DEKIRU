@@ -4,10 +4,11 @@ RSpec.describe "Materials", type: :request do
   before do
     @user = FactoryBot.create(:user) # ユーザー
     @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
+    @content = create(:content, public_status: "published")
   end
 
   describe "GET #new" do
-    subject { get(new_material_path) }
+    subject { get(new_material_path, params: { content_id: @content.id }) }
 
     context "未ログインユーザーの場合" do
       it "リダイレクトする" do
@@ -40,8 +41,7 @@ RSpec.describe "Materials", type: :request do
   describe "POST #create" do
     subject { post(materials_path, params: material_params) }
 
-    let(:content) { create(:content) }
-    let(:material_params) { { material: attributes_for(:material, content_id: content.id) } }
+    let(:material_params) { { material: attributes_for(:material, content_id: @content.id) } }
 
     context "未ログインユーザの場合" do
       it "コンテンツの件数が変化しないこと" do
@@ -74,7 +74,7 @@ RSpec.describe "Materials", type: :request do
       end
 
       context "パラメータが異常な時" do
-        let(:material_params) { { material: attributes_for(:material, :material_invalid, content_id: content.id) } }
+        let(:material_params) { { material: attributes_for(:material, :material_invalid, content_id: @content.id) } }
         it "コンテンツの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { Material.count }.by(0)
@@ -89,8 +89,7 @@ RSpec.describe "Materials", type: :request do
   describe "PUT #update" do
     subject { patch(material_path(material.id), params: material_params) }
 
-    let(:content) { create(:content) }
-    let(:content_id) { content.id }
+    let(:content_id) { @content.id }
     let(:material) { create(:material, content_id: content_id) }
     let(:material_params) { { material: attributes_for(:material, content_id: content_id) } }
 
@@ -128,7 +127,7 @@ RSpec.describe "Materials", type: :request do
       end
 
       context "パラメータが異常な時" do
-        let(:material_params) { { material: attributes_for(:material, :material_invalid, content_id: content.id) } }
+        let(:material_params) { { material: attributes_for(:material, :material_invalid, content_id: @content.id) } }
 
         it "材料が更新できないこと" do
           sign_in @admin
@@ -144,10 +143,9 @@ RSpec.describe "Materials", type: :request do
   end
 
   describe "GET #edit" do
-    subject { get(edit_material_path(material_id, content_id: content.id)) }
+    subject { get(edit_material_path(material_id, content_id: @content.id)) }
 
-    let(:content) { create(:content) }
-    let(:material) { create(:material, content_id: content.id) }
+    let(:material) { create(:material, content_id: @content.id) }
     let(:material_id) { material.id }
 
     context "未ログインユーザーの場合" do
@@ -184,8 +182,7 @@ RSpec.describe "Materials", type: :request do
   describe "GET #destroy" do
     subject { delete(material_path(@material.id)) }
 
-    let(:content) { create(:content) }
-    before { @material = create(:material, content_id: content.id) }
+    before { @material = create(:material, content_id: @content.id) }
 
     context "未ログインユーザーの場合" do
       it "リダイレクトされること" do
