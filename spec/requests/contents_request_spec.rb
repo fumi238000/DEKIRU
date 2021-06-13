@@ -11,16 +11,16 @@ RSpec.describe "Contents", type: :request do
   describe "GET #index" do
     subject { get(contents_path) }
 
-    context "コンテンツが存在する場合" do
-      before { create_list(:content, create_content) }
+    context "管理者の場合" do
+      before { create_list(:content, create_content, public_status: "published") }
 
-      it "コンテンツ一覧を取得できること" do
+      it "コンテンツ一覧を取得できること", type: :do do
+        sign_in @admin
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.pluck(:title))
-        # TODO: youtube動画登録機能実装時に使用する
-        # expect(response.body).to include(*Content.pluck(:thumbnail))
-        expect(Content.count).to eq(create_content)
+        expect(response.body).to include(*Content.pluck(:movie_id))
+        expect(Content.published.count).to eq(create_content)
       end
     end
   end
@@ -69,7 +69,7 @@ RSpec.describe "Contents", type: :request do
           expect(response).to have_http_status(:ok)
           expect(response.body).to include content.title
           expect(response.body).to include content.subtitle
-          # expect(response.body).to include content.movie_url
+          expect(response.body).to include content.movie_id
           expect(response.body).to include content.comment
           expect(response.body).to include content.point
         end
@@ -165,7 +165,6 @@ RSpec.describe "Contents", type: :request do
           new_content = content_params[:content]
           expect { subject }.to change { content.reload.title }.from(content.title).to(new_content[:title]).
                                   and change { content.reload.subtitle }.from(content.subtitle).to(new_content[:subtitle]).
-                                        # and change { content.reload.movie_url }.from(content.movie_url).to(new_content[:movie_url]).
                                         and change { content.reload.comment }.from(content.comment).to(new_content[:comment]).
                                               and change { content.reload.point }.from(content.point).to(new_content[:point])
           expect(response).to have_http_status(:found)
@@ -267,7 +266,7 @@ RSpec.describe "Contents", type: :request do
 
     context "お気に入りされているコンテンツが存在する場合" do
       before do
-        create_list(:content, create_content)
+        create_list(:content, create_content, public_status: "published")
         create(:favorite, content_id: Content.first.id, user_id: @user.id)
         create(:favorite, content_id: Content.second.id, user_id: @user.id)
         create(:favorite, content_id: Content.third.id, user_id: @user.id)
@@ -277,8 +276,7 @@ RSpec.describe "Contents", type: :request do
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.pluck(:title))
-        # TODO: youtube動画登録機能実装時に使用する
-        # expect(response.body).to include(*Content.pluck(:thumbnail))
+        expect(response.body).to include(*Content.pluck(:movie_id))
         expect(Content.count).to eq(create_content)
         # TODO: 人気順で並んでいること
       end
@@ -289,14 +287,13 @@ RSpec.describe "Contents", type: :request do
     subject { get(newest_contents_path) }
 
     context "コンテンツが存在する場合" do
-      before { create_list(:content, create_content) }
+      before { create_list(:content, create_content, public_status: "published") }
 
       it "新着順でコンテンツを取得できること" do
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.pluck(:title))
-        # TODO: youtube動画登録機能実装時に使用する
-        # expect(response.body).to include(*Content.pluck(:thumbnail))
+        expect(response.body).to include(*Content.pluck(:movie_id))
         expect(Content.count).to eq(create_content)
         # TODO: created_atの新しい順で並んでいること
       end
@@ -307,14 +304,13 @@ RSpec.describe "Contents", type: :request do
     subject { get(recommend_contents_path) }
 
     context "おすすめコンテンツが存在する場合" do
-      before { create_list(:content, create_content, recommend_status: "recommend") }
+      before { create_list(:content, create_content, recommend_status: "recommend", public_status: "published") }
 
       it "おすすめコンテンツ一覧を取得できること" do
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.recommend.pluck(:title))
-        # TODO: youtube動画登録機能実装時に使用する
-        # expect(response.body).to include(*Content.pluck(:thumbnail))
+        expect(response.body).to include(*Content.pluck(:movie_id))
         expect(Content.count).to eq(create_content)
       end
     end
@@ -329,7 +325,7 @@ RSpec.describe "Contents", type: :request do
     end
 
     context "コンテンツが存在する場合" do
-      before { create_list(:content, create_content, title: search_word) }
+      before { create_list(:content, create_content, title: search_word, public_status: "published") }
 
       let(:search_word) { "タイトル" }
 
@@ -342,8 +338,7 @@ RSpec.describe "Contents", type: :request do
             expect(response).to have_http_status(:ok)
             expect(response.body).to include("「 #{search_word} 」の検索結果")
             expect(response.body).to include(*Content.pluck(:title))
-            # TODO: youtube動画登録機能実装時に使用する
-            # expect(response.body).to include(*Content.pluck(:thumbnail))
+            expect(response.body).to include(*Content.pluck(:movie_id))
           end
         end
 
@@ -356,8 +351,7 @@ RSpec.describe "Contents", type: :request do
             subject
             expect(response).to have_http_status(:ok)
             expect(response.body).not_to include(*Content.pluck(:title))
-            # TODO: youtube動画登録機能実装時に使用する
-            # expect(response.body).not_to include(*Content.pluck(:thumbnail))
+            expect(response.body).not_to include(*Content.pluck(:movie_id))
             expect(response.body).to include("「 #{not_search_word} 」の検索結果")
             expect(response.body).to include("検索結果はありません")
           end
@@ -371,8 +365,7 @@ RSpec.describe "Contents", type: :request do
           subject
           expect(response).to have_http_status(:ok)
           expect(response.body).to include(*Content.pluck(:title))
-          # TODO: youtube動画登録機能実装時に使用する
-            # expect(response.body).not_to include(*Content.pluck(:thumbnail))
+          expect(response.body).to include(*Content.pluck(:movie_id))
           expect(response.body).not_to include("」の検索結果") # 「検索結果」というコンテンツが万が一存在する場合を考慮
         end
       end
