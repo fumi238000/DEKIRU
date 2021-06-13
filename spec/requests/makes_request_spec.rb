@@ -79,8 +79,7 @@ RSpec.describe "Makes", type: :request do
           sign_in @admin
           expect { subject }.to change { Make.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "作り方を追加"
         end
       end
     end
@@ -131,8 +130,7 @@ RSpec.describe "Makes", type: :request do
           sign_in @admin
           expect { subject }.not_to change { make.reload.detail }
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "作り方を編集"
         end
       end
     end

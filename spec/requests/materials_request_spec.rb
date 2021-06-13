@@ -79,8 +79,7 @@ RSpec.describe "Materials", type: :request do
           sign_in @admin
           expect { subject }.to change { Material.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "材料を追加"
         end
       end
     end
@@ -135,8 +134,7 @@ RSpec.describe "Materials", type: :request do
           expect { subject }.not_to change { material.reload.amount }
           expect { subject }.not_to change { material.reload.unit }
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "材料を編集"
         end
       end
     end

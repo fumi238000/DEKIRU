@@ -127,8 +127,7 @@ RSpec.describe "Contents", type: :request do
           sign_in @admin
           expect { subject }.to change { Content.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "コンテンツを新規作成する"
         end
       end
     end
@@ -180,8 +179,7 @@ RSpec.describe "Contents", type: :request do
           sign_in @admin
           expect { subject }.not_to change { content.reload }
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "コンテンツを編集する"
         end
       end
     end

@@ -67,8 +67,7 @@ RSpec.describe "Reviews", type: :request do
           sign_in @user
           expect { subject }.to change { Review.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "レビュー登録"
         end
       end
     end
@@ -98,6 +97,8 @@ RSpec.describe "Reviews", type: :request do
 
     describe "GET #destroy" do
       subject { delete(review_path(@review.id)) }
+
+      before { @review = create(:review) }
 
       context "未ログインユーザーの場合" do
         it "リダイレクトされること" do
