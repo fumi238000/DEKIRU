@@ -3,15 +3,15 @@ class ContentsController < ApplicationController
   before_action :set_content, only: %i[show update edit destroy]
 
   def index
-    @contents = Content.order(id: :asc)
+    contents = Content.order(id: :asc)
     # エクスポート
     respond_to do |format|
       format.html
       format.csv do
-        send_data(@contents.generate_csv, filename: "contents.csv")
+        send_data(contents.generate_csv, filename: "contents.csv")
       end
     end
-    @contents.page(params[:page]).per(PER_PAGE)
+    @contents = contents.page(params[:page]).per(PER_PAGE)
   end
 
   def new

@@ -4,7 +4,7 @@ RSpec.describe "Contents", type: :feature do
   before do
     @user = create(:user) # ユーザー
     @admin = create(:user, user_type: "admin") # 管理者
-    @content = create(:content) # コンテンツ
+    @content = create(:content, public_status: "published") # コンテンツ
     @material = create(:material, content_id: @content.id) # 材料
     @make = create(:make, content_id: @content.id) # 作り方
     @do_question = create(:question, user_id: @user.id, content_id: @content.id) # 質問（返信あり)
@@ -36,6 +36,15 @@ RSpec.describe "Contents", type: :feature do
       end
     end
 
+    context "レビューが存在する場合" do
+      before { @review = create(:review, user_id: @user.id, content_id: @content.id) }
+
+      it "レビューに削除リンクが表示されない" do
+        visit content_show_path(@content.id)
+        expect(page).not_to have_link ">>削除", href: review_path(@review)
+      end
+    end
+
     # ログインユーザー
     context "ユーザーが一般ユーザーの場合" do
       it "ユーザー専用リンクが表示されること" do
@@ -58,6 +67,29 @@ RSpec.describe "Contents", type: :feature do
         expect(page).not_to have_link ">>返信する", href: new_response_path(question_id: @do_question.id)
         expect(page).not_to have_link ">>編集", href: edit_response_path(@end_question.response, question_id: @end_question.id)
         expect(page).not_to have_link ">>削除", href: response_path(@end_question.response)
+      end
+    end
+
+    context "自身がレビューした場合" do
+      before { @review = create(:review, user_id: @user.id, content_id: @content.id) }
+
+      it "そのレビューに削除リンクが表示されること" do
+        sign_in @user
+        visit content_show_path(@content.id)
+        expect(page).to have_link ">>削除", href: review_path(@review)
+      end
+    end
+
+    context "自身がレビューしていない場合" do
+      before do
+        user = create(:user)
+        @review = create(:review, user_id: user.id, content_id: @content.id)
+      end
+
+      it "そのレビューに削除リンクが表示されない" do
+        sign_in @user
+        visit content_show_path(@content.id)
+        expect(page).not_to have_link ">>削除", href: review_path(@review)
       end
     end
 
@@ -111,10 +143,14 @@ RSpec.describe "Contents", type: :feature do
         expect(page).to have_link ">>削除", href: make_path(@make.id)
       end
 
-      it "レビューリンクが表示されないこと" do
-        sign_in @admin
-        visit content_show_path(@content.id)
-        expect(page).not_to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
+      context "レビューが存在する時" do
+        before { @review = create(:review, content_id: @content.id) }
+
+        it "そのレビューに削除リンクが表示されること" do
+          sign_in @admin
+          visit content_show_path(@content.id)
+          expect(page).to have_link ">>削除", href: review_path(@review)
+        end
       end
 
       it "質問できない状態にあること" do

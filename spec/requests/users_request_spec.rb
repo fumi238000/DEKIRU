@@ -67,4 +67,33 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
+
+  describe "GET /admin" do
+    subject { get(admin_page_path) }
+
+    context "未ログインユーザーの場合" do
+      it "リダイレクトする" do
+        subject
+        expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "一般ユーザーの場合" do
+      it "リダイレクトする" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "管理者の場合" do
+      it "リクエストが成功する" do
+        sign_in @admin
+        subject
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
 end

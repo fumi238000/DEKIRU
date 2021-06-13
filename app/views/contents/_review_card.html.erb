@@ -1,8 +1,8 @@
 <div class="md:w-1/3">
-  <div class="border bg-white m-2 shadow-lg rounded-2xl">
+  <div class="border bg-white m-4 shadow-lg rounded-2xl p-8 md:p-0">
     <!-- 写真 -->
     <div class="m-auto">
-      <%= image_tag review.image.thumb214.url, class:"w-full rounded-t-2xl" %>
+      <%= image_tag review.image.thumb214.url, class:"w-full md:rounded-t-2xl" %>
     </div>
 
     <!-- ユーザー情報 -->
@@ -15,5 +15,13 @@
     <div class="text-left p-4">
       <p><%= review.comment%></p>
     </div>
+
+    <!-- 削除ボタン -->
+    <% if permit_user?(review) %>
+    <div class="text-left p-4">
+      <%= link_to ">>削除", review_path(review), data: { confirm: "削除してもよろしいでしょうか？"}, method: :delete,  class:"red-link" %>
+    </div>
+    <% end %>
+
   </div>
 </div>

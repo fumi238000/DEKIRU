@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
   before_action :set_review, only: %i[destroy]
-  # TODO: 管理者ユーザーはレビューを登録できない様にするか検討
 
   def new
     @review = Review.new
@@ -19,13 +18,20 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # 削除できる様にするか検討する
+    @review.destroy!
+    redirect_to content_show_path(@review.content.id), alert: "レビューを削除しました"
   end
 
   private
 
     def set_review
-      @review = Review.find(params[:id])
+      case current_user.user_type
+      when "admin"
+        @review = Review.find(params[:id])
+      when "general"
+        @review = current_user.reviews.find_by(id: params[:id])
+        redirect_to root_path, alert: "権限がありません" if @review.nil?
+      end
     end
 
     def review_params

@@ -13,22 +13,10 @@
 
   <!-- お気に入り -->
   <div class="pb-4">
-    <%#= render partial: "favorite_card", collection: @makes, as: "make" %>
-      <% if general_user? %>
-      <%# TODO: 条件分岐をリファクタリングすること%>
-        <div class="my-8">
-          <div class="mb-4" id="content-<%= @content.id %>">
-          <% if @content.favorited_by?(current_user) %>
-            <%= render "destroy_favorite", content: @content %>
-            <%#= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %> <%# お気に入りから外す %>
-          <% else %>
-            <%= render "create_favorite", content: @content %>
-            <%#= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %><%# お気に入りに追加 %>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-    <p>お気に入り数:<%= @content.favorites.count %></p>
+    <% if general_user? %>
+      <%= render "favorite_button", locals: @content %>
+    <% end %>
+    <p class="py-2">お気に入り数:<%= @content.favorites.count %></p>
   </div>
 
   <!-- 説明 -->
@@ -37,9 +25,7 @@
     <p class="text-sm p-8"><%= @content. subtitle %></p>
     <p class="text-md p-8"><%= @content.comment %></p>
   </div>
-
 </div>
-
 
 <!-- タグ -->
 <div class="p-4 mb-8">
@@ -85,9 +71,7 @@
 </div>
 
 <!-- review -->
-<% if @content.reviews.present?%>
 <div class="mb-8 p-4 border bg-dekiru-base">
-
   <div class="mb-4">
     <h2 class="pt-8 pm-4">レビュー</h2>
     <% if general_user? %>
@@ -102,7 +86,6 @@
     </div>
   </div>
 </div>
-<% end %>
 
 
 <!-- 質問と返信 -->

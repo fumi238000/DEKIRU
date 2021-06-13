@@ -79,8 +79,7 @@ RSpec.describe "TagMasters", type: :request do
           sign_in @admin
           expect { subject }.to change { TagMaster.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "タグを追加"
         end
       end
     end
@@ -130,8 +129,7 @@ RSpec.describe "TagMasters", type: :request do
           sign_in @admin
           expect { subject }.not_to change { tag_master.reload.tag_name }
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "タグを編集"
         end
       end
     end

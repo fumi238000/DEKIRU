@@ -121,8 +121,7 @@ RSpec.describe "Categories", type: :request do
           sign_in @admin
           expect { subject }.to change { Category.count }.by(0)
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "カテゴリー作成"
         end
       end
     end
@@ -171,8 +170,7 @@ RSpec.describe "Categories", type: :request do
           sign_in @admin
           expect { subject }.not_to change { category.reload }
           expect(response).to have_http_status(:ok)
-          # TODO: エラーメッセージが表示されること
-          # expect(response.body).to include "を入力してください"
+          expect(response.body).to include "カテゴリー編集"
         end
       end
     end

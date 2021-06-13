@@ -12,6 +12,12 @@ module ApplicationHelper
     end
   end
 
+  def permit_user?(params)
+    if user_signed_in?
+      params.user_id == current_user.id || current_user.admin?
+    end
+  end
+
   # youtubeのサムネイル画像を取得
   def youtube_thumbnail(movie_id)
     "http://img.youtube.com/vi/#{movie_id}/mqdefault.jpg"
