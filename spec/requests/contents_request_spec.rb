@@ -14,7 +14,7 @@ RSpec.describe "Contents", type: :request do
     context "管理者の場合" do
       before { create_list(:content, create_content, public_status: "published") }
 
-      it "コンテンツ一覧を取得できること", type: :do do
+      it "コンテンツ一覧を取得できること" do
         sign_in @admin
         subject
         expect(response).to have_http_status(:ok)

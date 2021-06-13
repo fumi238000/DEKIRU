@@ -112,7 +112,7 @@ RSpec.describe "Reviews", type: :request do
         context "自分の投稿したレビューの場合" do
           before { @review = create(:review, user_id: @user.id) }
 
-          it "レビューが削除されること", type: :do do
+          it "レビューが削除されること"  do
             sign_in @user
             expect { subject }.to change { Review.count }.by(-1)
             expect(response).to have_http_status(:found)
@@ -136,7 +136,7 @@ RSpec.describe "Reviews", type: :request do
       context "管理者の場合" do
         before { @review = create(:review, user_id: @user.id) }
 
-        it "レビューが削除されること", type: :do do
+        it "レビューが削除されること"  do
           sign_in @admin
           expect { subject }.to change { Review.count }.by(-1)
           expect(response).to have_http_status(:found)

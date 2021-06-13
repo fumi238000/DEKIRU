@@ -127,7 +127,7 @@ RSpec.describe "Makes", type: :request do
       context "パラメータが異常な時" do
         let(:make_params) { { make: attributes_for(:make, :make_invalid, content_id: @content.id) } }
 
-        it "コンテンツが更新できないこと", type: :do do
+        it "コンテンツが更新できないこと" do
           sign_in @admin
           expect { subject }.not_to change { make.reload.detail }
           expect(response).to have_http_status(:ok)
