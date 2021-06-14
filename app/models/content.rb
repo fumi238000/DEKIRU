@@ -52,7 +52,7 @@ class Content < ApplicationRecord
 
   # おすすめコンテンツの登録数を制限
   before_save do
-    if Content.find_by(id: self).general? && self.recommend? && Content.recommend.count >= MAX_RECOMMEND_CONTENT
+    if self.recommend? && self.recommend_status_was == "general" && Content.recommend.count >= MAX_RECOMMEND_CONTENT
       self.errors.add(:recommend_status, "の登録できる上限を超えています。（おすすめコンテンツは#{MAX_RECOMMEND_CONTENT}つまで）")
       throw(:abort)
     end
