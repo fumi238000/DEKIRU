@@ -19,9 +19,8 @@
  @apply text-white font-bold py-2 px-6 my-8 rounded-lg focus:outline-none shadow-lg
 }
 
-//背景色・hover時の背景色
 .blue-btn {
-  @apply base_btn bg-dekiru-blue hover:bg-dekiru-light_blue transition ease-in-out
+  @apply base_btn bg-gradient-to-r from-blue-400 to-dekiru-blue hover:from-dekiru-light_blue hover:to-dekiru-light_blue transition ease-out
 }
 
 .red-btn {
@@ -64,7 +63,7 @@
 
 //************リンク**************//
 .blue-link {
-  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue
+  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue font-bold
 }
 
 .red-link {
