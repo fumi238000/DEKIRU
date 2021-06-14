@@ -14,9 +14,7 @@ class Content < ApplicationRecord
   validates :comment, presence: true, length: { in: 1..32, allow_blank: true }
   validates :point, presence: true, length: { in: 1..32, allow_blank: true }
   validate :tag_master_ids, :content_tag_checker
-  # TODO: movie_urlバリデージョン実装時に実装する
-  # validates :movie_url, presence: true
-  # validates recommend_status:, presence: true
+  validates :movie_url, presence: true
 
   enum recommend_status: { general: 0, recommend: 1 }
   enum public_status: { non_published: 0, published: 1 }

@@ -110,6 +110,24 @@ RSpec.describe Content, type: :model do
         end
       end
 
+      describe "movie_url" do
+        context "urlが空の場合" do
+          let(:content) { build(:content, movie_url: "") }
+          it "エラーが発生する" do
+            expect(subject).to eq false
+            expect(content.errors.messages[:movie_url]).to include "を入力してください"
+          end
+        end
+
+        context "urlがyouyubeのURLでない場合" do
+          let(:content) { build(:content, movie_url: "https://www.yahoo.co.jp/") }
+          it "エラーが発生する" do
+            expect(content.save).to eq false
+            expect(content.errors.messages[:movie_url]).to include "YouTubeのURL以外は無効です"
+          end
+        end
+      end
+
       describe "content_delete" do
         context "コンテンツが削除された時" do
           subject { content.destroy }
