@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_051517) do
+ActiveRecord::Schema.define(version: 2021_06_14_023534) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "namespace"
@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_051517) do
     t.bigint "category_id"
     t.integer "public_status", default: 0
     t.index ["category_id"], name: "index_contents_on_category_id"
+    t.index ["recommend_status"], name: "index_contents_on_recommend_status"
+    t.index ["subtitle"], name: "index_contents_on_subtitle"
+    t.index ["title"], name: "index_contents_on_title"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -116,6 +119,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_051517) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["content_id"], name: "index_questions_on_content_id"
+    t.index ["status"], name: "index_questions_on_status"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -157,6 +161,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_051517) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["user_type"], name: "index_users_on_user_type"
   end
 
   add_foreign_key "contacts", "users"

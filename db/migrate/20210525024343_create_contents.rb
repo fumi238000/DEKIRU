@@ -9,10 +9,6 @@ class CreateContents < ActiveRecord::Migration[6.0]
       t.integer :recommend_status, default: 0
 
       t.timestamps
-
-      # TODO: index未実装
-      # add_index :contents, :title
-      # add_index :contents, :recommend_status
     end
   end
 end
