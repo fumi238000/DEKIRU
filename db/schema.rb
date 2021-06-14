@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_023534) do
     t.bigint "category_id"
     t.integer "public_status", default: 0
     t.index ["category_id"], name: "index_contents_on_category_id"
+    t.index ["public_status"], name: "index_contents_on_public_status"
     t.index ["recommend_status"], name: "index_contents_on_recommend_status"
     t.index ["subtitle"], name: "index_contents_on_subtitle"
     t.index ["title"], name: "index_contents_on_title"

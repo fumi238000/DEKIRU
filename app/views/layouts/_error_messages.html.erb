@@ -1,6 +1,6 @@
 <% if model.errors.any? %>
   <div class="mt-10 mb-20">
-  <div class="mx-auto max-w-4xl mb-10">
+  <div class="mx-auto max-w-4xl mb-10 text-red-700">
       <%= I18n.t("errors.messages.not_saved",
                  count: model.errors.count,
                  resource: model.class.model_name.human.downcase)

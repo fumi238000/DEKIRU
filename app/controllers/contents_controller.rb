@@ -49,7 +49,7 @@ class ContentsController < ApplicationController
 
   def destroy
     @content.destroy!
-    redirect_to contents_path, alert: "【#{@content.title}】を削除しました"
+    redirect_to root_path, alert: "【#{@content.title}】を削除しました"
   end
 
   def popular

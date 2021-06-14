@@ -9,22 +9,24 @@ class Content < ApplicationRecord
   has_many :tag_masters, through: :content_tags
   belongs_to :category, optional: true
 
+  # バリデージョン
   validates :title, presence: true, length: { in: 1..16, allow_blank: true }
   validates :subtitle, presence: true, length: { in: 1..32, allow_blank: true }
   validates :comment, presence: true, length: { in: 1..32, allow_blank: true }
   validates :point, presence: true, length: { in: 1..32, allow_blank: true }
-  validate :tag_master_ids, :content_tag_checker
   validates :movie_url, presence: true
+  validate :tag_master_ids, :content_tag_checker
 
+  # enum
   enum recommend_status: { general: 0, recommend: 1 }
   enum public_status: { non_published: 0, published: 1 }
 
   # CSV
   CSV_COLUMNS = %w[title subtitle movie_url comment point movie_id category_id].freeze
 
-  # TODO: サムネイル画像のURLを保存するかどうか検討
-  # mount_uploader :movie_thumbnail, MovieThumbnailUploader
+  # 定数
   MAX_CONTENT_TAGS = Settings.max_countent_tags
+  MAX_RECOMMEND_CONTENT = Settings.max_recommend_countent
 
   # お気に入り判定
   def favorited_by?(user)
@@ -44,6 +46,14 @@ class Content < ApplicationRecord
     else
       # 失敗した場合はバリデーションエラーを出す
       self.errors.add(:movie_url, "YouTubeのURL以外は無効です")
+      throw(:abort)
+    end
+  end
+
+  # おすすめコンテンツの登録数を制限
+  before_save do
+    if Content.find_by(id: self).general? && self.recommend? && Content.recommend.count >= MAX_RECOMMEND_CONTENT
+      self.errors.add(:recommend_status, "の登録できる上限を超えています。（おすすめコンテンツは#{MAX_RECOMMEND_CONTENT}つまで）")
       throw(:abort)
     end
   end
@@ -73,4 +83,7 @@ class Content < ApplicationRecord
       end
     end
   end
+
+  # TODO: サムネイル画像のURLを保存するかどうか検討
+  # mount_uploader :movie_thumbnail, MovieThumbnailUploader
 end
