@@ -4,3 +4,6 @@ ja:
       public_status:
         non_published: "未公開"
         published: "公開中"
+      recommend_status:
+        general: "一般コンテンツ"
+        recommend: "おすすめコンテンツ"
