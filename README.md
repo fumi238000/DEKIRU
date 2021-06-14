@@ -20,10 +20,23 @@ https://my.papertrailapp.com/systems/dekiru-app-staging/events
 
 
 ## 機能一覧
-
+- ユーザー登録
+- ログイン機能
+- アカウント情報設定機能
+- ゲストログイン機能
+- コンテンツ投稿機能
+- レビュー投稿機能
+- 画像投稿禁王
+- お気に入り機能
+- ページネーション機能
+- 管理者画面
+- rubocop
+- 検索機能（ワード・タグ）
+- 
 
 ## 環境・使用言語
-- HTML/CSS
+- HTML
+- CSS
 - TailwindCSS
 - JavaScript
 - jQuery
@@ -40,6 +53,7 @@ https://my.papertrailapp.com/systems/dekiru-app-staging/events
 
 ## テスト
 - Rspec(モデルスペック・リクエストスペック・フィーチャースペック)
+- factory_bot
 
 ## インフラ
 - Heroku
