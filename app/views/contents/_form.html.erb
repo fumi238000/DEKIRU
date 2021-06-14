@@ -54,25 +54,27 @@
       </div>
     </div>
 
-    <!-- おすすめ -->
-    <div class="max-w-4xl mx-auto">
-      <h2 class="form-title">おすすめコンテンツ(<%= Content.recommend.count%>/<%= Settings.max_recommend_countent%>個)</h2>
-      <div class="flex flex-wrap justify-start py-4 mb-8">
-        <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
-          <%= f.select :recommend_status, [ ["おすすめしない", "general"], ["おすすめする", "recommend"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
-        </span>
+    <% if controller.action_name == "edit" %>
+      <!-- おすすめ -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="form-title">おすすめコンテンツ(<%= Content.recommend.count%>/<%= Settings.max_recommend_countent%>個)</h2>
+        <div class="flex flex-wrap justify-start py-4 mb-8">
+          <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
+            <%= f.select :recommend_status, [ ["おすすめしない", "general"], ["おすすめする", "recommend"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
+          </span>
+        </div>
       </div>
-    </div>
 
-   <!-- ステータス -->
-   <div class="mx-auto max-w-4xl">
-      <h2 class="form-title">ステータス</h2>
-      <div class="py-4 text-left">
-        <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
-          <%= f.select :public_status, [ ["未公開", "non_published"], ["公開する", "published"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
-        </span>
+       <!-- ステータス -->
+       <div class="mx-auto max-w-4xl">
+        <h2 class="form-title">ステータス</h2>
+        <div class="py-4 text-left">
+          <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
+            <%= f.select :public_status, [ ["未公開", "non_published"], ["公開する", "published"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>
+          </span>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="my-16">
       <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
