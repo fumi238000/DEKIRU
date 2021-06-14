@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_051517) do
+ActiveRecord::Schema.define(version: 2021_06_14_022916) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "namespace"
@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_051517) do
     t.bigint "category_id"
     t.integer "public_status", default: 0
     t.index ["category_id"], name: "index_contents_on_category_id"
+    t.index ["recommend_status"], name: "index_contents_on_recommend_status"
+    t.index ["subtitle"], name: "index_contents_on_subtitle"
+    t.index ["title"], name: "index_contents_on_title"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
