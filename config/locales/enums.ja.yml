@@ -1,5 +1,10 @@
 ja:
   enums:
+    user:
+      user_type:
+        general: "一般ユーザー"
+        admin: "管理者ユーザー"
+        discontinued: "停止ユーザー"
     content:
       public_status:
         non_published: "未公開"

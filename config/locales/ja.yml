@@ -1,6 +1,10 @@
 ja:
   activerecord:
     attributes:
+      user:
+        general: "一般ユーザー"
+        admin: "管理者ユーザー"
+        discontinued: "停止ユーザー"
       content:
         title: タイトル
         subtitle: サブタイトル
