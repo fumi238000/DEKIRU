@@ -157,6 +157,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_051517) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["user_type"], name: "index_users_on_user_type"
   end
 
   add_foreign_key "contacts", "users"

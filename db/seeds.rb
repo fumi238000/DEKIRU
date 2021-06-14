@@ -224,7 +224,7 @@ puts "タグを作成しました".green
 # end
 # puts "カテゴリー用タグを作成しました"
 
-SAMPLE_CONTENT_TAGS = TagMaster.content
+SAMPLE_CONTENT_TAGS = TagMaster.content.all
 
 #-----------------------------------------
 # content_tag
