@@ -11,6 +11,8 @@ CATEGORIES_NUM = 5
 QUESTIONS_NUM = 5
 CONTENT_TAGS = ["リフォーム", "メンテナンス", "お風呂", "トイレ", "洗面", "引越し", "新築", "買い替え", "引越し直前", "引き渡し前", "トラブル", "DIY", "ホワイトウッド"].freeze
 MAX_CONTENT_TAGS = 3
+MAIL_ADMIN = ENV["MAIL_ADMIN"]
+MAIL_ADMIN_PASSWPRD = ENV["MAIL_ADMIN_PASSWPRD"]
 
 #-----------------------------------------
 puts "テストデータのインポート開始"
@@ -19,10 +21,10 @@ puts "テストデータのインポート開始"
 #-----------------------------------------
 # admin_user
 #-----------------------------------------
-User.find_or_create_by!(email: "admin@example.com") do |u|
+User.find_or_create_by!(email: MAIL_ADMIN) do |u|
   u.name = "管理者ユーザー"
-  u.email = "admin@example.com"
-  u.password = "password"
+  u.email = MAIL_ADMIN
+  u.password = MAIL_ADMIN_PASSWPRD
   u.user_type = "admin"
 end
 
@@ -45,10 +47,10 @@ puts "ユーザーのテストデータを作成しました".green
 #-----------------------------------------
 # admin user
 #-----------------------------------------
-AdminUser.find_or_create_by!(email: "admin@example.com") do |t|
-  t.email = "admin@example.com"
-  t.password = "password"
-  t.password_confirmation = "password"
+AdminUser.find_or_create_by!(email: MAIL_ADMIN) do |t|
+  t.email = MAIL_ADMIN
+  t.password = MAIL_ADMIN_PASSWPRD
+  t.password_confirmation = MAIL_ADMIN_PASSWPRD
   puts "管理者データを作成しました".green
 end
 
