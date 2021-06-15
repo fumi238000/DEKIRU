@@ -9,7 +9,7 @@
     @apply text-4xl text-dekiru-font;
   }
   h2 {
-    @apply text-2xl md:text-3xl text-dekiru-font font-medium;
+    @apply text-xl md:text-2xl text-dekiru-font font-medium;
   }
 }
 
@@ -140,6 +140,13 @@
   @apply my-2 text-sm text-left block max-w-4xl mx-auto opacity-70
 }
 
+
+//ズーム
+.zoom {
+  @apply transition duration-500 transform hover:scale-110
+}
+
+
 //************ movie **************//
 .movie__inner {
   position: relative;
@@ -215,3 +222,30 @@ iframe {
   top: 45%;
 }
 
+//************ page-top **************//
+#page-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 77%;
+}
+#page-top a {
+  color: #fff;
+  width: 100px;
+  text-align: center;
+  display: block;
+}
+
+
+//トップページレイアウト
+.top-container {
+  @apply  my-8 max-w-6xl mx-auto bg-dekiru-base rounded p-4 m-4
+}
+
+.top-content-title {
+  @apply pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left
+}
+
+.top-link {
+  @apply pt-4 md:w-1/2 md:text-right md:mr-4
+}

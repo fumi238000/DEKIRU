@@ -6,59 +6,71 @@
 </div>
 
 <!--  人気情報 -->
-<div class="my-8 max-w-6xl mx-auto">
+<div class="top-container">
   <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
-      <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">人気情報</h2>
-      <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", popular_contents_path, class:"blue-link" %></p>
+    <h2 class="top-content-title">人気情報</h2>
+    <p class="top-link"><%= link_to ">>全て見る", popular_contents_path, class:"blue-link " %></p>
   </div>
   
-  <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/top_page_content_card", collection: @popularity_contents, as: "content" %>
+  <div class="m-4 bg-dekiru-base rounded">
+    <div class="md:flex justify-center py-8 mb:py-16 ">
+      <%= render partial: "layouts/top_page_content_card", collection: @popularity_contents, as: "content" %>
+    </div>
   </div>
 </div>
 
+
 <!--  おすすめ情報 -->
-<div class="my-8 max-w-6xl mx-auto">   
+<div class="top-container">
   <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
-    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">おすすめ情報</h2>
-    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %></p>
+    <h2 class="top-content-title">おすすめ情報</h2>
+    <p class="top-link"><%= link_to ">>全て見る", recommend_contents_path, class:"blue-link" %></p>
   </div>
-  <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
+
+  <div class="m-4 bg-dekiru-base rounded">
+    <div class="md:flex justify-center py-8 mb:py-16">
+      <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
+    </div>
   </div>
 </div>
 
 <!--  新着情報 -->
-<div class="my-8 max-w-6xl mx-auto">
+<div class="top-container">
   <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
-    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">新着情報</h2>
-    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %></p>
+    <h2 class="top-content-title">新着情報</h2>
+    <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"blue-link" %></p>
   </div>
+
   <div class="md:flex justify-center py-8 mb:py-16">
     <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
   </div>
 </div>
 
 <!--  カテゴリー -->
-<div class="my-8 max-w-6xl mx-auto">
+<div class="my-8 max-w-6xl mx-auto bg-dekiru-base rounded p-4">
   <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
-    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">カテゴリー一覧</h2>
-    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%= link_to ">>全て見る", categories_path, class:"blue-link" %></p>
+    <h2 class="top-content-title">カテゴリー一覧</h2>
+    <p class="top-link"><%= link_to ">>全て見る", categories_path, class:"blue-link" %></p>
   </div>
    <div class="py-8 mb:py-16">
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
   </div>
 </div>
 
-<div class="my-8 max-w-6xl mx-auto">
-  
-    <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
-    <h2 class="pt-4 border-b-2 md:border-none border-dekiru-blue pb-4 md:w-1/2 md:text-left">キーワード</h2>
-    <p class="pt-4 md:w-1/2 md:text-right md:mr-4"><%#= link_to ">>全て見る", categories_path, class:"blue-link" %></p><%# TODO: 数が多くなった場合実装する%>
+<!--  キーワード -->
+<div class="top-container">
+  <div class="md:flex md:border-l-4 px-2 mx-4 border-dekiru-blue">
+    <h2 class="top-content-title">キーワード</h2>
+    <p class="top-link"><%#= link_to ">>全て見る", categories_path, class:"blue-link" %></p><%# TODO: 数が多くなった場合実装する%>
   </div>
 
   <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
     <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
   </div>
+
+<!--  TOPページボタン -->
+<p id="page-top">
+  <a href="#wrap" class="bg-dekiru-blue text-white hover:bg-dekiru-light_blue no-underline rounded-full py-10">TOP</a>
+</p>
 
 </div>
