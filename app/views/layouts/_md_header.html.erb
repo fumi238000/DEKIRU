@@ -1,0 +1,31 @@
+ <div class="hidden md:block">
+    <div class="mx-4 md:mx-20 xl:mx-60 py-4 flex text-center justify-center items-center">
+      <!-- ロゴ -->
+      <div class="flex-grow w-3/12">
+        <%= link_to root_path do %>
+          <%= image_tag "deKiRU-header-logo.png" %>
+        <% end %>
+      </div>
+  
+      <!-- 検索フォーム -->
+      <div class="flex-grow md:w-6/12">
+        <%= render partial: 'layouts/search_form'%>
+      </div>
+  
+      <!-- ログイン -->
+      <div class="flex-grow w-3/12  hidden md:block">
+        <div class="float-right ">
+          <% if user_signed_in? %>
+            <%# ログイン時 %>
+            <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
+  
+          <% else %>
+            <%# 非ログイン時 %>
+            <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
+          <% end %>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
