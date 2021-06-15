@@ -21,23 +21,26 @@
 
   <!-- 説明 -->
   <div>
-    <p class="text-lg py-4"><%= @content.title %></p>
+    <p class="text-2xl py-4 font-medium"><%= @content.title %></p>
     <p class="text-sm p-8"><%= @content. subtitle %></p>
     <p class="text-md p-8"><%= @content.comment %></p>
   </div>
 </div>
 
 <!-- タグ -->
-<div class="p-4 mb-8">
-  <h2 class="mb-4">タグ</h2>
-  <div>
-    <% @content.tag_masters.each do |tag| %>
-      <span class="content-tag-style">
-        <%= tag.tag_name %>
-      </span>
-    <% end %>
+<% if @content.tag_masters.present? %>
+  <div class="p-4 mb-8">
+    <h2 class="mb-4">タグ</h2>
+    <div>
+      <% @content.tag_masters.each do |tag| %>
+        <span class="content-tag-style">
+          <%= tag.tag_name %>
+        </span>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
 
 <!-- 材料 -->
 <div class="mb-8 border bg-dekiru-base">
@@ -67,7 +70,7 @@
 <!-- ポイント -->
 <div class="mb-8 pb-8 border bg-dekiru-base">
   <h2 class="py-8">ポイント</h2>
-  <p class="text-left p-8"><%= @content.point %></p>
+  <p class="p-8"><%= @content.point %></p>
 </div>
 
 <!-- review -->

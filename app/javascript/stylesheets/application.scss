@@ -1,3 +1,6 @@
+//webフォント
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -5,6 +8,9 @@
 
 //************ BASE **************//
 @layer base {
+  body {
+    @apply font-noto font-light;
+  }
   h1 {
     @apply text-4xl text-dekiru-font;
   }
@@ -63,15 +69,15 @@
 
 //************リンク**************//
 .blue-link {
-  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue font-bold
+  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue font-bold font-noto
 }
 
 .red-link {
-  @apply text-red-700 hover:text-red-300 text-sm
+  @apply text-red-700 hover:text-red-300 text-sm font-noto
 }
 
 .admin-link {
-  @apply text-dekiru-admin hover:text-pink-300 text-sm
+  @apply text-dekiru-admin hover:text-pink-300 text-sm font-noto
 }
 
 //************カード**************//

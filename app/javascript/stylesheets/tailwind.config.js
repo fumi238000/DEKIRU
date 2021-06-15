@@ -24,6 +24,9 @@ module.exports = {
           admin: '#FA198B',
         }
       },
+      fontFamily: {
+        noto: ['Noto Sans JP']
+      },      
     },
   },
   variants: {
