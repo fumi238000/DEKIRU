@@ -1,1 +1,3 @@
-<%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %><%# お気に入りに追加 %>
+<%# お気に入りに追加 %>
+<%= link_to "お気に入りする", content_favorites_path(@content), method: :post, remote: true, class:"no-favorite-btn" %>
+<p class="py-4">お気に入り数:<%= @content.favorites.count %></p>

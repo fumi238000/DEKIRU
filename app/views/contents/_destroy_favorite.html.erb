@@ -1,1 +1,3 @@
-<%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %> <%# お気に入りから外す %>
+<%# お気に入りから外す %>
+<%= link_to "お気に入り", content_favorites_path(@content), method: :delete, remote: true, class:"favorite-btn" %>
+<p class="py-4">お気に入り数:<%= @content.favorites.count %></p>
