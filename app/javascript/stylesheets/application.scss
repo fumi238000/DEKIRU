@@ -1,3 +1,6 @@
+//webフォント
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -5,11 +8,14 @@
 
 //************ BASE **************//
 @layer base {
+  body {
+    @apply font-noto font-light;
+  }
   h1 {
     @apply text-4xl text-dekiru-font;
   }
   h2 {
-    @apply text-2xl md:text-3xl text-dekiru-font font-medium;
+    @apply text-3xl md:text-4xl text-dekiru-font font-medium;
   }
 }
 
@@ -19,9 +25,8 @@
  @apply text-white font-bold py-2 px-6 my-8 rounded-lg focus:outline-none shadow-lg
 }
 
-//背景色・hover時の背景色
 .blue-btn {
-  @apply base_btn bg-dekiru-blue hover:bg-dekiru-light_blue transition ease-in-out
+  @apply base_btn bg-gradient-to-r from-blue-400 to-dekiru-blue hover:from-dekiru-light_blue hover:to-dekiru-light_blue transition ease-out
 }
 
 .red-btn {
@@ -64,15 +69,15 @@
 
 //************リンク**************//
 .blue-link {
-  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue
+  @apply text-dekiru-blue text-sm hover:text-dekiru-light_blue font-bold font-noto
 }
 
 .red-link {
-  @apply text-red-700 hover:text-red-300 text-sm
+  @apply text-red-700 hover:text-red-300 text-sm font-noto
 }
 
 .admin-link {
-  @apply text-dekiru-admin hover:text-pink-300 text-sm
+  @apply text-dekiru-admin hover:text-pink-300 text-sm font-noto
 }
 
 //************カード**************//
@@ -140,6 +145,13 @@
 .supplement_comment {
   @apply my-2 text-sm text-left block max-w-4xl mx-auto opacity-70
 }
+
+
+//ズーム
+.zoom {
+  @apply transition duration-500 transform hover:scale-110
+}
+
 
 //************ movie **************//
 .movie__inner {
@@ -216,3 +228,32 @@ iframe {
   top: 45%;
 }
 
+//************ page-top **************//
+#page-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 77%;
+}
+#page-top a {
+  width: 32px;
+  display: block;
+}
+
+
+//トップページレイアウト
+.top-container {
+  @apply  my-8 max-w-6xl mx-auto p-4 m-4 
+}
+
+.top-content-title {
+  @apply pt-4 border-b-2 border-dekiru-blue pb-4 md:w-1/2 md:text-left  md:flex
+}
+
+.top-link {
+  @apply pt-4 md:w-1/2 md:text-right md:mr-2 md:border-b-2 border-dekiru-blue
+}
+
+.top-blue-btn {
+ @apply  border-none px-4 py-2 text-xs bg-gray-100 text-dekiru-blue hover:bg-dekiru-blue hover:text-white
+}
