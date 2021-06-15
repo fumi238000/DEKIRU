@@ -1,0 +1,33 @@
+//************ フォーム **************//
+.form-body {
+  @apply pt-8 pb-16 
+}
+
+.form-title {
+  @apply text-lg block mt-8 mb-4 text-left text-gray-500 border-l-4 pl-2 border-dekiru-blue max-w-4xl mx-auto
+}
+
+.text-field {
+  @apply border text-dekiru-font w-full py-2 focus:outline-none focus:ring-1 focus:ring-dekiru-blue focus:ring-opacity-50 focus:border-dekiru-blue max-w-4xl resize-none rounded
+}
+
+//プレースホルダー
+.text-field::placeholder {
+  @apply px-2 py-4
+}
+
+.text-area {
+  @apply border text-dekiru-font w-full py-8 focus:outline-none focus:ring-1 focus:ring-dekiru-blue focus:ring-opacity-30 focus:border-dekiru-blue max-w-4xl resize-none rounded
+}
+
+.text-area::placeholder {
+  @apply px-2 py-4
+}
+
+.login-field {
+  @apply border-b w-full py-2 focus:outline-none focus:border-gray-500 focus:bg-gray-100 max-w-4xl resize-none
+}
+
+.file_field {
+  @apply block text-white  pt-1 w-48 h-8 border-dekiru-light_blue bg-dekiru-blue  hover:bg-dekiru-light_blue hover:text-white cursor-pointer text-center no-underline rounded-sm shadow-2xl
+}

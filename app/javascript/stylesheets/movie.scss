@@ -1,0 +1,13 @@
+//************ movie **************//
+.movie__inner {
+  position: relative;
+  padding-bottom: calc(315 / 560 * 100%);
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
