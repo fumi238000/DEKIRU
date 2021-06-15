@@ -10,7 +10,7 @@ AllCops:
 
 # メソッドをグループ分けして書き順を揃えておくと読みやすくなる。
 # 多少のツラミはあるかもしれない。
-# TODO: Categories を調整することで
+# Categories を調整することで
 # https://github.com/pocke/rubocop-rails-order_model_declarative_methods
 # を再現できそう。
 Layout/ClassStructure:
@@ -104,7 +104,7 @@ Lint/UnusedMethodArgument:
 
 # select 以外では引っかからないと思うので
 # mutating_methods のチェックを有効に。
-# TODO: select は引数が無い (ブロックのみ) の場合にだけチェックする
+# select は引数が無い (ブロックのみ) の場合にだけチェックする
 # ようにすると誤検知がほぼ無くなる？
 Lint/Void:
   CheckForMethodsWithNoSideEffects: true
@@ -118,7 +118,7 @@ Metrics/AbcSize:
 
 # Gemfile, Guardfile は DSL 的で基本的に複雑にはならないので除外
 # rake, rspec, environments, routes は巨大な block 不可避なので除外
-# TODO: ExcludedMethods の精査
+# ExcludedMethods の精査
 Metrics/BlockLength:
   Exclude:
     - "Rakefile"
@@ -397,7 +397,7 @@ Style/WordArray:
 # 0 <= foo && foo < 5 のように数直線上に並べるのは
 # コードを読みやすくするテクニックなので equality_operators_only に。
 # Style/YodaCondition:
-#   # TODO: rubocop 0.63.0以降はforbid_for_equality_operators_onlyなので依存を引き上げれば有効にできる
+#   rubocop 0.63.0以降はforbid_for_equality_operators_onlyなので依存を引き上げれば有効にできる
 #   EnforcedStyle: forbid_for_equality_operators_only
 
 # 条件式で arr.size > 0 が使われた時に

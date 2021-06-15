@@ -12,7 +12,7 @@ class Question < ApplicationRecord
   end
 
   def status_update
-    self.status = "after" if self.status == "before"
+    self.status == "after" if self.status == "before"
     self.save!
   end
 end

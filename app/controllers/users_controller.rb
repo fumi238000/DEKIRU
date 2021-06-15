@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :admin_checker, only: %i[admin]
 
   def show
-    @content_tags = TagMaster.all
   end
 
   def favorite

@@ -2,13 +2,10 @@
   <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link text-left block my-4"%>
 </div>
 
-<%# TODO: ルーディングを調整すること%>
 <div class="p-4 mb-20">
-
-<h1 class="pt-8 pb-4">アカウント編集</h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <div class="form-body">
+  <h1 class="pt-8 pb-4">アカウント編集</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="form-body">
 
       <%= render "users/shared/error_messages", resource: resource %>
 
@@ -37,20 +34,16 @@
 
       <div class="field">
         <%= f.label "新しいパスワード【変更する場合は入力】",class: "form-title" %>
-        <%#= f.label :password %><!-- <br /> -->
         <div><%= f.password_field :password, autocomplete: "new-password", placeholder: "例：pass2021", class: "text-field" %></div>
         <span class="supplement_comment">(８文字以上１６文字以内、有効な記号　- _ @)</span>
       </div>
 
       <div class="field">
         <%= f.label "新しいパスワード(確認用)【変更する場合は入力】",class: "form-title" %>
-        <%#= f.label :password_confirmation %><!-- <br /> -->
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "例：pass2021", class: "text-field" %>
       </div>
 
       <div class="field">
-        <%#= f.label :current_password %><!-- <br /> -->
-        <%# TODO: 必須のマークを変更したい %>
         <div class="form-title">現在のパスワード<span class="required_content">必須</span></div>
         <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード",required: true, class: "text-field" %>
       </div>

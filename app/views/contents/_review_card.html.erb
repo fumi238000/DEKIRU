@@ -18,9 +18,9 @@
 
     <!-- 削除ボタン -->
     <% if permit_user?(review) %>
-    <div class="text-left p-4">
-      <%= link_to ">>削除", review_path(review), data: { confirm: "削除してもよろしいでしょうか？"}, method: :delete,  class:"red-link" %>
-    </div>
+      <div class="text-left p-4">
+        <%= link_to ">>削除", review_path(review), data: { confirm: "削除してもよろしいでしょうか？"}, method: :delete,  class:"red-link" %>
+      </div>
     <% end %>
 
   </div>
