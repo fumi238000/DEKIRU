@@ -1,33 +1,6 @@
 <header class="sticky top-0 z-10 p-1 text-center bg-dekiru-light_blue shadow-2xd">
-  <div class="mx-4 md:mx-20 xl:mx-60 py-4 flex text-center justify-center items-center">
-
-    <!-- ロゴ -->
-    <div class="flex-grow w-3/12">
-      <%= link_to root_path do %>
-        <%= image_tag "deKiRU-header-logo.png" %>
-      <% end %>
-    </div>
-
-    <!-- 検索フォーム -->
-    <div class="flex-grow w-6/12">
-      <%= render partial: 'layouts/search_form'%>
-    </div>
-
-    <!-- ログイン -->
-    <div class="flex-grow w-3/12">
-      <div class="float-right ">
-        <% if user_signed_in? %>
-          <%# ログイン時 %>
-          <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
-
-        <% else %>
-          <%# 非ログイン時 %>
-          <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
-        <% end %>
-      </div>
-
-    </div>
-
+  <!-- md以下の場合-->
+  <%= render  "layouts/sp_header" %>
+  <!-- md以上の場合-->
+  <%= render  "layouts/md_header" %>
 </header>
-
-<hr>

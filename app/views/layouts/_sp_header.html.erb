@@ -1,0 +1,33 @@
+<div class="md:hidden">
+  
+    <div class="flex">
+      <!-- ロゴ -->
+      <div class="w-1/2">
+        <%= link_to root_path do %>
+          <%= image_tag "deKiRU-header-logo.png", class:"p-4 w-1/2" %>
+        <% end %>
+      </div>
+  
+      <!-- ハンバーガーメニュー-->
+      <div class="hamburger-menu w-1/2">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <div class="menu-content">
+          <ul>
+            <li class="hover:bg-dekiru-blue"><%= link_to "トップ", root_path , class:"hover:text-white"%></li>
+            <% if user_signed_in? %>
+　　           <li class="hover:bg-dekiru-blue"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-white" %></li><%# ログイン時 %>
+          　<% else %>
+            　<li class="hover:bg-dekiru-blue"><%= link_to "ログイン", new_user_session_path , class:"hover:text-white"%></li><%# 非ログイン時 %>
+          　<% end %>   
+            <li class="hover:bg-dekiru-blue"><%= link_to "お気に入り一覧", favorite_contents_path, class:"hover:text-white" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 検索フォーム-->
+    <div class="pb-2">
+      <%= render partial: 'layouts/search_form'%>
+    </div>
+  </div>

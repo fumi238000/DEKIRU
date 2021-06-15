@@ -4,6 +4,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "hamburger_menu";
 
 
 //************ BASE **************//
@@ -257,3 +258,4 @@ iframe {
 .top-blue-btn {
  @apply  border-none px-4 py-2 text-xs bg-gray-100 text-dekiru-blue hover:bg-dekiru-blue hover:text-white
 }
+
