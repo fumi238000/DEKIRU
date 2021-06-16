@@ -72,7 +72,6 @@ RSpec.describe "Categories", type: :request do
       context "カテゴリーが存在しない場合" do
         let(:category_id) { 0 }
         it "エラーが発生する" do
-          # TODO: 将来404へ遷移する様にする
           expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end

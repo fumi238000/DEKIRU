@@ -78,7 +78,6 @@ RSpec.describe "Contents", type: :request do
       context "コンテンツが存在しない場合" do
         let(:content_id) { 0 }
         it "エラーが発生する" do
-          # TODO: 将来404へ遷移する様にする
           expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end
@@ -276,7 +275,6 @@ RSpec.describe "Contents", type: :request do
         expect(response.body).to include(*Content.pluck(:title))
         expect(response.body).to include(*Content.pluck(:movie_id))
         expect(Content.count).to eq(create_content)
-        # TODO: 人気順で並んでいること
       end
     end
   end
@@ -293,7 +291,6 @@ RSpec.describe "Contents", type: :request do
         expect(response.body).to include(*Content.pluck(:title))
         expect(response.body).to include(*Content.pluck(:movie_id))
         expect(Content.count).to eq(create_content)
-        # TODO: created_atの新しい順で並んでいること
       end
     end
   end

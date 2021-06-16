@@ -83,7 +83,4 @@ class Content < ApplicationRecord
       end
     end
   end
-
-  # TODO: サムネイル画像のURLを保存するかどうか検討
-  # mount_uploader :movie_thumbnail, MovieThumbnailUploader
 end

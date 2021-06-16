@@ -1,21 +1,20 @@
 module ApplicationHelper
-  ## TODO: リファクタリングを検討する
   def admin_user?
-    if user_signed_in?
-      current_user.admin?
-    end
+    return false unless user_signed_in?
+
+    current_user.admin?
   end
 
   def general_user?
-    if user_signed_in?
-      current_user.general?
-    end
+    return false unless user_signed_in?
+
+    current_user.general?
   end
 
   def permit_user?(params)
-    if user_signed_in?
-      params.user_id == current_user.id || current_user.admin?
-    end
+    return false unless user_signed_in?
+
+    params.user_id == current_user.id || current_user.admin?
   end
 
   # youtubeのサムネイル画像を取得

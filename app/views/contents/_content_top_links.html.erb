@@ -1,24 +1,22 @@
 <%# 各種リンク%>
 <div class="p-4">
-
-    <%# TODO: 謎のマージンが入っているので、修正する %>
-    <div class="flex">
+  <div class="flex">
     
-      <%# root %>
-      <span class="mr-2 px-2"><%= link_to ">トップ", root_path, class:"blue-link"%></span>
+    <!-- トップリンク -->
+    <span class="mr-2 px-2"><%= link_to ">トップ", root_path, class:"blue-link"%></span>
     
-      <%# カテゴリーリンク%>
-      <% if @content.category.present? %>
-        <span class="mr-2 px-2"><%= link_to ">#{@content.category.name}", category_path(@content.category), class:"blue-link"%></span>
-      <% end %>
-      <%# タグリンク%>
-      <% @content.tag_masters.each do |tag|%>
-        <span class="px-2"><%= link_to ">#{tag.tag_name}",search_contents_path(tag_id: tag.id), class:"blue-link"%></span>
-　    <% end %>   
+    <!-- カテゴリーリンク -->
+    <% if @content.category.present? %>
+      <span class="mr-2 px-2"><%= link_to ">#{@content.category.name}", category_path(@content.category), class:"blue-link"%></span>
+    <% end %>
+    <!-- タグリンク -->
+    <% @content.tag_masters.each do |tag|%>
+      <span class="px-2"><%= link_to ">#{tag.tag_name}",search_contents_path(tag_id: tag.id), class:"blue-link"%></span>
+　  <% end %>   
 
     </div>
 　 
-  <%# 管理者用 %>  
+  <!-- 管理者用リンク -->
   <% if admin_user? %>
       <div class="flex m-4">
         <span class="mr-4"><%= link_to ">>編集", edit_content_path(@content), class:"admin-link"%></span>

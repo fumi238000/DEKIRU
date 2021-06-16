@@ -16,7 +16,6 @@
     <% if general_user? %>
       <%= render "favorite_button", locals: @content %>
     <% end %>
-    <p class="py-2">お気に入り数:<%= @content.favorites.count %></p>
   </div>
 
   <!-- 説明 -->
