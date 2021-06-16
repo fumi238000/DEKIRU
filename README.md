@@ -1,20 +1,16 @@
 # DEKIRU
-現役のベテラン住宅営業マンが、直に住宅に関する情報を発信するために作成したサービスです。
-
+現役のベテラン住宅営業が、現場の生の情報を発信するために作成したサービスです。
 
 ## URL
 https://dekiru-app.herokuapp.com/
 
-## Papertrail(Staging)
-https://my.papertrailapp.com/systems/dekiru-app-staging/events
-
-
 ## コンセプト
-
 
 ## 製作背景
 
 ## 解決したい課題
+
+## こだわった
 
 
 
