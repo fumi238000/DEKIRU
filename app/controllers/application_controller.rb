@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_checker
-    redirect_to root_path, alert: "不正なアクセスです" and return unless user_signed_in?     # ログインしているか
-    redirect_to root_path, alert: "不正なアクセスです" and return unless current_user.admin? # ログインユーザーが管理者か
+    redirect_to root_path, alert: "不正なアクセスです" and return unless user_signed_in? && current_user.admin?
   end
 
   def user_general_checker
