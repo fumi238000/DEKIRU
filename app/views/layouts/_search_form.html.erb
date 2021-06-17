@@ -1,7 +1,7 @@
 <!-- 検索フォーム -->
 <div>
   <%= search_form_for @q, url: search_contents_path do |f| %>
-    <%= f.search_field :title_or_subtitle_or_comment_or_tag_masters_tag_name_cont, placeholder:"キーワードを入力", class:"text-filed bg-white rounded-full p-2 focus:outline-none" %>
+    <%= f.search_field :title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont, placeholder:"キーワードを入力", class:"text-filed bg-white rounded-full p-2 focus:outline-none" %>
     <%# これをアイコンにする%>
     <%= f.submit class: "bg-dekiru-light_blue"%>
   <% end %>
