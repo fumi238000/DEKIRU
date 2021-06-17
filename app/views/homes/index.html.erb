@@ -5,6 +5,7 @@
   </div>
 </div>
 
+
 <!--  人気情報 -->
 <div class="top-container">
   <div class="md:flex py-4">
@@ -15,7 +16,7 @@
   </div>
   
   <div class="m-4">
-    <div class="md:flex justify-center py-8 mb:py-16 ">
+    <div class="md:flex justify-center py-8 mb:py-16">
       <%= render partial: "layouts/top_page_content_card", collection: @popular_contents, as: "content" %>
     </div>
   </div>
@@ -38,6 +39,7 @@
   </div>
 </div>
 
+
 <!--  新着情報 -->
 <div class="top-container">
   <div class="md:flex py-4 ">
@@ -47,10 +49,13 @@
     <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn" %></p>
   </div>
 
-  <div class="md:flex justify-center py-8 mb:py-16">
-    <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
+  <div class="m-4">
+    <div class="md:flex justify-center py-8 mb:py-16">
+      <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
+    </div>
   </div>
 </div>
+
 
 <!--  カテゴリー -->
 <div class="my-8 max-w-6xl mx-auto p-4">
@@ -64,6 +69,7 @@
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
   </div>
 </div>
+
 
 <!--  キーワード -->
 <div class="top-container">
