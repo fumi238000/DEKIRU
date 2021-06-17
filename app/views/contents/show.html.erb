@@ -26,11 +26,14 @@
   </div>
 </div>
 
-<!-- タグ -->
+<!-- キーワード -->
 <% if @content.tag_masters.present? %>
   <div class="p-4 mb-8">
-    <h2 class="mb-4">タグ</h2>
-    <div>
+    <h2 class="mb-4">キーワード</h2>
+    <div class="p-4">
+      <span class="content-category-style">
+        <%= @content.category.name %>
+      </span>
       <% @content.tag_masters.each do |tag| %>
         <span class="content-tag-style">
           <%= tag.tag_name %>

@@ -33,13 +33,19 @@
   @apply text-white bg-dekiru-blue border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
 }
 
+//コンテンツタグ(リンクなし)
+.content-tag-style {
+  @apply text-white bg-dekiru-keyword border-0 m-1 py-2 px-6 focus:outline-none text-lg
+}
+
 //コンテンツタグ(リンクあり)
 .content-tag-btn {
   @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
 }
-//コンテンツタグ(リンクなし)
-.content-tag-style {
-  @apply text-white bg-dekiru-keyword border-0 m-1 py-2 px-6 focus:outline-none text-lg
+
+//コンテンツカテゴリー
+.content-category-style {
+  @apply text-white bg-dekiru-blue border-0 m-1 py-2 px-6 focus:outline-none text-lg
 }
 
 //************ トップへ戻るボタン **************//
