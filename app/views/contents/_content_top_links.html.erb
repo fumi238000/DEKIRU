@@ -8,7 +8,7 @@
     <% if @content.category.present? %>
       <span class="px-2"><%= link_to ">#{@content.category.name}", category_path(@content.category), class:"blue-link"%></span>
     <% end %>
-    <!-- タグリンク -->
+    <!-- キーワードリンク -->
     <% @content.tag_masters.each do |tag|%>
       <span class="px-2"><%= link_to ">#{tag.tag_name}", search_contents_path(tag_id: tag.id), class:"blue-link"%></span>
     <% end %>

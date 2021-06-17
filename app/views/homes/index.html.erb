@@ -80,12 +80,10 @@
     <%# TODO: 数が多くなった場合実装する%>
     <p class="top-link"><%#= link_to ">>全て見る", categories_path, class:"blue-link" %></p>
   </div>
-
   <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
     <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
   </div>
-
-  <!--  TOPページボタン -->
-  <%= render "layouts/page_top" %>
-
 </div>
+
+<!--  TOPページボタン -->
+<%= render "layouts/page_top" %>

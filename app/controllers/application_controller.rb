@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   TOP_PAGE_CONTENT = Settings.top_page_content # TOPページに表示するコンテンツ
   RECOMMEND_CONTENT_NUM = Settings.recommend_content_num # おすすめコンテンツの最大数
   PER_PAGE = Settings.per_page # 1ページの表示数
-  MAX_CONTENT_TAGS = Settings.max_countent_tags # タグ可能数
+  MAX_CONTENT_TAGS = Settings.max_countent_tags # キーワード登録可能数
 
   def redirect_root
     redirect_back(fallback_location: root_path) and return

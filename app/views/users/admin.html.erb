@@ -24,12 +24,12 @@
     <div><%= link_to ">>ユーザー一覧",admin_users_path, class:"admin-link" %></div>
   </div>
 
-  <!-- タグ -->
+  <!-- キーワード -->
   <div class="my-8">
-    <h2>4.タグ</h2>
+    <h2>4.キーワード</h2>
     <div class="my-4">
       <div><%= link_to ">>追加", new_tag_master_path, class:"admin-link" %></div>
-      <div><%= link_to ">>タグ一覧", admin_tag_masters_path, class:"admin-link" %></div>
+      <div><%= link_to ">>キーワード一覧", tag_masters_path, class:"admin-link" %></div>
       <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
     </div>
   </div>

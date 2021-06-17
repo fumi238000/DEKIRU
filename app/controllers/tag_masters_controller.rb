@@ -2,6 +2,10 @@ class TagMastersController < ApplicationController
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_tag_master, only: %i[update edit destroy]
 
+  def index
+    @tags = TagMaster.order(created_at: :asc)
+  end
+
   def new
     @tag_master = TagMaster.new
   end
@@ -9,7 +13,7 @@ class TagMastersController < ApplicationController
   def create
     @tag_master = TagMaster.new(tag_master_params)
     if @tag_master.save
-      redirect_to mypage_path(current_user), notice: "タグを追加しました"
+      redirect_to tag_masters_path, notice: "キーワードを追加しました"
     else
       render :new
     end
@@ -17,7 +21,7 @@ class TagMastersController < ApplicationController
 
   def update
     if @tag_master.update(tag_master_params)
-      redirect_to mypage_path(current_user), notice: "タグを更新しました"
+      redirect_to tag_masters_path, notice: "キーワードを更新しました"
     else
       render :edit
     end
@@ -28,7 +32,7 @@ class TagMastersController < ApplicationController
 
   def destroy
     @tag_master.destroy!
-    redirect_to mypage_path(current_user), alert: "タグを削除しました"
+    redirect_to tag_masters_path, alert: "キーワードを削除しました"
   end
 
   private
