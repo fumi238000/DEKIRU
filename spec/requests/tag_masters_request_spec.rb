@@ -6,6 +6,37 @@ RSpec.describe "TagMasters", type: :request do
     @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
   end
 
+  describe "GET #index" do
+    subject { get(tag_masters_path) }
+
+    context "未ログインユーザーの場合" do
+      it "リダイレクトする" do
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "一般ユーザーの場合" do
+      it "リダイレクトする" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "管理者の場合" do
+      it "リスクエストが成功する" do
+        sign_in @admin
+        subject
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
   describe "GET #new" do
     subject { get(new_tag_master_path) }
 

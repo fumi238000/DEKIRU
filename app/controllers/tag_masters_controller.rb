@@ -1,5 +1,5 @@
 class TagMastersController < ApplicationController
-  before_action :admin_checker, only: %i[new create update edit destroy]
+  before_action :admin_checker, only: %i[index new create update edit destroy]
   before_action :set_tag_master, only: %i[update edit destroy]
 
   def index
