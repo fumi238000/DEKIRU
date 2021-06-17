@@ -10,3 +10,47 @@
     </div>
   </div>
 </div>
+
+
+  <%= link_to ">管理者画面へてきな", root_path, class:"blue-link text-left block my-4"%>
+
+
+<div class="p-16 mb-32">
+  <h1 class="py-8">キーワード一覧</h1>
+  <table class="table-fixed border">
+
+　  <thead>
+    <tr class="border bg-gray-100">
+      <td class="w-1/12 border p-4 bg-gray-100 ">ID</td>
+      <td class="w-7/12 border">キーワード名</td>
+      <td class="w-2/12 border">作成日</td>
+      <td class="w-2/12 border">更新日</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <thead>
+
+    <% @tags.each do |tag|%>
+      <tr>
+        <td class="border"><%=tag.id %></td>
+        <td class="border py-2"><%=tag.tag_name%></td>
+        <td class="border text-xs p-4"><%=tag.created_at.to_s(:datetime_jp)%></td>
+        <td class="border text-xs p-4"><%=tag.updated_at.to_s(:datetime_jp)%></td>
+        <td class="border text-xs p-4">
+          <%= link_to edit_tag_master_path(tag.id) , class:"blue-link" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          <% end %>
+        </td>
+        <td class="border p-4">
+          <%= link_to  tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" do%>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
