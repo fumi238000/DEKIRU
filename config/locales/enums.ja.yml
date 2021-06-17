@@ -7,7 +7,7 @@ ja:
         discontinued: "停止ユーザー"
     content:
       public_status:
-        non_published: "未公開"
+        non_published: "非公開"
         published: "公開中"
       recommend_status:
         general: "一般コンテンツ"
