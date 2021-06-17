@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :admin_checker, only: %i[new create update edit destroy]
+  before_action :admin_checker, only: %i[index new create update edit destroy]
   before_action :set_category, only: %i[show update edit destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.order(created_at: :asc)
   end
 
   def new

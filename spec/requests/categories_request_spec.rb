@@ -9,16 +9,37 @@ RSpec.describe "Categories", type: :request do
   describe "GET #index" do
     subject { get(categories_path) }
 
-    create_category = 3
-
-    context "カテゴリーが存在する場合" do
-      before { create_list(:category, create_category) }
-
-      it "カテゴリー一覧を取得できること" do
+    context "未ログインユーザーの場合" do
+      it "リダイレクトする" do
         subject
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to include(*Category.pluck(:name))
-        expect(Category.count).to eq(create_category)
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "一般ユーザーの場合" do
+      it "リダイレクトする" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+
+      context "管理者の場合" do
+        context "カテゴリーが存在する場合" do
+          create_category = 3
+          before { create_list(:category, create_category) }
+
+          it "カテゴリー一覧を取得できること" do
+            sign_in @admin
+            subject
+            expect(response).to have_http_status(:ok)
+            expect(response.body).to include(*Category.pluck(:name))
+            expect(Category.count).to eq(create_category)
+          end
+        end
       end
     end
   end
