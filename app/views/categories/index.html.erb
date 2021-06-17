@@ -1,7 +1,13 @@
-<%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link text-left block my-4" %>
+<div class="my-4 p-4 text-left">
+  <%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link p-4" %>
+</div>
 
-<div class="p-16 mb-32">
+<div class="mb-32 p-4">
   <h1 class="py-8">カテゴリー一覧</h1>
+  <div class="text-right p-4">
+    <%= link_to ">>追加", new_category_path, class:"admin-link" %>
+  </div>
+
   <table class="table-fixed border">
 
   <thead>

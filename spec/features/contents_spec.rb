@@ -12,6 +12,31 @@ RSpec.describe "Contents", type: :feature do
     @response = create(:response, question_id: @end_question.id) # 返信
   end
 
+  describe "GET #index" do
+    context "未ログインユーザーの場合" do
+      it "管理者専用リンクが表示されないこと" do
+        visit contents_path
+        expect(page).not_to have_link ">>管理者ページへ戻る", href: admin_page_path
+      end
+    end
+
+    context "ユーザーの場合" do
+      it "管理者専用リンクが表示されないこと" do
+        sign_in @user
+        visit contents_path
+        expect(page).not_to have_link ">>管理者ページへ戻る", href: admin_page_path
+      end
+    end
+
+    context "管理者の場合" do
+      it "管理者専用リンクが表示されること", type: :do do
+        sign_in @admin
+        visit contents_path
+        expect(page).to have_link ">>管理者ページへ戻る", href: admin_page_path
+      end
+    end
+  end
+
   describe "GET #show" do
     # 未ログインユーザー
     context "未ログインユーザーの場合" do
@@ -47,11 +72,11 @@ RSpec.describe "Contents", type: :feature do
 
     # ログインユーザー
     context "ユーザーが一般ユーザーの場合" do
-      it "ユーザー専用リンクが表示されること" do
+      it "ユーザー専用リンクが表示されること", type: :do do
         sign_in @user
         visit content_show_path(@content.id)
-        expect(page).to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
         expect(page).to have_link "お気に入りする", href: content_favorites_path(@content)
+        expect(page).to have_link ">>レビューする", href: new_review_path(params: { content_id: @content.id })
       end
 
       it "管理者専用リンクが表示されないこと" do

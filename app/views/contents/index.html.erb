@@ -1,6 +1,12 @@
 <div class="mx-4 md:mx-20 xl:mx-16">
   <%= link_to ">TOPページ", root_path, class:"blue-link text-left block my-4"%>
+
+  <% if admin_user? %>
+    <%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link text-left block my-4" %>
+  <% end %>
+
 </div>
+
 
 <h1 class="py-8">コンテンツ一覧</h1>
 

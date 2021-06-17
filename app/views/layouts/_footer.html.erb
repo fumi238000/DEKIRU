@@ -13,7 +13,7 @@
       <li class="mb-8 md:mb-4"><%= link_to "カテゴリー一覧", categories_path, class:"hover:text-dekiru-blue" %></li>
       <% if user_signed_in? %>
         <li class="mb-8 md:mb-4"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-dekiru-blue" %></li>
-        <li class="mb-8"><%= link_to "お問い合わせ", contacts_path, class:"hover:text-dekiru-blue" %></li>
+        <li class="mb-8"><%= link_to "お問い合わせ", new_contact_path, class:"hover:text-dekiru-blue" %></li>
       <% end %>
     </ul>
   </div>
