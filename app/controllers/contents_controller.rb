@@ -38,9 +38,7 @@ class ContentsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @content.update(content_params)
-      binding.pry
       redirect_to content_show_path(id: @content.id), notice: "内容を更新しました"
     else
       render :edit
