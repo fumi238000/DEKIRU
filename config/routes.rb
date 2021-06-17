@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[new create destroy]
   resources :questions, only: %i[index create destroy]
   resources :responses, only: %i[new create update edit destroy]
-  resources :contacts, only: %i[index create]
+  resources :contacts, only: %i[index new create]
   resources :tag_masters, only: %i[index new create update edit destroy]
     # CSV
   resources :contents, only: :index do

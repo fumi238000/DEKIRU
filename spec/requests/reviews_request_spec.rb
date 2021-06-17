@@ -85,7 +85,7 @@ RSpec.describe "Reviews", type: :request do
 
       context "パラメータが異常な時" do
         let(:review_params) { { review: attributes_for(:review, :review_invalid, content_id: @content.id) } }
-        it "レビューの件数が増加しないこと", type: :do do
+        it "レビューの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { Review.count }.by(0)
           expect(response).to have_http_status(:ok)
