@@ -1,7 +1,12 @@
 class ContactsController < ApplicationController
-  before_action :user_general_checker, only: %i[index create]
+  before_action :user_general_checker, only: %i[new create]
+  before_action :admin_checker, only: %i[index]
 
   def index
+    @contacts = Contact.order(created_at: :desc).includes(:user)
+  end
+
+  def new
     @contact = Contact.new
   end
 
@@ -14,7 +19,7 @@ class ContactsController < ApplicationController
       ContactMailer.admin_email(@contact).deliver_now
       redirect_to root_path, notice: "お問い合わせ内容を受け付けました。"
     else
-      render :index
+      render :new
     end
   end
 

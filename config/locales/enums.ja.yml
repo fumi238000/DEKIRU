@@ -12,3 +12,7 @@ ja:
       recommend_status:
         general: "一般コンテンツ"
         recommend: "おすすめコンテンツ"
+    contact:
+      status:
+        before: "対応前"
+        after: "対応完了"

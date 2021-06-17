@@ -1,30 +1,37 @@
-<div class="mx-4 md:mx-20 xl:mx-16">
-  <%= link_to ">TOPページ", root_path, class:"blue-link text-left block my-4"%>
+<div class="my-4 p-4 text-left">
+  <%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link p-4" %>
 </div>
 
-<div class="py-8">
-  <h1 class="mt-16 mb-12">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
-  <div class="pb-8">
-    <%= form_with model: @contact, local: true do |form| %>
-      <div class="form-body">
-  
-        <%= render 'layouts/error_messages', model: form.object %>
-        <%= form.hidden_field :submitted %>
-  
-        <% if @contact.submitted == "1" %>
-          <%# 確認画面 %>
-          <%= render "confirm_fields", form: form %>
-          <div>
-            <div class="mt-4"><%= form.button "戻る", name: "contact[confirmed]", value: "", class:"submit-btn" %></div>
-            <div><%= form.button "送信", name: "contact[confirmed]", value: "1", data: { disable_with: "送信中..." }, class:"submit-btn" %></div>
-          </div>
-            <% else %>
-          <%# 投稿画面 %>
-          <%= render "submit_fields", form: form %>
-          <div class="py-8"><%= form.submit "確認", class:"submit-btn" %></div>
-        <% end %>
-  
-      </div>
+<div class="mb-32 p-4">
+  <h1 class="py-8">お問い合わせ一覧</h1>
+ 
+  <table class="table-fixed border">
+
+  <thead>
+    <tr class="border bg-gray-100">
+      <td class="w-1/12 border p-4 bg-gray-100 ">ID</td>
+      <td class="w-1/12 border">ユーザー名</td>
+      <td class="w-3/12 border">タイトル</td>
+      <td class="w-3/12 border">内容</td>
+      <td class="w-1/12 border">IPアドレス</td>
+      <td class="w-1/12 border">ステータス</td>
+      <td class="w-1/12 border">作成日</td>
+      <td class="w-1/12 border">更新日</td>
+    </tr>
+    <thead>
+
+    <% @contacts.each do |contact|%>
+      <tr>
+        <td class="border"><%=contact.id %></td>
+        <td class="border py-2"><%=contact.user.name%></td>
+        <td class="border py-2"><%=contact.title%></td>
+        <td class="border py-2"><div class="overflow-auto h-32"><%=contact.content%></div></td>
+        <td class="border py-2"><%=contact.remote_ip%></td>
+        <td class="border py-2"><%=contact.status_i18n%></td>
+        <td class="border text-xs p-4"><%=contact.created_at.to_s(:datetime_jp)%></td>
+        <td class="border text-xs p-4"><%=contact.updated_at.to_s(:datetime_jp)%></td>
+      </tr>
     <% end %>
-  </div>
+  </table>
 </div>
+
