@@ -26,12 +26,11 @@ class User < ApplicationRecord
     end
   end
 
-  def self.create_guest_sample_date
+  def self.create_sample_date
     gest_user = User.find_by(email: "guest@example.com")
-
     # お気に入りサンプルデータ
     favorite_num = 10
-    return if gest_user.favorites.count < favorite_num
+    return unless gest_user.favorites.count < favorite_num
 
     favorite_num.times do
       Content.general.first(favorite_num).each do |content|

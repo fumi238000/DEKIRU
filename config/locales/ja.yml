@@ -33,7 +33,7 @@ ja:
       response:
         response_content: 返信内容
       tag_master: 
-        tag_name: タグ名
+        tag_name: キーワード名
       contact:
         title: お問い合わせタイトル
         content: お問い合わせ内容
@@ -46,5 +46,5 @@ ja:
       review: レビュー
       question: 質問
       response: 返信
-      tag_master: タグ
+      tag_master: キーワード
       contact: お問い合わせ

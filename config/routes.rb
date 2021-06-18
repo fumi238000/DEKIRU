@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
+  resources :users, only: %i[index edit update]
   get "/mypage/:id", to: "users#show", as: "mypage"
   get "/favorite_contents", to: "users#favorite"
   get "/admin_page", to: "users#admin"
+
   root "homes#index"
   resources :categories, only: %i[index new show edit create update destroy]
   resources :contents, only: %i[index new edit create update destroy]
@@ -29,9 +31,9 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[new create destroy]
   resources :questions, only: %i[index create destroy]
   resources :responses, only: %i[new create update edit destroy]
-  resources :contacts, only: %i[index create]
-  resources :tag_masters, only: %i[new create update edit destroy]
-    # CSV
+  resources :contacts, only: %i[index new create]
+  resources :tag_masters, only: %i[index new create update edit destroy]
+  # CSV
   resources :contents, only: :index do
     collection { resource :import, only: :create, controller: :import }
   end

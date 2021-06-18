@@ -12,16 +12,17 @@
     </div>
 
     <!-- レビュー -->
-    <div class="text-left p-4">
-      <p><%= review.comment%></p>
+    <div class="text-left p-2 md:h-52">
+      <p class="break-words"><%= review.comment%></p>
     </div>
 
     <!-- 削除ボタン -->
-    <% if permit_user?(review) %>
-      <div class="text-left p-4">
-        <%= link_to ">>削除", review_path(review), data: { confirm: "削除してもよろしいでしょうか？"}, method: :delete,  class:"red-link" %>
-      </div>
-    <% end %>
-
+    <div class="text-left p-4">
+      <% if permit_user?(review) %>
+        <%= link_to ">>削除", review_path(review), data: { confirm: "削除してもよろしいでしょうか？"}, method: :delete,  class:"red-link block text-right" %>
+      <% else %>
+        <div class="md:pt-4"></div>
+      <% end %>
+    </div>
   </div>
 </div>

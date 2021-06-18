@@ -6,6 +6,37 @@ RSpec.describe "TagMasters", type: :request do
     @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
   end
 
+  describe "GET #index" do
+    subject { get(tag_masters_path) }
+
+    context "未ログインユーザーの場合" do
+      it "リダイレクトする" do
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "一般ユーザーの場合" do
+      it "リダイレクトする" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to eq("不正なアクセスです")
+      end
+    end
+
+    context "管理者の場合" do
+      it "リスクエストが成功する" do
+        sign_in @admin
+        subject
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
   describe "GET #new" do
     subject { get(new_tag_master_path) }
 
@@ -44,7 +75,7 @@ RSpec.describe "TagMasters", type: :request do
     let(:tag_master_params) { { tag_master: attributes_for(:tag_master) } }
 
     context "未ログインユーザの場合" do
-      it "タグの件数が変化しないこと" do
+      it "キーワードの件数が変化しないこと" do
         expect { subject }.to change { TagMaster.count }.by(0)
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to root_path
@@ -53,7 +84,7 @@ RSpec.describe "TagMasters", type: :request do
     end
 
     context "一般ユーザーの場合" do
-      it "タグの件数が変化しないこと" do
+      it "キーワードの件数が変化しないこと" do
         sign_in @user
         expect { subject }.to change { TagMaster.count }.by(0)
         expect(response).to have_http_status(:found)
@@ -64,22 +95,22 @@ RSpec.describe "TagMasters", type: :request do
 
     context "管理者の場合" do
       context "パラメータが正常な時" do
-        it "タグの件数が1件増加すること" do
+        it "キーワードの件数が1件増加すること" do
           sign_in @admin
           expect { subject }.to change { TagMaster.count }.by(1)
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to mypage_path(@admin)
-          expect(flash[:notice]).to eq("タグを追加しました")
+          expect(response).to redirect_to tag_masters_path
+          expect(flash[:notice]).to eq("キーワードを追加しました")
         end
       end
 
       context "パラメータが異常な時" do
         let(:tag_master_params) { { tag_master: attributes_for(:tag_master, :tag_master_invalid) } }
-        it "タグの件数が増加しないこと" do
+        it "キーワードの件数が増加しないこと" do
           sign_in @admin
           expect { subject }.to change { TagMaster.count }.by(0)
           expect(response).to have_http_status(:ok)
-          expect(response.body).to include "タグを追加"
+          expect(response.body).to include "キーワードを追加"
         end
       end
     end
@@ -112,24 +143,24 @@ RSpec.describe "TagMasters", type: :request do
 
     context "管理者の場合" do
       context "パラメータが正常な時" do
-        it "タグが更新されること" do
+        it "キーワードが更新されること" do
           sign_in @admin
           new_tag_master = tag_master_params[:tag_master]
           expect { subject }.to change { tag_master.reload.tag_name }.from(tag_master.tag_name).to(new_tag_master[:tag_name])
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to mypage_path(@admin)
-          expect(flash[:notice]).to eq("タグを更新しました")
+          expect(response).to redirect_to tag_masters_path
+          expect(flash[:notice]).to eq("キーワードを更新しました")
         end
       end
 
       context "パラメータが異常な時" do
         let(:tag_master_params) { { tag_master: attributes_for(:tag_master, :tag_master_invalid) } }
 
-        it "タグが更新できないこと" do
+        it "キーワードが更新できないこと" do
           sign_in @admin
           expect { subject }.not_to change { tag_master.reload.tag_name }
           expect(response).to have_http_status(:ok)
-          expect(response.body).to include "タグを編集"
+          expect(response.body).to include "キーワードを編集"
         end
       end
     end
@@ -161,7 +192,7 @@ RSpec.describe "TagMasters", type: :request do
     end
 
     context "管理者の場合" do
-      it "指定したidの「タグ名」が表示されること" do
+      it "指定したidの「キーワード名」が表示されること" do
         sign_in @admin
         subject
         expect(response.body).to include tag_master.tag_name
@@ -195,12 +226,12 @@ RSpec.describe "TagMasters", type: :request do
     end
 
     context "管理者の場合" do
-      it "タグが削除されること" do
+      it "キーワードが削除されること" do
         sign_in @admin
         expect { subject }.to change { TagMaster.count }.by(-1)
         expect(response).to have_http_status(:found)
-        expect(response).to redirect_to mypage_path(@admin)
-        expect(flash[:alert]).to eq("タグを削除しました")
+        expect(response).to redirect_to tag_masters_path
+        expect(flash[:alert]).to eq("キーワードを削除しました")
       end
     end
   end

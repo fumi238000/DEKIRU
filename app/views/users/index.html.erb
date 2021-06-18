@@ -1,0 +1,37 @@
+<div class="my-4 p-4 text-left">
+  <%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link p-4" %>
+</div>
+
+<div class="mb-32 p-4">
+  <h1 class="py-8">ユーザー一覧</h1>
+  <table class="table-fixed border">
+
+  <thead>
+    <tr class="border bg-gray-100">
+      <td class="w-2/12 border p-4 bg-gray-100 ">ID</td>
+      <td class="w-4/12 border">ユーザー名</td>
+      <td class="w-2/12 border">ステータス</td>
+      <td class="w-2/12 border">作成日</td>
+      <td class="w-2/12 border">更新日</td>
+      <td></td>
+    </tr>
+  <thead>
+
+    <% @users.each do |user|%>
+      <tr>
+        <td class="border"><%= user.id %></td>
+        <td class="border py-2"><%= user.name%></td>
+        <td class="border py-2"><%= user.user_type_i18n%></td>
+        <td class="border text-xs p-4"><%= user.created_at.to_s(:datetime_jp)%></td>
+        <td class="border text-xs p-4"><%= user.updated_at.to_s(:datetime_jp)%></td>
+        <td class="border text-xs p-4">
+          <%= link_to edit_user_path(user.id) , class:"blue-link" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

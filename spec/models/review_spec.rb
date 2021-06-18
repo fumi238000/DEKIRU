@@ -20,18 +20,18 @@ RSpec.describe Review, type: :model do
         end
       end
 
-      context "500文字の場合" do
-        let(:review) { build(:review, comment: "1" * 500) }
+      context "100文字の場合" do
+        let(:review) { build(:review, comment: "1" * 100) }
         it "保存ができる" do
           expect(subject).to eq true
         end
       end
 
-      context "501文字の場合" do
-        let(:review) { build(:review, comment: "1" * 501) }
+      context "101文字の場合" do
+        let(:review) { build(:review, comment: "1" * 101) }
         it "保存ができない" do
           expect(subject).to eq false
-          expect(review.errors[:comment]).to include "は500文字以内で入力してください"
+          expect(review.errors[:comment]).to include "は100文字以内で入力してください"
         end
       end
 

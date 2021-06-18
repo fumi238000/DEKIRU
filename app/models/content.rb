@@ -58,10 +58,10 @@ class Content < ApplicationRecord
     end
   end
 
-  # タグを登録数の制限
+  # キーワードを登録数の制限
   def content_tag_checker
     unless self.tag_masters.content.count <= MAX_CONTENT_TAGS
-      errors.add(:tag_master_ids, "の登録できる上限を超えています。（タグは#{MAX_CONTENT_TAGS}つまで）")
+      errors.add(:tag_master_ids, "の登録できる上限を超えています。（キーワードは#{MAX_CONTENT_TAGS}つまで）")
     end
   end
 

@@ -1,0 +1,37 @@
+<!-- 返信カード-->
+<!--返信がある場合、返信を表示する-->
+<% if question.response.present?%>
+  <div id="accordion" class="bg-white border border-gray-300 ">
+    <h4 class="accordion-title js-accordion-title bg-gray-100">返信をみる</h4>
+    <div class="hidden">
+      <div class="border bg-white">
+        <!-- DEKRIU情報 -->
+        <div class="flex justify-end px-4 py-8">
+          <span class="mr-4">deKiRU</span><!-- TODO: 少し変かもしれない。全て大文字にするか相談する -->
+          <%= image_tag @admin.thumbnail.thumb27.url ,class:"rounded-full border border-gray-300"%>
+        </div>
+        <!-- 返信内容 -->
+        <div class="text-left px-4 py-8">
+          <%= question.response.response_content %>
+        </div>
+        <!-- 返信CRUD -->
+        <% if admin_user? %>
+          <div class="flex justify-end p-4">
+            <div class="px-4 mr-1 text-right"><%= link_to ">>編集", edit_response_path(question.response, question_id: question.id), class:"admin-link" %></div>
+            <div><%= link_to ">>削除", response_path(question.response), data: { confirm: '確定します。よろしいでしょうか？, disable_with: "送信中..."'}, method: :delete, class:"admin-link" %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+  
+  <!-- 返信がない場合、返信を作成するリンクを表示 -->
+  <% if admin_user? && question.response.nil? %>
+    <div class="border bg-dekiru-base rounded-lg">
+      <div><%= link_to ">>返信する", new_response_path(question_id: question.id), class:"admin-link" %></div>
+    </div>
+  <% end %>
+
+<% end %>

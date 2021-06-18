@@ -10,7 +10,7 @@ ActiveAdmin.register TagMaster do
   end
 
   show do
-    panel "タグ情報" do
+    panel "キーワード情報" do
       attributes_table_for tag_master do
         row :id
         # row :tag_type
