@@ -17,6 +17,8 @@ MAIL_ADMIN_PASSWPRD = ENV["MAIL_ADMIN_PASSWPRD"]
 puts "テストデータのインポート開始"
 #-----------------------------------------
 
+##======================= 共通のテストデータここから  =======================##
+
 #-----------------------------------------
 # admin_user
 #-----------------------------------------
@@ -63,7 +65,9 @@ end
 puts "カテゴリーのテストデータを作成しました".green
 
 ##======================= 開発環境専用のテストデータここから  =======================##
-if Rails.env.development?
+
+case Rails.env
+when "development"
 
   puts "<< 開発環境用のテストデータ作成開始！ >>"
 
@@ -89,8 +93,7 @@ if Rails.env.development?
     Content.find_or_create_by!(title: "コンテンツタイトル#{id}(16字)") do |c|
       c.title = "コンテンツタイトル#{id}(16字)" # 最大16文字
       c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
-      c.movie_url = "https://www.youtube.com/watch?v=0JxT2x1B6QM"
-      # c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
       c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
       c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
@@ -108,7 +111,7 @@ if Rails.env.development?
     Content.find_or_create_by!(title: "非公開コンテンツ#{id}") do |c|
       c.title = "非公開コンテンツ#{id}" # 最大16文字
       c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
-      c.movie_url = "https://www.youtube.com/watch?v=lE6RYpe9IT0"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
       c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
       c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
@@ -125,8 +128,7 @@ if Rails.env.development?
     Content.find_or_create_by!(title: "コンテンツ(おすすめデータ)#{id}") do |c|
       c.title = "コンテンツ(おすすめデータ)#{id}" # 最大16文字
       c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
-      c.movie_url = "https://www.youtube.com/watch?v=0JxT2x1B6QM"
-      # c.movie_url = "https://www.youtube.com/watch?v=7z2duD5gHsQ"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
       c.point = "ポイントポイントポイントポイントポイントポイントポイ(32文字)" # 最大32文字
       c.recommend_status = "recommend"
@@ -274,7 +276,201 @@ if Rails.env.development?
   puts "レビューのテストデータを作成しました".green
   puts "<< 開発環境用のテストデータ作成完了！ >>"
 
+##======================= 本番環境用ののテストデータここから  =======================##
+
+when "production"
+
+  puts "<< 本番環境用のテストデータ作成開始！ >>"
+
+    #-----------------------------------------
+    # general_user
+    #-----------------------------------------
+  USER_NUM.times do |i|
+    id = i + 1
+    User.find_or_create_by!(email: "user#{id}@example.com") do |u|
+      u.name = "テストユーザー#{id}"
+      u.email = "user#{id}@example.com"
+      u.password = "password"
+    end
+  end
+
+  puts "ユーザーのテストデータを作成しました".green
+
+    #-----------------------------------------
+    # content
+    #-----------------------------------------
+  CONTENT_NUM.times do |i|
+    id = i + 1
+    Content.find_or_create_by!(title: "水栓取り付け工事#{id}") do |c|
+      c.title = "水栓取り付け工事#{id}"
+      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
+      c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
+      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+      c.category_id = Category.all.sample.id
+      c.public_status = "published"
+    end
+  end
+  puts "コンテンツのテストデータを作成しました".green
+
+    #-----------------------------------------
+    # non_published_content
+    #-----------------------------------------
+  CONTENT_NUM.times do |i|
+    id = i + 1
+    Content.find_or_create_by!(title: "水栓取り付け工事（非公開)#{id}") do |c|
+      c.title = "水栓取り付け工事（非公開)#{id}"
+      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
+      c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
+      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+      c.category_id = Category.all.sample.id
+      c.public_status = "non_published"
+    end
+  end
+  puts "非公開コンテンツのテストデータを作成しました".green
+    #-----------------------------------------
+    # recommend_content
+    #-----------------------------------------
+  RECOMMEND_CONTENT_NUM.times do |i|
+    id = i + 1
+    Content.find_or_create_by!(title: "水栓取り付け工事(おすすめ)#{id}") do |c|
+      c.title = "水栓取り付け工事(おすすめ)#{id}"
+      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
+      c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
+      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
+      c.category_id = Category.all.sample.id
+      c.public_status = "published"
+      c.recommend_status = "recommend"
+    end
+  end
+
+  puts "おすすめコンテンツのテストデータを作成しました".green
+
+    #-----------------------------------------
+    # material
+    #-----------------------------------------
+  Content.where("title LIKE ?", "水栓取り付け工事%").includes(:materials).each do |content|
+    MATERIALS_NUM.times do |i|
+      next unless rand(2).zero? # tureの場合、作成
+
+      num = i + 1
+      content.materials.find_or_create_by!(name: "材料のサンプル#{num}") do |m|
+        m.content_id = content.id
+        m.name = "材料のサンプル#{num}"
+        m.amount = 1
+        m.unit = "個"
+        # 商品へのリンクがあっても面白いかもしれない
+      end
+    end
+  end
+
+  puts "材料のテストデータを作成しました".green
+
+    #-----------------------------------------
+    # make
+    #-----------------------------------------
+  Content.where("title LIKE ?", "水栓取り付け工事%").includes(:makes).each do |content|
+    MAKES_NUM.times do |i|
+      next unless rand(2).zero? # tureの場合、作成
+
+      num = i + 1
+      content.makes.find_or_create_by!(detail: "サンプルデータ#{num}") do |m|
+        m.content_id = content.id
+        m.detail = "サンプルデータ#{num}"
+      end
+    end
+  end
+
+  puts "作り方のテストデータを作成しました".green
+
+    #-----------------------------------------
+    # question
+    #-----------------------------------------
+  Content.where("title LIKE ?", "水栓取り付け工事%").each do |content|
+    QUESTIONS_NUM.times do
+      next unless rand(2).zero? # tureの場合、作成
+
+      user = User.general.sample
+      content.questions.find_or_create_by!(user_id: user.id) do |q|
+        q.user_id = user.id
+        q.question_content = "質問内容があります！xxxはどうすればよろしいでしょうか？" # 100文字
+        # m.status = 0
+      end
+    end
+  end
+
+  puts "質問のテストデータを作成しました".green
+
+    #-----------------------------------------
+    # response
+    #-----------------------------------------
+  Question.all.each do |question|
+    next unless rand(2).zero? # tureの場合、作成
+    next unless question.response.nil?
+
+    Response.create!(
+      question_id: question.id,
+      response_content: "xxxは△△△すればうまくいくと思います。", # 100文字
+    )
+  end
+
+  puts "質問返信のテストデータを作成しました".green
+
+  #-----------------------------------------
+  # favorite
+  #-----------------------------------------
+  User.general.where("name LIKE ?", "テストユーザー%").includes(:favorites).each do |user| # rubocop:disable all
+    FAVORITES_NUM.times do
+      content = Content.all.sample
+      user.favorites.find_or_create_by!(content_id: content.id) do |f|
+        f.content_id = content.id
+      end
+    end
+  end
+
+  puts "お気に入りのテストデータを作成しました".green
+
+    #-----------------------------------------
+    # content_tag
+    #-----------------------------------------
+    # コンテンツキーワード
+  Content.all.each do |content|
+    rand(1..MAX_CONTENT_TAGS).times do
+      next unless rand(2).zero? # tureの場合、作成する
+
+      tag = SAMPLE_CONTENT_TAGS.sample
+      ContentTag.find_or_create_by!(content_id: content.id, tag_id: tag.id) do |t|
+        t.content_id = content.id
+        t.tag_id = tag.id
+      end
+    end
+  end
+
+  puts "コンテンツにキーワードを作成しました".green
+
+    #-----------------------------------------
+    # contact
+    #-----------------------------------------
+  user = User.general.first
+  Contact.create!(user_id: user.id) do |c|
+    c.user_id = user.id
+    c.title = "お問い合わせサンプル"
+    c.content = "お問い合わせ内容サンプル"
+    c.remote_ip = 1111
+    # c.status = 0 # 将来的に使用する可能性があるため記述
+  end
+
+  puts "お問い合わせのテストデータを作成しました".green
+
+  puts "<< 本番環境用のテストデータ作成完了！ >>"
+
 end
+
 #-----------------------------------------
 puts "テストデータのインポート終了"
 #-----------------------------------------
