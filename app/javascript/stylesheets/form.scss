@@ -13,7 +13,7 @@
 
 //プレースホルダー
 .text-field::placeholder {
-  @apply px-2 py-4
+  @apply px-2 py-4 opacity-50
 }
 
 .text-area {
@@ -21,7 +21,7 @@
 }
 
 .text-area::placeholder {
-  @apply px-2 py-4
+  @apply px-2 py-4 opacity-50
 }
 
 .login-field {
