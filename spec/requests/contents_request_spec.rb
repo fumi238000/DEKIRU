@@ -11,11 +11,10 @@ RSpec.describe "Contents", type: :request do
   describe "GET #index" do
     subject { get(contents_path) }
 
-    context "管理者の場合" do
+    context "コンテンツが存在する場合" do
       before { create_list(:content, create_content, public_status: "published") }
 
       it "コンテンツ一覧を取得できること" do
-        sign_in @admin
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.pluck(:title))
