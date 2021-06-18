@@ -28,19 +28,32 @@
   @apply text-green-500 border border-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded-full 
 }
 
-//カテゴリータグ
+//カテゴリーキーワード
 .category-tag-btn {
   @apply text-white bg-dekiru-blue border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
 }
 
-//コンテンツタグ(リンクあり)
-.content-tag-btn {
-  @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
-}
-//コンテンツタグ(リンクなし)
+//コンテンツキーワード(リンクなし)
 .content-tag-style {
   @apply text-white bg-dekiru-keyword border-0 m-1 py-2 px-6 focus:outline-none text-lg
 }
+
+//コンテンツキーワード(リンクあり)
+.content-tag-btn {
+  @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
+}
+
+//カテゴリータグ
+.content-category-style {
+  @apply text-white bg-dekiru-blue border-0 m-1 py-2 px-6 focus:outline-none text-lg
+}
+
+//カテゴリーキーワード(リンクあり)
+.category-tag-btn {
+  @apply text-white bg-dekiru-blue hover:bg-dekiru-light_blue border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
+}
+
+
 
 //************ トップへ戻るボタン **************//
 #page-top {

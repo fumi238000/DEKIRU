@@ -36,9 +36,9 @@ RSpec.describe TagMaster, type: :model do
       end
 
       context "すでに同じ名前が存在してする場合" do
-        before { create(:tag_master, tag_name: "タグ") }
+        before { create(:tag_master, tag_name: "キーワード") }
 
-        let(:tag_master) { build(:tag_master, tag_name: "タグ") }
+        let(:tag_master) { build(:tag_master, tag_name: "キーワード") }
 
         it "保存ができない" do
           expect(subject).to eq false

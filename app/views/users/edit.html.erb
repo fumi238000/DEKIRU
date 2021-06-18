@@ -1,0 +1,45 @@
+<div class="my-4 p-4 text-left">
+  <%= link_to ">ユーザー一覧へ", users_path, class:"admin-link p-4" %>
+</div>
+
+<div class="pt-16 pb-32 px-16">
+  <h1 class="my-8">ユーザー編集</h1>
+
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="form-body">
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <!-- ユーザー名 -->
+      <div class="mx-auto max-w-4xl">
+        <h2 class="form-title">ユーザー名</h2>
+        <div class="py-4 text-left">
+          <%= @user.name %>
+        </div>
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="mx-auto max-w-4xl">
+        <h2 class="form-title">メールアドレス</h2>
+        <div class="py-4 text-left">
+          <%= @user.email %>
+        </div>
+      </div>
+
+      <!-- ステータス -->
+      <div class="mx-auto max-w-4xl">
+        <h2 class="form-title">ステータス</h2>
+        <div class="py-4 text-left">
+          <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
+            <%= f.select :user_type, [ ["一般ユーザー", "general"], ["停止ユーザー", "discontinued"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>        
+            <%#= f.select :user_type, [ ["一般ユーザー", "general"], ["管理者", "admin"], ["停止ユーザー", "discontinued"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>        
+          </span>
+        </div>
+      </div>
+      
+      <div class="p-8">
+        <%= f.submit "確定する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..."}, class:"submit-btn" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

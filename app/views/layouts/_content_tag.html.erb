@@ -1,10 +1,5 @@
-
 <%= link_to search_contents_path(tag_id: tag.id) do %>
   <div class="flex my-4">
     <span class="content-tag-btn"><%= tag[:tag_name] %></span>
-    <% if admin_user? && controller_name != "homes"%>
-    　<%= link_to ">>編集", edit_tag_master_path(tag.id) , class:"admin-link" %>
-  　  <%= link_to ">>削除", tag_master_path(tag.id), data: { confirm: '削除してもよろしいでしょうか？', disable_with: "送信中..."}, method: :delete, class:"admin-link" %>
-    <% end %>
   </div>
 <% end %>

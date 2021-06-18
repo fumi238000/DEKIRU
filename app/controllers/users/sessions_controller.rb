@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
   # ゲストアカウントでログイン
   def guest_sign_in
     sign_in User.guest
-    User.create_guest_sample_date
+    User.create_sample_date
     redirect_to root_path, notice: "ゲストユーザーとしてログインしました。「レビュー」「質問」「お気に入り」「お問い合わせ」が実施できます"
   end
 

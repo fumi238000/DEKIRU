@@ -4,15 +4,17 @@
   <!-- コンテンツ -->
   <div class="my-8">
     <h2>1.コンテンツ</h2>
-    <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
-    <div><%= link_to ">>コンテンツ一覧",contents_path, class:"admin-link" %></div>
+    <div class="my-4">
+      <div><%= link_to ">>新規作成",new_content_path, class:"admin-link" %></div>
+      <div><%= link_to ">>コンテンツ一覧",contents_path, class:"admin-link" %></div>
+    </div>
   </div>
 
   <!-- 質問 -->
   <div class="my-8">
     <h2>2.質問</h2>
     <div class="my-4">未回答：<%= Question.before.count %>件</div>
-    <div class="my-4">
+    <div class="my-2">
       <div><%= link_to ">>質問一覧", questions_path, class:"admin-link" %></div>
       <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
     </div>
@@ -21,15 +23,14 @@
   <!-- ユーザー -->
   <div class="my-8">
     <h2>3.ユーザー</h2>
-    <div><%= link_to ">>ユーザー一覧",admin_users_path, class:"admin-link" %></div>
+    <div class="my-2"><%= link_to ">>ユーザー一覧",users_path, class:"admin-link" %></div>
   </div>
 
-  <!-- タグ -->
+  <!-- キーワード -->
   <div class="my-8">
-    <h2>4.タグ</h2>
-    <div class="my-4">
-      <div><%= link_to ">>追加", new_tag_master_path, class:"admin-link" %></div>
-      <div><%= link_to ">>タグ一覧", admin_tag_masters_path, class:"admin-link" %></div>
+    <h2>4.キーワード</h2>
+    <div class="my-2">
+      <div><%= link_to ">>キーワード一覧", tag_masters_path, class:"admin-link" %></div>
       <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
     </div>
   </div>
@@ -37,9 +38,8 @@
   <!-- カテゴリー -->
   <div class="my-8 ">
     <h2>5.カテゴリー</h2>
-    <div>
-      <div><%= link_to ">>追加", new_category_path, class:"admin-link" %></div>
-      <div><%= link_to ">>カテゴリー一覧",admin_categories_path, class:"admin-link" %></div>
+    <div class="my-2">
+      <%= link_to ">>カテゴリー一覧",categories_path, class:"admin-link" %>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
   <div class="my-8">
     <h2>6.お問い合わせ</h2>
     <div class="my-4">
-      <div><%= link_to ">>質問一覧", admin_contacts_path, class:"admin-link" %></div>
+      <div><%= link_to ">>質問一覧", contacts_path, class:"admin-link" %></div>
       <div><%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %></div>
     </div>
   </div>
@@ -58,7 +58,7 @@
     <%= form_with url: import_path do |f| %>
       <div class="max-w-4xl">
         <div class="my-4">
-          <label class="file_field" for="csv_import">CSVファイルを選択</label>
+          <label class="csv_file_field" for="csv_import">CSVファイルを選択</label>
           <%= f.file_field :file, id: "csv_import", accept: "text/csv", class: "hidden"%>
         </div>
         <span><%= f.submit "インポートを開始する", data: { confirm: 'インポートします。よろしいでしょうか？', disable_with: "送信中..."}, class:"admin-btn" %></span>

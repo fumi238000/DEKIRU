@@ -4,11 +4,7 @@
 
     <!-- ロゴ -->
     <div class="p-4 mx-auto max-w-xs md:w-1/2 md:ml-0">
-      <!-- <div class="border p-4  m-auto bg-dekiru-blue"> -->
-        <%#= link_to root_path do %>
-          <%= image_tag "deKiRU-logo.png",size: "150×50", class:"w-full"%>
-        <%# end %>
-     <!--</div> -->
+      <%= image_tag "deKiRU-logo.png",size: "150×50", class:"w-full"%>
     </div>
 
     <!-- 各種リンク -->
@@ -17,7 +13,7 @@
       <li class="mb-8 md:mb-4"><%= link_to "カテゴリー一覧", categories_path, class:"hover:text-dekiru-blue" %></li>
       <% if user_signed_in? %>
         <li class="mb-8 md:mb-4"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-dekiru-blue" %></li>
-        <li class="mb-8"><%= link_to "お問い合わせ", contacts_path, class:"hover:text-dekiru-blue" %></li>
+        <li class="mb-8"><%= link_to "お問い合わせ", new_contact_path, class:"hover:text-dekiru-blue" %></li>
       <% end %>
     </ul>
   </div>

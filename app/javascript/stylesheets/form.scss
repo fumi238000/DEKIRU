@@ -13,7 +13,7 @@
 
 //プレースホルダー
 .text-field::placeholder {
-  @apply px-2 py-4
+  @apply px-2 py-4 opacity-50
 }
 
 .text-area {
@@ -21,7 +21,7 @@
 }
 
 .text-area::placeholder {
-  @apply px-2 py-4
+  @apply px-2 py-4 opacity-50
 }
 
 .login-field {
@@ -29,5 +29,9 @@
 }
 
 .file_field {
-  @apply block text-white  pt-1 w-48 h-8 border-dekiru-light_blue bg-dekiru-blue  hover:bg-dekiru-light_blue hover:text-white cursor-pointer text-center no-underline rounded-sm shadow-2xl
+  @apply block text-dekiru-blue  pt-1 w-48 h-8 border border-dekiru-blue bg-gray-100  hover:bg-dekiru-blue hover:text-white cursor-pointer text-center no-underline rounded-sm shadow-2xl
+}
+
+.csv_file_field {
+  @apply block  pt-1 w-48 h-8 border bg-gray-100 border-dekiru-admin text-dekiru-admin  hover:bg-dekiru-admin hover:text-white cursor-pointer text-center no-underline rounded-sm shadow-2xl
 }

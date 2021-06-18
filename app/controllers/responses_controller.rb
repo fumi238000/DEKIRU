@@ -10,6 +10,7 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     if @response.save
+      # TODO: リダイレクト先を条件分岐する(content/show or question/index)
       redirect_to questions_path, notice: "質問に対して返信しました"
     else
       @question_id = response_params[:question_id]

@@ -4,11 +4,11 @@
     <%= render 'layouts/error_messages', model: f.object %>
   
     <div>
-      <h2 class ="form-title">タグの名前<span class="required_content">必須</span></h2>
-      <p><%= f.text_field :tag_name, placeholder: "タグ名(8文字以内)",required: true, maxlength:"8", class: "text-field" %></p>
+      <h2 class ="form-title">キーワードの名前<span class="required_content">必須</span></h2>
+      <p><%= f.text_field :tag_name, placeholder: "キーワード名(8文字以内)",required: true, maxlength:"8", class: "text-field" %></p>
     </div>
     
-    <!-- タグタイプ -->
+    <!-- キーワードタイプ -->
     <%#= f.text_area :detail %>
     
     <div class="my-8">
