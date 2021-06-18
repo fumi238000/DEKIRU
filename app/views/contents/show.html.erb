@@ -45,29 +45,34 @@
 
 
 <!-- 材料 -->
-<div class="mb-8 border bg-dekiru-base">
-  <h2 class="m-4">材料</h2>
-  <!-- 新規作成 -->
-  <% if admin_user? %>
-    <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
-  <% end %>
-  <!-- 材料一覧 -->
-  <div class="py-4 px-8 text-left text-lg">
-    <%= render partial: "material_card", collection: @materials, as: "material" %>
+<% if @content.materials.present? %>
+  <div class="mb-8 border bg-dekiru-base">
+    <h2 class="m-4">材料</h2>
+    <!-- 新規作成 -->
+    <% if admin_user? %>
+      <%= link_to ">>追加", new_material_path(params: { content_id: @content.id }), class:"admin-link"%>
+    <% end %>
+    <!-- 材料一覧 -->
+    <div class="py-4 px-8 text-left text-lg">
+      <%= render partial: "material_card", collection: @materials, as: "material" %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <!-- 手順・作り方 -->
-<div class="mb-8 border bg-dekiru-base">
-  <h2 class="m-4">手順・作り方</h2>
-  <% if admin_user? %>
-    <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
-  <% end %>
-  <!-- 作り方一覧 -->
-  <div class="py-4 px-8 text-left text-lg">
-    <%= render partial: "make_card", collection: @makes, as: "make" %>
+<% if @content.makes.present? %>
+  <div class="mb-8 border bg-dekiru-base">
+    <h2 class="m-4">手順・作り方</h2>
+    <% if admin_user? %>
+      <%= link_to ">>追加", new_make_path(params: { content_id: @content.id }), class:"admin-link" %>
+    <% end %>
+    <!-- 作り方一覧 -->
+    <div class="py-4 px-8 text-left text-lg">
+      <%= render partial: "make_card", collection: @makes, as: "make" %>
+    </div>
   </div>
-</div>
+<% end %>
+
 
 <!-- ポイント -->
 <div class="mb-8 pb-8 border bg-dekiru-base">
