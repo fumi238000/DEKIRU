@@ -302,10 +302,10 @@ when "production"
     id = i + 1
     Content.find_or_create_by!(title: "水栓取り付け工事#{id}") do |c|
       c.title = "水栓取り付け工事#{id}"
-      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.subtitle = "水栓の取り替え工事のご紹介になります"
       c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
-      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.point = "ポイントはxxxです"
       c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
       c.category_id = Category.all.sample.id
       c.public_status = "published"
@@ -320,10 +320,10 @@ when "production"
     id = i + 1
     Content.find_or_create_by!(title: "水栓取り付け工事（非公開)#{id}") do |c|
       c.title = "水栓取り付け工事（非公開)#{id}"
-      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.subtitle = "水栓の取り替え工事のご紹介になります"
       c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
-      c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
-      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.comment = "思っていたより簡単です！"
+      c.point = "ポイントはxxxです"
       c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
       c.category_id = Category.all.sample.id
       c.public_status = "non_published"
@@ -337,10 +337,10 @@ when "production"
     id = i + 1
     Content.find_or_create_by!(title: "水栓取り付け工事(おすすめ)#{id}") do |c|
       c.title = "水栓取り付け工事(おすすめ)#{id}"
-      c.subtitle = "築10年のお宅のリフォーム工事になります"
+      c.subtitle = "水栓の取り替え工事のご紹介になります"
       c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
-      c.point = "水圧を気にされる方が多いので、しっかりとチェックしましょう！"
+      c.point = "ポイントはxxxです"
       c.movie_id = YoutubeUrlFormatter.movie_id_format(c.movie_url)
       c.category_id = Category.all.sample.id
       c.public_status = "published"
