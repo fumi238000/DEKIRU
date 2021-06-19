@@ -127,6 +127,7 @@
 <img width="1113" alt="ER図" src="https://user-images.githubusercontent.com/64491435/122630921-515b2680-d102-11eb-826b-9ceeef729e63.png">
 
 ### テーブル設計
+https://docs.google.com/spreadsheets/d/12leHXCbUvZF1ZxuqPPIlxjBD2z0edQQAqtMsdmoLdSs/edit#gid=0
 
 ### Figma
 
