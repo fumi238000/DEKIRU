@@ -1,10 +1,9 @@
 # DEKIRU
 現役の住宅営業が、現場の生の情報を発信するために作成したサービスです。
 ## URL
-- [Production(現在設定中)]
 - [Staging](https://dekiru-app-staging.herokuapp.com/)
 
-*現在Productionは依頼人が データを作成するために使用しているため、Staging環境のURLからご覧ください。(2022/6/16現在)
+*現在Productionは依頼人が データを作成するために使用しているため、Staging環境のURLになります。(2022/6/16現在)
 
 ## 製作背景
 ### 「動画」+「説明」で情報を提供する仕組みを作る
