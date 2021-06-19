@@ -1,8 +1,8 @@
 <div class="link_style">
-  <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link text-left block my-4"%>
+  <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link"%>
 </div>
 
-<h1 class="py-8">お気に入り一覧</h1>
+<h1 class="h1">お気に入り一覧</h1>
 
 <% if  @favorite_contents.exists? %>
   <div class="content-style">

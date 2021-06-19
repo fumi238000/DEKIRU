@@ -3,7 +3,7 @@
 </div>
 
 <div class="py-8">
-  <h1 class="mt-16 mb-12">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
+  <h1 class="h1">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
   <div class="pb-8">
     <%= form_with model: @contact, local: true do |form| %>
       <div class="form-body">

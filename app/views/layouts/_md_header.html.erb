@@ -1,7 +1,7 @@
  <div class="hidden md:block">
-    <div class="py-4 mx-4 md:mx-20 xl:mx-60 flex text-center justify-center items-center">
+    <div class="mx-4 md:mx-20 xl:mx-60 py-4 flex text-center justify-center items-center">
       <!-- ロゴ -->
-      <div class="flex-grow w-3/12">
+      <div class="w-3/12">
         <%= link_to root_path do %>
           <%= image_tag "deKiRU-header-logo.png" %>
         <% end %>
@@ -13,7 +13,7 @@
       </div>
   
       <!-- ログイン -->
-      <div class="flex-grow w-3/12  hidden md:block">
+      <div class="w-3/12  hidden md:block">
         <div class="float-right ">
           <% if user_signed_in? %>
             <%# ログイン時 %>
