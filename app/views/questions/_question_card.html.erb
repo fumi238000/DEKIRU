@@ -1,8 +1,13 @@
 <div class="py-4 mb-4 bg-dekiru-base border shadow-lg">
-  <div class="p-4 mb-4">コンテンツタイトル：<%= question.content.title%></div>
-  
-  <div class="p-4">質問内容</div>
-  <div class="p-8 text-left"><%= question.question_content%></div>
-  
+
+  <div class="p-4">
+    <div class="mx-4 text-left">コンテンツタイトル: <%= question.content.title%></div>
+  </div>
+
+  <div class="p-4">
+    <div class="mx-4 text-left font-bold">質問内容</div>
+    <div class="p-8 text-left font-semibold"><%= question.question_content%></div>
+  </div>
+
   <div class="m-4"><%= link_to "返信する", new_response_path(question_id: question.id), class:"submit-btn" %></div>
 </div>

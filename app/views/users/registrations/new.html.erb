@@ -1,6 +1,7 @@
-<%= link_to ">TOPページ", root_path, class:"blue-link text-left block my-4"%>
-
-<h1 class="py-8">アカウント新規作成</h1>
+<div class="link_style">
+  <%= link_to ">TOPページ", root_path, class:"blue-link"%>
+</div>
+<h1 class="h1">アカウント新規作成</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="form-body">
@@ -31,7 +32,7 @@
       <%= f.submit "作成する", data: { confirm: '確定します。よろしいでしょうか？', disable_with: "作成中..." }, class:"submit-btn" %>
     </div>
 
-　  <div class="mt-4 mb-16">
+    <div class="mt-4 mb-16">
       <%= render "users/shared/links" %>
     </div>
 

@@ -1,18 +1,15 @@
-<div class="mx-4 md:mx-20 xl:mx-16">
-  <div class="text-left py-2">
+
+  <div class="link_style">
     <%= link_to ">TOPページ", root_path, class:"blue-link"%>
   </div>
 
   <% if admin_user? %>
-    <div class="text-left py-2">
+    <div class="link_style">
       <%= link_to ">管理者ページへ戻る", admin_page_path, class:"admin-link" %>
     </div>
   <% end %>
 
-</div>
-
-
-<h1 class="py-8">コンテンツ一覧</h1>
+<h1 class="h1">コンテンツ一覧</h1>
 
 <!-- content_card -->
 <div class="content-style">

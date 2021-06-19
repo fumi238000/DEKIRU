@@ -15,11 +15,12 @@ class Users::SessionsController < Devise::SessionsController
 
     # 停止ユーザーはログインできない
     def discontinued_user_checker
-      @user = User.find_by(email: params[:user][:email].downcase)
-      if @user.discontinued?
-        redirect_to new_user_session_path, alert: "このアカウントではログインすることができません。"
-      end
+      user = User.find_by(email: params[:user][:email].downcase)
+      return if user.blank?
+
+      redirect_to new_user_session_path, alert: "このアカウントではログインすることができません。" if user.discontinued?
     end
+
   # GET /resource/sign_in
   # def new
   #   super

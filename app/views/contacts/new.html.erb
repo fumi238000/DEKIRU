@@ -1,9 +1,9 @@
-<div class="mx-4 md:mx-20 xl:mx-16 text-left">
+<div class="link_style">
   <%= link_to ">TOPページ", root_path, class:"blue-link"%>
 </div>
 
 <div class="py-8">
-  <h1 class="mt-16 mb-12">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
+  <h1 class="h1">お問い合わせ<%= " 《確認》" if @contact.submitted == "1" %></h1>
   <div class="pb-8">
     <%= form_with model: @contact, local: true do |form| %>
       <div class="form-body">

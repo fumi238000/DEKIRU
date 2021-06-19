@@ -27,7 +27,7 @@
 </div>
 
 <!-- キーワード -->
-<% if @content.tag_masters.present? %>
+<% if @content.tag_masters.present? || admin_user? %>
   <div class="p-4 mb-8">
     <h2 class="mb-4">キーワード</h2>
     <div class="p-4">
@@ -45,7 +45,7 @@
 
 
 <!-- 材料 -->
-<% if @content.materials.present? %>
+<% if @content.materials.present? || admin_user? %>
   <div class="mb-8 border bg-dekiru-base">
     <h2 class="m-4">材料</h2>
     <!-- 新規作成 -->
@@ -60,7 +60,7 @@
 <% end %>
 
 <!-- 手順・作り方 -->
-<% if @content.makes.present? %>
+<% if @content.makes.present? || admin_user? %>
   <div class="mb-8 border bg-dekiru-base">
     <h2 class="m-4">手順・作り方</h2>
     <% if admin_user? %>

@@ -20,11 +20,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # 本番環境のみ404を表示
-  if Rails.env.production?
-    config.consider_all_requests_local = false
-  elsif Rails.env.development?
-    config.consider_all_requests_local = true
-  end
+  config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

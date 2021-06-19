@@ -1,8 +1,8 @@
-<div class="text-left pl-2 py-2">
+<div class="link_style">
   <span class="p-2"><%= link_to ">>TOPページ", root_path, class:"blue-link"%></span>
 </div>
 
-<h1 class="py-8">おすすめ情報一覧</h1>
+<h1 class="h1">おすすめ情報一覧</h1>
 <div class="content-style">
   <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
 </div>
