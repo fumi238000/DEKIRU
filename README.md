@@ -1,7 +1,7 @@
 # DEKIRU
 現役の住宅営業が、DYIに関する情報を発信するために作成したサービスです。
 ## URL
-- [Staging](https://dekiru-app-staging.herokuapp.com/)
+- https://dekiru-app-staging.herokuapp.com/
 
 *現在Productionは依頼人が データを作成するために使用しているため、Staging環境のURLになります。(2022/6/16現在)
 
