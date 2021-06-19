@@ -131,7 +131,7 @@
 
 ### Figma
 - サイズや幅のイメージを行った上で実装したので、比較的スムーズに実装できました。
-https://www.figma.com/file/OxNEM304xYCKvQ0QisUk4u/deKiRU?node-id=0%3A1
+- [figma　デザインカンプ](https://www.figma.com/file/OxNEM304xYCKvQ0QisUk4u/deKiRU?node-id=0%3A1)
 
 
 ## 追加予定の機能
