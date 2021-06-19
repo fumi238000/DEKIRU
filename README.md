@@ -124,7 +124,8 @@
 
 ## 資料
 ### ER図
-https://drive.google.com/file/d/1cdZaAJNaodIfr5_P0vbw3GYSGjqgoHc1/view?usp=sharing
+<img width="1113" alt="ER図" src="https://user-images.githubusercontent.com/64491435/122630921-515b2680-d102-11eb-826b-9ceeef729e63.png">
+
 ### テーブル設計
 
 ### Figma
