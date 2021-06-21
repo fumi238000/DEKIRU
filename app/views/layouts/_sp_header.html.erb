@@ -17,10 +17,11 @@
             <li class="hover:bg-dekiru-blue"><%= link_to "トップ", root_path , class:"hover:text-white"%></li>
             <% if user_signed_in? %>
               <li class="hover:bg-dekiru-blue"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-white" %></li><%# ログイン時 %>
+              <li class="hover:bg-dekiru-blue"><%= link_to "お気に入り一覧", favorite_contents_path, class:"hover:text-white" %></li>
+             <li class="hover:bg-dekiru-blue"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"hover:text-white"%></li><%# 非ログイン時 %>
            <% else %>
              <li class="hover:bg-dekiru-blue"><%= link_to "ログイン", new_user_session_path , class:"hover:text-white"%></li><%# 非ログイン時 %>
            <% end %>   
-            <li class="hover:bg-dekiru-blue"><%= link_to "お気に入り一覧", favorite_contents_path, class:"hover:text-white" %></li>
           </ul>
         </div>
       </div>
