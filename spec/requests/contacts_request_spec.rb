@@ -1,13 +1,46 @@
 require "rails_helper"
-# MEMO: 管理者はスキップ
 
 RSpec.describe "Contacts", type: :request do
   before do
     @user = FactoryBot.create(:user)
+    @admin = create(:user, user_type: "admin", email: ENV["MAIL_ADMIN"]) # 管理者
   end
 
   describe "GET #index" do
     subject { get(contacts_path) }
+
+    context "未ログインユーザの場合" do
+      it "リダイレクトする" do
+        subject
+        expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to eq("不正なアクセスです")
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context "一般ユーザーの場合" do
+      it "リクエストに成功する" do
+        sign_in @user
+        subject
+        expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to eq("不正なアクセスです")
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context "管理者の場合" do
+      it "リクエストに成功する" do
+        sign_in @admin
+        subject
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
+  # MEMO: 管理者はスキップ
+  describe "GET #new" do
+    subject { get(new_contact_path) }
 
     context "未ログインユーザの場合" do
       it "リダイレクトする" do

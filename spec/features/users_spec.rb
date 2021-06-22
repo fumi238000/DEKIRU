@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Users", type: :feature do
   before do
     @user = create(:user) # ユーザー
-    @admin = create(:user, user_type: "admin") # 管理者
+    @admin = create(:user, user_type: "admin", email: ENV["MAIL_ADMIN"]) # 管理者
     @tag = create(:tag_master)
   end
 
