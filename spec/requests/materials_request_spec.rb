@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Materials", type: :request do
   before do
     @user = FactoryBot.create(:user) # ユーザー
-    @admin = FactoryBot.create(:user, user_type: "admin") # 管理者
+    @admin = create(:user, user_type: "admin", email: ENV["MAIL_ADMIN"]) # 管理者
     @content = create(:content, public_status: "published")
   end
 

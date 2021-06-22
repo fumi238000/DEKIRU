@@ -3,8 +3,9 @@ require "rails_helper"
 RSpec.describe "Contents", type: :feature do
   before do
     @user = create(:user) # ユーザー
-    @admin = create(:user, user_type: "admin") # 管理者
-    @content = create(:content, public_status: "published") # コンテンツ
+    @admin = create(:user, user_type: "admin", email: ENV["MAIL_ADMIN"]) # 管理者
+    @category = create(:category) # カテゴリー
+    @content = create(:content, public_status: "published", category_id: @category.id) # コンテンツ
     @material = create(:material, content_id: @content.id) # 材料
     @make = create(:make, content_id: @content.id) # 作り方
     @do_question = create(:question, user_id: @user.id, content_id: @content.id) # 質問（返信あり)
@@ -16,7 +17,7 @@ RSpec.describe "Contents", type: :feature do
     context "未ログインユーザーの場合" do
       it "管理者専用リンクが表示されないこと" do
         visit contents_path
-        expect(page).not_to have_link ">>管理者ページへ戻る", href: admin_page_path
+        expect(page).not_to have_link ">管理者ページへ戻る", href: admin_page_path
       end
     end
 
@@ -24,15 +25,15 @@ RSpec.describe "Contents", type: :feature do
       it "管理者専用リンクが表示されないこと" do
         sign_in @user
         visit contents_path
-        expect(page).not_to have_link ">>管理者ページへ戻る", href: admin_page_path
+        expect(page).not_to have_link ">管理者ページへ戻る", href: admin_page_path
       end
     end
 
     context "管理者の場合" do
-      it "管理者専用リンクが表示されること", type: :do do
+      it "管理者専用リンクが表示されること" do
         sign_in @admin
         visit contents_path
-        expect(page).to have_link ">>管理者ページへ戻る", href: admin_page_path
+        expect(page).to have_link ">管理者ページへ戻る", href: admin_page_path
       end
     end
   end
@@ -72,7 +73,7 @@ RSpec.describe "Contents", type: :feature do
 
     # ログインユーザー
     context "ユーザーが一般ユーザーの場合" do
-      it "ユーザー専用リンクが表示されること", type: :do do
+      it "ユーザー専用リンクが表示されること" do
         sign_in @user
         visit content_show_path(@content.id)
         expect(page).to have_link "お気に入りする", href: content_favorites_path(@content)

@@ -67,3 +67,7 @@ RSpec/ExampleLength:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+# 同じ文言のcontextを許可
+RSpec/RepeatedExampleGroupBody:
+  Enabled: false
