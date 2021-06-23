@@ -32,16 +32,6 @@ end
 puts "管理者データを作成しました".green
 
 #-----------------------------------------
-# admin user
-#-----------------------------------------
-AdminUser.find_or_create_by!(email: MAIL_ADMIN) do |t|
-  t.email = MAIL_ADMIN
-  t.password = MAIL_ADMIN_PASSWPRD
-  t.password_confirmation = MAIL_ADMIN_PASSWPRD
-  puts "active_admin用の管理者データを作成しました".green
-end
-
-#-----------------------------------------
 # tag_master
 #-----------------------------------------
 # キーワード
