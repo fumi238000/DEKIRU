@@ -3,7 +3,7 @@
   <%= search_form_for @q, url: search_contents_path do |f| %>
 
     <!--　検索フォーム-->
-    <%= f.search_field :title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont, placeholder:"キーワードを入力", class:"text-filed bg-white rounded-full p-2 focus:outline-none" %>
+    <%= f.search_field :title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont,required: true, placeholder:"キーワードを入力", class:"text-filed bg-white rounded-full p-2 focus:outline-none" %>
 
     <!--　検索ボタン-->
     <%= button_tag type: "submit", class: "bg-dekiru-blue text-white py-1 px-2 py-2 shadow-lg rounded-full text-sm cursor-pointer ml-1" do %>
