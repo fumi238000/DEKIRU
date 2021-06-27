@@ -2,22 +2,45 @@
   <%= link_to ">TOPページ", root_path, class:"blue-link"%>
 </div>
 
-<h1 class="h1">コンテンツ一覧</h1>
-
-<div class="mt-4 mb-16">
-  
-  <!-- ワード検索の場合 -->
   <% if params[:q].present? && @search_word.present? %>
-    <p class="p-4">「 <%= @search_word %> 」の検索結果</p>
-  <% end %>
-  
-  <!-- キーワード検索の場合 -->
-  <% if params[:tag_id].present? && @search_word.present? %>
-    <div>
-      <div class="text-dekiru-font text-sm">キーワード</div>
-      <div class="text-dekiru-font">「 <%= @search_word %> 」</div>
+
+    <!-- 条件検索の場合 -->
+    <div class="h1">
+　　   <h1>SEARCH</h1>
+　　　  <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
+　　 </div>
+    <!-- 条件検索の場合 -->
+
+  <% elsif params[:tag_id].present? %>
+
+　　<!-- キーワード検索の場合 -->
+  　<% if @search_word.present?%>
+　　　 <div class="h1">
+　　　   <h1>KEYWORD</h1>
+　　　   <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
+　　　 </div>
+
+  　<% else %>
+      <div class="h1">
+        <h1>KEYWORD</h1>
+        <p class="text-sm pt-2">キーワード<p>
+     </div>
+    <% end %>
+    <!-- キーワード検索の場合 -->
+　　
+  <% else %>
+
+　　 <!-- 検索でない場合 --> 
+    <div class="h1">
+      <h1>CONTENT</h1>
+      <p class="text-sm pt-2">コンテンツ<p>
     </div>
+　　 <!-- 検索でない場合 --> 
+  
   <% end %>
+
+
+<div class="mb-16">
   
   <!-- content_card -->
   <% if @contents.exists? %>
@@ -26,6 +49,7 @@
     </div>
   <% else %>
     <p>検索結果はありません</p>
+    <%# TODO: リクエストやお問い合わせができるようにする%>
   <% end %>
   
   <!-- ページネーション  -->

@@ -2,7 +2,12 @@
   <%= link_to ">TOPページ", root_path, class:"blue-link"%>
 </div>
 
-<h1 class="h1"><%= @category.name%></h1>
+<div class="h1">
+  <h1>CATEGORY</h1>
+  <p class="text-sm pt-4">「<%= @category.name%>」<p>
+</div>
+
+
 <div class="content-style">
   <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
 </div>

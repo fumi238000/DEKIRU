@@ -325,19 +325,20 @@ RSpec.describe "Contents", type: :request do
 
       context "パラメータがある場合" do
         context "検索ワードと一致するコンテンツが存在するとき" do
-          before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_cont] = search_word }
+          before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont] = search_word }
 
           it "そのコンテンツを取得できること" do
             subject
             expect(response).to have_http_status(:ok)
-            expect(response.body).to include("「 #{search_word} 」の検索結果")
+            expect(response.body).to include("SEARCH")
+            expect(response.body).to include("「 #{search_word} 」")
             expect(response.body).to include(*Content.pluck(:title))
             expect(response.body).to include(*Content.pluck(:movie_id))
           end
         end
 
         context "検索ワードと一致するコンテンツが存在しない場合" do
-          before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_cont] = not_search_word }
+          before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont] = not_search_word }
 
           let(:not_search_word) { "hogehoge" }
 
@@ -346,21 +347,22 @@ RSpec.describe "Contents", type: :request do
             expect(response).to have_http_status(:ok)
             expect(response.body).not_to include(*Content.pluck(:title))
             expect(response.body).not_to include(*Content.pluck(:movie_id))
-            expect(response.body).to include("「 #{not_search_word} 」の検索結果")
+            expect(response.body).to include("SEARCH")
+            expect(response.body).to include("「 #{not_search_word} 」")
             expect(response.body).to include("検索結果はありません")
           end
         end
       end
 
       context "パラメータがない場合" do
-        before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_cont] = "" }
+        before { @params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont] = "" }
 
         it "全てのコンテンツ一覧を取得できること" do
           subject
           expect(response).to have_http_status(:ok)
           expect(response.body).to include(*Content.pluck(:title))
           expect(response.body).to include(*Content.pluck(:movie_id))
-          expect(response.body).not_to include("」の検索結果") # 「検索結果」というコンテンツが万が一存在する場合を考慮
+          expect(response.body).not_to include("」の検索結果")
         end
       end
     end
