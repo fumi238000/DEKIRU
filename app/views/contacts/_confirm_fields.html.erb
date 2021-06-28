@@ -1,13 +1,30 @@
-<div>
-<p>以下の内容で送信します。よろしいでしょうか？</p>
-  <div>
-    <span><%= form.label :title, class:"form-title" %></span>
-    <%= form.text_field :title, readonly: true, class: "text-field" %>
-    <%= form.hidden_field :title %>
-  </div>
-  <div>
-    <span><%= form.label :content, class:"form-title" %></span>
-    <%= form.text_area :content, readonly: true, class:"text-area" %>
-    <%= form.hidden_field :content %>
-  </div>
-</div>
+　<div class="border">
+
+　  <p>以下の内容で送信します。よろしいでしょうか？</p>
+　  <!-- ログインユーザーでない場合、以下を表示する-->
+　  <% unless user_signed_in? %>
+　    <div>
+　      <span><%= form.label :name, class:"form-title" %></span>
+　      <%= form.text_field :name, readonly: true, class: "text-field" %>
+　      <%= form.hidden_field :name %>
+　    </div>
+　    <div>
+　      <span><%= form.label :email, class:"form-title" %></span>
+　      <%= form.text_field :email, readonly: true, class: "text-field" %>
+　      <%= form.hidden_field :email %>
+　    </div>
+　  <% end %>
+　  <!-- ログインユーザーでない場合、以上を表示する-->
+
+　  <div>
+　    <span><%= form.label :title, class:"form-title" %></span>
+　    <%= form.text_field :title, readonly: true, class: "text-field" %>
+　    <%= form.hidden_field :title %>
+　  </div>
+　  <div>
+　    <span><%= form.label :content, class:"form-title" %></span>
+　    <%= form.text_area :content, readonly: true, class:"text-area" %>
+　    <%= form.hidden_field :content %>
+　  </div>
+
+　</div>

@@ -1,6 +1,8 @@
 class Contact < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
+  validates :name, presence: true, length: { in: 1..32 }
+  validates :email, presence: true
   validates :title, presence: true, length: { in: 1..32 }
   validates :content, presence: true, length: { in: 1..1000 }
   validates :remote_ip, presence: true
