@@ -58,12 +58,32 @@ RSpec.describe "Contents", type: :request do
   describe "GET #show" do
     subject { get(content_show_path(content_id)) }
 
-    context "コンテンツが存在するとき" do
-      let(:content) { create(:content) }
+    context "非公開コンテンツの場合" do
+      let(:content) { create(:content, public_status: "non_published") }
       let(:content_id) { content.id }
 
-      context "コンテンツが存在する場合" do
+      context "未ログインユーザの場合" do
+        it "リダイレクトする" do
+          subject
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to root_path
+          expect(flash[:alert]).to eq("大変申し訳ありません。ただいまこのコンテンツは調整中です。")
+        end
+      end
+
+      context "一般ユーザーの場合" do
+        it "リダイレクトする" do
+          sign_in @user
+          subject
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to root_path
+          expect(flash[:alert]).to eq("大変申し訳ありません。ただいまこのコンテンツは調整中です。")
+        end
+      end
+
+      context "管理者の場合" do
         it "指定したidのコンテンツが取得できる" do
+          sign_in @admin
           subject
           expect(response).to have_http_status(:ok)
           expect(response.body).to include content.title
@@ -73,12 +93,56 @@ RSpec.describe "Contents", type: :request do
           expect(response.body).to include content.point
         end
       end
+    end
 
-      context "コンテンツが存在しない場合" do
-        let(:content_id) { 0 }
-        it "エラーが発生する" do
-          expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
+    context "公開コンテンツの場合" do
+      context "コンテンツが存在するとき" do
+        let(:content) { create(:content, public_status: "published") }
+        let(:content_id) { content.id }
+
+        context "未ログインユーザの場合" do
+          it "指定したidのコンテンツが取得できる" do
+            subject
+            expect(response).to have_http_status(:ok)
+            expect(response.body).to include content.title
+            expect(response.body).to include content.subtitle
+            expect(response.body).to include content.movie_id
+            expect(response.body).to include content.comment
+            expect(response.body).to include content.point
+          end
         end
+
+        context "一般ユーザーの場合" do
+          it "指定したidのコンテンツが取得できる" do
+            sign_in @user
+            subject
+            expect(response).to have_http_status(:ok)
+            expect(response.body).to include content.title
+            expect(response.body).to include content.subtitle
+            expect(response.body).to include content.movie_id
+            expect(response.body).to include content.comment
+            expect(response.body).to include content.point
+          end
+        end
+
+        context "コンテンツが存在する場合" do
+          it "指定したidのコンテンツが取得できる" do
+            subject
+            expect(response).to have_http_status(:ok)
+            expect(response.body).to include content.title
+            expect(response.body).to include content.subtitle
+            expect(response.body).to include content.movie_id
+            expect(response.body).to include content.comment
+            expect(response.body).to include content.point
+          end
+        end
+      end
+    end
+
+    context "コンテンツが存在しない場合" do
+      let(:content_id) { 0 }
+      it "エラーが発生する" do
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

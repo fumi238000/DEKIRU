@@ -19,6 +19,10 @@ class ContentsController < ApplicationController
   end
 
   def show
+    # 非公開の場合の処理
+    return unless @content.non_published?
+    redirect_to root_path, alert: "大変申し訳ありません。ただいまこのコンテンツは調整中です。" and return unless admin_user?
+
     @makes = @content.makes
     @materials = @content.materials
     @reviews = @content.reviews.includes(:user)
