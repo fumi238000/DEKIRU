@@ -19,7 +19,7 @@ RSpec.describe "Contacts", type: :request do
     end
 
     context "一般ユーザーの場合" do
-      it "リクエストに成功する" do
+      it "リダイレクトする" do
         sign_in @user
         subject
         expect(response).to have_http_status(:found)
@@ -32,7 +32,6 @@ RSpec.describe "Contacts", type: :request do
       it "リクエストに成功する" do
         sign_in @admin
         subject
-
         expect(response).to have_http_status(:ok)
       end
     end
@@ -43,11 +42,9 @@ RSpec.describe "Contacts", type: :request do
     subject { get(new_contact_path) }
 
     context "未ログインユーザの場合" do
-      it "リダイレクトする" do
+      it "リクエストに成功する" do
         subject
-        expect(response).to have_http_status(:found)
-        expect(flash[:alert]).to eq("不正なアクセスです")
-        expect(response).to redirect_to root_path
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -65,11 +62,11 @@ RSpec.describe "Contacts", type: :request do
 
     context "未ログインユーザの場合" do
       it "リダイレクトする" do
-        expect { subject }.to change { Contact.count }.by(0)
+        expect { subject }.to change { Contact.count }.by(1)
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to root_path
-        expect(flash[:notice]).not_to be_present
-        expect(flash[:alert]).to eq("不正なアクセスです")
+        expect(flash[:notice]).to be_present
+        expect(flash[:notice]).to eq("お問い合わせ内容を受け付けました。")
       end
     end
 

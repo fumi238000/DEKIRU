@@ -11,9 +11,9 @@
     <ul class="p-4 text-dekiru-font md:w-1/2 md:text-right">
       <li class="mb-8 md:mb-4"><%= link_to "トップ", root_path, class:"hover:text-dekiru-blue" %></li>
       <li class="mb-8 md:mb-4"><%= link_to "カテゴリー一覧", categories_path, class:"hover:text-dekiru-blue" %></li>
+      <li class="mb-8 md:mb-4"><%= link_to "お問い合わせ", new_contact_path, class:"hover:text-dekiru-blue" %></li>
       <% if user_signed_in? %>
         <li class="mb-8 md:mb-4"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-dekiru-blue" %></li>
-        <li class="mb-8"><%= link_to "お問い合わせ", new_contact_path, class:"hover:text-dekiru-blue" %></li>
       <% end %>
     </ul>
   </div>

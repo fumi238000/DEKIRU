@@ -1,9 +1,8 @@
 class ContactsController < ApplicationController
-  before_action :user_general_checker, only: %i[new create]
   before_action :admin_checker, only: %i[index]
 
   def index
-    @contacts = Contact.order(created_at: :desc).includes(:user)
+    @contacts = Contact.order(created_at: :desc)
   end
 
   def new
@@ -26,8 +25,17 @@ class ContactsController < ApplicationController
   private
 
     def contact_params
-      params.require(:contact).
-        permit(:title, :content, :submitted, :confirmed).
-        merge(user_id: current_user.id, remote_ip: request.remote_ip)
+      if user_signed_in?
+        # TODO: リファクタリングすること
+        # ログインユーザーの場合
+        params.require(:contact).
+          permit(:title, :content, :submitted, :confirmed).
+          merge(user_id: current_user.id, name: current_user.name, email: current_user.email, remote_ip: request.remote_ip)
+      else
+        # 未ログインユーザーの場合
+        params.require(:contact).
+          permit(:title, :content, :submitted, :confirmed, :email, :name).
+          merge(user_id: "", remote_ip: request.remote_ip)
+      end
     end
 end
