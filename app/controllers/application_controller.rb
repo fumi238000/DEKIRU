@@ -21,6 +21,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: "管理者はこの操作を行うことができません" and return unless current_user.general? # ログインユーザーが一般ユーザーか
   end
 
+   # 管理者判定
+  def admin_user?
+    if user_signed_in?
+      current_user.user_type == "admin"
+    end
+  end
+
   private
 
     def configure_permitted_parameters
