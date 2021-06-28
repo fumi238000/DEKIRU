@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_22_044809) do
+ActiveRecord::Schema.define(version: 2021_06_28_005111) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -19,13 +19,16 @@ ActiveRecord::Schema.define(version: 2021_06_22_044809) do
   end
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.string "remote_ip", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.bigint "user_id"
+    t.index ["name", "email"], name: "index_contacts_on_name_and_email"
     t.index ["remote_ip", "status"], name: "index_contacts_on_remote_ip_and_status"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
