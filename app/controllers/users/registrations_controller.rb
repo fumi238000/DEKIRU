@@ -11,7 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-     # アカウント編集後のリダイレクト先
+    # 必須  更新（編集の反映）時にパスワード入力を省く
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
+    # アカウント編集後のリダイレクト先
     def after_update_path_for(resource)
       mypage_path(current_user)
     end
