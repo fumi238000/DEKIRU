@@ -118,7 +118,10 @@
         <p>管理者は質問できません。</p>
       <% end %>
     <% else %>
-      <p>ログインすると、質問ができます</p>
+      <p class="py-4">
+        <span><%= link_to "「ログイン」", new_user_session_path , class:"blue-link"%></span>
+        すると、質問ができます
+      </p>
     <% end %>
   </div>
 </div>
