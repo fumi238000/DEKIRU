@@ -49,7 +49,7 @@
     </div>
   <% else %>
     <p>検索結果はありません</p>
-    <%# TODO: リクエストやお問い合わせができるようにする%>
+    <p class="p-4"><%= link_to "> リクエストはこちら！", new_contact_path, class:"text-dekiru-blue font-black hover:text-dekiru-light_blue"%></p>
   <% end %>
   
   <!-- ページネーション  -->

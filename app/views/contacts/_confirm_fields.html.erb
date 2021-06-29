@@ -1,4 +1,4 @@
-　<div class="border">
+　<div>
 
 　  <p>以下の内容で送信します。よろしいでしょうか？</p>
 　  <!-- ログインユーザーでない場合、以下を表示する-->
@@ -15,7 +15,6 @@
 　    </div>
 　  <% end %>
 　  <!-- ログインユーザーでない場合、以上を表示する-->
-
 　  <div>
 　    <span><%= form.label :title, class:"form-title" %></span>
 　    <%= form.text_field :title, readonly: true, class: "text-field" %>

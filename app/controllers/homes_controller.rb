@@ -5,6 +5,6 @@ class HomesController < ApplicationController
     @new_contents = Content.published.order(created_at: :desc).first(TOP_PAGE_CONTENT)
     @categories = Category.order("RAND()").first(TOP_PAGE_CONTENT)
     @category_names = Category.order(created_at: :desc)
-    @content_tags = TagMaster.order("RAND()")
+    @content_tags = TagMaster.content.order("RAND()")
   end
 end
