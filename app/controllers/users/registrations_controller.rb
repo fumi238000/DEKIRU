@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    # 必須  更新（編集の反映）時にパスワード入力を省く
+    # 更新時にパスワード入力を省略
     def update_resource(resource, params)
       resource.update_without_password(params)
     end
