@@ -11,6 +11,42 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "name" do
+      context "入力さていない時" do
+        let(:user) { build(:user, name: "") }
+        it "保存ができない" do
+          expect(subject).to eq false
+          expect(user.errors[:name]).to include "を入力してください"
+        end
+      end
+
+      context "16文字の場合" do
+        let(:user) { build(:user, name: "1" * 16) }
+        it "保存できる" do
+          expect(subject).to eq true
+        end
+      end
+
+      context "17文字の場合" do
+        let(:user) { build(:user, name: "1" * 17) }
+
+        it "保存ができない" do
+          expect(subject).to eq false
+          expect(user.errors.messages[:name]).to include "は16文字以内で入力してください"
+        end
+      end
+
+      context "他のユーザと重複している時" do
+        before { create(:user, name: "名前") }
+
+        let(:user) { build(:user, name: "名前") }
+        it "保存ができない" do
+          expect(subject).to eq false
+          expect(user.errors.messages[:name]).to include "はすでに存在します"
+        end
+      end
+    end
+
     describe "email" do
       context "入力さていない時" do
         let(:user) { build(:user, email: "") }

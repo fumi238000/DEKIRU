@@ -43,11 +43,6 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "例：pass2021", maxlength:"16", class: "text-field" %>
       </div>
 
-      <div class="field">
-        <div class="form-title">現在のパスワード<span class="required_content">必須</span></div>
-        <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード", maxlength:"16",required: true, class: "text-field" %>
-      </div>
-
       <div class="actions">
         <%= f.submit "確定する",data: { confirm: '確定します。よろしいでしょうか？', disable_with: "送信中..." }, class:"submit-btn" %>
       </div>

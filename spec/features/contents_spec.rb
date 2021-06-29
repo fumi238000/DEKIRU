@@ -153,7 +153,7 @@ RSpec.describe "Contents", type: :feature do
     end
 
     context "材料が存在する時" do
-      it "リンクが表示される", type: :do do
+      it "リンクが表示される" do
         sign_in @admin
         visit content_show_path(@content.id)
         expect(page).to have_link ">>編集", href: edit_material_path(@material.id, params: { content_id: @material.content.id })
