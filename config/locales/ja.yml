@@ -35,6 +35,8 @@ ja:
       tag_master: 
         tag_name: キーワード名
       contact:
+        name: お名前
+        email: メールアドレス
         title: お問い合わせタイトル
         content: お問い合わせ内容
     models:
