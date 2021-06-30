@@ -43,4 +43,10 @@ class ApplicationController < ActionController::Base
       @contents = @q.result.page(params[:page]).per(PER_PAGE) # 検索結果
       @search_word = params[:q].present? ? params[:q][:title_or_subtitle_or_comment_or_tag_masters_tag_name_or_category_name_cont] : "" # 検索ワード
     end
+
+      # サイドバー
+    def set_sidebar
+      @content_tags = TagMaster.where(id: TagMaster.pluck(:id) & ContentTag.pluck(:tag_id)).order("RAND()")
+      @category_names = Category.order(created_at: :desc)
+    end
 end

@@ -27,7 +27,7 @@
 <div class="top-container">
   <div class="md:flex py-4">
     <div class="borde top-content-title">
-      <h2>RECOMMEND</h2><span class="md:pt-2 block md:px-4 mt-2">おすすめ</span>
+      <h2>RECOMMEND</h2><span class="md:pt-2 block md:px-4 mt-2">オススメ</span>
     </div>
     <p class="top-link"><%= link_to ">>全て見る", recommend_contents_path, class:"top-blue-btn" %></p>
   </div>
@@ -67,20 +67,6 @@
     </div>
     <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn hidden" %></p>
   </div>
-
-  <!-- カテゴリータグ -->
-  <!--
-  <div id="accordion" class="border border-gray-100 mx-4 mb-2">
-    <h3 class="accordion-title js-accordion-title bg-gray-100">カテゴリー一覧</h3>
-      <div class="hidden">
-        <div class="p-2">
-          <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
-            <%= render partial: "category_tags", collection: @category_names, as: "category" %>
-          </div>
-        </div>
-      </div>
-  </div>
-  -->
 
   <!-- カテゴリーカード -->
   <div class="pb-8 mb:py-16">

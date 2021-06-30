@@ -1,14 +1,28 @@
+<!-- リンク -->
 <div class="link_style">
   <span class="p-2"><%= link_to ">>TOPページ", root_path, class:"blue-link"%></span>
 </div>
 
-<div class="h1">
-  <h1>POPULAR</h1>
-  <p class="text-sm pt-2">人気情報<p>
-</div>
+<div class="md:flex">
 
-<div class="content-style">
-    <%= render partial: "layouts/content_card", collection: @popular_contents, as: "content" %>
+  <!-- main_content -->
+  <div class="md:w-3/4">
+    <!-- タイトル -->
+    <div class="h1">
+      <h1>POPULAR</h1>
+      <p class="text-sm pt-2">人気情報<p>
+    </div>
+
+    <!-- カード -->
+    <div class="content-style">
+        <%= render partial: "layouts/content_card", collection: @popular_contents, as: "content" %>
+    </div>
+  </div>
+
+  <!-- side_content -->
+  <div class="md:w-1/4 md:ml-12">
+    <%= render "layouts/sidebar", locals: @content_tags%>
+  </div>
 </div>
 
 <!-- ページネーション -->

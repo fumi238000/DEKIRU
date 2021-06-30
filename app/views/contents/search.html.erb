@@ -1,61 +1,37 @@
+<!-- リンク -->
 <div class="link_style">
-  <%= link_to ">TOPページ", root_path, class:"blue-link"%>
+  <span class="p-2"><%= link_to ">>TOPページ", root_path, class:"blue-link"%></span>
 </div>
 
-  <% if params[:q].present? && @search_word.present? %>
+<div class="md:flex">
 
-    <!-- 条件検索の場合 -->
-    <div class="h1">
-　　   <h1>SEARCH</h1>
-　　　  <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
-　　 </div>
-    <!-- 条件検索の場合 -->
-
-  <% elsif params[:tag_id].present? %>
-
-　　<!-- キーワード検索の場合 -->
-  　<% if @search_word.present?%>
-　　　 <div class="h1">
-　　　   <h1>KEYWORD</h1>
-　　　   <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
-　　　 </div>
-
-  　<% else %>
-      <div class="h1">
-        <h1>KEYWORD</h1>
-        <p class="text-sm pt-2">キーワード<p>
-     </div>
+  <!-- main_content -->
+  <div class="md:w-3/4">
+    <!-- タイトル -->
+    <%= render "search_title"%>
+    <!-- カード-->
+    <% if @contents.exists? %>
+      <div class="content-style">
+        <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+      </div>
+    <% else %>
+      <div class="mb-16">
+        <p>検索結果はありません</p>
+        <p class="p-4"><%= link_to "> リクエストはこちら！", new_contact_path, class:"text-dekiru-blue font-black hover:text-dekiru-light_blue"%></p>
+      </div>
     <% end %>
-    <!-- キーワード検索の場合 -->
-　　
-  <% else %>
+  </div>
 
-　　 <!-- 検索でない場合 --> 
-    <div class="h1">
-      <h1>CONTENT</h1>
-      <p class="text-sm pt-2">コンテンツ<p>
-    </div>
-　　 <!-- 検索でない場合 --> 
-  
-  <% end %>
+  <!-- side_content -->
+  <div class="md:w-1/4 md:ml-12">
+    <%= render "layouts/sidebar", locals: @content_tags%>
+  </div>
 
+</div>
 
-<div class="mb-16">
-  
-  <!-- content_card -->
-  <% if @contents.exists? %>
-    <div class="content-style">
-      <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
-    </div>
-  <% else %>
-    <p>検索結果はありません</p>
-    <p class="p-4"><%= link_to "> リクエストはこちら！", new_contact_path, class:"text-dekiru-blue font-black hover:text-dekiru-light_blue"%></p>
-  <% end %>
-  
   <!-- ページネーション  -->
   <%= paginate @contents, window: 1 %>
   <div class="py-4">
     <%= page_entries_info(@contents)%>
   </div>
 
-</div>
