@@ -33,7 +33,7 @@
     <div class="max-w-4xl mx-auto">
       <h2 class="form-title">キーワード（3つまで）</h2>
       <div class="flex flex-wrap justify-start py-4 mb-8">
-        <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
+        <%= f.collection_check_boxes(:tag_master_ids, TagMaster.all, :id, :tag_name, include_hidden: true) do |tag| %>
             <%= tag.label do %>
               <div class="content-tag-btn">
                 <span><%= tag.check_box %></span>

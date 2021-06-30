@@ -1,106 +1,16 @@
-<!-- トップ画像 -->
-<div class="mb-16">
-  <div class="max-w-6xl mx-auto">
-    <%= image_tag "dekiru-top-image.png"%>
-  </div>
-</div>
+<div class="md:flex">
 
-
-<!--  人気情報 -->
-<div class="top-container">
-  <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>POPULAR</h2><span class="md:pt-2 block md:px-4 mt-2">人気情報</span>
-    </div>
-    <p class="top-link"><%= link_to ">>全て見る", popular_contents_path, class:"top-blue-btn" %></p>
-  </div>
-  
-  <div class="m-4">
-    <div class="md:flex justify-center py-8 mb:py-16">
-      <%= render partial: "layouts/top_page_content_card", collection: @popular_contents, as: "content" %>
-    </div>
-  </div>
-</div>
-
-
-<!--  おすすめ情報 -->
-<div class="top-container">
-  <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>RECOMMEND</h2><span class="md:pt-2 block md:px-4 mt-2">おすすめ</span>
-    </div>
-    <p class="top-link"><%= link_to ">>全て見る", recommend_contents_path, class:"top-blue-btn" %></p>
+  <!-- main_content -->
+  <div class="md:w-3/4">
+    <%= render "main_content" , locals: @content_tags %>
   </div>
 
-  <div class="m-4">
-    <div class="md:flex justify-center py-8 mb:py-16">
-      <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
-    </div>
-  </div>
-</div>
-
-
-<!--  新着情報 -->
-<div class="top-container">
-  <div class="md:flex py-4 ">
-    <div class="borde top-content-title">
-      <h2>NEWEST</h2><span class="md:pt-2 block md:px-4 mt-2">新着情報</span>
-    </div>
-    <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn" %></p>
+  <!-- side_content -->
+  <div class="md:w-1/4 md:ml-12">
+    <%= render "sidebar" %>
   </div>
 
-  <div class="m-4">
-    <div class="md:flex justify-center py-8 mb:py-16">
-      <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
-    </div>
-  </div>
-</div>
-
-
-<!--  カテゴリー -->
-<div class="my-8 max-w-6xl mx-auto p-4">
-  
-  <!-- タイトル-->
-  <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>CATEGORY</h2><span class="md:pt-2 block md:px-4 mt-2">カテゴリー</span>
-    </div>
-    <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn hidden" %></p>
-  </div>
-
-  <!-- カテゴリータグ -->
-  <div id="accordion" class="border border-gray-100 mx-4 mb-2">
-    <h3 class="accordion-title js-accordion-title bg-gray-100">カテゴリー一覧</h3>
-      <div class="hidden">
-        <div class="p-2">
-          <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
-            <%= render partial: "category_tags", collection: @category_names, as: "category" %>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <!-- カテゴリーカード -->
-  <div class="pb-8 mb:py-16">
-    <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
-  </div>
+  <!--  TOPページボタン -->
+  <%= render "layouts/page_top" %>
 
 </div>
-
-
-<!--  キーワード -->
-<div class="top-container">
-  <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>KEYWORD</h2><span class="md:pt-2 block md:px-4 mt-2">キーワード</span>
-    </div>
-    <%# TODO: 数が多くなった場合実装する%>
-    <p class="top-link"><%#= link_to ">>全て見る", categories_path, class:"blue-link" %></p>
-  </div>
-  <div class="flex justify-center md:justify-start flex-wrap my-1 max-w-6xl px-4"> 
-    <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
-  </div>
-</div>
-
-<!--  TOPページボタン -->
-<%= render "layouts/page_top" %>
