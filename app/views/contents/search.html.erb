@@ -7,8 +7,12 @@
 
   <!-- main_content -->
   <div class="md:w-3/4">
+
     <!-- タイトル -->
-    <%= render "search_title"%>
+    <div class="h1">
+      <%= render "search_title"%>
+    </div>
+
     <!-- カード-->
     <% if @contents.exists? %>
       <div class="content-style">

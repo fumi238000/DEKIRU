@@ -1,37 +1,24 @@
-  <!-- タイトル -->
-  <% if params[:q].present? && @search_word.present? %>
+<!-- 条件検索の場合 -->
+<% if params[:q].present? && @search_word.present? %>
+  <h1>SEARCH</h1>
+  <p class="text-sm pt-4">「 <%= @search_word %> 」</p>
 
-    <!-- 条件検索の場合 -->
-    <div class="h1">
-　　   <h1>SEARCH</h1>
-　　　  <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
-　　 </div>
-    <!-- 条件検索の場合 -->
+<!-- キーワード検索の場合 -->
+<% elsif params[:tag_id].present? %>
+  <!-- 検索ワードがある場合 -->
+  <% if @search_word.present?%>
+      <h1>KEYWORD</h1>
+      <p class="text-sm pt-4"><%= @search_word %></p>
 
-  <% elsif params[:tag_id].present? %>
-
-　　<!-- キーワード検索の場合 -->
-  　<% if @search_word.present?%>
-　　　 <div class="h1">
-　　　   <h1>KEYWORD</h1>
-　　　   <p class="text-sm pt-2">「 <%= @search_word %> 」<p>
-　　　 </div>
-
-  　<% else %>
-      <div class="h1">
-        <h1>KEYWORD</h1>
-        <p class="text-sm pt-2">キーワード<p>
-     </div>
-    <% end %>
-    <!-- キーワード検索の場合 -->
-　　
+  <!-- 検索ワードがない場合 -->
   <% else %>
-
-　　 <!-- 検索でない場合 --> 
-    <div class="h1">
-      <h1>CONTENT</h1>
-      <p class="text-sm pt-2">コンテンツ<p>
-    </div>
-　　 <!-- 検索でない場合 --> 
-  
+    <h1>KEYWORD</h1>
+    <p class="text-sm pt-4">キーワード</p>
   <% end %>
+
+<!-- 検索でない場合 -->
+<% else %>
+  <h1>CONTENT</h1>
+  <p class="text-sm pt-4">コンテンツ</p>
+
+<% end %>

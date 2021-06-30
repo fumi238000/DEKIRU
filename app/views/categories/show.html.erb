@@ -1,8 +1,7 @@
 <!-- リンク -->
 <div class="link_style">
-  <%= link_to ">TOPページ", root_path, class:"blue-link"%>
+  <span class="p-2"><%= link_to ">>TOPページ", root_path, class:"blue-link"%></span>
 </div>
-
 
 <div class="md:flex">
 
@@ -11,7 +10,7 @@
     <!-- タイトル -->
     <div class="h1">
       <h1>CATEGORY</h1>
-      <p class="text-sm pt-4">「<%= @category.name%>」<p>
+      <p class="text-sm pt-4">「<%= @category.name%>」</p>
     </div>
     <!-- カード -->
     <div class="content-style">
