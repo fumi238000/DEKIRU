@@ -40,7 +40,7 @@
 
 //コンテンツキーワード(リンクあり)
 .content-tag-btn {
-  @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
+  @apply text-white bg-dekiru-keyword hover:bg-green-400 border-0 m-1 py-2 px-6 focus:outline-none transition ease-in-out
 }
 
 //カテゴリータグ
@@ -50,7 +50,7 @@
 
 //カテゴリーキーワード(リンクあり)
 .category-tag-btn {
-  @apply text-white bg-dekiru-blue hover:bg-dekiru-light_blue border-0 m-1 py-2 px-6 focus:outline-none text-lg transition ease-in-out
+  @apply text-white bg-dekiru-blue hover:bg-dekiru-light_blue border-0 m-1 py-2 px-6 focus:outline-none text-sm transition ease-in-out
 }
 
 

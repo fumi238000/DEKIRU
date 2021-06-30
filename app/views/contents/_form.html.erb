@@ -33,7 +33,7 @@
     <div class="max-w-4xl mx-auto">
       <h2 class="form-title">キーワード（3つまで）</h2>
       <div class="flex flex-wrap justify-start py-4 mb-8">
-        <%= f.collection_check_boxes(:tag_master_ids, TagMaster.content, :id, :tag_name, include_hidden: true) do |tag| %>
+        <%= f.collection_check_boxes(:tag_master_ids, TagMaster.all, :id, :tag_name, include_hidden: true) do |tag| %>
             <%= tag.label do %>
               <div class="content-tag-btn">
                 <span><%= tag.check_box %></span>
@@ -55,9 +55,9 @@
     </div>
 
     <% if controller.action_name == "edit" %>
-      <!-- おすすめ -->
+      <!-- オススメ -->
       <div class="max-w-4xl mx-auto">
-        <h2 class="form-title">おすすめコンテンツ(<%= Content.recommend.count%>/<%= Settings.max_recommend_countent%>個)</h2>
+        <h2 class="form-title">オススメコンテンツ(<%= Content.recommend.count%>/<%= Settings.max_recommend_countent%>個)</h2>
         <div class="flex flex-wrap justify-start py-4 mb-8">
           <span class="border-2 border-dekiru-blue px-4 py-2 shadow-sm text-left my-4">
             <%= f.select :recommend_status, [ ["おすすめしない", "general"], ["おすすめする", "recommend"]], { prompt: "" },{ class:"focus:outline-none text-dekiru-font" } %>

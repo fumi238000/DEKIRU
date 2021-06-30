@@ -361,10 +361,10 @@ RSpec.describe "Contents", type: :request do
   describe "GET #recommend" do
     subject { get(recommend_contents_path) }
 
-    context "おすすめコンテンツが存在する場合" do
+    context "オススメコンテンツが存在する場合" do
       before { create_list(:content, create_content, recommend_status: "recommend", public_status: "published") }
 
-      it "おすすめコンテンツ一覧を取得できること" do
+      it "オススメコンテンツ一覧を取得できること" do
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.recommend.pluck(:title))
@@ -385,7 +385,7 @@ RSpec.describe "Contents", type: :request do
     context "コンテンツが存在する場合" do
       before { create_list(:content, create_content, title: search_word, public_status: "published") }
 
-      let(:search_word) { "タイトル" }
+      let(:search_word) { "存在するコンテンツ" }
 
       context "パラメータがある場合" do
         context "検索ワードと一致するコンテンツが存在するとき" do
@@ -409,11 +409,11 @@ RSpec.describe "Contents", type: :request do
           it "コンテンツ一覧を取得できないこと" do
             subject
             expect(response).to have_http_status(:ok)
-            expect(response.body).not_to include(*Content.pluck(:title))
-            expect(response.body).not_to include(*Content.pluck(:movie_id))
             expect(response.body).to include("SEARCH")
             expect(response.body).to include("「 #{not_search_word} 」")
             expect(response.body).to include("検索結果はありません")
+            expect(response.body).not_to include(*Content.pluck(:title))
+            expect(response.body).not_to include(*Content.pluck(:movie_id))
           end
         end
       end

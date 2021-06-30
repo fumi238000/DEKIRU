@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   before_action :admin_checker, only: %i[new create update edit destroy]
   before_action :set_content, only: %i[show update edit destroy]
+  before_action :set_sidebar, only: %i[popular newest recommend search]
 
   def index
     contents = Content.order(id: :asc)

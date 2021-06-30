@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :admin_checker, only: %i[index new create update edit destroy]
   before_action :set_category, only: %i[show update edit destroy]
+  before_action :set_sidebar, only: %i[show]
 
   def index
     @categories = Category.order(created_at: :asc)

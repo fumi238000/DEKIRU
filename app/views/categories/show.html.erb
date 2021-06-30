@@ -1,16 +1,30 @@
+<!-- リンク -->
 <div class="link_style">
-  <%= link_to ">TOPページ", root_path, class:"blue-link"%>
+  <span class="p-2"><%= link_to ">>TOPページ", root_path, class:"blue-link"%></span>
 </div>
 
-<div class="h1">
-  <h1>CATEGORY</h1>
-  <p class="text-sm pt-4">「<%= @category.name%>」<p>
+<div class="md:flex">
+
+  <!-- main_content -->
+  <div class="md:w-3/4">
+    <!-- タイトル -->
+    <div class="h1">
+      <h1>CATEGORY</h1>
+      <p class="text-sm pt-4">「<%= @category.name%>」</p>
+    </div>
+    <!-- カード -->
+    <div class="content-style">
+      <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
+    </div>
+  </div>
+
+  <!-- side_content -->
+  <div class="md:w-1/4 md:ml-12">
+    <%= render "layouts/sidebar", locals: @content_tags%>
+  </div>
+
 </div>
 
-
-<div class="content-style">
-  <%= render partial: "layouts/content_card", collection: @contents, as: "content" %>
-</div>
 <!-- ページネーション -->
 <%= paginate @contents, window: 1 %>
 <div class="py-4">

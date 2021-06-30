@@ -1,0 +1,24 @@
+<!-- 条件検索の場合 -->
+<% if params[:q].present? && @search_word.present? %>
+  <h1>SEARCH</h1>
+  <p class="text-sm pt-4">「 <%= @search_word %> 」</p>
+
+<!-- キーワード検索の場合 -->
+<% elsif params[:tag_id].present? %>
+  <!-- 検索ワードがある場合 -->
+  <% if @search_word.present?%>
+      <h1>KEYWORD</h1>
+      <p class="text-sm pt-4"><%= @search_word %></p>
+
+  <!-- 検索ワードがない場合 -->
+  <% else %>
+    <h1>KEYWORD</h1>
+    <p class="text-sm pt-4">キーワード</p>
+  <% end %>
+
+<!-- 検索でない場合 -->
+<% else %>
+  <h1>CONTENT</h1>
+  <p class="text-sm pt-4">コンテンツ</p>
+
+<% end %>
