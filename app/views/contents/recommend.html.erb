@@ -18,6 +18,9 @@
       <%= render partial: "layouts/content_card", collection: @recommend_contents, as: "content" %>
     </div>
 
+    <!-- ページネーション -->
+    <%#= paginate @contents, window: 1 %>
+
   </div>
 
   <!-- side_content -->
@@ -27,5 +30,3 @@
 
 </div>
 
-<!-- ページネーション -->
-<%#= paginate @contents, window: 1 %>

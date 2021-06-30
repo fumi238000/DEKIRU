@@ -24,6 +24,13 @@
         <p class="p-4"><%= link_to "> リクエストはこちら！", new_contact_path, class:"text-dekiru-blue font-black hover:text-dekiru-light_blue"%></p>
       </div>
     <% end %>
+
+    <!-- ページネーション  -->
+    <%= paginate @contents, window: 1 %>
+    <div class="py-4">
+      <%= page_entries_info(@contents)%>
+    </div>
+
   </div>
 
   <!-- side_content -->
@@ -32,10 +39,3 @@
   </div>
 
 </div>
-
-  <!-- ページネーション  -->
-  <%= paginate @contents, window: 1 %>
-  <div class="py-4">
-    <%= page_entries_info(@contents)%>
-  </div>
-

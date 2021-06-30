@@ -17,16 +17,18 @@
     <div class="content-style">
         <%= render partial: "layouts/content_card", collection: @popular_contents, as: "content" %>
     </div>
+
+    <!-- ページネーション -->
+    <%= paginate @popular_contents, window: 1 %>
+    <div class="py-4">
+      <%= page_entries_info(@popular_contents)%>
+    </div>
+
   </div>
 
   <!-- side_content -->
   <div class="md:w-1/4 md:ml-12">
     <%= render "layouts/sidebar", locals: @content_tags%>
   </div>
-</div>
 
-<!-- ページネーション -->
-<%= paginate @popular_contents, window: 1 %>
-<div class="py-4">
-  <%= page_entries_info(@popular_contents)%>
 </div>
