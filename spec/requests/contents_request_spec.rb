@@ -361,10 +361,10 @@ RSpec.describe "Contents", type: :request do
   describe "GET #recommend" do
     subject { get(recommend_contents_path) }
 
-    context "おすすめコンテンツが存在する場合" do
+    context "オススメコンテンツが存在する場合" do
       before { create_list(:content, create_content, recommend_status: "recommend", public_status: "published") }
 
-      it "おすすめコンテンツ一覧を取得できること" do
+      it "オススメコンテンツ一覧を取得できること" do
         subject
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(*Content.recommend.pluck(:title))

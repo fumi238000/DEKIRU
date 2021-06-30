@@ -114,8 +114,8 @@ when "development"
   #-----------------------------------------
   RECOMMEND_CONTENT_NUM.times do |i|
     id = i + 1
-    Content.find_or_create_by!(title: "コンテンツ(おすすめデータ)#{id}") do |c|
-      c.title = "コンテンツ(おすすめデータ)#{id}" # 最大16文字
+    Content.find_or_create_by!(title: "コンテンツ(オススメデータ)#{id}") do |c|
+      c.title = "コンテンツ(オススメデータ)#{id}" # 最大16文字
       c.subtitle = "サブタイトルサブタイトルサブタイトルサブタイトルサブ(32文字)" # 最大32文字
       c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "コメントコメントコメントコメントコメントコメントコメ(32文字)" # 最大32文字
@@ -126,7 +126,7 @@ when "development"
       c.public_status = "published"
     end
   end
-  puts "おすすめコンテンツのテストデータを作成しました".green
+  puts "オススメコンテンツのテストデータを作成しました".green
 
   #-----------------------------------------
   # material
@@ -327,8 +327,8 @@ when "production"
     #-----------------------------------------
   RECOMMEND_CONTENT_NUM.times do |i|
     id = i + 1
-    Content.find_or_create_by!(title: "水栓取り付け工事(おすすめ)#{id}") do |c|
-      c.title = "水栓取り付け工事(おすすめ)#{id}"
+    Content.find_or_create_by!(title: "水栓取り付け工事(オススメ)#{id}") do |c|
+      c.title = "水栓取り付け工事(オススメ)#{id}"
       c.subtitle = "水栓の取り替え工事のご紹介になります"
       c.movie_url = "https://www.youtube.com/embed/XXxMJOjDMY0"
       c.comment = "リフォームで水栓を取り換える時の手順をご紹介します！"
@@ -340,7 +340,7 @@ when "production"
     end
   end
 
-  puts "おすすめコンテンツのテストデータを作成しました".green
+  puts "オススメコンテンツのテストデータを作成しました".green
 
     #-----------------------------------------
     # material

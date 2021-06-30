@@ -11,7 +11,7 @@ ja:
         movie_url: URL
         comment: コメント
         point: ポイント
-        recommend_status: おすすめコンテンツ
+        recommend_status: オススメコンテンツ
         public_status: 公開ステータス
       make:
         detail: 作り方
