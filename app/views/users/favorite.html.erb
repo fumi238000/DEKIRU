@@ -2,7 +2,10 @@
   <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link"%>
 </div>
 
-<h1 class="h1">お気に入り一覧</h1>
+<div class="h1">
+  <h1>FAVORITE</h1>
+  <p class="text-sm pt-2">お気に入り</p>
+</div>
 
 <% if  @favorite_contents.exists? %>
   <div class="content-style">

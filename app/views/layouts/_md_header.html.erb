@@ -11,14 +11,14 @@
       <div class="flex-grow md:w-6/12">
         <%= render partial: 'layouts/search_form'%>
       </div>
-  
+
       <!-- ログイン -->
       <div class="w-3/12  hidden md:block">
         <div class="float-right ">
+
           <% if user_signed_in? %>
             <%# ログイン時 %>
             <span><%= link_to "マイページ", mypage_path(current_user), class: "blue-btn" %></span>
-  
           <% else %>
             <%# 非ログイン時 %>
             <span><%= link_to "ログイン", new_user_session_path ,class: "blue-btn"%></span>
@@ -26,6 +26,52 @@
         </div>
   
       </div>
+
+    </div>
+
+    <!-- 各ページリンク -->
+    <div class="flex  flex-row justify-center py-4">
+
+      <!-- 人気 -->
+      <div>
+        <%= link_to popular_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">POPULAR</div>
+            <div class="text-xs">人気</div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- オススメ -->
+       <div>
+         <%= link_to recommend_contents_path do %>
+           <div class="px-16 hover:text-dekiru-blue">
+             <div class="text-lg">RECOMMEND</div>
+             <div class="text-xs">オススメ</div>
+           </div>
+         <% end %>
+       </div>
+
+      <!-- 新着 -->
+      <div>
+        <%= link_to newest_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">NEWEST</div>
+            <div class="text-xs">新着</div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- お気に入り -->
+      <div>
+        <%= link_to favorite_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">FAVORITE</div>
+            <div class="text-xs">お気に入り</div>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>

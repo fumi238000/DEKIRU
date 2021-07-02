@@ -14,13 +14,92 @@
         <label for="menu-btn-check" class="menu-btn"><span></span></label>
         <div class="menu-content">
           <ul>
-            <li class="hover:bg-dekiru-blue"><%= link_to "トップ", root_path , class:"hover:text-white"%></li>
+
+            <!-- TOP -->
+            <li class="hover:bg-dekiru-blue">
+              <%= link_to root_path do %>
+                <div class="p-4 hover:text-white">
+                  <div class="text-lg">TOP</div>
+                  <div class="text-sm">トップ</div>
+                </div>
+              <% end %>
+            </li>
+
+            <%# ログイン時 %>
             <% if user_signed_in? %>
-              <li class="hover:bg-dekiru-blue"><%= link_to "マイページ", mypage_path(current_user), class:"hover:text-white" %></li><%# ログイン時 %>
-              <li class="hover:bg-dekiru-blue"><%= link_to "お気に入り一覧", favorite_contents_path, class:"hover:text-white" %></li>
-             <li class="hover:bg-dekiru-blue"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"hover:text-white"%></li><%# 非ログイン時 %>
+
+              <!-- マイページ-->
+              <li class="hover:bg-dekiru-blue">
+                <%= link_to mypage_path(current_user) do %>
+                  <div class="p-4 hover:text-white">
+                    <div class="text-lg">MYPAGE</div>
+                    <div class="text-sm">マイページ</div>
+                  </div>
+                <% end %>
+              </li>
+
+             <!-- 人気 -->
+             <li class="hover:bg-dekiru-blue">
+               <%= link_to popular_contents_path do %>
+                 <div class="p-4 hover:text-white">
+                   <div class="text-lg">POPULAR</div>
+                   <div class="text-sm">人気</div>
+                 </div>
+               <% end %>
+             </li>
+
+            <!-- オススメ -->
+             <li class="hover:bg-dekiru-blue">
+               <%= link_to recommend_contents_path do %>
+                 <div class="p-4 hover:text-white">
+                   <div class="text-lg">RECOMMEND</div>
+                   <div class="text-sm">オススメ</div>
+                 </div>
+               <% end %>
+             </li>
+
+             <!-- 新着 -->
+             <li class="hover:bg-dekiru-blue">
+               <%= link_to newest_contents_path do %>
+                 <div class="p-4 hover:text-white">
+                   <div class="text-lg">NEWEST</div>
+                   <div class="text-sm">新着</div>
+                 </div>
+               <% end %>
+             </li>
+
+             <!-- お気に入り -->
+             <li class="hover:bg-dekiru-blue">
+               <%= link_to favorite_contents_path do %>
+                 <div class="p-4 hover:text-white">
+                   <div class="text-lg">FAVORITE</div>
+                   <div class="text-sm">お気に入り</div>
+                 </div>
+               <% end %>
+             </li>
+
+
+              <!-- ログアウト -->
+              <li class="hover:bg-dekiru-blue">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <div class="p-4 hover:text-white">
+                    <div class="text-lg">LOGOUT</div>
+                    <div class="text-sm">ログアウト</div>
+                  </div>
+                <% end %>
+              </li>
+
            <% else %>
-             <li class="hover:bg-dekiru-blue"><%= link_to "ログイン", new_user_session_path , class:"hover:text-white"%></li><%# 非ログイン時 %>
+
+             <!-- ログイン -->
+             <li class="hover:bg-dekiru-blue">
+               <%= link_to new_user_session_path do %>
+                 <div class="p-4 hover:text-white">
+                   <div class="text-lg">LOGIN</div>
+                   <div class="text-sm">ログイン</div>
+                 </div>
+               <% end %>
+             </li>
            <% end %>   
           </ul>
         </div>
