@@ -30,12 +30,48 @@
     </div>
 
     <!-- 各ページリンク -->
-    <div class="flex  flex-row justify-center p-4">
-      <p><%= link_to "人気", popular_contents_path, class: "py-4 px-8 hover:text-dekiru-blue" %></p>
-      <p><%= link_to "新着", newest_contents_path, class: "p-4 px-8 hover:text-dekiru-blue" %></p>
-      <p><%= link_to "オススメ", recommend_contents_path, class: "p-4 px-8 hover:text-dekiru-blue" %></p>
-      <p><%= link_to "お気に入り", favorite_contents_path(current_user), class: "p-4 px-8 hover:text-dekiru-blue" %></p>
-    </div>
+    <div class="flex  flex-row justify-center p-8">
 
+      <!-- 人気 -->
+      <div>
+        <%= link_to popular_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">POPULAR</div>
+            <div class="text-xs">人気</div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- オススメ -->
+       <div>
+         <%= link_to recommend_contents_path do %>
+           <div class="px-16 hover:text-dekiru-blue">
+             <div class="text-lg">RECOMMEND</div>
+             <div class="text-xs">オススメ</div>
+           </div>
+         <% end %>
+       </div>
+
+      <!-- 新着 -->
+      <div>
+        <%= link_to newest_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">NEWEST</div>
+            <div class="text-xs">新着</div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- お気に入り -->
+      <div>
+        <%= link_to favorite_contents_path do %>
+          <div class="px-8 hover:text-dekiru-blue">
+            <div class="text-lg">FAVORITE</div>
+            <div class="text-xs">お気に入り</div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>
