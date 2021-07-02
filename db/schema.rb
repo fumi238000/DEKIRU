@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_005111) do
+ActiveRecord::Schema.define(version: 2021_07_02_043051) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_005111) do
 
   create_table "tag_masters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "tag_name", null: false
-    t.integer "tag_type"
+    t.integer "tag_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_name"], name: "index_tag_masters_on_tag_name", unique: true
