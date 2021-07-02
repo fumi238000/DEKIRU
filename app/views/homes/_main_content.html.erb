@@ -8,12 +8,14 @@
 <!--  人気情報 -->
 <div class="top-container">
   <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>POPULAR</h2><span class="md:pt-2 block md:px-4 mt-2">人気情報</span>
+    <div class="borde top-content-title md:w-3/4">
+      <h2>POPULAR</h2>
+      <span class="md:pt-2 block md:px-4 mt-2">人気情報</span>
     </div>
-    <p class="top-link"><%= link_to ">>全て見る", popular_contents_path, class:"top-blue-btn" %></p>
+    <div class="top-link md:w-1/4">
+      <%= link_to ">>全て見る", popular_contents_path, class:"top-blue-btn" %>
+    </div>
   </div>
-  
   <div class="m-4">
     <div class="md:flex justify-center py-8 mb:py-16">
       <%= render partial: "layouts/top_page_content_card", collection: @popular_contents, as: "content" %>
@@ -21,16 +23,17 @@
   </div>
 </div>
 
-
-<!--  おすすめ情報 -->
+<!--  オススメ情報 -->
 <div class="top-container">
   <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>RECOMMEND</h2><span class="md:pt-2 block md:px-4 mt-2">オススメ</span>
+    <div class="top-content-title md:w-3/4">
+      <h2>RECOMMEND</h2>
+      <span class="md:pt-2 block md:px-4 mt-2">オススメ</span>
     </div>
-    <p class="top-link"><%= link_to ">>全て見る", recommend_contents_path, class:"top-blue-btn" %></p>
+    <div class="top-link md:w-1/4">
+      <%= link_to ">>全て見る", recommend_contents_path, class:"top-blue-btn" %>
+    </div>
   </div>
-
   <div class="m-4">
     <div class="md:flex justify-center py-8 mb:py-16">
       <%= render partial: "layouts/top_page_content_card", collection: @recommend_contents, as: "content" %>
@@ -41,13 +44,15 @@
 
 <!--  新着情報 -->
 <div class="top-container">
-  <div class="md:flex py-4 ">
-    <div class="borde top-content-title">
-      <h2>NEWEST</h2><span class="md:pt-2 block md:px-4 mt-2">新着情報</span>
+  <div class="md:flex py-4">
+    <div class="borde top-content-title md:w-3/4">
+      <h2>NEWEST</h2>
+      <div class="md:pt-2 block md:p-4 mt-2">新着情報</div>
     </div>
-    <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn" %></p>
+    <div class="top-link md:w-1/4">
+      <%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn" %>
+    </div>
   </div>
-
   <div class="m-4">
     <div class="md:flex justify-center py-8 mb:py-16">
       <%= render partial: "layouts/top_page_content_card", collection: @new_contents, as: "content" %>
@@ -58,15 +63,16 @@
 
 <!--  カテゴリー -->
 <div class="my-8 max-w-6xl mx-auto p-4">
-  
   <!-- タイトル-->
   <div class="md:flex py-4">
-    <div class="borde top-content-title">
-      <h2>CATEGORY</h2><span class="md:pt-2 block md:px-4 mt-2">カテゴリー</span>
+    <div class="borde top-content-title md:w-3/4">
+      <h2>CATEGORY</h2>
+      <div class="md:pt-2 block md:p-4 mt-2">カテゴリー</div>
     </div>
-    <p class="top-link"><%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn hidden" %></p>
+    <div class="top-link md:w-1/4">
+      <%= link_to ">>全て見る", newest_contents_path, class:"top-blue-btn hidden" %>
+    </div>
   </div>
-
   <!-- カテゴリーカード -->
   <div class="pb-8 mb:py-16">
     <%= render partial: "layouts/category_contents_card", collection: @categories, as: "category" %>
