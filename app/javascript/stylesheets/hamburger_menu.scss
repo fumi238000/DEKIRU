@@ -3,31 +3,36 @@
 //メニューボタン
 .menu-btn {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   display: flex;
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   justify-content: center;
   align-items: center;
   z-index: 90;
-  background-color: #72FFFF;
+  background-color: #7373FF;
+  border-radius: 30px;
+  color: #000;
+  // box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .1);
 }
 .menu-btn span,
 .menu-btn span:before,
 .menu-btn span:after {
   content: '';
   display: block;
-  height: 3px;
-  width: 25px;
+  height: 1px;
+  width: 20px;
   border-radius: 3px;
-  background-color: #000;
+  background-color: white;
   position: absolute;
 }
 .menu-btn span:before {
+  background-color: white;
   bottom: 8px;
 }
 .menu-btn span:after {
+  background-color: white;
   top: 8px;
 }
 
@@ -35,16 +40,24 @@
   background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
 }
 #menu-btn-check:checked ~ .menu-btn span::before {
+  background-color: white;
   bottom: 0;
   transform: rotate(45deg);
 }
+
 #menu-btn-check:checked ~ .menu-btn span::after {
+  background-color: white;
   top: 0;
   transform: rotate(-45deg);
+
 }
 #menu-btn-check {
   display: none;
 }
+
+
+
+
 
 //メニューコンテンツ
 .menu-content ul {
