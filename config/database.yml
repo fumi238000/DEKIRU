@@ -13,12 +13,11 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  database: movie_share_app_test
 
 production:
   <<: *default
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
+  database: movie_share_app_production
+  username: movie_share_app
   password: <%= ENV['DB_PASSWORD'] %>
+  
