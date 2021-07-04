@@ -1,5 +1,5 @@
 # deKiRU
-現役の住宅営業(暦20年)が、DYIに関する情報を発信するために作成したサービスです。
+現役の住宅営業(営業歴20年)が、DYIに関する情報を発信するために作成したサービスです。
 ## URL
 - https://dekiru-app-staging.herokuapp.com/
 
