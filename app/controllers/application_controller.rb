@@ -47,6 +47,6 @@ class ApplicationController < ActionController::Base
       # サイドバー
     def set_sidebar
       @content_tags = TagMaster.where(id: TagMaster.pluck(:id) & ContentTag.pluck(:tag_id)).order("RAND()")
-      @category_names = Category.order(created_at: :desc)
+      @category_names = Category.where(id: Content.distinct.select(:category_id)).order("RAND()")
     end
 end
