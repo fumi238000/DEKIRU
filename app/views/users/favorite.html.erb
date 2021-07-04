@@ -2,21 +2,34 @@
   <%= link_to ">マイページへ戻る", mypage_path(current_user), class:"blue-link"%>
 </div>
 
-<div class="h1">
-  <h1>FAVORITE</h1>
-  <p class="text-sm pt-2">お気に入り</p>
-</div>
+<div class="md:flex">
 
-<% if  @favorite_contents.exists? %>
-  <div class="content-style">
-    <%= render partial: "layouts/content_card", collection: @favorite_contents, as: "content" %>
+  <!-- main_content -->
+  <div class="md:w-3/4">
+    <div class="h1">
+      <h1>FAVORITE</h1>
+      <p class="text-sm pt-2">お気に入り</p>
+    </div>
+
+    <% if  @favorite_contents.exists? %>
+      <div class="content-style">
+        <%= render partial: "layouts/content_card", collection: @favorite_contents, as: "content" %>
+      </div>
+    <% else %>
+      <p class="my-16 py-64">現在お気に入りはありません。</p>
+    <% end %>
+
+    <!-- ページネーション -->
+    <%= paginate @favorite_contents, window: 1 %>
+    <div class="py-4">
+      <%= page_entries_info(@favorite_contents)%>
+    </div>
+
   </div>
-<% else %>
-  <p class="my-16 py-64">現在お気に入りはありません。</p>
-<% end %>
 
-<!-- ページネーション -->
-<%= paginate @favorite_contents, window: 1 %>
-<div class="py-4">
-  <%= page_entries_info(@favorite_contents)%>
+    <!-- side_content -->
+  <div class="md:w-1/4 md:ml-12">
+    <%= render "layouts/sidebar", locals: @content_tags%>
+  </div>
+
 </div>
