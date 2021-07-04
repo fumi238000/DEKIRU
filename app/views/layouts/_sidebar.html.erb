@@ -10,7 +10,7 @@
       <!--後で調整  <p class="top-link"><%= link_to ">>全て見る", categories_path, class:"blue-link" %></p>-->
     </div>
     <!-- キーワードリンク-->
-    <div class="flex justify-start flex-wrap my-1 max-w-6xl px-4">
+    <div class="flex justify-stared md:justify-center flex-wrap my-1 max-w-6xl px-4">
       <%= render partial: "layouts/content_tag", collection: @content_tags, as: "tag" %>
     </div>
   </div>
@@ -24,7 +24,7 @@
       <!--後で調整  <p class="top-link"><%= link_to ">>全て見る", categories_path, class:"blue-link" %></p>-->
     </div>
     <!-- カテゴリーリンク-->
-    <div class="flex justify-start flex-wrap my-1 max-w-6xl px-4"> 
+    <div class="flex justify-stared md:justify-center flex-wrap my-1 max-w-6xl px-4"> 
       <%= render partial: "layouts/category_tags", collection: @category_names, as: "category" %>
     </div>
   </div>
