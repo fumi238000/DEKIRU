@@ -63,6 +63,7 @@
       </div>
 
       <!-- お気に入り -->
+      <% if user_signed_in? %>
       <div>
         <%= link_to favorite_contents_path do %>
           <div class="px-8 hover:text-dekiru-blue">
@@ -71,6 +72,7 @@
           </div>
         <% end %>
       </div>
+      <% end %>
 
     </div>
   </div>
