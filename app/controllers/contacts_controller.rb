@@ -26,7 +26,6 @@ class ContactsController < ApplicationController
 
     def contact_params
       if user_signed_in?
-        # TODO: リファクタリングすること
         # ログインユーザーの場合
         params.require(:contact).
           permit(:title, :content, :submitted, :confirmed).
