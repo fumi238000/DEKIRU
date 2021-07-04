@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show favorite]
   before_action :admin_checker, only: %i[index edit update admin]
+  before_action :set_sidebar, only: %i[favorite]
 
   def index
     @users = User.order(created_at: :asc)
